@@ -60,9 +60,17 @@
             <form
                 class="flex flex-col gap-y-8 max-w-[680px] [&>*]:p-10 [&>*]:bg-ruby-red [&>*]:text-light-pink [&>*]:placeholder-light-pink [&>*]:border [&>*]:border-light-pink [&>*]:rounded-3xl"
             >
-                <input type="text" class="focus:outline-none" placeholder="Name (+ optionally surname)" required />
-                <input type="email" class="focus:outline-none" placeholder="Email" required />
-                <textarea class="min-h-[300px] focus:outline-none" placeholder="Message" required></textarea>
+                <input
+                    type="text"
+                    class="outline-2 focus:outline outline-light-pink"
+                    placeholder="Name (+ optionally surname)"
+                    required
+                />
+                <input type="email" class="outline-2 focus:outline outline-light-pink" placeholder="Email" required />
+                <textarea
+                    class="min-h-[300px] outline-2 focus:outline outline-light-pink"
+                    placeholder="Message"
+                    required></textarea>
                 <button type="submit" class="text-5xl font-alexang"> Send the word 🕊️</button>
             </form>
         </div>
