@@ -1,15 +1,22 @@
 {
-  "name": "pekala-design",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^2.10.1"
-  }
+    "name": "pekala-design",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/tailwind": "^4.0.0",
+        "astro": "^2.10.1",
+        "tailwindcss": "^3.3.3"
+    },
+    "devDependencies": {
+        "prettier": "^3.0.1",
+        "prettier-plugin-astro": "^0.11.0",
+        "prettier-plugin-tailwindcss": "^0.4.1"
+    }
 }
