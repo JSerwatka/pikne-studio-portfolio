@@ -7,6 +7,7 @@ const { title } = Astro.props;
 
 import Navbar from "@components/Navbar.astro";
 import "../main.css";
+import Footer from "@components/Footer.astro";
 // TODO meta tags
 ---
 
@@ -20,9 +21,12 @@ import "../main.css";
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body class="text-text-primary bg-background-primary">
+    <body class="text-ruby-red bg-light-pink flex flex-col">
         <Navbar />
-        <slot />
+        <main class="grow">
+            <slot />
+        </main>
+        <Footer />
     </body>
 </html>
 
