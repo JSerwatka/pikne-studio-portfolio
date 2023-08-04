@@ -12,6 +12,11 @@ module.exports = {
             "background-tea-green": "#D1E9D4",
             "background-volt": "#EFF32C"
         },
+        fontFamily: {
+            metropolis: ["Metropolis", "Arial", "sans-serif"],
+            olympic: ["OlympicLight", "Palatino", "serif"],
+            alexang: ["Palatino", "serif"]
+        },
         extend: {}
     },
     plugins: []
