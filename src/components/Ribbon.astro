@@ -1,0 +1,49 @@
+---
+interface Props {
+    text: string;
+    class: string;
+}
+
+const { text, class: classList } = Astro.props;
+
+// TODO change animation speed with props?
+// TODO remove animation for prefer no motion
+---
+
+<div class:list={["py-14 flex overflow-x-hidden", classList]}>
+    <div class="relative">
+        <div class="marquee whitespace-nowrap">
+            {
+                Array(7)
+                    .fill(0)
+                    .map(() => {
+                        return <span class="text-4xl ml-2">{text}</span>;
+                    })
+            }
+        </div>
+        <div class="absolute top-0 marquee2 whitespace-nowrap">
+            {
+                Array(7)
+                    .fill(0)
+                    .map(() => {
+                        return <span class="text-4xl ml-2">{text}</span>;
+                    })
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    import { animate } from "motion";
+
+    animate(
+        ".marquee",
+        { transform: ["translateX(0%)", "translateX(-100%)"] },
+        { duration: 60, repeat: Infinity, easing: "linear" }
+    );
+    animate(
+        ".marquee2",
+        { transform: ["translateX(100%)", "translateX(0%)"] },
+        { duration: 60, repeat: Infinity, easing: "linear" }
+    );
+</script>
