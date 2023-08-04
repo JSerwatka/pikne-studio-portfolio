@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .text-hero__1 {
+        font-size: 26.25rem;
+        font-family: theme("fontFamily.alexang");
+        letter-spacing: -16.5px;
+        line-height: 27.5rem;
+    }
+
+    .text-hero__2 {
+        font-size: 18.75rem;
+        font-family: theme("fontFamily.alexang");
+        line-height: 20rem;
+    }
+
+    .text-header__1 {
+        font-size: 6.25rem;
+        font-family: theme("fontFamily.alexang");
+        line-height: 8.75rem;
+    }
+
+    .text-header__2 {
+        font-size: 3.75rem; /* text-6xl */
+        font-family: theme("fontFamily.olympic");
+        line-height: 5rem;
+        letter-spacing: -1.2px;
+    }
+
+    .text-header__3 {
+        font-size: 4.375rem;
+        font-family: theme("fontFamily.alexang");
+        line-height: 5.625rem;
+    }
+
+    .text-header__4 {
+        font-size: 1.75rem;
+        font-family: theme("fontFamily.metropolis");
+        line-height: 2.5rem; /* leading-10 */
+        text-transform: uppercase;
+    }
+
+    .text-paragraph__normal {
+        font-size: 1.75rem;
+        font-family: theme("fontFamily.metropolis");
+        line-height: 2rem; /* leading-8 */
+    }
+    .text-paragraph__quote {
+        font-size: 1.75rem;
+        font-family: theme("fontFamily.olympic");
+        line-height: 2.5rem; /* leading-10 */
+    }
+}
