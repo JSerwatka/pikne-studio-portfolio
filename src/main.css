@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+@layer components {
     .text-hero__1 {
         font-size: 26.25rem;
         font-family: theme("fontFamily.alexang");
