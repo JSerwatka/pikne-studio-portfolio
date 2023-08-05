@@ -1,0 +1,68 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+const workItems = [
+    {
+        title: "This",
+        imgUrl: "https://images.unsplash.com/flagged/photo-1567400358593-9e6382752ea2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        linkUrl: "/"
+    },
+    {
+        title: "is",
+        imgUrl: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+        linkUrl: "/"
+    },
+    {
+        title: "art",
+        imgUrl: "https://images.unsplash.com/photo-1513346940221-6f673d962e97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        linkUrl: "/"
+    },
+    {
+        title: "xdddd",
+        imgUrl: "https://images.unsplash.com/photo-1552083974-186346191183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        linkUrl: "/"
+    },
+    {
+        title: "loool",
+        imgUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        linkUrl: "/"
+    }
+];
+
+// TODO use correct links, imgs and names
+// TODO use better aria label
+// TODO isses when going back to this site from different when scrolled to position where imgs are visible. - force open in top-0 position (ten sam problem jak odświeżysz będąc w połowie strony)
+---
+
+<Layout title="Welcome to Astro.">
+    <div class="container mx-auto mb-[30vh]">
+        <div class="text-hero__1 text-center sticky top-[10vh] mt-[10vh]">My work</div>
+        <div class="grid col grid-cols-1 justify-items-center gap-64 js-work-items mt-[30vh]">
+            {
+                workItems.map((workItem) => (
+                    <div class="relative w-1/2 drop-shadow-2xl">
+                        <a href={workItem.linkUrl} aria-label={`Link to work name: ${workItem.title}`}>
+                            <img src={workItem.imgUrl} class="w-full object-cover rounded-3xl" />
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-light-pink text-header__1">
+                                {workItem.title}
+                            </div>
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import { scroll, animate } from "motion";
+
+    const workItems = document.querySelectorAll(".js-work-items > *") as NodeListOf<HTMLElement>;
+
+    workItems.forEach((workItem) => {
+        scroll(animate(workItem, { scale: [1, 1.1, 1.1, 1] }), {
+            target: workItem,
+            offset: ["start end", "end end", "start start", "end start"]
+        });
+    });
+</script>
