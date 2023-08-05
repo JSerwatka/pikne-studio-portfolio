@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import heart from "@assets/heart.svg";
+
+// TODO when scrolling very little there is a weird twich, duration should be based on velocity
+// TODO to change image size, you have to also change translate class to be equal 1/2*width% - maybe there is a way to do it with a variable
+---
+
+<div class="h-screen ml-6 flex">
+    <div class="w-6 h-full bg-gradient-brand relative js-gradient-scroll__wrapper">
+        <Image
+            class="absolute js-gradient-scroll__image max-w-none -translate-x-[25%]"
+            src={heart}
+            alt="pekala design logo"
+            width={50}
+        />
+    </div>
+</div>
+
+<script>
+    import { scroll, animate } from "motion";
+
+    const gradientScrollWrapper = document.querySelector(".js-gradient-scroll__wrapper") as HTMLElement;
+    const gradientScrollImage = document.querySelector(".js-gradient-scroll__image") as HTMLElement;
+
+    scroll(
+        ({ y }) => {
+            const middleOfHeartHeight = gradientScrollImage.clientHeight / 2;
+            const middleOfHeartWidth = gradientScrollImage.clientWidth / 2;
+
+            const progressToPxMapped = y.progress * (gradientScrollWrapper.clientHeight - middleOfHeartHeight);
+
+            animate(
+                gradientScrollImage,
+                { transform: [`translate(-${middleOfHeartWidth}%, ${progressToPxMapped}px)`] },
+                { duration: 0.7, easing: "ease-out" }
+            );
+        },
+        { target: gradientScrollWrapper, offset: ["-150px start", "end center"] }
+    );
+</script>

@@ -12,7 +12,7 @@ const { text, class: classList } = Astro.props;
 
 <div class:list={["py-14 flex overflow-x-hidden", classList]}>
     <div class="relative">
-        <div class="marquee whitespace-nowrap">
+        <div class="js-marquee whitespace-nowrap">
             {
                 Array(7)
                     .fill(0)
@@ -21,7 +21,7 @@ const { text, class: classList } = Astro.props;
                     })
             }
         </div>
-        <div class="absolute top-0 marquee2 whitespace-nowrap">
+        <div class="absolute top-0 js-marquee2 whitespace-nowrap">
             {
                 Array(7)
                     .fill(0)
@@ -37,12 +37,12 @@ const { text, class: classList } = Astro.props;
     import { animate } from "motion";
 
     animate(
-        ".marquee",
+        ".js-marquee",
         { transform: ["translateX(0%)", "translateX(-100%)"] },
         { duration: 60, repeat: Infinity, easing: "linear" }
     );
     animate(
-        ".marquee2",
+        ".js-marquee2",
         { transform: ["translateX(100%)", "translateX(0%)"] },
         { duration: 60, repeat: Infinity, easing: "linear" }
     );

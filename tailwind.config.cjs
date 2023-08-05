@@ -16,7 +16,18 @@ module.exports = {
             olympic: ["OlympicLight", "Palatino", "serif"],
             alexang: ["Palatino", "serif"]
         },
-        extend: {}
+        extend: {
+            backgroundImage: ({ theme }) => ({
+                "gradient-brand": `linear-gradient(to bottom, 
+                    transparent, 
+                    ${theme("colors.volt")}, 
+                    ${theme("colors.tea-green")}, 
+                    ${theme("colors.ice-blue")}, 
+                    ${theme("colors.lilac")}, 
+                    ${theme("colors.ruby-red")}
+                )`
+            })
+        }
     },
     plugins: []
 };
