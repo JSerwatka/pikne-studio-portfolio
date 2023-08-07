@@ -18,40 +18,41 @@ import nextArrowIcon from "@assets/arrow.svg";
             </span>
         </span>
     </div> -->
+    <div class="relative">
+        <div class="text-header__1">
+            text test
+        </div>
+
+            <div class="text-header__1 text-lilac css-link-text absolute top-0 left-0 ">
+                text test
+            </div>
+    </div>
+
     <div>
-        <img class="fixed w-[150px] h-[150px] -translate-x-1/2 -translate-y-1/2 object-cover object-center rounded-full js-circle-img " src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
+        <img class="fixed  w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full js-circle-img pointer-events-none" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
     </div>
 </div>
 
 <style>
-    .text-header__1:hover > .link-text {
+    /* .text-header__1:hover > .link-text {
         opacity: 1;
     }
     .text-header__1:hover > .image-container {
         opacity: 1;
-    }
+    } */
 
-    .link-text {
-        z-index: 2;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        font-size: 8em;
-        color: $white;
-        text-transform: uppercase;
+
+    .css-link-text {
+        z-index: 10;
         pointer-events: none;
         clip-path: circle(75px at var(--x) var(--y));
-        opacity: 1;
-        transition: opacity 250ms ease;
+        /* overflow: hidden; */
+        /* opacity: 1; */
+        /* transition: opacity 250ms ease; */
     }
 
-    .image-container {
-        z-index: -2;
+    /* .image-container {
+        z-index: 10;
         position: absolute;
         top: 0;
         left: 0;
@@ -78,20 +79,22 @@ import nextArrowIcon from "@assets/arrow.svg";
         object-position: center;
         border-radius: 50%;
         filter: brightness(0.9);
-    }
+    } */
 </style>
 
 <script>
-    // const linkText = document.querySelector(".link-text") as HTMLElement;
+    const linkText = document.querySelector(".css-link-text") as HTMLElement;
     const linkImage = document.querySelector(".js-circle-img") as HTMLElement;
+    const linkTextRect = linkText.getBoundingClientRect(); 
+
 
     function showImgContent(e) {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        linkImage.style.left = mouseX + 'px';
-        linkImage.style.top = mouseY + 'px';        
-        // linkText.style.setProperty("--x", x + "px");
-        // linkText.style.setProperty("--y", y + "px");
+        linkImage.style.left = mouseX - 75 + 'px';
+        linkImage.style.top = mouseY - 75 + 'px';        
+        linkText.style.setProperty("--x", mouseX  + "px");
+        linkText.style.setProperty("--y", mouseY - linkTextRect.top  + "px");
     }
 
     // linkImage.style.left = 0 + 'px';
