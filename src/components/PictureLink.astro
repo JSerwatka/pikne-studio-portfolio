@@ -4,7 +4,7 @@ import nextArrowIcon from "@assets/arrow.svg";
 
 ---
 
-<div class="relative">
+<div class="relative animation-group">
     <!-- <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
     <div class="flex gap-3">
         <Image src={nextArrowIcon} alt="arrow icon" width={50} />
@@ -23,7 +23,7 @@ import nextArrowIcon from "@assets/arrow.svg";
             <div class="text-header__1">
                 text test
             </div>
-            <div class="absolute text-header__1 text-lilac top-0 left-0 z-10 text-mask-handler">
+            <div class="absolute text-header__1 text-lilac top-0 left-0 z-10 text-mask-handler pointer-events-none">
                 text test
             </div>
     </div>
@@ -34,6 +34,20 @@ import nextArrowIcon from "@assets/arrow.svg";
 <style>
     .text-mask-handler {
         clip-path: circle(75px at var(--x) var(--y));
+        opacity: 0;
+        transition: opacity 200ms ease;
+    }
+
+    .js-circle-img {
+        opacity: 0;
+        transition: opacity 200ms ease;
+    }
+
+    .animation-group:hover .text-mask-handler {
+        opacity:1
+    }
+    .animation-group:hover .js-circle-img {
+        opacity:1
     }
 </style>
 
