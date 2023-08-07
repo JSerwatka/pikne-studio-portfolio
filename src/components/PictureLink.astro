@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import nextArrowIcon from "@assets/arrow.svg";
+---
+
+<div class="relative">
+    <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
+    <div class="flex gap-3">
+        <Image src={nextArrowIcon} alt="arrow icon" width={50} />
+
+        <div class="text-header__1 text-white">MIR</div>
+        <span class="hover-container">
+            <span class="link-text" aria-hidden="true">MIR</span>
+            <span class="image-container">
+                <span class="image-inner">
+                    <img class="link-image" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
+                </span>
+            </span>
+        </span>
+    </div>
+</div>
+
+<style>
+    .text-header__1:hover > .link-text {
+        opacity: 1;
+    }
+    .text-header__1:hover > .image-container {
+        opacity: 1;
+    }
+
+    .link-text {
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 8em;
+        color: $white;
+        text-transform: uppercase;
+        pointer-events: none;
+        clip-path: circle(75px at var(--x) var(--y));
+        opacity: 1;
+        transition: opacity 250ms ease;
+    }
+
+    .image-container {
+        z-index: -2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        opacity: 1;
+        transition: opacity 250ms ease;
+    }
+
+    .image-inner {
+        position: absolute;
+        top: -75px;
+        left: -75px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .link-image {
+        display: block;
+        max-width: 100%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        filter: brightness(0.9);
+    }
+</style>
+
+<script>
+    const linkText = document.querySelector(".link-text") as HTMLElement;
+    const linkImage = document.querySelector(".link-image") as HTMLElement;
+
+    function showImgContent(e) {
+        const x = e.clientX;
+        const y = e.clientY;
+        linkImage.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        linkText.style.setProperty("--x", x + "px");
+        linkText.style.setProperty("--y", y + "px");
+    }
+
+    document.addEventListener("mousemove", showImgContent);
+</script>
