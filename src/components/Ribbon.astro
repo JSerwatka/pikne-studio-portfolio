@@ -10,7 +10,7 @@ const { text, class: classList } = Astro.props;
 // TODO remove animation for prefer no motion
 ---
 
-<div class:list={["py-14 flex overflow-x-hidden", classList]}>
+<div class="py-14 flex overflow-x-hidden" class:list={classList}>
     <div class="relative">
         <div class="js-marquee whitespace-nowrap">
             {
