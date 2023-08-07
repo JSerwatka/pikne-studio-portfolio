@@ -4,7 +4,7 @@ import nextArrowIcon from "@assets/arrow.svg";
 ---
 
 <div class="relative">
-    <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
+    <!-- <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
     <div class="flex gap-3">
         <Image src={nextArrowIcon} alt="arrow icon" width={50} />
 
@@ -17,6 +17,9 @@ import nextArrowIcon from "@assets/arrow.svg";
                 </span>
             </span>
         </span>
+    </div> -->
+    <div>
+        <img class="fixed w-[150px] h-[150px] -translate-x-1/2 -translate-y-1/2 object-cover object-center rounded-full js-circle-img " src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
     </div>
 </div>
 
@@ -79,16 +82,20 @@ import nextArrowIcon from "@assets/arrow.svg";
 </style>
 
 <script>
-    const linkText = document.querySelector(".link-text") as HTMLElement;
-    const linkImage = document.querySelector(".link-image") as HTMLElement;
+    // const linkText = document.querySelector(".link-text") as HTMLElement;
+    const linkImage = document.querySelector(".js-circle-img") as HTMLElement;
 
     function showImgContent(e) {
-        const x = e.clientX;
-        const y = e.clientY;
-        linkImage.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        linkText.style.setProperty("--x", x + "px");
-        linkText.style.setProperty("--y", y + "px");
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        linkImage.style.left = mouseX + 'px';
+        linkImage.style.top = mouseY + 'px';        
+        // linkText.style.setProperty("--x", x + "px");
+        // linkText.style.setProperty("--y", y + "px");
     }
+
+    // linkImage.style.left = 0 + 'px';
+    //     linkImage.style.top = 0 + 'px'; 
 
     document.addEventListener("mousemove", showImgContent);
 </script>
