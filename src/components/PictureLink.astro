@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import nextArrowIcon from "@assets/arrow.svg";
+
 ---
 
 <div class="relative">
@@ -19,66 +20,41 @@ import nextArrowIcon from "@assets/arrow.svg";
         </span>
     </div> -->
     <div class="relative">
-        <!-- <div class="text-header__1">
-            text test
-        </div> -->
-
-            <div class="text-header__1 text-lilac css-link-text absolute top-0 left-0 bg-dark-chocolate">
+            <div class="text-header__1">
+                text test
+            </div>
+            <div class="absolute text-header__1 text-lilac top-0 left-0 z-10 text-mask-handler">
                 text test
             </div>
     </div>
 
-    <div>
-        <img class="absolute  w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full js-circle-img pointer-events-none" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
-    </div>
+     <img class="absolute w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full pointer-events-none js-circle-img" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
 </div>
 
 <style>
-    .css-link-text {
-        z-index: 10;
-        pointer-events: none;
+    .text-mask-handler {
         clip-path: circle(75px at var(--x) var(--y));
-        /* overflow: hidden; */
-        /* opacity: 1; */
-        /* transition: opacity 250ms ease; */
     }
 </style>
 
 <script>
+    const textMask = document.querySelector(".text-mask-handler") as HTMLElement;
+    const cricleImage = document.querySelector(".js-circle-img") as HTMLElement;
 
-    const linkText = document.querySelector(".css-link-text") as HTMLElement;
-    const linkImage = document.querySelector(".js-circle-img") as HTMLElement;
-
-
-
-    function getPositionOnScreen(element) {
-        const rect = linkText.getBoundingClientRect();
-
-        console.log({top: rect.top, scrolly: window.scrollY});
-        const scrollX = window.scrollX || document.documentElement.scrollLeft;
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        const offsetX = rect.left + scrollX;
-        const offsetY =  scrollY - rect.top;
-        return { x: offsetX, y: offsetY };
-    }
-
-
-    function showImgContent(e) {
-        const elePosiotion = getPositionOnScreen(linkText)
-        const rect = linkText.getBoundingClientRect();
-
-        console.log({mousey: e.clientY });
+    function showImgContent(e: MouseEvent) {
+        const textMaskRect = textMask.getBoundingClientRect();
 
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        linkImage.style.left = mouseX - 75 - rect.left + 'px';
-        linkImage.style.top = mouseY - 75 - rect.top + 'px';        
-        linkText.style.setProperty("--x", mouseX - rect.left  + "px");
-        linkText.style.setProperty("--y", mouseY - rect.top + "px");
-    }
+        const positionX = mouseX - textMaskRect.left;
+        const positionY = mouseY - textMaskRect.top;
 
-    // linkImage.style.left = 0 + 'px';
-    //     linkImage.style.top = 0 + 'px'; 
+        cricleImage.style.left = positionX - 75 + 'px';
+        cricleImage.style.top = positionY - 75  + 'px';
+
+        textMask.style.setProperty("--x", positionX  + "px");
+        textMask.style.setProperty("--y", positionY  + "px");
+    }
 
     document.addEventListener("mousemove", showImgContent);
 </script>
