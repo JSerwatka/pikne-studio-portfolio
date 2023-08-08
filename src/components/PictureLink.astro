@@ -2,11 +2,9 @@
 import { Image } from "astro:assets";
 import nextArrowIcon from "@assets/arrow.svg";
 
-
 // TODO use petter svg - one that I can change fill from svg proparty not having to change path
 // TODO dont'update img and mask position if for from the target??
 ---
-    <div class="fonwt-metropolis text-xl uppercase">Next up</div>
 
 <div class="relative animation-group w-min mx-auto">
     <!-- <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
@@ -23,42 +21,62 @@ import nextArrowIcon from "@assets/arrow.svg";
         </span>
     </div> -->
     <!-- <di/v> -->
-        
+
     <div class="relative">
-            <div class="text-header__1 flex gap-4 cursor-none" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none" class="align-bottom">
-                    <g clip-path="url(#clip0_399_493)">
-                    <path d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z" fill="#D31D1D"/>
-                    </g>
-                    <defs>
+        <div class="cursor-none">
+            <!-- <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="60"
+                height="60"
+                viewBox="0 0 60 60"
+                fill="none"
+                class="align-bottom"
+            >
+                <g clip-path="url(#clip0_399_493)">
+                    <path
+                        d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z"
+                        fill="#D31D1D"></path>
+                </g>
+                <defs>
                     <clipPath id="clip0_399_493">
-                    <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"/>
+                        <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
                     </clipPath>
-                    </defs>
-                </svg>
-                MIR
-            </div>
-            <div aria-hidden="true" class="absolute text-header__1 text-lilac top-0 left-0 z-10 pointer-events-none text-mask-handler opacity-animation-target flex gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <g clip-path="url(#clip0_399_493)">
-                    <path d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z" class="fill-lilac" fill="#D31D1D"/>
-                    </g>
-                    <defs>
+                </defs>
+            </svg> -->
+            <div class="font-metropolis text-xl uppercase">Next up</div>
+            <div class="text-header__1 flex gap-4">MIR</div>
+        </div>
+        <div
+            aria-hidden="true"
+            class="absolute text-lilac top-0 left-0 z-10 pointer-events-none text-mask-handler opacity-animation-target"
+        >
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <g clip-path="url(#clip0_399_493)">
+                    <path
+                        d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z"
+                        class="fill-lilac"
+                        fill="#D31D1D"></path>
+                </g>
+                <defs>
                     <clipPath id="clip0_399_493">
-                    <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"/>
+                        <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
                     </clipPath>
-                    </defs>
-                </svg>
-                MIR
-            </div>
+                </defs>
+            </svg> -->
+            <div class="font-metropolis text-xl uppercase">Next up</div>
+            <div class="text-header__1 flex gap-4">MIR</div>
+        </div>
     </div>
-     <img class="absolute  w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full pointer-events-none opacity-animation-target js-circle-img" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
+    <img
+        class="absolute w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full pointer-events-none opacity-animation-target js-circle-img"
+        src="https://assets.codepen.io/1159990/tokyo-tower.jpg"
+        alt="Tokyo Tower"
+    />
 </div>
 
 <style>
     .text-mask-handler {
         clip-path: circle(75px at var(--x) var(--y));
-        
     }
 
     .opacity-animation-target {
@@ -67,7 +85,7 @@ import nextArrowIcon from "@assets/arrow.svg";
     }
 
     .animation-group:hover .opacity-animation-target {
-        opacity:1;
+        opacity: 1;
     }
 </style>
 
@@ -83,11 +101,11 @@ import nextArrowIcon from "@assets/arrow.svg";
         const positionX = mouseX - textMaskRect.left;
         const positionY = mouseY - textMaskRect.top;
 
-        cricleImage.style.left = positionX - 75 + 'px';
-        cricleImage.style.top = positionY - 75  + 'px';
+        cricleImage.style.left = positionX - 75 + "px";
+        cricleImage.style.top = positionY - 75 + "px";
 
-        textMask.style.setProperty("--x", positionX  + "px");
-        textMask.style.setProperty("--y", positionY  + "px");
+        textMask.style.setProperty("--x", positionX + "px");
+        textMask.style.setProperty("--y", positionY + "px");
     }
 
     document.addEventListener("mousemove", showImgContent);
