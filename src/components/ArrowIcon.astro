@@ -1,13 +1,14 @@
 ---
 interface Props {
     class: string;
+    size?: number;
 }
 
-const { class: classname } = Astro.props;
+const { class: classname, size = 50 } = Astro.props;
 // TODO add alt to arrow icon
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" class:list={classname}>
+<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 60 60"  class:list={classname}>
     <g clip-path="url(#clip0_399_493)">
         <path
             d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z"
@@ -15,7 +16,7 @@ const { class: classname } = Astro.props;
     </g>
     <defs>
         <clipPath id="clip0_399_493">
-            <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
+            <rect width={size} height={size} fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
         </clipPath>
     </defs>
 </svg>
