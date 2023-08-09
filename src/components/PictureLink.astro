@@ -1,49 +1,20 @@
 ---
 import { Image } from "astro:assets";
 import nextArrowIcon from "@assets/arrow.svg";
+import ArrowIcon from "./ArrowIcon.astro";
 
-// TODO use petter svg - one that I can change fill from svg proparty not having to change path
 // TODO dont'update img and mask position if for from the target??
+// TODO add alt to arrow icon
+// TODO change size of arrow icon to 50
+// FIXME: when scrolling down and having mouse on the bottom, scroll movess infinitely
 ---
 
 <div class="relative animation-group w-min mx-auto">
-    <!-- <div class="font-metropolis text-xl uppercase -mb-5">Next up</div>
-    <div class="flex gap-3">
-
-        <div class="text-header__1 text-white">MIR</div>
-        <span class="hover-container">
-            <span class="link-text" aria-hidden="true">MIR</span>
-            <span class="image-container">
-                <span class="image-inner">
-                    <img class="link-image" src="https://assets.codepen.io/1159990/tokyo-tower.jpg" alt="Tokyo Tower" />
-                </span>
-            </span>
-        </span>
-    </div> -->
-    <!-- <di/v> -->
-
     <div class="relative">
         <div class="cursor-none">
             <div class="font-metropolis text-xl uppercase">Next up</div>
             <div class="text-header__1 flex gap-4 items-center">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="60"
-                    height="60"
-                    viewBox="0 0 60 60"
-                    class="fill-ruby-red"
-                >
-                    <g clip-path="url(#clip0_399_493)">
-                        <path
-                            d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z"
-                        ></path>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_399_493">
-                            <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
-                        </clipPath>
-                    </defs>
-                </svg>
+                <ArrowIcon class="fill-ruby-red" />
                 <div>MIR</div>
             </div>
         </div>
@@ -53,18 +24,7 @@ import nextArrowIcon from "@assets/arrow.svg";
         >
             <div class="font-metropolis text-xl uppercase">Next up</div>
             <div class="text-header__1 flex gap-4 items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" class="fill-lilac">
-                    <g clip-path="url(#clip0_399_493)">
-                        <path
-                            d="M53.6063 3.75H30V0H58.125C58.6223 0 59.0992 0.197544 59.4508 0.549175C59.8025 0.900805 60 1.37772 60 1.875V31.875H56.25V6.39375L3.20626 59.4562L0.562508 56.8125L53.6063 3.75Z"
-                        ></path>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_399_493">
-                            <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"></rect>
-                        </clipPath>
-                    </defs>
-                </svg>
+                <ArrowIcon class="fill-lilac" />
                 <div>MIR</div>
             </div>
         </div>
