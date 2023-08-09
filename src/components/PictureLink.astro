@@ -4,7 +4,6 @@ import nextArrowIcon from "@assets/arrow.svg";
 import ArrowIcon from "./ArrowIcon.astro";
 
 // TODO dont'update img and mask position if for from the target??
-// TODO add alt to arrow icon
 // TODO change size of arrow icon to 50
 // FIXME: when scrolling down and having mouse on the bottom, scroll movess infinitely
 
@@ -63,20 +62,32 @@ const textLayers = ["visible", "mask"];
 <script>
     const textMask = document.querySelector(".text-mask-handler") as HTMLElement;
     const cricleImage = document.querySelector(".js-circle-img") as HTMLElement;
+    const boundryMargin = 100 // px
 
     function showImgContent(e: MouseEvent) {
         const textMaskRect = textMask.getBoundingClientRect();
 
         const mouseX = e.clientX;
         const mouseY = e.clientY;
+        // position relative to container (not window)
         const positionX = mouseX - textMaskRect.left;
         const positionY = mouseY - textMaskRect.top;
+
+        // disable position update when mouse from from target
+        const leftBoundry = -boundryMargin;
+        const rightBoundry = boundryMargin + textMaskRect.width;
+        const topBoundry = -boundryMargin;
+        const bottomBoundry = boundryMargin + textMaskRect.height;
+
+        const isMouseInsideBoundries = positionX > leftBoundry && positionX < rightBoundry && positionY > topBoundry && positionY < bottomBoundry;
 
         cricleImage.style.left = positionX - 75 + "px";
         cricleImage.style.top = positionY - 75 + "px";
 
         textMask.style.setProperty("--x", positionX + "px");
         textMask.style.setProperty("--y", positionY + "px");
+        
+
     }
 
     document.addEventListener("mousemove", showImgContent);
