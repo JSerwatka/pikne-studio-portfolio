@@ -8,9 +8,10 @@ const { text, class: classList } = Astro.props;
 
 // TODO change animation speed with props?
 // TODO remove animation for prefer no motion
+// TODO remove brackets and return statement - only () requred
 ---
 
-<div class:list={["py-14 flex overflow-x-hidden", classList]}>
+<div class="py-14 flex overflow-x-hidden" class:list={classList}>
     <div class="relative">
         <div class="js-marquee whitespace-nowrap">
             {
