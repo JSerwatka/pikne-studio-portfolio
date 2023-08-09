@@ -1,11 +1,18 @@
 ---
-import { Image } from "astro:assets";
-import nextArrowIcon from "@assets/arrow.svg";
 import ArrowIcon from "./ArrowIcon.astro";
 
-// TODO change size of arrow icon to 50
+interface Props {
+    title: string;
+    subTitle: string;
+}
+
+const { title, subTitle } = Astro.props;
+
 
 const textLayers = ["visible", "mask"];
+
+// TODO handle touch screen -> use just image behind text - check here https://www.geeksforgeeks.org/how-to-detect-touch-screen-device-using-javascript/
+// TODO add props for setting up img
 ---
 
 <div class="relative animation-group w-min mx-auto">
@@ -23,11 +30,11 @@ const textLayers = ["visible", "mask"];
                         }}
                     >
                         <div class="font-metropolis text-xl uppercase">
-                            Next up
+                            {subTitle}
                         </div>
                         <div class="text-header__1 flex gap-4 items-center">
-                            <ArrowIcon class={isMask ? "fill-lilac" : "fill-ruby-red"} />
-                            <div>MIR</div>
+                            <ArrowIcon class={isMask ? "fill-lilac" : "fill-ruby-red"} size={50} />
+                            <div>{title}</div>
                         </div>
                     </div>
                 )
