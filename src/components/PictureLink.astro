@@ -7,27 +7,36 @@ import ArrowIcon from "./ArrowIcon.astro";
 // TODO add alt to arrow icon
 // TODO change size of arrow icon to 50
 // FIXME: when scrolling down and having mouse on the bottom, scroll movess infinitely
+
+const textLayers = ["visible", "mask"];
 ---
 
 <div class="relative animation-group w-min mx-auto">
     <div class="relative">
-        <div class="cursor-none">
-            <div class="font-metropolis text-xl uppercase">Next up</div>
-            <div class="text-header__1 flex gap-4 items-center">
-                <ArrowIcon class="fill-ruby-red" />
-                <div>MIR</div>
-            </div>
-        </div>
-        <div
-            aria-hidden="true"
-            class="absolute text-lilac top-0 left-0 z-10 pointer-events-none text-mask-handler opacity-animation-target"
-        >
-            <div class="font-metropolis text-xl uppercase">Next up</div>
-            <div class="text-header__1 flex gap-4 items-center">
-                <ArrowIcon class="fill-lilac" />
-                <div>MIR</div>
-            </div>
-        </div>
+        {
+            textLayers.map((layer) => {
+                const isMask = layer === "mask";
+
+                return (
+                    <div
+                        aria-hidden={isMask ? "true" : "false"}
+                        class="cursor-none" 
+                        class:list={{
+                            "absolute text-lilac top-0 left-0 z-10 pointer-events-none text-mask-handler opacity-animation-target" : isMask
+                        }}
+                    >
+                        <div class="font-metropolis text-xl uppercase">
+                            Next up
+                        </div>
+                        <div class="text-header__1 flex gap-4 items-center">
+                            <ArrowIcon class={isMask ? "fill-lilac" : "fill-ruby-red"} />
+                            <div>MIR</div>
+                        </div>
+                    </div>
+                )
+
+            })
+        }
     </div>
     <img
         class="absolute w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full pointer-events-none opacity-animation-target js-circle-img"
