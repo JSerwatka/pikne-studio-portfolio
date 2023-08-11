@@ -4,17 +4,55 @@
 ---
 
 <footer>
-    <div class="text-hero__1 text-center -mb-[90px] whitespace-nowrap">Contact me</div>
-    <div class="bg-ruby-red text-light-pink">
-        <div class="grid grid-cols-2 items-center px-16 pt-24 pb-28 h-full">
-            <div class="flex flex-col justify-between h-full font-metropolis text-xl">
-                <div class="[&>*]:mb-6">
+    <div class:list={["text-hero__1 text-center text-7xl", "sm:text-8xl", "md:text-9xl"]}>Contact me</div>
+    <div class="bg-ruby-red text-light-pink min-h-[100vh]">
+        <div
+            class:list={[
+                "grid h-full",
+                "grid-cols-1 px-6 py-16 gap-16",
+                "md:px-0 md:gap-20",
+                "lg:grid-cols-2 lg:px-16 lg:pt-24"
+            ]}
+        >
+            <form
+                class:list={[
+                    "flex flex-col gap-y-8 w-full max-w-[680px] mx-auto",
+                    "[&>*]:p-10 [&>*]:bg-ruby-red [&>*]:text-light-pink [&>*]:placeholder-light-pink [&>*]:border [&>*]:border-light-pink [&>*]:rounded-3xl",
+                    "order-1",
+                    "lg:order-2"
+                ]}
+            >
+                <input
+                    type="text"
+                    class="outline-2 focus:outline outline-light-pink"
+                    placeholder="Name (+ optionally surname)"
+                    required
+                />
+                <input type="email" class="outline-2 focus:outline outline-light-pink" placeholder="Email" required />
+                <textarea
+                    class="min-h-[300px] outline-2 focus:outline outline-light-pink"
+                    placeholder="Message"
+                    required></textarea>
+                <button type="submit" class="text-3xl sm:md:text-4xl md:text-5xl font-alexang">
+                    Send the word 🕊️</button
+                >
+            </form>
+            <div
+                class:list={[
+                    "flex font-metropolis max-w-[680px] w-full mx-auto",
+                    "order-2 flex-col text-base",
+                    "sm:text-md sm:flex-row sm:justify-between sm:pr-11",
+                    "md:text-xl",
+                    "lg:order-1 lg:flex-col lg:pr-0"
+                ]}
+            >
+                <div class:list={["[&>*:not(:last-child)]:mb-6", "mb-10", "md:mb-0"]}>
                     <div>based in Kraków, PL | 10:27PM | 13°C</div>
                     <div>available for freelance work worldwide</div>
                     <div>hello@pekala.design</div>
                     <div>book a free consultancy call</div>
                 </div>
-                <ul class="uppercase [&>*]:mb-6">
+                <ul class="uppercase [&>*:not(:last-child)]:mb-6">
                     <li>
                         <a
                             href="https://www.linkedin.com/in/alekspekala/"
@@ -57,22 +95,6 @@
                     </li>
                 </ul>
             </div>
-            <form
-                class="flex flex-col gap-y-8 max-w-[680px] [&>*]:p-10 [&>*]:bg-ruby-red [&>*]:text-light-pink [&>*]:placeholder-light-pink [&>*]:border [&>*]:border-light-pink [&>*]:rounded-3xl"
-            >
-                <input
-                    type="text"
-                    class="outline-2 focus:outline outline-light-pink"
-                    placeholder="Name (+ optionally surname)"
-                    required
-                />
-                <input type="email" class="outline-2 focus:outline outline-light-pink" placeholder="Email" required />
-                <textarea
-                    class="min-h-[300px] outline-2 focus:outline outline-light-pink"
-                    placeholder="Message"
-                    required></textarea>
-                <button type="submit" class="text-5xl font-alexang"> Send the word 🕊️</button>
-            </form>
         </div>
     </div>
 </footer>
