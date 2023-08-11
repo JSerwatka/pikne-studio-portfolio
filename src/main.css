@@ -10,9 +10,8 @@
     }
 
     .text-hero__2 {
-        font-size: 18.75rem;
+        @apply font-alexang text-7xl sm:text-9xl 2xl:text-hero_2-max;
         font-family: theme("fontFamily.alexang");
-        line-height: 20rem;
     }
 
     .text-header__1 {
