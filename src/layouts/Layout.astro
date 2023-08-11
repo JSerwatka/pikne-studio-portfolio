@@ -22,7 +22,7 @@ import Footer from "@components/Footer.astro";
         <title>{title}</title>
     </head>
     <body class="text-ruby-red bg-light-pink flex flex-col">
-        <Navbar />
+        <!-- <Navbar /> -->
         <main class="grow">
             <slot />
         </main>
@@ -31,6 +31,13 @@ import Footer from "@components/Footer.astro";
 </html>
 
 <style is:global>
+    @font-face {
+        font-family: "AlexangDisplay";
+        src: url("/fonts/AlexangDisplay.ttf");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
     @font-face {
         font-family: "OlympicLight";
         src: url("/fonts/OlympicLight.woff") format("woff");
