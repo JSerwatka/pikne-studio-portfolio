@@ -4,10 +4,9 @@
 
 @layer components {
     .text-hero__1 {
-        font-size: 26.25rem;
-        font-family: theme("fontFamily.alexang");
-        letter-spacing: -16.5px;
-        line-height: 27.5rem;
+        @apply font-alexang text-7xl sm:text-9xl 2xl:text-hero-max;
+        /* letter-spacing: -16.5px; */
+        /* line-height: 27.5rem; */
     }
 
     .text-hero__2 {
