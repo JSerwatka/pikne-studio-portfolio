@@ -23,22 +23,20 @@
     >;
 
     menuButton.addEventListener("click", () => {
-        const isOverlayExpanded = menuButton.getAttribute("aria-expanded") === "true" || false;
-
-        menuButton.setAttribute("aria-expanded", "true");
-        overlay.classList.remove("hidden");
-        overlay.setAttribute("aria-hidden", "false");
-        document.body.classList.add("overflow-hidden");
-        trapFocus(true);
+        switchOverlay(true);
     });
 
     closeOverlayButton.addEventListener("click", () => {
-        menuButton.setAttribute("aria-expanded", "false");
-        overlay.classList.add("hidden");
-        overlay.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("overflow-hidden");
-        trapFocus(false);
+        switchOverlay(false);
     });
+
+    function switchOverlay(isOverlaySwitched: boolean) {
+        menuButton.setAttribute("aria-expanded", isOverlaySwitched.toString());
+        overlay.classList.toggle("hidden", !isOverlaySwitched);
+        overlay.setAttribute("aria-hidden", (!isOverlaySwitched).toString());
+        document.body.classList.toggle("overflow-hidden", isOverlaySwitched);
+        trapFocus(isOverlaySwitched);
+    }
 
     function trapFocus(isTrapSwitched: boolean) {
         const firstFocusable = focusableElements[0];
