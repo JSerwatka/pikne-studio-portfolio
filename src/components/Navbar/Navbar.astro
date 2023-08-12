@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/logo.svg";
+import MobileNavbar from "./MobileNavbar.astro";
+import DesktopNavbar from "./DesktopNavbar.astro";
+// TODO https://css-tricks.com/how-to-implement-and-style-the-dialog-element/ https://hidde.blog/using-javascript-to-trap-focus-in-an-element/
+// TODO https://www.youtube.com/watch?v=IdZ-ZHLyEHs https://github.com/alstudio93/alstudio-responsive-navigation/blob/main/scripts/script.js
+
+export interface LinkType {
+    pageName: string;
+    pageUrl: string;
+    acessibleName: string;
+    isMobileOnly?: boolean;
+    isLinkToSection?: boolean;
+}
+
+const links = [
+    { pageName: "Home", pageUrl: "/", acessibleName: "home page", isMobileOnly: true },
+    { pageName: "About", pageUrl: "/about", acessibleName: "about me page" },
+    { pageName: "Work", pageUrl: "/my-work", acessibleName: "my work page" },
+    { pageName: "Playground", pageUrl: "/playground", acessibleName: "playground page" },
+    { pageName: "Contact", pageUrl: "#contact_footer", acessibleName: "contact form footer", isLinkToSection: true }
+] as LinkType[];
+
+// TODO add link to home for cloud
+---
+
+<nav class="flex flex-row justify-between mx-16 my-14">
+    <div class="basis-1/2">
+        <Image src={logo} alt="pekala design logo" width={156} />
+    </div>
+    <div class="uppercase text-2xl basis-1/2 self-center">
+        <MobileNavbar class="lg:hidden" links={links} />
+        <DesktopNavbar class="hidden lg:flex" links={links} />
+    </div>
+</nav>
+
+<script>
+    window.addEventListener("locationchange", function () {
+        console.log("location changed!");
+    });
+</script>

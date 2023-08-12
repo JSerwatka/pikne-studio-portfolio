@@ -5,7 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 
-import Navbar from "@components/Navbar.astro";
+import Navbar from "@components/Navbar/Navbar.astro";
 import "../main.css";
 import Footer from "@components/Footer.astro";
 // TODO meta tags
@@ -22,7 +22,7 @@ import Footer from "@components/Footer.astro";
         <title>{title}</title>
     </head>
     <body class="text-ruby-red bg-light-pink flex flex-col">
-        <!-- <Navbar /> -->
+        <Navbar />
         <main class="grow">
             <slot />
         </main>

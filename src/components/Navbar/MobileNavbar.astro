@@ -1,0 +1,101 @@
+---
+import type { LinkType } from "./Navbar.astro";
+interface Props {
+    class?: string;
+    links: LinkType[];
+}
+
+const { class: className, links } = Astro.props;
+---
+
+<button
+    aria-expanded="false"
+    aria-labelledby="toggle navbar menu"
+    class:list={["js-menu-button", "uppercase w-full text-end", className]}
+>
+    Menu
+</button>
+<div class:list={["js-overlay", "fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2"]}>
+    <div>
+        <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">X</button>
+    </div>
+    <ul class="[&>*:not(:last-child)]:mb-7">
+        {
+            links.map((link) => (
+                <li>
+                    <a
+                        href={link.pageUrl}
+                        aria-labelledby={link.acessibleName}
+                        class:list={{ "js-section-link": link.isLinkToSection }}
+                    >
+                        {link.pageName}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<script>
+    const menuButton = document.querySelector(".js-menu-button") as HTMLButtonElement;
+    const overlay = document.querySelector(".js-overlay") as HTMLElement;
+    const closeOverlayButton = overlay.querySelector(".js-close-button") as HTMLButtonElement;
+    const sectionLinks = overlay.querySelectorAll("a.js-section-link") as NodeListOf<HTMLAnchorElement>;
+    const focusableElements = overlay.querySelectorAll("a, button") as NodeListOf<
+        HTMLAnchorElement | HTMLButtonElement
+    >;
+
+    menuButton.addEventListener("click", () => {
+        openOverlay(true);
+    });
+
+    closeOverlayButton.addEventListener("click", () => {
+        openOverlay(false);
+    });
+
+    sectionLinks.forEach((sectionLink) => {
+        sectionLink.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const targetElementSelector = sectionLink.hash;
+            const targetElement = document.querySelector(targetElementSelector);
+
+            openOverlay(false);
+            targetElement?.scrollIntoView({ behavior: "smooth", block: "end" });
+        });
+    });
+
+    function openOverlay(isOpenOverlay: boolean) {
+        menuButton.setAttribute("aria-expanded", isOpenOverlay.toString());
+        overlay.classList.toggle("hidden", !isOpenOverlay);
+        document.body.classList.toggle("overflow-hidden", isOpenOverlay);
+        trapFocus(isOpenOverlay);
+    }
+
+    function trapFocus(isTrapSwitched: boolean) {
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        const handleTrapFocusKeys = (e: KeyboardEvent) => {
+            if (e.key === "Tab") {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
+            }
+        };
+
+        if (isTrapSwitched) {
+            overlay.addEventListener("keydown", handleTrapFocusKeys);
+        } else {
+            overlay.removeEventListener("keydown", handleTrapFocusKeys);
+        }
+    }
+</script>

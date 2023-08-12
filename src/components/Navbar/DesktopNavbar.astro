@@ -1,0 +1,46 @@
+---
+import type { LinkType } from "./Navbar.astro";
+
+interface Props {
+    class?: string;
+    links: LinkType[];
+}
+
+const { class: className, links } = Astro.props;
+---
+
+<ul class:list={["js-navbar-desktop", "gap-5 font-metropolis justify-end", className]}>
+    {
+        links.map((link) => {
+            if (link.isMobileOnly) return;
+
+            return (
+                <li>
+                    <a
+                        href={link.pageUrl}
+                        aria-labelledby={link.acessibleName}
+                        class:list={{ "js-section-link": link.isLinkToSection }}
+                    >
+                        {link.pageName}
+                    </a>
+                </li>
+            );
+        })
+    }
+</ul>
+
+<script>
+    const navbar = document.querySelector(".js-navbar-desktop") as HTMLElement;
+    const sectionLinks = navbar.querySelectorAll("a.js-section-link") as NodeListOf<HTMLAnchorElement>;
+
+    sectionLinks.forEach((sectionLink) => {
+        sectionLink.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const targetElementSelector = sectionLink.hash;
+            const targetElement = document.querySelector(targetElementSelector);
+
+            targetElement?.scrollIntoView({ behavior: "smooth", block: "end" });
+        });
+    });
+</script>
