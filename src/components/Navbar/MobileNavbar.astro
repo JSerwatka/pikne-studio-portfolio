@@ -1,0 +1,69 @@
+<button aria-expanded="false" aria-label="Toggle Menu" class="js-menu-button"> Menu</button>
+<div
+    aria-hidden="true"
+    class="fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2 uppercase js-overlay"
+>
+    <div>
+        <button class="js-close-button"> X</button>
+    </div>
+    <ul class="[&>*:not(:last-child)]:mb-7">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Playground</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</div>
+
+<script>
+    const menuButton = document.querySelector(".js-menu-button") as HTMLButtonElement;
+    const closeOverlayButton = document.querySelector(".js-close-button") as HTMLButtonElement;
+    const overlay = document.querySelector(".js-overlay") as HTMLElement;
+    const focusableElements = overlay.querySelectorAll("a, button") as NodeListOf<
+        HTMLAnchorElement | HTMLButtonElement
+    >;
+
+    menuButton.addEventListener("click", () => {
+        const isOverlayExpanded = menuButton.getAttribute("aria-expanded") === "true" || false;
+
+        menuButton.setAttribute("aria-expanded", "true");
+        overlay.classList.remove("hidden");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("overflow-hidden");
+        trapFocus(true);
+    });
+
+    closeOverlayButton.addEventListener("click", () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        overlay.classList.add("hidden");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("overflow-hidden");
+        trapFocus(false);
+    });
+
+    function trapFocus(isTrapSwitched: boolean) {
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        const handleTrapFocusKeys = (e: KeyboardEvent) => {
+            if (e.key === "Tab") {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
+            }
+        };
+
+        if (isTrapSwitched) {
+            overlay.addEventListener("keydown", handleTrapFocusKeys);
+        } else {
+            overlay.removeEventListener("keydown", handleTrapFocusKeys);
+        }
+    }
+</script>
