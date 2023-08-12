@@ -1,23 +1,46 @@
-<button aria-expanded="false" aria-label="Toggle Menu" class="js-menu-button"> Menu</button>
-<div
-    aria-hidden="true"
-    class="fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2 uppercase js-overlay"
+---
+import type { LinkType } from "./Navbar.astro";
+interface Props {
+    class?: string;
+    links: LinkType[];
+}
+
+const { class: className, links } = Astro.props;
+---
+
+<button
+    aria-expanded="false"
+    aria-labelledby="toggle navbar menu"
+    class:list={["uppercase w-full text-end js-menu-button", className]}
 >
+    Menu
+</button>
+<div class="fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2 js-overlay">
     <div>
-        <button class="js-close-button"> X</button>
+        <button class="js-close-button" autofocus aria-labelledby="close navbar menu">X</button>
     </div>
     <ul class="[&>*:not(:last-child)]:mb-7">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Work</a></li>
-        <li><a href="#">Playground</a></li>
-        <li><a href="#">Contact</a></li>
+        {
+            links.map((link) => (
+                <li>
+                    <a
+                        href={link.pageUrl}
+                        aria-labelledby={link.acessibleName}
+                        class:list={{ "js-section-link": link.isLinkToSection }}
+                    >
+                        {link.pageName}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
 </div>
 
 <script>
     const menuButton = document.querySelector(".js-menu-button") as HTMLButtonElement;
-    const closeOverlayButton = document.querySelector(".js-close-button") as HTMLButtonElement;
     const overlay = document.querySelector(".js-overlay") as HTMLElement;
+    const closeOverlayButton = overlay.querySelector(".js-close-button") as HTMLButtonElement;
+    const sectionLinks = overlay.querySelectorAll("a.js-section-link") as NodeListOf<HTMLAnchorElement>;
     const focusableElements = overlay.querySelectorAll("a, button") as NodeListOf<
         HTMLAnchorElement | HTMLButtonElement
     >;
@@ -30,10 +53,21 @@
         switchOverlay(false);
     });
 
+    sectionLinks.forEach((sectionLink) => {
+        sectionLink.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const targetElementSelector = sectionLink.hash;
+            const targetElement = document.querySelector(targetElementSelector);
+
+            switchOverlay(false);
+            targetElement?.scrollIntoView({ behavior: "smooth", block: "end" });
+        });
+    });
+
     function switchOverlay(isOverlaySwitched: boolean) {
         menuButton.setAttribute("aria-expanded", isOverlaySwitched.toString());
         overlay.classList.toggle("hidden", !isOverlaySwitched);
-        overlay.setAttribute("aria-hidden", (!isOverlaySwitched).toString());
         document.body.classList.toggle("overflow-hidden", isOverlaySwitched);
         trapFocus(isOverlaySwitched);
     }
