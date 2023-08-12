@@ -11,13 +11,13 @@ const { class: className, links } = Astro.props;
 <button
     aria-expanded="false"
     aria-labelledby="toggle navbar menu"
-    class:list={["uppercase w-full text-end js-menu-button", className]}
+    class:list={["js-menu-button", "uppercase w-full text-end", className]}
 >
     Menu
 </button>
-<div class="fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2 js-overlay">
+<div class:list={["js-overlay", "fixed hidden inset-0 w-[100vw] h-[100vh] bg-ruby-red text-light-pink text-header__2"]}>
     <div>
-        <button class="js-close-button" autofocus aria-labelledby="close navbar menu">X</button>
+        <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">X</button>
     </div>
     <ul class="[&>*:not(:last-child)]:mb-7">
         {
@@ -46,11 +46,11 @@ const { class: className, links } = Astro.props;
     >;
 
     menuButton.addEventListener("click", () => {
-        switchOverlay(true);
+        openOverlay(true);
     });
 
     closeOverlayButton.addEventListener("click", () => {
-        switchOverlay(false);
+        openOverlay(false);
     });
 
     sectionLinks.forEach((sectionLink) => {
@@ -60,16 +60,16 @@ const { class: className, links } = Astro.props;
             const targetElementSelector = sectionLink.hash;
             const targetElement = document.querySelector(targetElementSelector);
 
-            switchOverlay(false);
+            openOverlay(false);
             targetElement?.scrollIntoView({ behavior: "smooth", block: "end" });
         });
     });
 
-    function switchOverlay(isOverlaySwitched: boolean) {
-        menuButton.setAttribute("aria-expanded", isOverlaySwitched.toString());
-        overlay.classList.toggle("hidden", !isOverlaySwitched);
-        document.body.classList.toggle("overflow-hidden", isOverlaySwitched);
-        trapFocus(isOverlaySwitched);
+    function openOverlay(isOpenOverlay: boolean) {
+        menuButton.setAttribute("aria-expanded", isOpenOverlay.toString());
+        overlay.classList.toggle("hidden", !isOpenOverlay);
+        document.body.classList.toggle("overflow-hidden", isOpenOverlay);
+        trapFocus(isOpenOverlay);
     }
 
     function trapFocus(isTrapSwitched: boolean) {
