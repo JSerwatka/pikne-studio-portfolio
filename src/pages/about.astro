@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "@components/Section.astro";
+---
+
+<Layout title="about page">
+    <div>
+        <!-- <div class="order-1 basis-1/2">
+
+        </div> -->
+
+        <div class:list={["max-w-[560px] mx-auto", "px-6", "sm:px-0"]}>
+            <h1 class:list={["text-header__3 mb-16"]}>Need someone who can wear many hats?</h1>
+            <Section header="MY PHILOSOPHY ❤">
+                <p>Emotionally connect people and brands through visual language.</p>
+            </Section>
+            <Section header="WHAT I DO">
+                <p>
+                    With a background in psychology and a love for design, I found my true calling at the crossroads of
+                    these disciplines.
+                </p>
+                <p>
+                    I emphatize deeply and take human emotions, behaviors and needs into account in everything I do. It
+                    allows brands to connect with their audience on a deep level and drives results. And if there’s
+                    anything you need I don’t feel super confident in, I collaborate with other ultra-talented creative
+                    professionals.
+                </p>
+                <p>
+                    In my spare time I love to hunt for good travel deals, shop for vintage clothing, cuddle with my
+                    cat, and collect books with nice covers (and sometimes even read them).
+                </p>
+            </Section>
+            <Section header="SERVICES">
+                <p>
+                    <ul class:list={["grid  gap-y-6", "grid-cols-1", "sm:grid-cols-2"]}>
+                        <li>Art direction</li>
+                        <li>Brand identity</li>
+                        <li>Brand strategy</li>
+                        <li>Naming</li>
+                        <li>Illustration</li>
+                        <li>Print design</li>
+                        <li>Social media design</li>
+                        <li>Space concepts</li>
+                        <li>Signage & murals</li>
+                        <li>Photoshoot direction</li>
+                        <li>Website design</li>
+                        <li>Holistic brand experience consulting & advisory</li>
+                    </ul>
+                </p>
+            </Section>
+            <Section header="WORK WITH ME">
+                <p>
+                    It doesn’t matter where you are. I’m based in Poland, but I’m also native at the art of remote
+                    working. I thrive on embracing global perspectives. I love working with passionate people, thinkers,
+                    idealists and entrepreneurs.
+                </p>
+                <p>Please fill out the form below so we can discuss how we can make your vision become a reality.</p>
+            </Section>
+        </div>
+    </div>
+</Layout>
