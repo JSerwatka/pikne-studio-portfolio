@@ -28,9 +28,7 @@
     }
 
     .text-header__3 {
-        font-size: 4.375rem;
-        font-family: theme("fontFamily.alexang");
-        line-height: 5.625rem;
+        @apply font-alexang text-5xl  sm:text-header_3-max;
     }
 
     .text-header__4 {

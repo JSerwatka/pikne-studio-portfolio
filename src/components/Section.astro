@@ -1,0 +1,14 @@
+---
+interface Props {
+    header: string;
+}
+
+const { header } = Astro.props;
+---
+
+<section class="mb-24 text-paragraph__normal first:mt-o mt-24">
+    <h2 class:list={["text-header__4 font-medium text-2xl"]}>{header}</h2>
+    <div class:list={["[&>p:first-child]:mt-4 [&>p]:mt-8", "text-base", "md:text-xl"]}>
+        <slot />
+    </div>
+</section>
