@@ -6,11 +6,12 @@ import profilePicture from "../assets/about-me-profile.png";
 
 // TODO change img alt
 // TODO not sure if leave eager loading or add blur loading
+// TODO make sure img is correctly position for ultra wide screen - low piro - check in Layotu.astro
 ---
 
 <Layout title="about page">
-    <div class:list={["flex", "flex-col gap-7", "md:flex-row md:justify-end"]}>
-        <div class:list={["order-0", "md:order-1 md:basis-1/2 "]}>
+    <div class:list={["grid grid-cols-1", "md:grid-cols-2"]}>
+        <div class:list={["order-2", "md:order-0 md:col-span-1 md:col-start-2"]}>
             <Image
                 src={profilePicture}
                 alt="profile picture of me"
@@ -18,14 +19,21 @@ import profilePicture from "../assets/about-me-profile.png";
                 height="700"
                 loading="eager"
                 class:list={[
-                    "aspect-square object-cover object-center",
+                    "aspect-square object-cover object-center w-full",
                     "md:fixed md:bottom-0 md:right-0 md:-z-10 md:w-1/2 md:max-w-[660px]"
                 ]}
             />
         </div>
+        <h1
+            class:list={[
+                "max-w-[560px] text-header__3 mx-auto px-6 order-1",
+                "md:col-span-1 md:col-start-1 md:justify-self-end"
+            ]}
+        >
+            Need someone who can wear many hats?
+        </h1>
 
-        <div class:list={["max-w-[560px] mx-6", "md:basis-1/2"]}>
-            <h1 class:list={["text-header__3 mb-16"]}>Need someone who can wear many hats?</h1>
+        <div class:list={["max-w-[560px] mx-auto px-6 order-3", "md:col-span-1 md:col-start-1 md:justify-self-end"]}>
             <Section header="MY PHILOSOPHY ❤">
                 <p>Emotionally connect people and brands through visual language.</p>
             </Section>

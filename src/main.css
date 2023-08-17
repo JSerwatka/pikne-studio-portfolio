@@ -28,7 +28,7 @@
     }
 
     .text-header__3 {
-        @apply font-alexang text-5xl  md:text-header_3-max;
+        @apply font-alexang text-5xl  sm:text-header_3-max;
     }
 
     .text-header__4 {
