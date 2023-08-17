@@ -1,15 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "@components/Section.astro";
+import { Image } from "astro:assets";
+import profilePicture from "../assets/about-me-profile.png";
+
+// TODO change img alt
+// TODO not sure if leave eager loading or add blur loading
 ---
 
 <Layout title="about page">
-    <div>
-        <!-- <div class="order-1 basis-1/2">
+    <div class:list={["flex", "flex-col gap-7", "md:flex-row md:justify-end"]}>
+        <div class:list={["order-0", "md:order-1 md:basis-1/2 "]}>
+            <Image
+                src={profilePicture}
+                alt="profile picture of me"
+                width="660"
+                height="700"
+                loading="eager"
+                class:list={[
+                    "aspect-square object-cover object-center",
+                    "md:fixed md:bottom-0 md:right-0 md:-z-10 md:w-1/2 md:max-w-[660px]"
+                ]}
+            />
+        </div>
 
-        </div> -->
-
-        <div class:list={["max-w-[560px] mx-auto", "px-6", "sm:px-0"]}>
+        <div class:list={["max-w-[560px] mx-auto", "mx-0", "sm:mx-6", "md:basis-1/2"]}>
             <h1 class:list={["text-header__3 mb-16"]}>Need someone who can wear many hats?</h1>
             <Section header="MY PHILOSOPHY ❤">
                 <p>Emotionally connect people and brands through visual language.</p>
