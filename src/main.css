@@ -4,13 +4,13 @@
 
 @layer components {
     .text-hero__1 {
-        @apply font-alexang text-7xl sm:text-9xl 2xl:text-hero-max;
+        @apply font-alexang text-7xl sm:text-9xl xl:text-hero-max;
         /* letter-spacing: -16.5px; */
         /* line-height: 27.5rem; */
     }
 
     .text-hero__2 {
-        @apply font-alexang text-7xl sm:text-9xl 2xl:text-hero_2-max;
+        @apply font-alexang text-7xl sm:text-9xl xl:text-hero_2-max;
         font-family: theme("fontFamily.alexang");
     }
 

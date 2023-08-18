@@ -1,0 +1,162 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+// TODO check if "Pekala.Design" is correct name shouldn't it be "pekala.design"
+// TODO parts about Sharing Your Data and International Data Transfers maybe not needed
+// TODO update text-hero__2 class to not be so small on sm: and less than sm: devices
+// TODO check if responsivness is ok
+// TODO update text-paragraph__normal line heigth
+// TODO alternative version of container     <article class:list={["mx-auto w-full px-6 mb-96 max-w-[700px]", "lg:max-w-[800px] lg:px-0", "xl:max-w-[1000px] "]}> - not sure of its better than grid
+---
+
+<Layout title="privacy policy">
+    <article class="grid grid-cols-8 justify-items-center">
+        <div class:list={["col-span-8 px-6 max-w-[1000px]", "sm:px-0 sm:col-span-6 sm:col-start-2"]}>
+            <h1 class:list={["text-hero__2 text-center mb-28 mt-1", "sm:mb-36 sm:mt-3", "lg:mb-48 lg:mt-8"]}>
+                <span class="block">Privacy</span>
+                <span class="block ml-[1em]">policy</span>
+            </h1>
+            <h2 class="text-header__2 mb-4">Privacy Policy for Pekala.Design</h2>
+            <div class="text-paragraph__normal">
+                <p class="mb-6">Effective Date: 14 August 2023</p>
+                <p class="mb-6">
+                    Thank you for visiting Pekala.Design ("the Website"). We are committed to protecting your privacy
+                    and ensuring the security of your personal data. This Privacy Policy explains how we collect, use,
+                    disclose, and store information about visitors to our website, in accordance with the General Data
+                    Protection Regulation (GDPR) and other applicable privacy laws.
+                </p>
+                <ul class="list-decimal list-inside [&>li]:mb-6">
+                    <li>
+                        <p class="inline">Data Controller and Contact Information:</p>
+                        <p>
+                            The data controller for Pekala.Design is Pekala design, which is responsible for the
+                            processing of personal data on this website. If you have any questions or concerns about
+                            this Privacy Policy or your personal data, you can contact us at:
+                        </p>
+                        <address class="not-italic mt-3">
+                            Aleksandra Pekala design<br />
+                             Oboźna 29/14, 30-010, Kraków, Poland<br />
+                             hello@pekala.design
+                        </address>
+                    </li>
+                    <li>
+                        <p class="inline">Data We Collect:</p>
+                        <p>We may collect the following types of personal data from you when you visit our website:</p>
+                        <ul class="list-[lower-alpha] list-inside">
+                            <li>
+                                Personal Information: This includes your name, email address, phone number, and any
+                                other information you provide to us voluntarily through our contact forms or
+                                registration process.
+                            </li>
+                            <li>
+                                Usage Information: We collect information about how you use our website, such as your IP
+                                address, browser type, referring website, pages viewed, and the duration of your visit.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="inline">How We Use Your Data:</p>
+                        <p>We use the personal data we collect for the following purposes:</p>
+                        <ul class="list-[lower-alpha] list-inside">
+                            <li>To respond to your inquiries and provide customer support.</li>
+                            <li>
+                                To send you newsletters, marketing communications, and promotional materials, where you
+                                have consented to receive them.
+                            </li>
+                            <li>
+                                To improve and personalize your experience on our website, including analyzing website
+                                usage patterns.
+                            </li>
+                            <li>To comply with legal obligations and enforce our terms of service.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="inline">Legal Basis for Processing Your Data:</p>
+                        <p>
+                            We will only process your personal data when we have a legal basis for doing so. The legal
+                            bases for processing your data on Pekala.Design are:
+                        </p>
+                        <ul class="list-[lower-alpha] list-inside">
+                            <li>
+                                Consent: You have given us explicit permission to process your personal data for
+                                specific purposes, such as sending newsletters.
+                            </li>
+                            <li>
+                                Contractual Necessity: Processing is necessary for the performance of a contract with
+                                you, such as providing services you have requested
+                            </li>
+                            <li>
+                                Legitimate Interests: Processing is necessary for our legitimate interests, such as
+                                improving our website and marketing our products or services.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="inline"></p>Sharing Your Data:
+                        <p>
+                            We may share your personal data with third-party service providers who assist us in
+                            operating our website and conducting our business. These providers have access to your data
+                            only to perform specific tasks on our behalf and are obligated not to disclose or use it for
+                            any other purpose.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">International Data Transfers:</p>
+                        <p>
+                            As part of our operations, we may transfer your personal data to third-party service
+                            providers or affiliates located in countries outside the European Economic Area (EEA). In
+                            such cases, we will take all necessary steps to ensure that your data is adequately
+                            protected in accordance with GDPR requirements.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">Data Retention:</p>
+                        <p>
+                            We will retain your personal data for as long as necessary to fulfill the purposes outlined
+                            in this Privacy Policy unless a longer retention period is required or permitted by law.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">Your Data Protection Rights:</p>
+                        <p>
+                            As a data subject, you have certain rights under the GDPR, including the right to access,
+                            correct, delete, or restrict the processing of your personal data. You also have the right
+                            to object to the processing of your data and the right to data portability. To exercise any
+                            of these rights, please contact us using the details provided in Section 1.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">Security Measures:</p>
+                        <p>
+                            We take appropriate technical and organizational measures to protect your personal data from
+                            unauthorized access, loss, misuse, alteration, or disclosure. However, please be aware that
+                            no method of transmission over the internet or electronic storage is entirely secure.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">Cookies and Similar Technologies:</p>
+                        <p>
+                            Our website may use cookies and similar technologies to enhance your experience. You can
+                            manage your cookie preferences through your browser settings.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="inline">Updates to the Privacy Policy:</p>
+                        <p>
+                            We may update this Privacy Policy from time to time to reflect changes in our practices or
+                            for other operational, legal, or regulatory reasons. The revised policy will be posted on
+                            this page with an updated effective date.
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    By using Pekala.Design, you consent to the terms of this Privacy Policy. If you do not agree with
+                    the terms herein, please refrain from using our website.
+                </p>
+                <footer>
+                    <p>Last updated: 14 August 2023</p>
+                </footer>
+            </div>
+        </div>
+    </article>
+</Layout>
