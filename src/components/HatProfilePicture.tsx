@@ -48,14 +48,15 @@ const HatProfilePicture = () => {
     const changeHat = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % hats.length);
     };
+    // TODO because container is -z-10 button doesn't work
 
     return (
-        <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:-z-10 md:w-1/2 md:max-w-[660px]">
+        <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:w-1/2 md:max-w-[660px]">
             <picture>
                 <source srcset="/about-me-profile.avif" type="image/avif" />
                 <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
             </picture>
-            <button type="button" class="absolute top-0 z-50 w-full text-2xl" onClick={changeHat}>
+            <button type="button" class="absolute top-0 z-10 w-full text-2xl" onClick={changeHat}>
                 Next hat
             </button>
             <picture>
