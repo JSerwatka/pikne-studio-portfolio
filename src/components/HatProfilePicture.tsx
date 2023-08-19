@@ -53,25 +53,24 @@ const HatProfilePicture = () => {
         <div class="relative">
             <picture>
                 <source srcset="/about-me-profile.avif" type="image/avif" />
-                <img
-                    src={"/about-me-profile.webp"}
-                    alt="profile picture of me"
-                    width="660"
-                    height="700"
-                    loading="eager"
-                />
+                <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
             </picture>
-            <button onClick={changeHat}>arrow</button>
-            <picture>
+            <button type="button" class="" onClick={changeHat}>
+                Next hat
+            </button>
+            <img
+                class="absolute inset-0"
+                width="660"
+                height="700"
+                style={{ position: "absolute", left: 0 }}
+                src={`${hats[currentIndex()].src}.webp`}
+                alt={hats[currentIndex()].name}
+                loading="eager"
+            />
+            {/* <picture>
                 <source srcset={`${hats[currentIndex()].src}.avif`} type="image/avif" />
-                <img
-                    class="absolute left-0"
-                    width="660"
-                    height="700"
-                    style={{ position: "absolute", left: 0 }}
-                    src={`${hats[currentIndex()].src}.webp`}
-                />
-            </picture>
+
+            </picture> */}
         </div>
     );
 };
