@@ -2,16 +2,20 @@ import { createSignal } from "solid-js";
 
 const hats = [
     {
-        name: "space suit",
-        src: "/hats/space-suit"
-    },
-    {
         name: "babushka",
         src: "/hats/babushka"
     },
     {
-        name: "beanie",
-        src: "/hats/beanie"
+        name: "crown from flowers",
+        src: "/hats/flower-crown"
+    },
+    {
+        name: "pikachu hat",
+        src: "/hats/pikachu"
+    },
+    {
+        name: "space suit",
+        src: "/hats/space-suit"
     },
     {
         name: "beret",
@@ -30,16 +34,12 @@ const hats = [
         src: "/hats/cat-woman"
     },
     {
-        name: "crown from flowers",
-        src: "/hats/flower-crown"
-    },
-    {
-        name: "pikachu hat",
-        src: "/hats/pikachu"
-    },
-    {
         name: "pink hat with a ribbon",
         src: "/hats/pink-hat"
+    },
+    {
+        name: "beanie",
+        src: "/hats/beanie"
     }
 ];
 
@@ -50,27 +50,26 @@ const HatProfilePicture = () => {
     };
 
     return (
-        <div class="relative">
+        <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:-z-10 md:w-1/2 md:max-w-[660px]">
             <picture>
                 <source srcset="/about-me-profile.avif" type="image/avif" />
                 <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
             </picture>
-            <button type="button" class="" onClick={changeHat}>
+            <button type="button" class="absolute top-0 z-50 w-full text-2xl" onClick={changeHat}>
                 Next hat
             </button>
-            <img
-                class="absolute inset-0"
-                width="660"
-                height="700"
-                style={{ position: "absolute", left: 0 }}
-                src={`${hats[currentIndex()].src}.webp`}
-                alt={hats[currentIndex()].name}
-                loading="eager"
-            />
-            {/* <picture>
+            <picture>
                 <source srcset={`${hats[currentIndex()].src}.avif`} type="image/avif" />
-
-            </picture> */}
+                <img
+                    class="absolute inset-0"
+                    width="660"
+                    height="700"
+                    style={{ position: "absolute", left: 0 }}
+                    src={`${hats[currentIndex()].src}.webp`}
+                    alt={hats[currentIndex()].name}
+                    loading="eager"
+                />
+            </picture>
         </div>
     );
 };
