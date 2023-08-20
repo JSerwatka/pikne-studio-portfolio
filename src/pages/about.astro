@@ -1,8 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "@components/Section.astro";
-import { Image } from "astro:assets";
-import profilePicture from "../assets/about-me-profile.png";
+import HatProfilePicture from "@components/HatProfilePicture";
 
 // TODO change img alt
 // TODO not sure if leave eager loading or add blur loading
@@ -13,17 +12,7 @@ import profilePicture from "../assets/about-me-profile.png";
 <Layout title="about page">
     <div class:list={["grid grid-cols-1", "md:grid-cols-2"]}>
         <div class:list={["order-2", "md:order-0 md:col-span-1 md:col-start-2"]}>
-            <Image
-                src={profilePicture}
-                alt="profile picture of me"
-                width="660"
-                height="700"
-                loading="eager"
-                class:list={[
-                    "aspect-square object-cover object-center w-full",
-                    "md:fixed md:bottom-0 md:right-0 md:-z-10 md:w-1/2 md:max-w-[660px]"
-                ]}
-            />
+            <HatProfilePicture client:load />
         </div>
         <h1
             class:list={[
