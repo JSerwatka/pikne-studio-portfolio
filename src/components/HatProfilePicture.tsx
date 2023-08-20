@@ -2,6 +2,9 @@ import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 import { scheduleIdle } from "@solid-primitives/scheduled";
 
 // TODO: use better alt names
+// TODO: maybe size of button is sometimes to big especially for small screens
+// TODO: add aria-labalby for button
+// TODO: maybe add hover effect to btn, like this: https://codepen.io/comehope/pen/eKqZjy or this https://codepen.io/t_afif/pen/abKyJNJ ot his https://codepen.io/thelaazyguy/pen/brryVq
 const hats = [
     {
         name: "babushka",
@@ -90,17 +93,20 @@ const HatProfilePicture = () => {
 
     return (
         <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:w-1/2 md:max-w-[660px]">
-            <picture>
-                <source srcset="/about-me-profile.avif" type="image/avif" />
-                <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
-            </picture>
-            <button
-                type="button"
-                class="absolute bottom-[10%] left-0 right-0 z-10 mx-auto max-w-fit rounded-3xl border-2  border-ruby-red px-5 text-center text-2xl"
-                onClick={changeHat}
-            >
-                Next hat
-            </button>
+            <div class="relative max-w-fit">
+                <picture>
+                    <source srcset="/about-me-profile.avif" type="image/avif" />
+                    <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
+                </picture>
+                <button
+                    type="button"
+                    class="absolute bottom-[7%] left-[10%] right-0 z-10 mx-auto max-w-fit rounded-3xl border-2 border-ruby-red bg-light-pink px-6 py-1 text-center text-xl"
+                    onClick={changeHat}
+                >
+                    Next hat <span class="font-extralight">&#10140; </span>
+                </button>
+            </div>
+
             <picture>
                 <source srcset={`${hats[currentIndex()].src}.avif`} type="image/avif" />
                 <img
