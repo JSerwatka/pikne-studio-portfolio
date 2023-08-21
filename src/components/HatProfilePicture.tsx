@@ -27,8 +27,8 @@ const hats = [
         src: "/hats/beret"
     },
     {
-        name: "bucket hat",
-        src: "/hats/bucket"
+        name: "cat with tongue sticking out",
+        src: "/hats/cat"
     },
     {
         name: "cap",
@@ -39,13 +39,29 @@ const hats = [
         src: "/hats/cat-woman"
     },
     {
+        name: "bucket hat",
+        src: "/hats/bucket"
+    },
+    {
+        name: "bowler hat",
+        src: "/hats/bowler"
+    },
+    {
+        name: "greek leaf crown",
+        src: "/hats/crown"
+    },
+    {
         name: "pink hat with a ribbon",
         src: "/hats/pink-hat"
     },
     {
         name: "beanie",
         src: "/hats/beanie"
-    }
+    },
+    {
+        name: "queen elizabeth second crown",
+        src: "/hats/crown"
+    },
 ];
 
 const checkAvifSupport = async (): Promise<boolean> => {
