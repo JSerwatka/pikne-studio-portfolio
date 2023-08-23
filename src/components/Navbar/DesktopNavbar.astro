@@ -40,7 +40,7 @@ const { class: className, links } = Astro.props;
             const targetElementSelector = sectionLink.hash;
             const targetElement = document.querySelector(targetElementSelector);
 
-            targetElement?.scrollIntoView({ behavior: "smooth", block: "end" });
+            targetElement?.scrollIntoView({ behavior: "smooth", block: "start" });
         });
     });
 </script>
