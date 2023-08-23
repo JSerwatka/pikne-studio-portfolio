@@ -1,4 +1,6 @@
 ---
+import logo from "@assets/logo.svg";
+import { Image } from "astro:assets";
 import type { LinkType } from "./Navbar.astro";
 interface Props {
     class?: string;
@@ -15,11 +17,12 @@ const { class: className, links } = Astro.props;
 >
     Menu
 </button>
-<div class:list={["js-overlay", "fixed hidden inset-0 w-[100vw] h-screen bg-ruby-red text-light-pink text-header__2"]}>
-    <div>
-        <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">X</button>
+<div class:list={["js-overlay", "fixed z-20 hidden inset-0 w-screen h-screen bg-ruby-red text-light-pink text-header__2", "pt-5 px-6", "sm:pt-12 sm:px-10"]}>
+    <div class="flex justify-between mb-28">
+        <Image src={logo} alt="pekala design logo" width={156} />
+        <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
-    <ul class="[&>*:not(:last-child)]:mb-7">
+    <ul class:list={["[&>*:not(:last-child)]:mb-14", "px-0", ""]}>
         {
             links.map((link) => (
                 <li>

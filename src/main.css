@@ -11,7 +11,6 @@
 
     .text-hero__2 {
         @apply font-alexang text-7xl sm:text-9xl xl:text-hero_2-max;
-        font-family: theme("fontFamily.alexang");
     }
 
     .text-header__1 {
@@ -21,10 +20,9 @@
     }
 
     .text-header__2 {
-        font-size: 3.75rem; /* text-6xl */
-        font-family: theme("fontFamily.olympic");
-        line-height: 5rem;
-        letter-spacing: -1.2px;
+        @apply font-olympic text-4xl sm:text-6xl
+        /* line-height: 5rem;
+        letter-spacing: -1.2px; */
     }
 
     .text-header__3 {
