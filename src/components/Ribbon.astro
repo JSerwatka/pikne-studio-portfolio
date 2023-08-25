@@ -2,32 +2,33 @@
 interface Props {
     text: string;
     class: string;
+    repeats?: number;
 }
 
-const { text, class: classList } = Astro.props;
+const { text, repeats = 7, class: classList } = Astro.props;
 
 // TODO change animation speed with props?
 // TODO remove animation for prefer no motion
 // TODO remove brackets and return statement - only () requred
 ---
 
-<div class="py-14 flex overflow-x-hidden" class:list={classList}>
+<div class="flex overflow-x-hidden" class:list={classList}>
     <div class="relative">
         <div class="js-marquee whitespace-nowrap">
             {
-                Array(7)
+                Array(repeats)
                     .fill(0)
                     .map(() => {
-                        return <span class="text-4xl ml-2">{text}</span>;
+                        return <span class="ml-2">{text}</span>;
                     })
             }
         </div>
         <div class="absolute top-0 js-marquee2 whitespace-nowrap">
             {
-                Array(7)
+                Array(repeats)
                     .fill(0)
                     .map(() => {
-                        return <span class="text-4xl ml-2">{text}</span>;
+                        return <span class="ml-2">{text}</span>;
                     })
             }
         </div>
@@ -40,11 +41,11 @@ const { text, class: classList } = Astro.props;
     animate(
         ".js-marquee",
         { transform: ["translateX(0%)", "translateX(-100%)"] },
-        { duration: 60, repeat: Infinity, easing: "linear" }
+        { duration: 200, repeat: Infinity, easing: "linear" }
     );
     animate(
         ".js-marquee2",
         { transform: ["translateX(100%)", "translateX(0%)"] },
-        { duration: 60, repeat: Infinity, easing: "linear" }
+        { duration: 200, repeat: Infinity, easing: "linear" }
     );
 </script>

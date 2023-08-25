@@ -1,0 +1,31 @@
+---
+import ArrowIcon from "@components/Icons/ArrowIcon.astro";
+
+interface Props {
+    class: string;
+    title: string;
+    year: string;
+}
+
+const { class: classList, title, year } = Astro.props;
+---
+
+<div class:list={["py-20", "px-6", "md:px-14", classList]}>
+    <div class:list={["flex gap-14", "flex-col", "lg:flex-row-reverse"]}>
+        <div class:list={["bg-purple-900 aspect-square", "w-[325px] self-center", "md:w-[682px]", "lg:lg:basis-1/2"]}>
+        </div>
+        <div class:list={["lg:basis-1/2 flex flex-col"]}>
+            <div>
+                <div class="text-header__2">
+                    <span>{title}</span>
+                    <sup class="font-metropolis text-xl align-top">({year})</sup>
+                </div>
+                <slot name="services" />
+            </div>
+            <p class:list={["text-paragraph__normal mt-12 mb-16", "md:flex-grow"]}>
+                <slot name="description" />
+            </p>
+            <a href="#" class="max-w-fit">see more <ArrowIcon class="inline-block" /></a>
+        </div>
+    </div>
+</div>
