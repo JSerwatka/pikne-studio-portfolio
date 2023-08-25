@@ -1,5 +1,4 @@
 ---
-import GradientScroll from "@components/GradientScroll.astro";
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import Ribbon from "@components/Ribbon.astro";
@@ -12,6 +11,8 @@ import aleksandraConfetti from "@assets/index/confetti.png";
 
 // TODO: use semantic html - section and so on
 // TODO: add accessibility data for flower link foreignObjects?
+// TODO: make sure that all elements have the same sizing/padding
+// TODO: make sure that contact me page is not visible in more secrets revealed page
 ---
 
 <Layout title="Welcome to Astro.">
@@ -75,12 +76,12 @@ import aleksandraConfetti from "@assets/index/confetti.png";
             repeats={20}
         />
     </a>
-    <div class:list={["h-screen  pt-20"]}>
+    <div class:list={["min-h-screen flex flex-col justify-center gap-20 py-20"]}>
         <div class="text-header__1 text-center">More secrets revealed</div>
-        <div class="flex font-metropolis uppercase">
+        <div class:list={["flex justify-center gap-28 flex-wrap font-metropolis uppercase"]}>
             <FlowerLink
                 href="/about"
-                class="fill-ruby-red stroke-ruby-red w-[400px] h-[400px] text-[1.26rem]"
+                class="fill-ruby-red stroke-ruby-red text-[1.26rem] w-[300px] h-[300px] md:w-[400px] md:h-[400px]"
                 altTitle="About me"
                 altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
             >
@@ -124,7 +125,7 @@ import aleksandraConfetti from "@assets/index/confetti.png";
 
             <FlowerLink
                 href="/process"
-                class="fill-ruby-red stroke-ruby-red w-[400px] h-[400px] text-[1.38rem]"
+                class="fill-ruby-red stroke-ruby-red text-[1.38rem] w-[300px] h-[300px] md:w-[400px] md:h-[400px]"
                 altTitle="You are wonderful, now click this"
                 altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
             >

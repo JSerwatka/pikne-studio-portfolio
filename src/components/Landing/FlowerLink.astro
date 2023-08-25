@@ -4,6 +4,7 @@ interface Props {
     altTitle: string;
     altDescription: string;
     baseRotationDuration?: number;
+    class?: string;
 }
 
 const { href, altTitle, altDescription, baseRotationDuration = 60, class: classList } = Astro.props;
@@ -50,7 +51,6 @@ const scaleOutDuration = "0.15s";
 
 <style define:vars={{ rotationDurationText, rotationDurationCloud, scaleInDuration, scaleOutDuration }}>
     .main-svg {
-        display: inline-block;
         transform-box: fill-box;
         stroke-width: 0.05em;
         stroke-linecap: round;
