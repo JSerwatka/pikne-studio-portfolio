@@ -77,10 +77,54 @@ import aleksandraConfetti from "@assets/index/confetti.png";
     </a>
     <div class:list={["h-screen  pt-20"]}>
         <div class="text-header__1 text-center">More secrets revealed</div>
-        <div class="flex">
+        <div class="flex font-metropolis uppercase">
             <FlowerLink
-                href="/"
-                class="fill-ruby-red stroke-ruby-red w-[400px] h-[400px] uppercase text-xl"
+                href="/about"
+                class="fill-ruby-red stroke-ruby-red w-[400px] h-[400px] text-[1.26rem]"
+                altTitle="About me"
+                altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
+            >
+                <Fragment slot="innerIcon">
+                    <foreignObject x="75" y="90" class="w-[50px] h-[24px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.41 15.68">
+                            <defs>
+                                <style>
+                                    .cls-1,
+                                    .cls-2 {
+                                        stroke-width: 2px;
+                                    }
+
+                                    .cls-2 {
+                                        fill: none;
+                                    }
+                                </style>
+                            </defs>
+                            <g>
+                                <g>
+                                    <path class="cls-2" d="m1.51,6.49s11.73-12.04,21.56.91c0,0-8.41,8.91-21.56-.91Z"
+                                    ></path>
+                                    <circle class="cls-1" cx="12.68" cy="6.35" r="4.72"></circle>
+                                    <g>
+                                        <path
+                                            class="cls-2"
+                                            d="m39.74,8.23s9.33-13.98,21.37-3.05c0,0-6.64,10.3-21.37,3.05Z"></path>
+                                        <circle class="cls-1" cx="50.35" cy="5.95" r="4.77"></circle>
+                                    </g>
+                                    <path
+                                        class="cls-2"
+                                        d="m25.05,10.59s-.63,4.43,2.71,4.05,3.34-4.05,3.34-4.05c0,0-.07,4.55,2.93,4.05s3.26-4.05,3.26-4.05"
+                                    ></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </foreignObject>
+                </Fragment>
+                <Fragment slot="text">About me ✹ About me ✹ About me ✹</Fragment>
+            </FlowerLink>
+
+            <FlowerLink
+                href="/process"
+                class="fill-ruby-red stroke-ruby-red w-[400px] h-[400px] text-[1.38rem]"
                 altTitle="You are wonderful, now click this"
                 altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
             >
@@ -101,7 +145,7 @@ import aleksandraConfetti from "@assets/index/confetti.png";
                         </svg>
                     </foreignObject>
                 </Fragment>
-                <Fragment slot="text">• you are wonderful • now click this</Fragment>
+                <Fragment slot="text">SEE MY PROCESS ✹ IT'S VERY FUN ✹</Fragment>
             </FlowerLink>
         </div>
     </div>
