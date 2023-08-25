@@ -61,7 +61,21 @@ import aleksandraConfetti from "@assets/index/confetti.png";
             as a masterpiece.
         </Fragment>
     </ProjectScreenNormal>
-    <div class:list={["h-screen bg-ice-blue pt-20"]}></div>
+    <div class:list={["flex justify-center items-center bg-ice-blue text-dark-chocolate py-20"]}>
+        <div>
+            <div class:list={["relative"]}>
+                <img
+                    class="max-w-[1125px] max-h-[522px] w-[calc(100vw-24px)] rounded-2xl object-cover aspect-square sm:w-[calc(100vw-81px)] sm:aspect-auto"
+                    src="https://images.unsplash.com/photo-1495653797063-114787b77b23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                />
+                <div
+                    class="font-olympic text-[min(12vw,151px)] wrap absolute bottom-[max(-6.3vw,-76px)] left-1/2 -translate-x-1/2"
+                >
+                    Psykologkompassen
+                </div>
+            </div>
+        </div>
+    </div>
 
     <ProjectScreenNormal title="Illustrations" year="2021-2023" class="bg-tea-green text-dark-chocolate">
         <Fragment slot="description">
@@ -161,3 +175,6 @@ import aleksandraConfetti from "@assets/index/confetti.png";
         recommend her services if you are looking for an exceptional, unique look for your company.
     </Quote> -->
 <!-- <PictureLink title={"MIR"} subTitle="Next up" /> -->
+<script>
+    textFit();
+</script>
