@@ -20,7 +20,9 @@ const { class: classList, title, year } = Astro.props;
                     <span>{title}</span>
                     <sup class="font-metropolis text-xl align-top">({year})</sup>
                 </div>
-                <slot name="services" />
+                <div class="text-paragraph__normal">
+                    <slot name="services" />
+                </div>
             </div>
             <p class:list={["text-paragraph__normal mt-12 mb-16", "md:flex-grow"]}>
                 <slot name="description" />
