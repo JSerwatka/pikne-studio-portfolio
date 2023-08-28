@@ -9,24 +9,17 @@ import Image from "astro/components/Image.astro";
 import aleksandraThinking from "@assets/index/thinking.png";
 import aleksandraConfetti from "@assets/index/confetti.png";
 
-// TODO: use semantic html - section and so on
+// TODO: use semantic html - section header and so on
 // TODO: add accessibility data for flower link foreignObjects?
-// TODO: make sure that all elements have the same sizing/padding
+// TODO: make sure that all elements have the same sizing/padding - first text:make sure that h-screen is calculated with navbar
 // TODO: make sure that contact me page is not visible in more secrets revealed page
 ---
 
 <Layout title="Welcome to Astro.">
-    <div class="h-screen bg-gradient-feeling-default text-center">
-        <div class="text-header__4">Aleksandra Pekala is good at</div>
-        <div class="text-header__2 mb-20">translating feelings to visuals</div>
-        <div class="text-header__4 mb-5">How do you feel?</div>
-        <div class="flex flex-wrap gap-4 justify-center">
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Happy</button>
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Extatic</button>
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Proud</button>
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Nostaligic</button>
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Sad</button>
-            <button type="button" class="border px-8 py-4 border-ruby-red rounded-3xl">Angry</button>
+    <div class="h-screen text-center mt-36 uppercase">
+        <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
+        <div class="font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em] mt-5">
+            translating <span class="normal-case">feelings</span> to visuals
         </div>
     </div>
     <Ribbon
@@ -40,8 +33,8 @@ import aleksandraConfetti from "@assets/index/confetti.png";
             <!-- <Image src={aleksandraThinking} alt="me thinking, squatting, red doodles around me" /> -->
         </div>
         <div>
-            <div class="text-header__4">What do i do</div>
-            <div>
+            <div class="text-paragraph__normal">What do i do</div>
+            <div class="text-header__2">
                 <div>I craft branding, art direction and illustration based on psychological knowledge.</div>
                 <div>
                     Through visual storytelling and empathy-driven design, I help your mission reach those who care
@@ -175,6 +168,3 @@ import aleksandraConfetti from "@assets/index/confetti.png";
         recommend her services if you are looking for an exceptional, unique look for your company.
     </Quote> -->
 <!-- <PictureLink title={"MIR"} subTitle="Next up" /> -->
-<script>
-    textFit();
-</script>
