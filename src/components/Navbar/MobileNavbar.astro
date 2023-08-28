@@ -19,9 +19,16 @@ const { class: className, links } = Astro.props;
 >
     Menu
 </button>
-<div class:list={["js-overlay", "fixed z-20 hidden inset-0 w-screen h-screen bg-ruby-red text-light-pink text-header__2", "pt-5 px-6", "sm:pt-12 sm:px-10"]}>
+<div
+    class:list={[
+        "js-overlay",
+        "fixed z-20 hidden inset-0 w-screen h-screen bg-ruby-red text-light-pink text-header__2",
+        "pt-5 px-6",
+        "sm:pt-12 sm:px-10"
+    ]}
+>
     <div class="flex justify-between mb-28">
-        <Image src={logo} alt="pekala design logo" width={156}  />
+        <Image src={logo} alt="pekala design logo" width={156} />
         <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
     <ul class:list={["[&>*:not(:last-child)]:mb-14 text-center"]}>
