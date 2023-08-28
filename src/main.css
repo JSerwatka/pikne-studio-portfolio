@@ -4,46 +4,42 @@
 
 @layer components {
     .text-hero__1 {
-        @apply font-alexang text-7xl sm:text-9xl xl:text-hero-max;
-        /* letter-spacing: -16.5px; */
-        /* line-height: 27.5rem; */
+        @apply font-alexang text-[7.5rem] font-normal leading-[8.125rem] -tracking-[0.3rem] 
+        sm:text-[8rem] sm:leading-[8.125rem] sm:-tracking-[0.6rem] 
+        lg:text-[26.25rem] lg:-tracking-[1.05rem];
     }
 
     .text-hero__2 {
-        @apply font-alexang text-7xl sm:text-9xl xl:text-hero_2-max;
+        @apply font-alexang text-[7.5rem] font-normal leading-[6.25rem]
+        sm:text-[15rem] sm:leading-[11.25rem]
+        lg:text-[18.75rem] lg:leading-[14.375rem];
     }
 
     .text-header__1 {
-        font-size: 6.25rem;
-        font-family: theme("fontFamily.alexang");
-        line-height: 8.75rem;
+        @apply font-alexang text-[3.125rem] font-medium leading-[4rem] 
+        sm:text-[4.375rem] sm:leading-[5.625rem] 
+        lg:text-[6.25rem] lg:leading-[8.628rem];
     }
 
     .text-header__2 {
-        @apply font-olympic text-4xl sm:text-6xl
-        /* line-height: 5rem;
-        letter-spacing: -1.2px; */
+        @apply font-olympic text-[2rem] font-light leading-[3rem] -tracking-[0.04rem]  
+        sm:text-6xl sm:leading-[5rem] sm:-tracking-[0.075rem];
     }
 
     .text-header__3 {
-        @apply font-alexang text-5xl  sm:text-header_3-max;
+        @apply font-alexang text-[3.375rem] font-normal leading-[4.375rem]  
+        sm:text-[4.375rem] sm:leading-[5.625rem];
     }
 
     .text-header__4 {
-        font-size: 1.75rem;
-        font-family: theme("fontFamily.metropolis");
-        line-height: 2.5rem; /* leading-10 */
-        text-transform: uppercase;
+        @apply font-metropolis text-2xl font-normal uppercase leading-10;
     }
 
     .text-paragraph__normal {
-        font-size: 1.75rem;
-        font-family: theme("fontFamily.metropolis");
-        line-height: 2rem; /* leading-8 */
+        @apply font-metropolis text-base leading-7 
+        sm:text-xl sm:leading-8;
     }
     .text-paragraph__quote {
-        font-size: 1.75rem;
-        font-family: theme("fontFamily.olympic");
-        line-height: 2.5rem; /* leading-10 */
+        @apply font-olympic text-[1.75rem] leading-10;
     }
 }
