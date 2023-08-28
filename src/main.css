@@ -4,8 +4,8 @@
 
 @layer components {
     .text-hero__1 {
-        @apply font-alexang text-[7.5rem] font-normal leading-[8.125rem] -tracking-[0.3rem] 
-        sm:text-[8rem] sm:leading-[8.125rem] sm:-tracking-[0.6rem] 
+        @apply font-alexang text-[7.5rem] font-normal -tracking-[0.3rem] 
+        sm:text-[8rem] sm:-tracking-[0.6rem] 
         lg:text-[26.25rem] lg:-tracking-[1.05rem];
     }
 
