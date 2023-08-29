@@ -21,7 +21,7 @@ const { class: classList, title, year } = Astro.props;
                 <div>
                     <div class="text-header__2">
                         <span>{title}</span>
-                        <sup class="font-metropolis text-xl align-top">({year})</sup>
+                        <sup class="text-paragraph__normal align-top">({year})</sup>
                     </div>
                     <div class="text-paragraph__normal">
                         <slot name="services" />
@@ -30,7 +30,15 @@ const { class: classList, title, year } = Astro.props;
                 <p class:list={["text-paragraph__normal mt-12 mb-16", "md:flex-grow"]}>
                     <slot name="description" />
                 </p>
-                <a href="#" class="max-w-fit">see more <ArrowIcon class="inline-block" /></a>
+                <a
+                    href="#"
+                    class="font-olympic text-[2rem] -tracking-[0.04rem] font-light max-w-fit sm:text-[3.375rem] sm:-tracking-[0.0675rem]"
+                    >see more <ArrowIcon
+                        class="inline-block"
+                        size={40}
+                        class="fill-dark-chocolate inline-block align-text-bottom"
+                    /></a
+                >
             </div>
         </div>
     </div>
