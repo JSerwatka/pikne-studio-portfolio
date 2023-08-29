@@ -6,10 +6,9 @@ import ProjectSection from "@components/Landing/ProjectSection.astro";
 import FlowerLink from "@components/Landing/FlowerLink.astro";
 import Layout from "@layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
-import aleksandraThinking from "@assets/index/thinking.png";
-import aleksandraConfetti from "@assets/index/confetti.png";
 import pikachusSmall from "@assets/index/pikachus-small.png";
 import boskaSmall from "@assets/index/boska-small.png";
+import Introduction from "@components/Landing/Introduction.astro";
 
 // TODO: use semantic html - section header and so on
 // TODO: add accessibility data for flower link foreignObjects?
@@ -30,31 +29,7 @@ import boskaSmall from "@assets/index/boska-small.png";
         class="bg-ruby-red text-light-pink text-header__1 py-2"
         repeats={1}
     />
-    <div class:list={["min-h-screen bg-blue-50 flex items-center", "py-20", "px-6", "md:px-14"]}>
-        <div class:list={["flex flex-col", "lg:flex-row-reverse"]}>
-            <div class="basis-1/2">
-                <div class="text-paragraph__normal">What do i do</div>
-                <div class="text-header__2 my-10">
-                    <div class="mb-10">
-                        I craft branding, art direction and illustration based on psychological knowledge.
-                    </div>
-                    <div>
-                        Through visual storytelling and empathy-driven design, I help your mission reach those who care
-                        about it.
-                    </div>
-                </div>
-                <div>Contact me</div>
-            </div>
-            <div class="basis-1/2 flex">
-                <Image
-                    src={aleksandraThinking}
-                    alt="me thinking, squatting, red doodles around me"
-                    class="max-w-[782px] w-full object-contain self-end"
-                    quality="max"
-                />
-            </div>
-        </div>
-    </div>
+    <Introduction />
     <div class="h-screen">
         <div class="text-hero__1 text-center">work</div>
     </div>
