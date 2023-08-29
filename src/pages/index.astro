@@ -30,20 +30,29 @@ import boskaSmall from "@assets/index/boska-small.png";
         class="bg-ruby-red text-light-pink text-header__1 py-2"
         repeats={1}
     />
-    <div class="h-screen flex flex-col bg-blue-50">
-        <div>
-            <!-- <Image src={aleksandraThinking} alt="me thinking, squatting, red doodles around me" /> -->
-        </div>
-        <div>
-            <div class="text-paragraph__normal">What do i do</div>
-            <div class="text-header__2">
-                <div>I craft branding, art direction and illustration based on psychological knowledge.</div>
-                <div>
-                    Through visual storytelling and empathy-driven design, I help your mission reach those who care
-                    about it.
+    <div class:list={["min-h-screen bg-blue-50 flex items-center", "py-20", "px-6", "md:px-14"]}>
+        <div class:list={["flex flex-col", "lg:flex-row-reverse"]}>
+            <div class="basis-1/2">
+                <div class="text-paragraph__normal">What do i do</div>
+                <div class="text-header__2 my-10">
+                    <div class="mb-10">
+                        I craft branding, art direction and illustration based on psychological knowledge.
+                    </div>
+                    <div>
+                        Through visual storytelling and empathy-driven design, I help your mission reach those who care
+                        about it.
+                    </div>
                 </div>
+                <div>Contact me</div>
             </div>
-            <div>Contact me</div>
+            <div class="basis-1/2 flex">
+                <Image
+                    src={aleksandraThinking}
+                    alt="me thinking, squatting, red doodles around me"
+                    class="max-w-[782px] w-full object-contain self-end"
+                    quality="max"
+                />
+            </div>
         </div>
     </div>
     <div class="h-screen">
