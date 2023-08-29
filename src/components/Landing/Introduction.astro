@@ -8,7 +8,15 @@ import Image from "astro/components/Image.astro";
 //      potem można bybłoby ustawić timeout i wrócić do porzedniego zdjęcia - będzie to średnio działało jeśli zdjęcie będzie się długo wczytywało
 ---
 
-<div class:list={["min-h-screen  flex overflow-hidden bg-blue-100 items-center", "py-20", "px-6", "md:px-14"]}>
+<div
+    class:list={[
+        "min-h-screen  flex overflow-x-hidden bg-blue-100 items-center",
+        "py-20",
+        "px-6",
+        "md:px-14",
+        "lg:overflow-visible"
+    ]}
+>
     <div class:list={["relative"]}>
         <div class:list={["relative z-20", "lg:ml-auto lg:max-w-[50%]"]}>
             <div class="text-paragraph__normal">What do i do</div>
@@ -40,7 +48,7 @@ import Image from "astro/components/Image.astro";
                 src={aleksandraConfetti}
                 alt="me exited with arms raised and a big smile, throwing confetti"
                 class:list={[
-                    // "hidden",
+                    "hidden",
                     "absolute bottom-0 translate-x-[5%] z-10",
                     "lg:translate-x-0 lg:object-contain lg:left-0 lg:max-w-[1000px] lg:w-[60%] "
                 ]}
