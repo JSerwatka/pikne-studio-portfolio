@@ -2,17 +2,20 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import Ribbon from "@components/Ribbon.astro";
-import ProjectScreenNormal from "@components/Landing/ProjectScreenNormal.astro";
+import ProjectSection from "@components/Landing/ProjectSection.astro";
 import FlowerLink from "@components/Landing/FlowerLink.astro";
 import Layout from "@layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 import aleksandraThinking from "@assets/index/thinking.png";
 import aleksandraConfetti from "@assets/index/confetti.png";
+import pikachusSmall from "@assets/index/pikachus-small.png";
+import boskaSmall from "@assets/index/boska-small.png";
 
 // TODO: use semantic html - section header and so on
 // TODO: add accessibility data for flower link foreignObjects?
 // TODO: make sure that all elements have the same sizing/padding - first text:make sure that h-screen is calculated with navbar
 // TODO: make sure that contact me page is not visible in more secrets revealed page
+// TODO: currently we use small images for ProjectSection, check if higher quality is needed
 ---
 
 <Layout title="Welcome to Astro.">
@@ -44,15 +47,17 @@ import aleksandraConfetti from "@assets/index/confetti.png";
         </div>
     </div>
     <div class="h-screen">
-        <div class="text-hero__1 text-center">My work</div>
+        <div class="text-hero__1 text-center">work</div>
     </div>
-    <ProjectScreenNormal title="BOSKA" year="2023" class="bg-volt py-20 text-dark-chocolate" linkTo="/work/boska">
+    <ProjectSection title="BOSKA" year="2023" class="bg-volt py-20 text-dark-chocolate" linkTo="/work/boska">
+        <!-- // TODO add better alt -->
+        <Image slot="image" src={boskaSmall} alt="bosk" class="rounded-3xl" loading="lazy" />
         <Fragment slot="servies">branding</Fragment>
         <Fragment slot="description">
             BOSKA make bodies become timeless art. I’ve crafted visual identity for a brand that celebrates each curve
             as a masterpiece.
         </Fragment>
-    </ProjectScreenNormal>
+    </ProjectSection>
     <div class:list={["h-screen flex justify-center items-center bg-ice-blue text-dark-chocolate py-20"]}>
         <div>
             <div class:list={["relative"]}>
@@ -69,17 +74,19 @@ import aleksandraConfetti from "@assets/index/confetti.png";
         </div>
     </div>
 
-    <ProjectScreenNormal
+    <ProjectSection
         title="Illustrations"
-        year="2021-2023"
-        class="bg-tea-green text-dark-chocolate"
+        year="2021 - 2023"
+        class="bg-volt py-20 text-dark-chocolate"
         linkTo="/illustrations"
     >
+        <!-- // TODO add better alt -->
+        <Image slot="image" src={pikachusSmall} alt="pikachus" class="rounded-3xl" loading="lazy" />
         <Fragment slot="description">
             My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and light.
             I like to reflect on emotions, relations, a sense of humanity and beauty.
         </Fragment>
-    </ProjectScreenNormal>
+    </ProjectSection>
     <a href="/my-work">
         <Ribbon
             text="✺ click to see more work "
