@@ -1,0 +1,73 @@
+---
+import aleksandraThinking from "@assets/index/thinking.png";
+import aleksandraConfetti from "@assets/index/confetti.png";
+import Image from "astro/components/Image.astro";
+---
+
+<div
+    class:list={[
+        "min-h-screen  flex overflow-x-hidden bg-blue-100 items-center",
+        "py-20",
+        "px-6",
+        "md:px-14",
+        "lg:overflow-visible"
+    ]}
+>
+    <div class:list={["relative"]}>
+        <div class:list={["relative z-20", "lg:ml-auto lg:max-w-[50%]"]}>
+            <div class="text-paragraph__normal">What do i do</div>
+            <div class="text-header__2 my-10">
+                <div class="mb-10">
+                    I craft branding, art direction and illustration based on psychological knowledge.
+                </div>
+                <div>
+                    Through visual storytelling and empathy-driven design, I help your mission reach those who care
+                    about it.
+                </div>
+            </div>
+            <button role="button" data-contact-button>Contact me</button>
+        </div>
+        <div class:list={["mt-[60vw] ", "lg:mt-0"]}>
+            <Image
+                src={aleksandraThinking}
+                alt="me squatting and thinking, red doodles around me"
+                class:list={[
+                    "absolute bottom-0 translate-x-[5%] z-10",
+                    "lg:translate-x-0 lg:object-contain lg:left-0 lg:max-w-[1000px] lg:w-[60%] "
+                ]}
+                loading="eager"
+                quality="min"
+                data-default-image
+            />
+
+            <Image
+                src={aleksandraConfetti}
+                alt="me exited with arms raised and a big smile, throwing confetti"
+                class:list={[
+                    "hidden",
+                    "absolute bottom-0 translate-x-[5%] z-10",
+                    "lg:translate-x-0 lg:object-contain lg:left-0 lg:max-w-[1000px] lg:w-[60%] "
+                ]}
+                loading="lazy"
+                quality="min"
+                data-hidden-image
+            />
+        </div>
+    </div>
+</div>
+
+<script>
+    const defaultImage = document.querySelector("[data-default-image]") as HTMLImageElement;
+    const hiddenImage = document.querySelector("[data-hidden-image]") as HTMLImageElement;
+    const contactButton = document.querySelector("[data-contact-button]") as HTMLImageElement;
+
+    contactButton.addEventListener("mouseenter", (e) => {
+        hiddenImage.classList.toggle("hidden", false);
+        defaultImage.classList.toggle("hidden", true);
+    });
+
+    contactButton.addEventListener("mouseleave", (e) => {
+        hiddenImage.classList.toggle("hidden", true);
+        defaultImage.classList.toggle("hidden", false);
+    });
+</script>
