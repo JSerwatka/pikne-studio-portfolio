@@ -3,9 +3,6 @@ import { Image } from "astro:assets";
 import logo from "@assets/logo.svg";
 import MobileNavbar from "./MobileNavbar.astro";
 import DesktopNavbar from "./DesktopNavbar.astro";
-// TODO https://css-tricks.com/how-to-implement-and-style-the-dialog-element/ https://hidde.blog/using-javascript-to-trap-focus-in-an-element/
-// TODO https://www.youtube.com/watch?v=IdZ-ZHLyEHs https://github.com/alstudio93/alstudio-responsive-navigation/blob/main/scripts/script.js
-// TODO MENU wrong font
 
 export interface LinkType {
     pageName: string;
@@ -22,8 +19,6 @@ const links = [
     { pageName: "Playground", pageUrl: "/playground", acessibleName: "playground page" },
     { pageName: "Contact", pageUrl: "#contact", acessibleName: "contact form footer", isLinkToSection: true }
 ] as LinkType[];
-
-// TODO add link to home for logo
 ---
 
 <nav class="flex flex-row justify-between mx-16 my-14">

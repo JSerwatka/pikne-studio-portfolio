@@ -1,11 +1,6 @@
 import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 import { scheduleIdle } from "@solid-primitives/scheduled";
 
-// TODO: use better alt names
-// TODO: maybe size of button is sometimes to big especially for small screens
-// TODO: add aria-labalby for button
-// TODO: btn txt should be uppercase
-// TODO: maybe add hover effect to btn, like this: https://codepen.io/comehope/pen/eKqZjy or this https://codepen.io/t_afif/pen/abKyJNJ ot his https://codepen.io/thelaazyguy/pen/brryVq
 const hats = [
     {
         name: "babushka",
