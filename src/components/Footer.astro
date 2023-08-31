@@ -1,40 +1,40 @@
 <footer id="contact" class="z-10">
-    <div class:list={["font-alexang text-center text-[min(25vw,425px)] -mb-[0.46em]"]}>Contact me</div>
-    <div class="bg-ruby-red text-light-pink min-h-screen">
+    <div class:list={["-mb-[0.46em] text-center font-alexang text-[min(25vw,425px)]"]}>Contact me</div>
+    <div class="min-h-screen bg-ruby-red text-light-pink">
         <div
             class:list={[
                 "grid h-full",
-                "grid-cols-1 px-6 py-16 gap-16",
-                "md:px-0 md:gap-20",
+                "grid-cols-1 gap-16 px-6 py-16",
+                "md:gap-20 md:px-0",
                 "lg:grid-cols-2 lg:px-16 lg:pt-24"
             ]}
         >
             <form
                 class:list={[
-                    "flex flex-col gap-y-8 w-full max-w-[680px] mx-auto",
-                    "[&>*]:p-10 [&>*]:bg-ruby-red [&>*]:text-light-pink [&>*]:placeholder-light-pink [&>*]:border [&>*]:border-light-pink [&>*]:rounded-3xl",
+                    "mx-auto flex w-full max-w-[680px] flex-col gap-y-8",
+                    "[&>*]:rounded-3xl [&>*]:border [&>*]:border-light-pink [&>*]:bg-ruby-red [&>*]:p-10 [&>*]:text-light-pink [&>*]:placeholder-light-pink",
                     "order-1",
                     "lg:order-2"
                 ]}
             >
                 <input
                     type="text"
-                    class="outline-2 focus:outline outline-light-pink"
+                    class="outline-2 outline-light-pink focus:outline"
                     placeholder="Name (+ optionally surname)"
                     required
                 />
-                <input type="email" class="outline-2 focus:outline outline-light-pink" placeholder="Email" required />
+                <input type="email" class="outline-2 outline-light-pink focus:outline" placeholder="Email" required />
                 <textarea
-                    class="min-h-[300px] outline-2 focus:outline outline-light-pink"
+                    class="min-h-[300px] outline-2 outline-light-pink focus:outline"
                     placeholder="Message"
                     required></textarea>
-                <button type="submit" class="text-3xl sm:md:text-4xl md:text-5xl font-alexang">
+                <button type="submit" class="font-alexang text-3xl sm:md:text-4xl md:text-5xl">
                     Send the word 🕊️</button
                 >
             </form>
             <div
                 class:list={[
-                    "flex font-metropolis max-w-[680px] w-full mx-auto",
+                    "mx-auto flex w-full max-w-[680px] font-metropolis",
                     "order-2 flex-col text-base",
                     "sm:text-md sm:flex-row sm:justify-between sm:pr-11",
                     "md:text-xl",

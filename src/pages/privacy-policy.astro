@@ -6,10 +6,10 @@ import Layout from "@layouts/Layout.astro";
 
 <Layout title="privacy policy">
     <article class="grid grid-cols-8 justify-items-center">
-        <div class:list={["col-span-8 px-6 max-w-[1000px]", "sm:px-0 sm:col-span-6 sm:col-start-2"]}>
-            <h1 class:list={["text-hero__2 text-center mb-28 mt-1", "sm:mb-36 sm:mt-3", "lg:mb-48 lg:mt-8"]}>
+        <div class:list={["col-span-8 max-w-[1000px] px-6", "sm:col-span-6 sm:col-start-2 sm:px-0"]}>
+            <h1 class:list={["text-hero__2 mb-28 mt-1 text-center", "sm:mb-36 sm:mt-3", "lg:mb-48 lg:mt-8"]}>
                 <span class="block">Privacy</span>
-                <span class="block ml-[1em]">policy</span>
+                <span class="ml-[1em] block">policy</span>
             </h1>
             <h2 class="text-header__2 mb-4">Privacy Policy for Pekala.Design</h2>
             <div class="text-paragraph__normal">
@@ -20,7 +20,7 @@ import Layout from "@layouts/Layout.astro";
                     disclose, and store information about visitors to our website, in accordance with the General Data
                     Protection Regulation (GDPR) and other applicable privacy laws.
                 </p>
-                <ul class="list-decimal list-inside [&>li]:mb-6">
+                <ul class="list-inside list-decimal [&>li]:mb-6">
                     <li>
                         <p class="inline">Data Controller and Contact Information:</p>
                         <p>
@@ -28,7 +28,7 @@ import Layout from "@layouts/Layout.astro";
                             processing of personal data on this website. If you have any questions or concerns about
                             this Privacy Policy or your personal data, you can contact us at:
                         </p>
-                        <address class="not-italic mt-3">
+                        <address class="mt-3 not-italic">
                             Aleksandra Pekala design<br />
                              Oboźna 29/14, 30-010, Kraków, Poland<br />
                              hello@pekala.design
@@ -37,7 +37,7 @@ import Layout from "@layouts/Layout.astro";
                     <li>
                         <p class="inline">Data We Collect:</p>
                         <p>We may collect the following types of personal data from you when you visit our website:</p>
-                        <ul class="list-[lower-alpha] list-inside">
+                        <ul class="list-inside list-[lower-alpha]">
                             <li>
                                 Personal Information: This includes your name, email address, phone number, and any
                                 other information you provide to us voluntarily through our contact forms or
@@ -52,7 +52,7 @@ import Layout from "@layouts/Layout.astro";
                     <li>
                         <p class="inline">How We Use Your Data:</p>
                         <p>We use the personal data we collect for the following purposes:</p>
-                        <ul class="list-[lower-alpha] list-inside">
+                        <ul class="list-inside list-[lower-alpha]">
                             <li>To respond to your inquiries and provide customer support.</li>
                             <li>
                                 To send you newsletters, marketing communications, and promotional materials, where you
@@ -71,7 +71,7 @@ import Layout from "@layouts/Layout.astro";
                             We will only process your personal data when we have a legal basis for doing so. The legal
                             bases for processing your data on Pekala.Design are:
                         </p>
-                        <ul class="list-[lower-alpha] list-inside">
+                        <ul class="list-inside list-[lower-alpha]">
                             <li>
                                 Consent: You have given us explicit permission to process your personal data for
                                 specific purposes, such as sending newsletters.

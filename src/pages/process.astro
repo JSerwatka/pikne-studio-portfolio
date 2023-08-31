@@ -47,22 +47,22 @@ const processSteps = [
 ---
 
 <Layout title="Project process">
-    <div class="flex items-center flex-col mb-40">
+    <div class="mb-40 flex flex-col items-center">
         <div class="text-hero__2 leading-[230px]">
             <span class="block">Project</span><span class="block">process</span>
         </div>
         <div>(example of a branding process, for different type of projects the process may vary)</div>
     </div>
-    <div class="grid grid-cols-4 mb-40">
-        <div class="h-full col-start-2 col-span-1">
+    <div class="mb-40 grid grid-cols-4">
+        <div class="col-span-1 col-start-2 h-full">
             <GradientScroll />
         </div>
-        <div class="grid columns-1 gap-48 row-auto">
+        <div class="row-auto grid columns-1 gap-48">
             {
                 processSteps.map((step) => (
                     <div>
                         <div class="text-header__2">
-                            {step.title} <sup class="text-[1.75rem] -top-8 tracking-tighter">{step.stepIcon}</sup>
+                            {step.title} <sup class="-top-8 text-[1.75rem] tracking-tighter">{step.stepIcon}</sup>
                         </div>
                         <div class="max-w-[500px]">{step.description}</div>
                     </div>

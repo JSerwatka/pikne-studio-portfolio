@@ -11,7 +11,7 @@ const { title, subTitle } = Astro.props;
 const textLayers = ["visible", "mask"];
 ---
 
-<div class="relative animation-group w-min mx-auto">
+<div class="animation-group relative mx-auto w-min">
     <div class="relative">
         {
             textLayers.map((layer) => {
@@ -22,13 +22,13 @@ const textLayers = ["visible", "mask"];
                         aria-hidden={isMask ? "true" : "false"}
                         class="cursor-none"
                         class:list={{
-                            "absolute text-lilac top-0 left-0 z-10 pointer-events-none text-mask-handler opacity-animation-target":
+                            "text-mask-handler opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac":
                                 isMask
                         }}
                     >
                         <div class="font-metropolis text-xl uppercase">{subTitle}</div>
-                        <div class="text-header__1 flex gap-4 items-center">
-                            <ArrowIcon class={`w-[50px] h-[50px] ${isMask ? "fill-lilac" : "fill-ruby-red"}`} />
+                        <div class="text-header__1 flex items-center gap-4">
+                            <ArrowIcon class={`h-[50px] w-[50px] ${isMask ? "fill-lilac" : "fill-ruby-red"}`} />
                             <div>{title}</div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ const textLayers = ["visible", "mask"];
         }
     </div>
     <img
-        class="absolute w-[150px] h-[150px] top-0 left-0 object-cover object-center rounded-full pointer-events-none opacity-animation-target js-circle-img"
+        class="opacity-animation-target js-circle-img pointer-events-none absolute left-0 top-0 h-[150px] w-[150px] rounded-full object-cover object-center"
         src="https://assets.codepen.io/1159990/tokyo-tower.jpg"
         alt="Tokyo Tower"
     />
