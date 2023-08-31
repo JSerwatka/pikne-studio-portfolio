@@ -13,23 +13,23 @@ const { class: className, links } = Astro.props;
 <button
     aria-expanded="false"
     aria-labelledby="toggle navbar menu"
-    class:list={["js-menu-button", "uppercase w-full text-end", className]}
+    class:list={["js-menu-button", "w-full text-end uppercase", className]}
 >
     Menu
 </button>
 <div
     class:list={[
         "js-overlay",
-        "fixed z-20 hidden inset-0 w-screen h-screen bg-ruby-red text-light-pink text-header__2",
-        "pt-5 px-6",
-        "sm:pt-12 sm:px-10"
+        "text-header__2 fixed inset-0 z-20 hidden h-screen w-screen bg-ruby-red text-light-pink",
+        "px-6 pt-5",
+        "sm:px-10 sm:pt-12"
     ]}
 >
-    <div class="flex justify-between mb-28">
-        <Image src={logo} alt="pekala design logo" width={156} />
+    <div class="mb-28 flex justify-between">
+        <Image src={logo} alt="pekala design logo" width={156} height={91} />
         <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
-    <ul class:list={["[&>*:not(:last-child)]:mb-14 text-center"]}>
+    <ul class:list={["text-center [&>*:not(:last-child)]:mb-14"]}>
         {
             links.map((link) => (
                 <li>

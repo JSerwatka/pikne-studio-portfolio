@@ -1,18 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
-
-// TODO when scrolling very little there is a weird twich, duration should be based on velocity
-// TODO to change image size, you have to also change translate class to be equal 1/2*width% - maybe there is a way to do it with a variable
 ---
 
-<div class="h-full flex">
-    <div class="w-6 h-full bg-gradient-brand relative js-gradient-scroll__wrapper">
+<div class="flex h-full">
+    <div class="js-gradient-scroll__wrapper relative h-full w-6 bg-gradient-brand">
         <Image
-            class="absolute js-gradient-scroll__image max-w-none -translate-x-[25%]"
+            class="js-gradient-scroll__image absolute max-w-none -translate-x-[25%]"
             src={heart}
-            alt="pekala design logo"
-            width={50}
+            alt="heart symbol"
+            width="50"
+            height="50"
         />
     </div>
 </div>

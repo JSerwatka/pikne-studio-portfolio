@@ -32,14 +32,14 @@ const workItems = [
 
 <Layout title="Welcome to Astro.">
     <div class="container mx-auto mb-[30vh]">
-        <div class="text-hero__1 text-center sticky top-[10vh] mt-[10vh]">My work</div>
-        <div class="grid col grid-cols-1 justify-items-center gap-64 js-work-items mt-[30vh]">
+        <div class="text-hero__1 sticky top-[10vh] mt-[10vh] text-center">My work</div>
+        <div class="col js-work-items mt-[30vh] grid grid-cols-1 justify-items-center gap-64">
             {
                 workItems.map((workItem) => (
                     <div class="relative w-1/2 drop-shadow-2xl">
                         <a href={workItem.linkUrl} aria-label={`Link to work name: ${workItem.title}`}>
-                            <img src={workItem.imgUrl} class="w-full object-cover rounded-3xl" />
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-light-pink text-header__1">
+                            <img src={workItem.imgUrl} class="w-full rounded-3xl object-cover" />
+                            <div class="text-header__1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-light-pink">
                                 {workItem.title}
                             </div>
                         </a>

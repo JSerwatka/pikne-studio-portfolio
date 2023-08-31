@@ -11,10 +11,10 @@ interface Props {
 const { class: classList, title, year, linkTo } = Astro.props;
 ---
 
-<div class:list={["min-h-screen items-center flex py-20", "px-6", "md:px-14", classList]}>
+<div class:list={["flex min-h-screen items-center py-20", "px-6", "md:px-14", classList]}>
     <div>
         <div class:list={["flex justify-center gap-8", "flex-col", "lg:flex-row-reverse"]}>
-            <div class:list={["aspect-square ", "md:max-w-[682px] self-center", "lg:basis-1/2"]}>
+            <div class:list={["aspect-square ", "self-center md:max-w-[682px]", "lg:basis-1/2"]}>
                 <slot name="image" />
             </div>
             <div class:list={["flex flex-col", "lg:basis-1/2"]}>
@@ -27,16 +27,16 @@ const { class: classList, title, year, linkTo } = Astro.props;
                         <slot name="services" />
                     </div>
                 </div>
-                <p class:list={["text-paragraph__normal mt-12 mb-16", "md:flex-grow"]}>
+                <p class:list={["text-paragraph__normal mb-16 mt-12", "md:flex-grow"]}>
                     <slot name="description" />
                 </p>
                 <a
                     href={linkTo}
-                    class="font-olympic text-[2rem] -tracking-[0.04rem] font-light max-w-fit sm:text-[3.375rem] sm:-tracking-[0.0675rem]"
+                    class="max-w-fit font-olympic text-[2rem] font-light -tracking-[0.04rem] sm:text-[3.375rem] sm:-tracking-[0.0675rem]"
                 >
                     see more
                     <ArrowIcon
-                        class="fill-dark-chocolate inline-block align-baseline ml-1 h-[20px] w-[20px] sm:h-[32px] sm:w-[32px] sm:ml-2"
+                        class="ml-1 inline-block h-[20px] w-[20px] fill-dark-chocolate align-baseline sm:ml-2 sm:h-[32px] sm:w-[32px]"
                     />
                 </a>
             </div>
