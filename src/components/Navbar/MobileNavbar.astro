@@ -27,13 +27,15 @@ const { class: className, links } = Astro.props;
     ]}
 >
     <div class="flex justify-between">
-        <Image
-            src={logo}
-            alt="pekala design logo"
-            width={156}
-            height={91}
-            class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
-        />
+        <a href="/" aria-label="go home link">
+            <Image
+                src={logo}
+                alt="pekala design logo"
+                width={156}
+                height={91}
+                class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+            />
+        </a>
         <button data-close-button autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
     <ul class:list={["text-center [&>*:not(:last-child)]:mb-14", "mt-28", "sm:mt-11"]}>
