@@ -21,12 +21,18 @@ const links = [
 ] as LinkType[];
 ---
 
-<nav class="mx-16 my-14 flex flex-row justify-between">
+<nav class:list={["flex flex-row justify-between", "mx-6 mt-6", "sm:mx-10 sm:mt-10", "lg:mx-16 lg:mt-16"]}>
     <div class="basis-1/2">
-        <Image src={logo} alt="pekala design logo" width={156} height={91} />
+        <Image
+            src={logo}
+            alt="pekala design logo"
+            width={156}
+            height={91}
+            class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+        />
     </div>
     <div class="text-header__4 basis-1/2 self-center">
-        <MobileNavbar class="lg:hidden" links={links} />
-        <DesktopNavbar class="hidden lg:flex" links={links} />
+        <MobileNavbar class="md:hidden" links={links} />
+        <DesktopNavbar class="hidden md:flex" links={links} />
     </div>
 </nav>

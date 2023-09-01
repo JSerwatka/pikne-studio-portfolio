@@ -9,7 +9,7 @@ interface Props {
 const { class: className, links } = Astro.props;
 ---
 
-<ul class:list={["js-navbar-desktop", "justify-end gap-5", className]}>
+<ul data-navbar-desktop class:list={["justify-end gap-5", className]}>
     {
         links.map((link) => {
             if (link.isMobileOnly) return;
@@ -19,7 +19,7 @@ const { class: className, links } = Astro.props;
                     <a
                         href={link.pageUrl}
                         aria-labelledby={link.acessibleName}
-                        class:list={{ "js-section-link": link.isLinkToSection }}
+                        data-link-type={link.isLinkToSection ? "section" : "normal"}
                     >
                         {link.pageName}
                     </a>
@@ -30,8 +30,8 @@ const { class: className, links } = Astro.props;
 </ul>
 
 <script>
-    const navbar = document.querySelector(".js-navbar-desktop") as HTMLElement;
-    const sectionLinks = navbar.querySelectorAll("a.js-section-link") as NodeListOf<HTMLAnchorElement>;
+    const navbar = document.querySelector("[data-navbar-desktop]") as HTMLElement;
+    const sectionLinks = navbar.querySelectorAll("a[data-link-type='section']") as NodeListOf<HTMLAnchorElement>;
 
     sectionLinks.forEach((sectionLink) => {
         sectionLink.addEventListener("click", (e) => {
