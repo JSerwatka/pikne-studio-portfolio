@@ -13,30 +13,37 @@ const { class: className, links } = Astro.props;
 <button
     aria-expanded="false"
     aria-labelledby="toggle navbar menu"
-    class:list={["js-menu-button", "w-full text-end uppercase", className]}
+    data-menu-button
+    class:list={["w-full text-end uppercase", className]}
 >
     Menu
 </button>
 <div
+    data-overlay
     class:list={[
-        "js-overlay",
         "text-header__2 fixed inset-0 z-20 hidden h-screen w-screen bg-ruby-red text-light-pink",
-        "px-6 pt-5",
-        "sm:px-10 sm:pt-12"
+        "px-6 py-6",
+        "sm:px-10 sm:py-10"
     ]}
 >
-    <div class="mb-28 flex justify-between">
-        <Image src={logo} alt="pekala design logo" width={156} height={91} />
-        <button class:list={["js-close-button"]} autofocus aria-labelledby="close navbar menu">&#10005;</button>
+    <div class="flex justify-between">
+        <Image
+            src={logo}
+            alt="pekala design logo"
+            width={156}
+            height={91}
+            class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+        />
+        <button data-close-button autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
-    <ul class:list={["text-center [&>*:not(:last-child)]:mb-14"]}>
+    <ul class:list={["text-center [&>*:not(:last-child)]:mb-14", "mt-28", "sm:mt-11"]}>
         {
             links.map((link) => (
                 <li>
                     <a
                         href={link.pageUrl}
                         aria-labelledby={link.acessibleName}
-                        class:list={{ "js-section-link": link.isLinkToSection }}
+                        data-link-type={link.isLinkToSection ? "section" : "normal"}
                     >
                         {link.pageName}
                     </a>
@@ -47,10 +54,10 @@ const { class: className, links } = Astro.props;
 </div>
 
 <script>
-    const menuButton = document.querySelector(".js-menu-button") as HTMLButtonElement;
-    const overlay = document.querySelector(".js-overlay") as HTMLElement;
-    const closeOverlayButton = overlay.querySelector(".js-close-button") as HTMLButtonElement;
-    const sectionLinks = overlay.querySelectorAll("a.js-section-link") as NodeListOf<HTMLAnchorElement>;
+    const menuButton = document.querySelector("[data-menu-button]") as HTMLButtonElement;
+    const overlay = document.querySelector("[data-overlay]") as HTMLElement;
+    const closeOverlayButton = overlay.querySelector("[data-close-button]") as HTMLButtonElement;
+    const sectionLinks = overlay.querySelectorAll("a[data-link-type='section']") as NodeListOf<HTMLAnchorElement>;
     const focusableElements = overlay.querySelectorAll("a, button") as NodeListOf<
         HTMLAnchorElement | HTMLButtonElement
     >;
@@ -85,20 +92,27 @@ const { class: className, links } = Astro.props;
     function trapFocus(isTrapSwitched: boolean) {
         const firstFocusable = focusableElements[0];
         const lastFocusable = focusableElements[focusableElements.length - 1];
+        firstFocusable.focus();
 
         const handleTrapFocusKeys = (e: KeyboardEvent) => {
-            if (e.key === "Tab") {
-                if (e.shiftKey) {
-                    if (document.activeElement === firstFocusable) {
-                        e.preventDefault();
-                        lastFocusable.focus();
+            switch (e.key) {
+                case "Escape":
+                    openOverlay(false);
+                    break;
+                case "Tab":
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusable) {
+                            e.preventDefault();
+                            lastFocusable.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusable) {
+                            e.preventDefault();
+                            firstFocusable.focus();
+                        }
                     }
-                } else {
-                    if (document.activeElement === lastFocusable) {
-                        e.preventDefault();
-                        firstFocusable.focus();
-                    }
-                }
+                default:
+                    break;
             }
         };
 
