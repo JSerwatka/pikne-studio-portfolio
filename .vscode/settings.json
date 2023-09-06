@@ -1,3 +1,4 @@
 {
-    "tailwindCSS.classAttributes": ["class", "class:list"]
+    "tailwindCSS.classAttributes": ["class", "class:list"],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
