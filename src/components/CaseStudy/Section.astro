@@ -1,0 +1,45 @@
+---
+import AnimatedImage from "./AnimatedImage.astro";
+import { Image } from "astro:assets";
+import cloud from "@assets/case-study/3.2.cloud.png";
+import heart from "@assets/case-study/3.1.heart.png";
+import pencil from "@assets/case-study/3.3.pencil.png";
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div data-scroll-animation-container class:list={["h-screen", className]}>
+    <div data-imgs-container class="relative [&>*]:absolute">
+        <slot name="images" />
+    </div>
+</div>
+
+<script>
+    import { scroll, timeline, type TimelineDefinition } from "motion";
+    import type { AnimationPathType } from "./AnimatedImage.astro";
+
+    const animationContainer = document.querySelector("[data-scroll-animation-container]") as HTMLElement;
+    const animationPathDataElements = Array.from(
+        document.querySelectorAll("[data-animation-path]") as NodeListOf<HTMLElement>
+    );
+
+    const sequence = animationPathDataElements.map((element) => {
+        const animationPath = JSON.parse(element.dataset.animationPath ?? "[]") as AnimationPathType;
+
+        const pathsToAnimationMapped = animationPath.map(
+            (nextPostion) => `translate(${nextPostion[0]}%, ${nextPostion[1]}%)`
+        );
+
+        return [element, { transform: ["translate(0, 0)", ...pathsToAnimationMapped] }, { at: "<" }];
+    }) satisfies TimelineDefinition;
+
+    const options = {
+        defaultOptions: { ease: "ease" }
+    };
+
+    scroll(timeline(sequence, options), { target: animationContainer, offset: ["25% end", "end end"] });
+</script>

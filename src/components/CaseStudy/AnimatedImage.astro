@@ -1,0 +1,16 @@
+---
+export type AnimationPathType = [number, number][];
+
+interface Props {
+    "data-animation-path": AnimationPathType;
+}
+
+const props = {
+    ...Astro.props,
+    "data-animation-path": JSON.stringify(Astro.props["data-animation-path"])
+};
+---
+
+<div {...props}>
+    <slot />
+</div>
