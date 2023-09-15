@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { class: className, step } = Astro.props;
+// TODO: adjust img sizes on screens
 ---
 
 <div data-scroll-animation-container class:list={["h-screen text-dark-chocolate", className]}>
-    <div class="flex flex-row flex-wrap">
-        <div class="basis-full">
+    <div class="grid grid-cols-6 grid-rows-2 gap-y-4">
+        <div class="col-span-6 row-span-1 row-start-2">
             <div class="text-header__2">
                 <slot name="title" />
             </div>
@@ -19,11 +20,16 @@ const { class: className, step } = Astro.props;
                 <slot name="description" />
             </div>
         </div>
-        <div data-imgs-container class="relative w-[500px] [&>*]:absolute">
+        <div
+            data-imgs-container
+            class="relative col-span-4 col-start-2 row-span-1 row-start-1 h-[130px] w-[130px] self-center justify-self-center [&>*]:absolute"
+        >
             <slot name="images" />
         </div>
+        <div class="col-span-1 row-span-1 row-start-1 self-center">
+            <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
+        </div>
     </div>
-    <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
 </div>
 
 <script>
