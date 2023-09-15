@@ -138,7 +138,19 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 ---
 
 <Layout title="test">
-    <Section class="bg-lilac">
+    <Section class="bg-lilac" class:list={["px-4", "sm:px-16"]} step={2}>
+        <Fragment slot="title">STRATEGY & PLANNING</Fragment>
+        <Fragment slot="description">
+            <p>
+                When I understood what I what to represent and whom I’d like to work with, I developed a comprehensive
+                brand strategy.
+            </p>
+            <p>
+                I often use Jung-inspired brand archetypes as guidance. The Lover archetype was chosen deliberately, as
+                it perfectly aligned with the desire to evoke emotions, build connections, and create immersive
+                experiences. Add a bit of The Creator archetype and voilà! That’s me!
+            </p>
+        </Fragment>
         <Fragment slot="images">
             {
                 animatedImagesConfig["step-2"].map((animatedImage) => (
@@ -154,7 +166,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
             }
         </Fragment>
     </Section>
-    <Section class="bg-ice-blue">
+    <Section class="bg-ice-blue" step={3}>
         <Fragment slot="images">
             {
                 animatedImagesConfig["step-3"].map((animatedImage) => (
@@ -170,7 +182,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
             }
         </Fragment>
     </Section>
-    <Section class="bg-tea-green">
+    <Section class="bg-tea-green" step={4}>
         <Fragment slot="images">
             {
                 animatedImagesConfig["step-4"].map((animatedImage) => (
@@ -186,7 +198,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
             }
         </Fragment>
     </Section>
-    <Section class="bg-volt">
+    <Section class="bg-volt" step={5}>
         <Fragment slot="images">
             {
                 animatedImagesConfig["step-5"].map((animatedImage) => (
@@ -203,51 +215,3 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
         </Fragment>
     </Section>
 </Layout>
-
-<script>
-    import { scroll, timeline, type TimelineDefinition } from "motion";
-    import type { TranslationPathType, RotationPathType } from "@components/CaseStudy/AnimatedImage.astro";
-    import { zip } from "@utils/zip";
-
-    const animationContainers = document.querySelectorAll(
-        "[data-scroll-animation-container]"
-    ) as NodeListOf<HTMLElement>;
-
-    // animate all sections' imgs on scroll by animation path
-    animationContainers.forEach((animationContainer) => {
-        const imageAnimationContainers = Array.from(
-            animationContainer.querySelectorAll(
-                "[data-translation-path],[data-rotation-path]"
-            ) as NodeListOf<HTMLElement>
-        );
-
-        const sequence = imageAnimationContainers.map((imageAnimationContainer) => {
-            const translationPath = JSON.parse(
-                imageAnimationContainer.dataset.translationPath ?? "[]"
-            ) as TranslationPathType;
-
-            const rotationPath = JSON.parse(imageAnimationContainer.dataset.rotationPath ?? "[]") as RotationPathType;
-
-            const aimationsMapped = zip(
-                translationPath,
-                rotationPath,
-                (translationElement, rotationElement): string => {
-                    const translationString = translationElement
-                        ? `translate(${translationElement[0]}%, ${translationElement[1]}%)`
-                        : "";
-                    const rotationString = rotationElement !== undefined ? `rotate(${rotationElement}deg)` : "";
-
-                    return [translationString, rotationString].filter(Boolean).join(",");
-                }
-            );
-
-            return [imageAnimationContainer, { transform: ["translate(0, 0)", ...aimationsMapped] }, { at: "<" }];
-        }) satisfies TimelineDefinition;
-
-        const options = {
-            defaultOptions: { ease: "ease" }
-        };
-
-        scroll(timeline(sequence, options), { target: animationContainer, offset: ["25% end", "end end"] });
-    });
-</script>

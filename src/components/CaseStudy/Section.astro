@@ -1,19 +1,75 @@
 ---
+import Stepper from "./Stepper.astro";
+
 interface Props {
     class?: string;
+    step: number;
 }
 
-const { class: className } = Astro.props;
+const { class: className, step } = Astro.props;
 ---
 
 <div data-scroll-animation-container class:list={["h-screen text-dark-chocolate", className]}>
-    <div class="text-header__2">
-        <slot name="title" />
+    <div class="flex flex-row flex-wrap">
+        <div class="basis-full">
+            <div class="text-header__2">
+                <slot name="title" />
+            </div>
+            <div class="text-paragraph__normal">
+                <slot name="description" />
+            </div>
+        </div>
+        <div data-imgs-container class="relative w-[500px] [&>*]:absolute">
+            <slot name="images" />
+        </div>
     </div>
-    <div class="text-paragraph__normal">
-        <slot name="description" />
-    </div>
-    <div data-imgs-container class="relative [&>*]:absolute">
-        <slot name="images" />
-    </div>
+    <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
 </div>
+
+<script>
+    import { scroll, timeline, type TimelineDefinition } from "motion";
+    import type { TranslationPathType, RotationPathType } from "@components/CaseStudy/AnimatedImage.astro";
+    import { zip } from "@utils/zip";
+
+    const animationContainers = document.querySelectorAll(
+        "[data-scroll-animation-container]"
+    ) as NodeListOf<HTMLElement>;
+
+    // animate all sections' imgs on scroll by animation path
+    animationContainers.forEach((animationContainer) => {
+        const imageAnimationContainers = Array.from(
+            animationContainer.querySelectorAll(
+                "[data-translation-path],[data-rotation-path]"
+            ) as NodeListOf<HTMLElement>
+        );
+
+        const sequence = imageAnimationContainers.map((imageAnimationContainer) => {
+            const translationPath = JSON.parse(
+                imageAnimationContainer.dataset.translationPath ?? "[]"
+            ) as TranslationPathType;
+
+            const rotationPath = JSON.parse(imageAnimationContainer.dataset.rotationPath ?? "[]") as RotationPathType;
+
+            const aimationsMapped = zip(
+                translationPath,
+                rotationPath,
+                (translationElement, rotationElement): string => {
+                    const translationString = translationElement
+                        ? `translate(${translationElement[0]}%, ${translationElement[1]}%)`
+                        : "";
+                    const rotationString = rotationElement !== undefined ? `rotate(${rotationElement}deg)` : "";
+
+                    return [translationString, rotationString].filter(Boolean).join(",");
+                }
+            );
+
+            return [imageAnimationContainer, { transform: ["translate(0, 0)", ...aimationsMapped] }, { at: "<" }];
+        }) satisfies TimelineDefinition;
+
+        const options = {
+            defaultOptions: { ease: "ease" }
+        };
+
+        scroll(timeline(sequence, options), { target: animationContainer, offset: ["25% end", "end end"] });
+    });
+</script>
