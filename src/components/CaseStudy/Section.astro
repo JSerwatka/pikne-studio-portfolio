@@ -8,9 +8,13 @@ interface Props {
 
 const { class: className, step } = Astro.props;
 // TODO: adjust img sizes on screens
+// TODO: make sure that it fits on one screen and is in center
 ---
 
-<div data-scroll-animation-container class:list={["h-screen text-dark-chocolate", className]}>
+<div
+    data-scroll-animation-container
+    class:list={["h-screen text-dark-chocolate", "px-4", "sm:px-16", "lg:pr-0", className]}
+>
     <div class:list={["grid h-full grid-cols-12 grid-rows-2", "gap-y-4", "lg:grid-rows-none lg:gap-y-0"]}>
         <div
             class:list={[
@@ -18,10 +22,10 @@ const { class: className, step } = Astro.props;
                 "lg:col-span-6 lg:col-start-2 lg:row-span-1 lg:row-start-1 lg:self-center"
             ]}
         >
-            <div class="text-header__2">
-                <slot name="title" />
+            <div class="text-header__2 mb-6 uppercase">
+                <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
             </div>
-            <div class="text-paragraph__normal">
+            <div class="text-paragraph__normal [&>*:not(:last-child)]:mb-8">
                 <slot name="description" />
             </div>
         </div>
