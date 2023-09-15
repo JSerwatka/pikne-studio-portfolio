@@ -9,19 +9,18 @@ interface Props {
 const { class: className, step } = Astro.props;
 // TODO: adjust img sizes on screens
 // TODO: make sure that it fits on one screen and is in center
+// TODO: change grid to flex (mobile)
 ---
 
 <div
     data-scroll-animation-container
-    class:list={["h-screen text-dark-chocolate", "px-4", "sm:px-16", "lg:pr-0", className]}
+    class:list={["min-h-screen text-dark-chocolate", "px-4", "sm:px-16", "lg:flex lg:items-center lg:pr-0", className]}
 >
-    <div class:list={["grid h-full grid-cols-12 grid-rows-2", "gap-y-4", "lg:grid-rows-none lg:gap-y-0"]}>
-        <div
-            class:list={[
-                "col-span-12 row-span-1 row-start-2",
-                "lg:col-span-6 lg:col-start-2 lg:row-span-1 lg:row-start-1 lg:self-center"
-            ]}
-        >
+    <div class:list={["grid h-full grid-cols-12 grid-rows-2", "gap-y-4", "lg:flex lg:gap-y-0"]}>
+        <div class:list={["self-center", "col-span-2 col-start-1 row-span-1 row-start-1", "lg:basis-1/12"]}>
+            <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
+        </div>
+        <div class:list={["col-span-12 row-span-1 row-start-2", "lg:basis-7/12 lg:self-center"]}>
             <div class="text-header__2 mb-6 uppercase">
                 <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
             </div>
@@ -30,23 +29,15 @@ const { class: className, step } = Astro.props;
             </div>
         </div>
         <div
-            data-imgs-container
             class:list={[
-                "relative h-[300px] w-[300px] self-center justify-self-center [&>*]:absolute",
-                "col-span-9 col-start-3 row-span-1 row-start-1",
-                "lg:col-span-5 lg:col-start-8 lg:row-span-1 lg:row-start-1"
+                "w-full self-center justify-self-center ",
+                "col-span-11 col-start-2 row-span-1 row-start-1",
+                "lg:flex lg:basis-4/12 lg:justify-end"
             ]}
         >
-            <slot name="images" />
-        </div>
-        <div
-            class:list={[
-                "self-center",
-                "col-span-3 col-start-1 row-span-1 row-start-1",
-                "lg:col-span-2 lg:col-start-1"
-            ]}
-        >
-            <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
+            <div data-imgs-container class:list={["relative h-[300px] w-full max-w-[400px]  [&>*]:absolute"]}>
+                <slot name="images" />
+            </div>
         </div>
     </div>
 </div>
@@ -95,6 +86,6 @@ const { class: className, step } = Astro.props;
             defaultOptions: { ease: "ease" }
         };
 
-        scroll(timeline(sequence, options), { target: animationContainer, offset: ["25% end", "end end"] });
+        // scroll(timeline(sequence, options), { target: animationContainer, offset: ["25% end", "end end"] });
     });
 </script>

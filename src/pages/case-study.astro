@@ -138,109 +138,112 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 ---
 
 <Layout title="test">
-    <Section class="bg-lilac" step={2}>
-        <Fragment slot="title">STRATEGY & PLANNING</Fragment>
-        <Fragment slot="description">
-            <p>
-                When I understood what I what to represent and whom I’d like to work with, I developed a comprehensive
-                brand strategy.
-            </p>
-            <p>
-                I often use Jung-inspired brand archetypes as guidance. The Lover archetype was chosen deliberately, as
-                it perfectly aligned with the desire to evoke emotions, build connections, and create immersive
-                experiences. Add a bit of The Creator archetype and voilà! That’s me!
-            </p>
-        </Fragment>
-        <Fragment slot="images">
-            {
-                animatedImagesConfig["step-2"].map((animatedImage) => (
-                    <AnimatedImage
-                        src={animatedImage.src}
-                        alt={animatedImage.alt}
-                        width={IMG_SIZE}
-                        height={IMG_SIZE}
-                        data-translation-path={animatedImage.translationPath}
-                        data-rotation-path={animatedImage.rotationPath}
-                    />
-                ))
-            }
-        </Fragment>
-    </Section>
-    <Section class="bg-ice-blue" step={3}>
-        <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
-        <Fragment slot="description">
-            <p>
-                I crafted a unique, hand-drawn logo that featured a whimsical illustration. The cloud represents my
-                dreamy nature, her eyes wide open allow for observing and recognize the omnipresent beauty.
-            </p>
-            <p>
-                The color palette incorporated shades of warm pastels and vibrant accents, infusing the brand with a
-                sense of positivity and approachability. As for typography, I aimed for a playful yet sophisticated
-                feel.
-            </p>
-        </Fragment>
-        <Fragment slot="images">
-            {
-                animatedImagesConfig["step-3"].map((animatedImage) => (
-                    <AnimatedImage
-                        src={animatedImage.src}
-                        alt={animatedImage.alt}
-                        width={IMG_SIZE}
-                        height={IMG_SIZE}
-                        data-translation-path={animatedImage.translationPath}
-                        data-rotation-path={animatedImage.rotationPath}
-                    />
-                ))
-            }
-        </Fragment>
-    </Section>
-    <Section class="bg-tea-green" step={4}>
-        <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
-        <Fragment slot="description">
-            <p>
-                I think about an online portfolio as an opportunity to showcase my style and creativity. Understanding
-                the importance of a compelling online presence, I designed the website to let visitors explore my
-                creative process. I wanted the audience to feel connected and invited to my inner world.
-            </p>
-            <p>
-                As I wanted everyone to enjoy the experience, I paid attention to accessibility issues such as color
-                contrast, readable typography, button size, alt image descriptions etc.
-            </p>
-        </Fragment>
-        <Fragment slot="images">
-            {
-                animatedImagesConfig["step-4"].map((animatedImage) => (
-                    <AnimatedImage
-                        src={animatedImage.src}
-                        alt={animatedImage.alt}
-                        width={IMG_SIZE}
-                        height={IMG_SIZE}
-                        data-translation-path={animatedImage.translationPath}
-                        data-rotation-path={animatedImage.rotationPath}
-                    />
-                ))
-            }
-        </Fragment>
-    </Section>
-    <Section class="bg-volt" step={5}>
-        <Fragment slot="title">Launch and Promotion</Fragment>
-        <Fragment slot="description">
-            Let’s show the world the beauty we’ve crafted together! I will provide you with clear instructions on usage
-            of all of the visual elements for consistency. I will be always here for you in case of doubts or problems.
-        </Fragment>
-        <Fragment slot="images">
-            {
-                animatedImagesConfig["step-5"].map((animatedImage) => (
-                    <AnimatedImage
-                        src={animatedImage.src}
-                        alt={animatedImage.alt}
-                        width={IMG_SIZE}
-                        height={IMG_SIZE}
-                        data-translation-path={animatedImage.translationPath}
-                        data-rotation-path={animatedImage.rotationPath}
-                    />
-                ))
-            }
-        </Fragment>
-    </Section>
+    <div class="overflow-hidden">
+        <Section class="bg-lilac" step={2}>
+            <Fragment slot="title">STRATEGY & PLANNING</Fragment>
+            <Fragment slot="description">
+                <p>
+                    When I understood what I what to represent and whom I’d like to work with, I developed a
+                    comprehensive brand strategy.
+                </p>
+                <p>
+                    I often use Jung-inspired brand archetypes as guidance. The Lover archetype was chosen deliberately,
+                    as it perfectly aligned with the desire to evoke emotions, build connections, and create immersive
+                    experiences. Add a bit of The Creator archetype and voilà! That’s me!
+                </p>
+            </Fragment>
+            <Fragment slot="images">
+                {
+                    animatedImagesConfig["step-2"].map((animatedImage) => (
+                        <AnimatedImage
+                            src={animatedImage.src}
+                            alt={animatedImage.alt}
+                            width={IMG_SIZE}
+                            height={IMG_SIZE}
+                            data-translation-path={animatedImage.translationPath}
+                            data-rotation-path={animatedImage.rotationPath}
+                        />
+                    ))
+                }
+            </Fragment>
+        </Section>
+        <Section class="bg-ice-blue" step={3}>
+            <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
+            <Fragment slot="description">
+                <p>
+                    I crafted a unique, hand-drawn logo that featured a whimsical illustration. The cloud represents my
+                    dreamy nature, her eyes wide open allow for observing and recognize the omnipresent beauty.
+                </p>
+                <p>
+                    The color palette incorporated shades of warm pastels and vibrant accents, infusing the brand with a
+                    sense of positivity and approachability. As for typography, I aimed for a playful yet sophisticated
+                    feel.
+                </p>
+            </Fragment>
+            <Fragment slot="images">
+                {
+                    animatedImagesConfig["step-3"].map((animatedImage) => (
+                        <AnimatedImage
+                            src={animatedImage.src}
+                            alt={animatedImage.alt}
+                            width={IMG_SIZE}
+                            height={IMG_SIZE}
+                            data-translation-path={animatedImage.translationPath}
+                            data-rotation-path={animatedImage.rotationPath}
+                        />
+                    ))
+                }
+            </Fragment>
+        </Section>
+        <Section class="bg-tea-green" step={4}>
+            <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
+            <Fragment slot="description">
+                <p>
+                    I think about an online portfolio as an opportunity to showcase my style and creativity.
+                    Understanding the importance of a compelling online presence, I designed the website to let visitors
+                    explore my creative process. I wanted the audience to feel connected and invited to my inner world.
+                </p>
+                <p>
+                    As I wanted everyone to enjoy the experience, I paid attention to accessibility issues such as color
+                    contrast, readable typography, button size, alt image descriptions etc.
+                </p>
+            </Fragment>
+            <Fragment slot="images">
+                {
+                    animatedImagesConfig["step-4"].map((animatedImage) => (
+                        <AnimatedImage
+                            src={animatedImage.src}
+                            alt={animatedImage.alt}
+                            width={IMG_SIZE}
+                            height={IMG_SIZE}
+                            data-translation-path={animatedImage.translationPath}
+                            data-rotation-path={animatedImage.rotationPath}
+                        />
+                    ))
+                }
+            </Fragment>
+        </Section>
+        <Section class="bg-volt" step={5}>
+            <Fragment slot="title">Launch and Promotion</Fragment>
+            <Fragment slot="description">
+                Let’s show the world the beauty we’ve crafted together! I will provide you with clear instructions on
+                usage of all of the visual elements for consistency. I will be always here for you in case of doubts or
+                problems.
+            </Fragment>
+            <Fragment slot="images">
+                {
+                    animatedImagesConfig["step-5"].map((animatedImage) => (
+                        <AnimatedImage
+                            src={animatedImage.src}
+                            alt={animatedImage.alt}
+                            width={IMG_SIZE}
+                            height={IMG_SIZE}
+                            data-translation-path={animatedImage.translationPath}
+                            data-rotation-path={animatedImage.rotationPath}
+                        />
+                    ))
+                }
+            </Fragment>
+        </Section>
+    </div>
 </Layout>
