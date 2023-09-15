@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { zip } from "@utils/zip";
 import Layout from "../layouts/Layout.astro";
 
 import compass from "@assets/case-study/2.1.compass.png";
@@ -27,16 +28,17 @@ const IMG_SIZE = 500;
     <Section class="bg-lilac">
         <Fragment slot="images">
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-1, -1],
                     [-20, 3],
                     [30, 0]
                 ]}
+                data-rotation-path={[1, 2]}
             >
                 <Image src={compass} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-4, 4],
                     [-8, -4],
                     [-12, -2]
@@ -44,7 +46,7 @@ const IMG_SIZE = 500;
             >
                 <Image src={map} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
-            <AnimatedImage data-animation-path={[[15, 30]]}>
+            <AnimatedImage data-translation-path={[[15, 30]]}>
                 <Image src={hand} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
         </Fragment>
@@ -52,7 +54,7 @@ const IMG_SIZE = 500;
     <Section class="bg-ice-blue">
         <Fragment slot="images">
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-1, -1],
                     [-20, 3],
                     [30, 0]
@@ -61,7 +63,7 @@ const IMG_SIZE = 500;
                 <Image src={cloud} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-4, 4],
                     [-8, -4],
                     [-12, -2]
@@ -69,7 +71,7 @@ const IMG_SIZE = 500;
             >
                 <Image src={heart} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
-            <AnimatedImage data-animation-path={[[15, 30]]}>
+            <AnimatedImage data-translation-path={[[15, 30]]}>
                 <Image src={pencil} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
         </Fragment>
@@ -77,7 +79,7 @@ const IMG_SIZE = 500;
     <Section class="bg-tea-green">
         <Fragment slot="images">
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-1, -1],
                     [-20, 3],
                     [30, 0]
@@ -86,7 +88,7 @@ const IMG_SIZE = 500;
                 <Image src={pointer} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     [-4, 4],
                     [-8, -4],
                     [-12, -2]
@@ -94,7 +96,7 @@ const IMG_SIZE = 500;
             >
                 <Image src={browser} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
-            <AnimatedImage data-animation-path={[[15, 30]]}>
+            <AnimatedImage data-translation-path={[[15, 30]]}>
                 <Image src={heart2} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
         </Fragment>
@@ -102,20 +104,22 @@ const IMG_SIZE = 500;
     <Section class="bg-volt">
         <Fragment slot="images">
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     // [-1, -1],
                     // [-20, 3],
                     // [30, 0]
                 ]}
+                data-rotation-path={[10, 20, 30]}
             >
                 <Image src={megaphone} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
             <AnimatedImage
-                data-animation-path={[
+                data-translation-path={[
                     // [-4, 4],
                     // [-8, -4],
                     // [-12, -2]
                 ]}
+                data-rotation-path={[10, 20, 30]}
             >
                 <Image src={stars} alt="" width={IMG_SIZE} height={IMG_SIZE} />
             </AnimatedImage>
@@ -125,7 +129,8 @@ const IMG_SIZE = 500;
 
 <script>
     import { scroll, timeline, type TimelineDefinition } from "motion";
-    import type { AnimationPathType } from "@components/CaseStudy/AnimatedImage.astro";
+    import type { TranslationPathType, RotationPathType } from "@components/CaseStudy/AnimatedImage.astro";
+    import { zip } from "@utils/zip";
 
     const animationContainers = document.querySelectorAll(
         "[data-scroll-animation-container]"
@@ -133,24 +138,33 @@ const IMG_SIZE = 500;
 
     // animate all sections' imgs on scroll by animation path
     animationContainers.forEach((animationContainer) => {
-        const animationPathDataElements = Array.from(
-            animationContainer.querySelectorAll("[data-animation-path]") as NodeListOf<HTMLElement>
+        const imageAnimationContainers = Array.from(
+            animationContainer.querySelectorAll(
+                "[data-translation-path],[data-rotation-path]"
+            ) as NodeListOf<HTMLElement>
         );
 
-        const sequence = animationPathDataElements.map((animationPathDataElement) => {
-            const animationPath = JSON.parse(
-                animationPathDataElement.dataset.animationPath ?? "[]"
-            ) as AnimationPathType;
+        const sequence = imageAnimationContainers.map((imageAnimationContainer) => {
+            const translationPath = JSON.parse(
+                imageAnimationContainer.dataset.translationPath ?? "[]"
+            ) as TranslationPathType;
 
-            const pathsToAnimationMapped = animationPath.map(
-                (nextPostion) => `translate(${nextPostion[0]}%, ${nextPostion[1]}%)`
+            const rotationPath = JSON.parse(imageAnimationContainer.dataset.rotationPath ?? "[]") as RotationPathType;
+
+            const aimationsMapped = zip(
+                translationPath,
+                rotationPath,
+                (translationElement, rotationElement): string => {
+                    const translationString = translationElement
+                        ? `translate(${translationElement[0]}%, ${translationElement[1]}%)`
+                        : "";
+                    const rotationString = rotationElement !== undefined ? `rotate(${rotationElement}deg)` : "";
+
+                    return [translationString, rotationString].filter(Boolean).join(",");
+                }
             );
 
-            return [
-                animationPathDataElement,
-                { transform: ["translate(0, 0)", ...pathsToAnimationMapped] },
-                { at: "<" }
-            ];
+            return [imageAnimationContainer, { transform: ["translate(0, 0)", ...aimationsMapped] }, { at: "<" }];
         }) satisfies TimelineDefinition;
 
         const options = {

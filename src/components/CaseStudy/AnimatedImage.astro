@@ -1,13 +1,16 @@
 ---
-export type AnimationPathType = Array<[number, number] | string>;
+export type TranslationPathType = Array<[number, number]>;
+export type RotationPathType = Array<number>;
 
 interface Props {
-    "data-animation-path": AnimationPathType;
+    "data-translation-path"?: TranslationPathType;
+    "data-rotation-path"?: RotationPathType;
 }
 
 const props = {
     ...Astro.props,
-    "data-animation-path": JSON.stringify(Astro.props["data-animation-path"])
+    "data-translation-path": JSON.stringify(Astro.props["data-translation-path"]),
+    "data-rotation-path": JSON.stringify(Astro.props["data-rotation-path"])
 };
 ---
 

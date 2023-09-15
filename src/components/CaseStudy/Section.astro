@@ -6,7 +6,13 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div data-scroll-animation-container class:list={["h-screen", className]}>
+<div data-scroll-animation-container class:list={["h-screen text-dark-chocolate", className]}>
+    <div class="text-header__2">
+        <slot name="title" />
+    </div>
+    <div class="text-paragraph__normal">
+        <slot name="description" />
+    </div>
     <div data-imgs-container class="relative [&>*]:absolute">
         <slot name="images" />
     </div>
