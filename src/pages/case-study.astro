@@ -19,110 +19,187 @@ import megaphone from "@assets/case-study/5.1.megaphone.png";
 import stars from "@assets/case-study/5.2.stars.png";
 
 import Section from "@components/CaseStudy/Section.astro";
-import AnimatedImage from "@components/CaseStudy/AnimatedImage.astro";
+import AnimatedImage, {
+    type RotationPathType,
+    type TranslationPathType
+} from "@components/CaseStudy/AnimatedImage.astro";
+
+interface AnimatedImagesConfigType {
+    [key: string]: {
+        translationPath: TranslationPathType;
+        rotationPath: RotationPathType;
+        alt: string;
+        src: ImageMetadata;
+    }[];
+}
 
 const IMG_SIZE = 500;
+
+const animatedImagesConfig: AnimatedImagesConfigType = {
+    "step-2": [
+        {
+            translationPath: [
+                [-1, -1],
+                [-20, 3],
+                [30, 0]
+            ],
+            rotationPath: [1, 2],
+            alt: "",
+            src: compass
+        },
+        {
+            translationPath: [
+                [-4, 4],
+                [-8, -4],
+                [-12, -2]
+            ],
+            rotationPath: [],
+            alt: "",
+            src: map
+        },
+        {
+            translationPath: [[15, 30]],
+            rotationPath: [],
+            alt: "",
+            src: hand
+        }
+    ],
+    "step-3": [
+        {
+            translationPath: [
+                [-1, -1],
+                [-20, 3],
+                [30, 0]
+            ],
+            rotationPath: [1, 2],
+            alt: "",
+            src: cloud
+        },
+        {
+            translationPath: [
+                [-4, 4],
+                [-8, -4],
+                [-12, -2]
+            ],
+            rotationPath: [],
+            alt: "",
+            src: heart
+        },
+        {
+            translationPath: [[15, 30]],
+            rotationPath: [],
+            alt: "",
+            src: pencil
+        }
+    ],
+    "step-4": [
+        {
+            translationPath: [
+                [-1, -1],
+                [-20, 3],
+                [30, 0]
+            ],
+            rotationPath: [],
+            alt: "",
+            src: pointer
+        },
+        {
+            translationPath: [
+                [-4, 4],
+                [-8, -4],
+                [-12, -2]
+            ],
+            rotationPath: [],
+            alt: "",
+            src: browser
+        },
+        {
+            translationPath: [[15, 30]],
+            rotationPath: [],
+            alt: "",
+            src: heart2
+        }
+    ],
+    "step-5": [
+        {
+            translationPath: [],
+            rotationPath: [10, 20, 30],
+            alt: "",
+            src: megaphone
+        },
+        {
+            translationPath: [],
+            rotationPath: [10, 20, 30],
+            alt: "",
+            src: stars
+        }
+    ]
+};
 ---
 
 <Layout title="test">
     <Section class="bg-lilac">
         <Fragment slot="images">
-            <AnimatedImage
-                data-translation-path={[
-                    [-1, -1],
-                    [-20, 3],
-                    [30, 0]
-                ]}
-                data-rotation-path={[1, 2]}
-            >
-                <Image src={compass} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage
-                data-translation-path={[
-                    [-4, 4],
-                    [-8, -4],
-                    [-12, -2]
-                ]}
-            >
-                <Image src={map} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage data-translation-path={[[15, 30]]}>
-                <Image src={hand} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
+            {
+                animatedImagesConfig["step-2"].map((animatedImage) => (
+                    <AnimatedImage
+                        src={animatedImage.src}
+                        alt={animatedImage.alt}
+                        width={IMG_SIZE}
+                        height={IMG_SIZE}
+                        data-translation-path={animatedImage.translationPath}
+                        data-rotation-path={animatedImage.rotationPath}
+                    />
+                ))
+            }
         </Fragment>
     </Section>
     <Section class="bg-ice-blue">
         <Fragment slot="images">
-            <AnimatedImage
-                data-translation-path={[
-                    [-1, -1],
-                    [-20, 3],
-                    [30, 0]
-                ]}
-            >
-                <Image src={cloud} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage
-                data-translation-path={[
-                    [-4, 4],
-                    [-8, -4],
-                    [-12, -2]
-                ]}
-            >
-                <Image src={heart} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage data-translation-path={[[15, 30]]}>
-                <Image src={pencil} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
+            {
+                animatedImagesConfig["step-3"].map((animatedImage) => (
+                    <AnimatedImage
+                        src={animatedImage.src}
+                        alt={animatedImage.alt}
+                        width={IMG_SIZE}
+                        height={IMG_SIZE}
+                        data-translation-path={animatedImage.translationPath}
+                        data-rotation-path={animatedImage.rotationPath}
+                    />
+                ))
+            }
         </Fragment>
     </Section>
     <Section class="bg-tea-green">
         <Fragment slot="images">
-            <AnimatedImage
-                data-translation-path={[
-                    [-1, -1],
-                    [-20, 3],
-                    [30, 0]
-                ]}
-            >
-                <Image src={pointer} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage
-                data-translation-path={[
-                    [-4, 4],
-                    [-8, -4],
-                    [-12, -2]
-                ]}
-            >
-                <Image src={browser} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage data-translation-path={[[15, 30]]}>
-                <Image src={heart2} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
+            {
+                animatedImagesConfig["step-4"].map((animatedImage) => (
+                    <AnimatedImage
+                        src={animatedImage.src}
+                        alt={animatedImage.alt}
+                        width={IMG_SIZE}
+                        height={IMG_SIZE}
+                        data-translation-path={animatedImage.translationPath}
+                        data-rotation-path={animatedImage.rotationPath}
+                    />
+                ))
+            }
         </Fragment>
     </Section>
     <Section class="bg-volt">
         <Fragment slot="images">
-            <AnimatedImage
-                data-translation-path={[
-                    // [-1, -1],
-                    // [-20, 3],
-                    // [30, 0]
-                ]}
-                data-rotation-path={[10, 20, 30]}
-            >
-                <Image src={megaphone} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
-            <AnimatedImage
-                data-translation-path={[
-                    // [-4, 4],
-                    // [-8, -4],
-                    // [-12, -2]
-                ]}
-                data-rotation-path={[10, 20, 30]}
-            >
-                <Image src={stars} alt="" width={IMG_SIZE} height={IMG_SIZE} />
-            </AnimatedImage>
+            {
+                animatedImagesConfig["step-5"].map((animatedImage) => (
+                    <AnimatedImage
+                        src={animatedImage.src}
+                        alt={animatedImage.alt}
+                        width={IMG_SIZE}
+                        height={IMG_SIZE}
+                        data-translation-path={animatedImage.translationPath}
+                        data-rotation-path={animatedImage.rotationPath}
+                    />
+                ))
+            }
         </Fragment>
     </Section>
 </Layout>
