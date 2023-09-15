@@ -11,8 +11,13 @@ const { class: className, step } = Astro.props;
 ---
 
 <div data-scroll-animation-container class:list={["h-screen text-dark-chocolate", className]}>
-    <div class="grid grid-cols-6 grid-rows-2 gap-y-4">
-        <div class="col-span-6 row-span-1 row-start-2">
+    <div class:list={["grid h-full grid-cols-12 grid-rows-2", "gap-y-4", "lg:grid-rows-none lg:gap-y-0"]}>
+        <div
+            class:list={[
+                "col-span-12 row-span-1 row-start-2",
+                "lg:col-span-6 lg:col-start-2 lg:row-span-1 lg:row-start-1 lg:self-center"
+            ]}
+        >
             <div class="text-header__2">
                 <slot name="title" />
             </div>
@@ -22,11 +27,21 @@ const { class: className, step } = Astro.props;
         </div>
         <div
             data-imgs-container
-            class="relative col-span-4 col-start-2 row-span-1 row-start-1 h-[130px] w-[130px] self-center justify-self-center [&>*]:absolute"
+            class:list={[
+                "relative h-[300px] w-[300px] self-center justify-self-center [&>*]:absolute",
+                "col-span-9 col-start-3 row-span-1 row-start-1",
+                "lg:col-span-5 lg:col-start-8 lg:row-span-1 lg:row-start-1"
+            ]}
         >
             <slot name="images" />
         </div>
-        <div class="col-span-1 row-span-1 row-start-1 self-center">
+        <div
+            class:list={[
+                "self-center",
+                "col-span-3 col-start-1 row-span-1 row-start-1",
+                "lg:col-span-2 lg:col-start-1"
+            ]}
+        >
             <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
         </div>
     </div>
