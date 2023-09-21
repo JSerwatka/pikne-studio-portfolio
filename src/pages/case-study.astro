@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import headTop from "@assets/case-study/1.1.head_top.png";
+import headEmpty from "@assets/case-study/1.2.head_empty.png";
+import flowers from "@assets/case-study/1.3.flowers.png";
+import headBg from "@assets/case-study/1.4.head_bg.png";
+
 import compass from "@assets/case-study/2.1.compass.png";
 import map from "@assets/case-study/2.2.map.png";
 import hand from "@assets/case-study/2.3.hand.png";
@@ -34,6 +39,28 @@ interface AnimatedImagesConfigType {
 const IMG_SIZE = 500;
 
 const animatedImagesConfig: AnimatedImagesConfigType = {
+    "step-1": [
+        {
+            translationPath: [[0, 10]],
+            alt: "",
+            src: headBg
+        },
+        {
+            translationPath: [[0, -5]],
+            alt: "",
+            src: flowers
+        },
+        {
+            translationPath: [[0, 10]],
+            alt: "",
+            src: headEmpty
+        },
+        {
+            translationPath: [[0, -15]],
+            alt: "",
+            src: headTop
+        }
+    ],
     "step-2": [
         {
             translationPath: [[-10, -10]],
@@ -106,6 +133,35 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 <Layout title="test">
     <div class="overflow-hidden">
         <div class="h-screen"></div>
+        <Section step={1}>
+            <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
+            <Fragment slot="description">
+                <p>
+                    In the initial stages of the project, I embarked on a journey of self-discovery. Through
+                    introspection and market research, I defined the brand by its core values, mission, tone of voice
+                    etc.
+                </p>
+                <p>
+                    The goal was to create a brand that authentically reflects my passion for psychology, art and design
+                    while resonating with a target audience who seeks inspiration and support in creating their
+                    identity.
+                </p>
+            </Fragment>
+            <Fragment slot="images">
+                {
+                    animatedImagesConfig["step-1"].map((animatedImage) => (
+                        <AnimatedImage
+                            src={animatedImage.src}
+                            alt={animatedImage.alt}
+                            width={IMG_SIZE}
+                            height={IMG_SIZE}
+                            data-translation-path={animatedImage.translationPath}
+                            data-rotation-path={animatedImage.rotationPath}
+                        />
+                    ))
+                }
+            </Fragment>
+        </Section>
         <Section class="bg-lilac" step={2}>
             <Fragment slot="title">STRATEGY & PLANNING</Fragment>
             <Fragment slot="description">
