@@ -63,18 +63,19 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     ],
     "step-2": [
         {
-            translationPath: [[-10, -10]],
+            translationPath: [[5, -10]],
             alt: "",
             src: map
         },
         {
-            translationPath: [[-10, -5]],
-            rotationPath: [-30],
+            translationPath: [[-10, 5]],
+            rotationPath: [-20],
             alt: "",
             src: compass
         },
         {
-            rotationPath: [30],
+            translationPath: [[10, -10]],
+            rotationPath: [20],
             alt: "",
             src: hand
         }
@@ -133,6 +134,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 
 <Layout title="test">
     <div class="overflow-hidden">
+        <div class="h-screen bg-slate-400"></div>
         <Section step={1}>
             <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
             <Fragment slot="description">
