@@ -1,0 +1,34 @@
+---
+interface Props {
+    class?: string;
+    step: number;
+}
+
+const { class: className, step } = Astro.props;
+---
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="8"
+    height="73"
+    viewBox="0 0 8 73"
+    fill="none"
+    class:list={[className]}
+    data-step={step}
+>
+    <circle opacity="0.5" cx="4" cy="4.73535" r="3.5"></circle>
+    <circle opacity="0.5" cx="4" cy="20.7354" r="3.5"></circle>
+    <circle opacity="0.5" cx="4" cy="36.7354" r="3.5"></circle>
+    <circle opacity="0.5" cx="4" cy="52.7354" r="3.5"></circle>
+    <circle opacity="0.5" cx="4" cy="68.7354" r="3.5"></circle>
+</svg>
+
+<script>
+    const stepperElements = document.querySelectorAll("[data-step]") as NodeListOf<HTMLElement>;
+
+    stepperElements.forEach((stepper) => {
+        const stepValue = stepper.dataset.step;
+        const currentCircle = stepper.querySelector(`circle:nth-child(${stepValue})`) as HTMLElement;
+        currentCircle.classList.toggle("fill-dark-chocolate");
+    });
+</script>

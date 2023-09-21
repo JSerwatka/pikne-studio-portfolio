@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+
+export type TranslationPathType = Array<[number, number]>;
+export type RotationPathType = Array<number>;
+
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+    width: number;
+    height: number;
+    "data-translation-path"?: TranslationPathType;
+    "data-rotation-path"?: RotationPathType;
+}
+
+const { src, alt, width, height, ...animationProps } = {
+    ...Astro.props,
+    "data-translation-path": JSON.stringify(Astro.props["data-translation-path"]),
+    "data-rotation-path": JSON.stringify(Astro.props["data-rotation-path"])
+};
+---
+
+<div {...animationProps}>
+    <Image src={src} alt={alt} width={width} height={height} />
+</div>

@@ -1,0 +1,102 @@
+---
+import Stepper from "./Stepper.astro";
+
+interface Props {
+    class?: string;
+    step: number;
+}
+
+const { class: className, step } = Astro.props;
+// TODO: adjust img sizes on screens
+---
+
+<div
+    data-scroll-animation-container
+    class:list={["min-h-screen text-dark-chocolate", "p-4", "sm:p-16", "lg:flex lg:items-center lg:pr-0", className]}
+>
+    <div
+        class:list={[
+            "flex h-full",
+            "order-1 flex-wrap",
+            "min-[350px]:gap-y-10",
+            "min-[380px]:gap-y-28",
+            "lg:order-1 lg:flex-nowrap lg:gap-x-5 lg:gap-y-0"
+        ]}
+    >
+        <div class:list={["self-center", "basis-1/12", "lg:flex-shrink-[15] lg:basis-1/12"]}>
+            <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
+        </div>
+        <div class:list={["order-3 basis-full", "lg:order-2 lg:flex-shrink-[1] lg:basis-7/12 lg:self-center"]}>
+            <div class="text-header__2 mb-6 uppercase">
+                <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
+            </div>
+            <div class="text-paragraph__normal [&>*:not(:last-child)]:mb-8">
+                <slot name="description" />
+            </div>
+        </div>
+        <div
+            class:list={[
+                "flex w-full self-center justify-self-center ",
+                "order-2 basis-11/12",
+                "lg:order-3 lg:flex lg:flex-shrink-[3]  lg:grow lg:basis-[400px] lg:justify-center"
+            ]}
+        >
+            <div
+                data-imgs-container
+                class:list={[
+                    "relative mx-auto h-[250px] w-full max-w-[400px] lg:mx-10 [&>*]:absolute [&>*]:origin-center"
+                ]}
+            >
+                <slot name="images" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { scroll, timeline, type TimelineDefinition } from "motion";
+    import type { TranslationPathType, RotationPathType } from "@components/CaseStudy/AnimatedImage.astro";
+    import { zip } from "@utils/zip";
+
+    const animationContainers = document.querySelectorAll(
+        "[data-scroll-animation-container]"
+    ) as NodeListOf<HTMLElement>;
+
+    // animate all sections' imgs on scroll by animation path
+    animationContainers.forEach((animationContainer) => {
+        const imageAnimationContainers = Array.from(
+            animationContainer.querySelectorAll(
+                "[data-translation-path],[data-rotation-path]"
+            ) as NodeListOf<HTMLElement>
+        );
+
+        const sequence = imageAnimationContainers.map((imageAnimationContainer) => {
+            const translationPath = JSON.parse(
+                imageAnimationContainer.dataset.translationPath ?? "[]"
+            ) as TranslationPathType;
+
+            const rotationPath = JSON.parse(imageAnimationContainer.dataset.rotationPath ?? "[]") as RotationPathType;
+
+            const animationsMapped = zip(
+                translationPath,
+                rotationPath,
+                (translationElement, rotationElement): string => {
+                    const translationString = translationElement
+                        ? `translate(${translationElement[0]}%, ${translationElement[1]}%)`
+                        : "";
+                    const rotationString = rotationElement !== undefined ? `rotate(${rotationElement}deg)` : "";
+
+                    return [translationString, rotationString].filter(Boolean).join(" ");
+                }
+            );
+
+            return [imageAnimationContainer, { transform: ["translate(0, 0)", ...animationsMapped] }, { at: "<" }];
+        }) satisfies TimelineDefinition;
+
+        const options = {
+            defaultOptions: { ease: "linear" }
+        };
+
+        scroll(timeline(sequence, options), { target: animationContainer, offset: ["60% end", "end end"] });
+    });
+</script>
