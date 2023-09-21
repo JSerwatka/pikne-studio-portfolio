@@ -68,7 +68,8 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
             src: map
         },
         {
-            translationPath: [[0, -20]],
+            translationPath: [[-10, -5]],
+            rotationPath: [-30],
             alt: "",
             src: compass
         },
@@ -80,17 +81,17 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     ],
     "step-3": [
         {
-            translationPath: [[0, -15]],
+            translationPath: [[0, -5]],
             alt: "",
             src: cloud
         },
         {
-            translationPath: [[10, -20]],
+            translationPath: [[10, -10]],
             alt: "",
             src: heart
         },
         {
-            translationPath: [[0, -5]],
+            translationPath: [[0, 10]],
             rotationPath: [-20],
             alt: "",
             src: pencil
@@ -132,7 +133,6 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 
 <Layout title="test">
     <div class="overflow-hidden">
-        <div class="h-screen"></div>
         <Section step={1}>
             <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
             <Fragment slot="description">
