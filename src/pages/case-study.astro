@@ -56,28 +56,20 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     ],
     "step-3": [
         {
-            translationPath: [
-                [-1, -1],
-                [-20, 3],
-                [30, 0]
-            ],
-            rotationPath: [1, 2],
+            translationPath: [[0, -15]],
+            rotationPath: [],
             alt: "",
             src: cloud
         },
         {
-            translationPath: [
-                [-4, 4],
-                [-8, -4],
-                [-12, -2]
-            ],
+            translationPath: [[10, -20]],
             rotationPath: [],
             alt: "",
             src: heart
         },
         {
-            translationPath: [[15, 30]],
-            rotationPath: [],
+            translationPath: [[0, -5]],
+            rotationPath: [-20],
             alt: "",
             src: pencil
         }
@@ -158,7 +150,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
-        <!-- <Section class="bg-ice-blue" step={3}>
+        <Section class="bg-ice-blue" step={3}>
             <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
             <Fragment slot="description">
                 <p>
@@ -186,6 +178,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
+        <!-- 
         <Section class="bg-tea-green" step={4}>
             <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
             <Fragment slot="description">
