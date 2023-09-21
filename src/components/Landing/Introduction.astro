@@ -7,15 +7,15 @@ import { Image } from "astro:assets";
 
 <div
     class:list={[
-        "flex  min-h-screen items-center overflow-x-hidden bg-blue-100",
+        "flex min-h-screen items-center overflow-x-hidden bg-blue-100",
         "py-20 ",
         "px-6",
         "md:px-14",
-        "lg:overflow-visible"
+        "xl:overflow-visible"
     ]}
 >
-    <div class:list={["relative"]} class="">
-        <div class:list={["relative z-20", "lg:ml-auto lg:max-w-[50%]"]}>
+    <div class:list={["relative"]}>
+        <div class:list={["relative z-20", "xl:ml-auto xl:max-w-[50%]"]}>
             <div class="text-paragraph__normal">What do i do</div>
             <div class="text-header__2 my-10">
                 <div class="mb-10">
@@ -28,10 +28,11 @@ import { Image } from "astro:assets";
             </div>
             <a role="button" data-contact-button class="btn-primary" href="#contact">
                 Contact me
+                <!-- TODO shouldn't I use ArrowIcon component? -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="17"
+                    width="16px"
+                    height="17px"
                     viewBox="0 0 16 17"
                     class="ml-2 inline-block fill-ruby-red"
                 >
@@ -41,16 +42,17 @@ import { Image } from "astro:assets";
                 </svg>
             </a>
         </div>
-        <div class:list={["mt-[60vw] ", "lg:mt-0"]}>
+        <div class:list={["mt-[65vw] md:mt-[550px] md:flex md:justify-end  [&>*]:transition-opacity", "xl:mt-0"]}>
             <Image
                 src={aleksandraThinking}
                 alt="me squatting and thinking, red doodles around me"
                 class:list={[
-                    "absolute bottom-0 z-10 translate-x-[5%]",
-                    "lg:left-0 lg:w-[60%] lg:max-w-[1000px] lg:translate-x-0 lg:object-contain "
+                    "absolute bottom-0 z-10",
+                    "scale-x-[-1]",
+                    "md:max-w-[800px]",
+                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain"
                 ]}
                 loading="eager"
-                quality="min"
                 data-default-image
             />
 
@@ -58,12 +60,13 @@ import { Image } from "astro:assets";
                 src={aleksandraConfetti}
                 alt="me exited with arms raised and a big smile, throwing confetti"
                 class:list={[
-                    "hidden",
-                    "absolute bottom-0 z-10 translate-x-[5%]",
-                    "lg:left-0 lg:w-[60%] lg:max-w-[1000px] lg:translate-x-0 lg:object-contain "
+                    "opacity-0",
+                    "absolute bottom-0 z-10",
+                    "scale-x-[-1]",
+                    "md:max-w-[800px]",
+                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain"
                 ]}
                 loading="lazy"
-                quality="min"
                 data-hidden-image
             />
         </div>
@@ -73,15 +76,24 @@ import { Image } from "astro:assets";
 <script>
     const defaultImage = document.querySelector("[data-default-image]") as HTMLImageElement;
     const hiddenImage = document.querySelector("[data-hidden-image]") as HTMLImageElement;
-    const contactButton = document.querySelector("[data-contact-button]") as HTMLImageElement;
+    const contactButton = document.querySelector("[data-contact-button]") as HTMLAnchorElement;
 
-    contactButton.addEventListener("mouseenter", (e) => {
-        hiddenImage.classList.toggle("hidden", false);
-        defaultImage.classList.toggle("hidden", true);
-    });
+    // show animation and then scroll to the href
+    contactButton.addEventListener("click", (e: MouseEvent) => {
+        e.preventDefault();
 
-    contactButton.addEventListener("mouseleave", (e) => {
-        hiddenImage.classList.toggle("hidden", true);
-        defaultImage.classList.toggle("hidden", false);
+        hiddenImage.classList.remove("opacity-0");
+        defaultImage.classList.add("opacity-0");
+
+        const href = contactButton.getAttribute("href") ?? "#contact";
+
+        setTimeout(function () {
+            window.location.href = href;
+        }, 500);
+
+        setTimeout(function () {
+            hiddenImage.classList.add("opacity-0");
+            defaultImage.classList.remove("opacity-0");
+        }, 700);
     });
 </script>
