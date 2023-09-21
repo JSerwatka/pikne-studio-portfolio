@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import { zip } from "@utils/zip";
 import Layout from "../layouts/Layout.astro";
 
 import compass from "@assets/case-study/2.1.compass.png";
@@ -38,28 +36,20 @@ const IMG_SIZE = 500;
 const animatedImagesConfig: AnimatedImagesConfigType = {
     "step-2": [
         {
-            translationPath: [
-                [-1, -1],
-                [-20, 3],
-                [30, 0]
-            ],
-            rotationPath: [1, 2],
-            alt: "",
-            src: compass
-        },
-        {
-            translationPath: [
-                [-4, 4],
-                [-8, -4],
-                [-12, -2]
-            ],
+            translationPath: [[-10, -10]],
             rotationPath: [],
             alt: "",
             src: map
         },
         {
-            translationPath: [[15, 30]],
+            translationPath: [[0, -20]],
             rotationPath: [],
+            alt: "",
+            src: compass
+        },
+        {
+            translationPath: [],
+            rotationPath: [30],
             alt: "",
             src: hand
         }
@@ -139,6 +129,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 
 <Layout title="test">
     <div class="overflow-hidden">
+        <div class="h-screen"></div>
         <Section class="bg-lilac" step={2}>
             <Fragment slot="title">STRATEGY & PLANNING</Fragment>
             <Fragment slot="description">
@@ -167,7 +158,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
-        <Section class="bg-ice-blue" step={3}>
+        <!-- <Section class="bg-ice-blue" step={3}>
             <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
             <Fragment slot="description">
                 <p>
@@ -244,6 +235,6 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                     ))
                 }
             </Fragment>
-        </Section>
+        </Section> -->
     </div>
 </Layout>
