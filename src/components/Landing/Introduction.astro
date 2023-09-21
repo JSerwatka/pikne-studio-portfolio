@@ -11,11 +11,11 @@ import { Image } from "astro:assets";
         "py-20 ",
         "px-6",
         "md:px-14",
-        "lg:overflow-visible"
+        "xl:overflow-visible"
     ]}
 >
     <div class:list={["relative"]} class="">
-        <div class:list={["relative z-20", "lg:ml-auto lg:max-w-[50%]"]}>
+        <div class:list={["relative z-20", "xl:ml-auto xl:max-w-[50%]"]}>
             <div class="text-paragraph__normal">What do i do</div>
             <div class="text-header__2 my-10">
                 <div class="mb-10">
@@ -41,16 +41,16 @@ import { Image } from "astro:assets";
                 </svg>
             </a>
         </div>
-        <div class:list={["mt-[60vw] ", "lg:mt-0"]}>
+        <div class:list={["mt-[65vw] [&>*]:transition-opacity", "xl:mt-0"]}>
             <Image
                 src={aleksandraThinking}
                 alt="me squatting and thinking, red doodles around me"
                 class:list={[
-                    "absolute bottom-0 z-10 translate-x-[5%]",
-                    "lg:left-0 lg:w-[60%] lg:max-w-[1000px] lg:translate-x-0 lg:object-contain "
+                    "absolute bottom-0 z-10",
+                    "scale-x-[-1]",
+                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain "
                 ]}
                 loading="eager"
-                quality="min"
                 data-default-image
             />
 
@@ -58,12 +58,12 @@ import { Image } from "astro:assets";
                 src={aleksandraConfetti}
                 alt="me exited with arms raised and a big smile, throwing confetti"
                 class:list={[
-                    "hidden",
-                    "absolute bottom-0 z-10 translate-x-[5%]",
-                    "lg:left-0 lg:w-[60%] lg:max-w-[1000px] lg:translate-x-0 lg:object-contain "
+                    "opacity-0",
+                    "absolute bottom-0 z-10",
+                    "scale-x-[-1]",
+                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain "
                 ]}
                 loading="lazy"
-                quality="min"
                 data-hidden-image
             />
         </div>
@@ -76,12 +76,12 @@ import { Image } from "astro:assets";
     const contactButton = document.querySelector("[data-contact-button]") as HTMLImageElement;
 
     contactButton.addEventListener("mouseenter", (e) => {
-        hiddenImage.classList.toggle("hidden", false);
-        defaultImage.classList.toggle("hidden", true);
+        hiddenImage.classList.toggle("opacity-0", false);
+        defaultImage.classList.toggle("opacity-0", true);
     });
 
     contactButton.addEventListener("mouseleave", (e) => {
-        hiddenImage.classList.toggle("hidden", true);
-        defaultImage.classList.toggle("hidden", false);
+        hiddenImage.classList.toggle("opacity-0", true);
+        defaultImage.classList.toggle("opacity-0", false);
     });
 </script>
