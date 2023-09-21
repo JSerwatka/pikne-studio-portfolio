@@ -24,8 +24,8 @@ import AnimatedImage, {
 
 interface AnimatedImagesConfigType {
     [key: string]: {
-        translationPath: TranslationPathType;
-        rotationPath: RotationPathType;
+        translationPath?: TranslationPathType;
+        rotationPath?: RotationPathType;
         alt: string;
         src: ImageMetadata;
     }[];
@@ -37,18 +37,15 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     "step-2": [
         {
             translationPath: [[-10, -10]],
-            rotationPath: [],
             alt: "",
             src: map
         },
         {
             translationPath: [[0, -20]],
-            rotationPath: [],
             alt: "",
             src: compass
         },
         {
-            translationPath: [],
             rotationPath: [30],
             alt: "",
             src: hand
@@ -57,13 +54,11 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     "step-3": [
         {
             translationPath: [[0, -15]],
-            rotationPath: [],
             alt: "",
             src: cloud
         },
         {
             translationPath: [[10, -20]],
-            rotationPath: [],
             alt: "",
             src: heart
         },
@@ -77,13 +72,11 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     "step-4": [
         {
             translationPath: [[0, -15]],
-            rotationPath: [],
             alt: "",
             src: browser
         },
         {
             translationPath: [[-30, 3]],
-            rotationPath: [],
             alt: "",
             src: pointer
         },
@@ -96,7 +89,6 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     ],
     "step-5": [
         {
-            translationPath: [],
             rotationPath: [20],
             alt: "",
             src: megaphone
