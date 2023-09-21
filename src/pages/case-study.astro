@@ -76,28 +76,20 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
     ],
     "step-4": [
         {
-            translationPath: [
-                [-1, -1],
-                [-20, 3],
-                [30, 0]
-            ],
-            rotationPath: [],
-            alt: "",
-            src: pointer
-        },
-        {
-            translationPath: [
-                [-4, 4],
-                [-8, -4],
-                [-12, -2]
-            ],
+            translationPath: [[0, -15]],
             rotationPath: [],
             alt: "",
             src: browser
         },
         {
-            translationPath: [[15, 30]],
+            translationPath: [[-30, 3]],
             rotationPath: [],
+            alt: "",
+            src: pointer
+        },
+        {
+            translationPath: [[-10, 0]],
+            rotationPath: [-25],
             alt: "",
             src: heart2
         }
@@ -178,7 +170,6 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
-        <!-- 
         <Section class="bg-tea-green" step={4}>
             <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
             <Fragment slot="description">
@@ -207,6 +198,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
+        <!-- 
         <Section class="bg-volt" step={5}>
             <Fragment slot="title">Launch and Promotion</Fragment>
             <Fragment slot="description">
