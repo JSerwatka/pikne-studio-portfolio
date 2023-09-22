@@ -37,14 +37,22 @@ import "@fontsource/metropolis/400.css";
     }
     @font-face {
         font-family: "AlexangDisplay";
-        src: url("/fonts/AlexangDisplay.ttf");
+        src:
+            local("Alexang Display Regular"),
+            local("Alexang Display"),
+            local("AlexangDisplay"),
+            url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
+            url("/fonts/AlexangDisplay-Regular.woff") format("woff");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
         font-family: "OlympicLight";
-        src: url("/fonts/OlympicLight.woff") format("woff");
+        src:
+            local("Olympic Light"),
+            local("Olympic"),
+            url("/fonts/OlympicLight.woff") format("woff");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
