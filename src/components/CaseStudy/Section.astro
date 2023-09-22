@@ -24,13 +24,13 @@ const { class: className, step } = Astro.props;
         ]}
     >
         <div class:list={["self-center", "basis-1/12", "lg:flex-shrink-[15] lg:basis-1/12"]}>
-            <Stepper step={step} class="[&>circle]:stroke-dark-chocolate" />
+            <Stepper step={step} class="children-circle:stroke-dark-chocolate" />
         </div>
         <div class:list={["order-3 basis-full", "lg:order-2 lg:flex-shrink-[1] lg:basis-7/12 lg:self-center"]}>
             <div class="text-header__2 mb-6 uppercase">
                 <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
             </div>
-            <div class="text-paragraph__normal [&>*:not(:last-child)]:mb-8">
+            <div class="text-paragraph__normal children-not-last:mb-8">
                 <slot name="description" />
             </div>
         </div>
@@ -44,7 +44,7 @@ const { class: className, step } = Astro.props;
             <div
                 data-imgs-container
                 class:list={[
-                    "relative mx-auto h-[250px] w-full max-w-[400px] lg:mx-10 [&>*]:absolute [&>*]:origin-center"
+                    "relative mx-auto h-[250px] w-full max-w-[400px] children:absolute children:origin-center lg:mx-10"
                 ]}
             >
                 <slot name="images" />

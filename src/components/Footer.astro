@@ -12,7 +12,7 @@
             <form
                 class:list={[
                     "mx-auto flex w-full max-w-[680px] flex-col gap-y-8",
-                    "[&>*]:rounded-3xl [&>*]:border [&>*]:border-light-pink [&>*]:bg-ruby-red [&>*]:p-10 [&>*]:text-light-pink [&>*]:placeholder-light-pink",
+                    "children:rounded-3xl children:border children:border-light-pink children:bg-ruby-red children:p-10 children:text-light-pink children:placeholder-light-pink",
                     "order-1",
                     "lg:order-2"
                 ]}
@@ -41,13 +41,13 @@
                     "lg:order-1 lg:flex-col lg:pr-0"
                 ]}
             >
-                <div class:list={["[&>*:not(:last-child)]:mb-6", "mb-10", "md:mb-0"]}>
+                <div class:list={["children-not-last:mb-6", "mb-10", "md:mb-0"]}>
                     <div>based in Kraków, PL | 10:27PM | 13°C</div>
                     <div>available for freelance work worldwide</div>
                     <div>hello@pekala.design</div>
                     <div>book a free consultancy call</div>
                 </div>
-                <ul class="uppercase [&>*:not(:last-child)]:mb-6">
+                <ul class="children-not-last:mb-6 uppercase">
                     <li>
                         <a
                             href="https://www.linkedin.com/in/alekspekala/"

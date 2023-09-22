@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
+const ELEMENTS = ["p", "circle", "li"];
+
 module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
     theme: {
@@ -30,5 +34,15 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [
+        plugin(function ({ addVariant }) {
+            addVariant("children", "&>*");
+            addVariant("children-not-last", "&>*:not(:last-child)");
+            ELEMENTS.forEach((element) => {
+                addVariant(`children-${element}`, `&>${element}`);
+                addVariant(`children-${element}-not-last`, `&>${element}:not(:last-child)`);
+                addVariant(`children-${element}-first`, `&>${element}:first-child`);
+            });
+        })
+    ]
 };

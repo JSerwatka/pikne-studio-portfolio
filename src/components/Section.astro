@@ -8,7 +8,7 @@ const { header } = Astro.props;
 
 <section class="text-paragraph__normal first:mt-o mb-24 mt-24">
     <h2 class:list={["text-header__4 text-2xl font-medium"]}>{header}</h2>
-    <div class:list={["[&>p:first-child]:mt-4 [&>p]:mt-8", "text-base", "md:text-xl"]}>
+    <div class:list={["children-p:mt-8 children-p-first:mt-4", "text-base", "md:text-xl"]}>
         <slot />
     </div>
 </section>
