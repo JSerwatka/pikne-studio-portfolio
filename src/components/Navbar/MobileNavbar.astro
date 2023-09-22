@@ -38,7 +38,7 @@ const { class: className, links } = Astro.props;
         </a>
         <button data-close-button autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
-    <ul class:list={["text-center [&>*:not(:last-child)]:mb-14", "mt-28", "sm:mt-11"]}>
+    <ul class:list={["children-not-last:mb-14 text-center", "mt-28", "sm:mt-11"]}>
         {
             links.map((link) => (
                 <li>
