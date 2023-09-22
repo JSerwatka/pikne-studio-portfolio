@@ -44,7 +44,7 @@ const { class: className, step } = Astro.props;
             <div
                 data-imgs-container
                 class:list={[
-                    "relative mx-auto h-[250px] w-full max-w-[400px] lg:mx-10 [&>*]:absolute [&>*]:origin-center"
+                    "relative mx-auto h-[250px] w-full max-w-[400px] children:absolute children:origin-center lg:mx-10"
                 ]}
             >
                 <slot name="images" />
