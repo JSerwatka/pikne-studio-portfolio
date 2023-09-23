@@ -12,6 +12,16 @@ import Introduction from "@components/Landing/Introduction.astro";
 ---
 
 <Layout title="Welcome to Astro.">
+    <div class="flex h-screen items-center">
+        <PictureLink
+            linkTo=""
+            linkAccessibleName=""
+            title={"Boska"}
+            subTitle="Next up"
+            src={pikachusSmall}
+            alt="boska small"
+        />
+    </div>
     <div class="mt-36 h-screen text-center uppercase">
         <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
         <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
@@ -157,4 +167,3 @@ import Introduction from "@components/Landing/Introduction.astro";
         company. The other materials complement it, resulting in a cohesive look of the entire project. I can highly
         recommend her services if you are looking for an exceptional, unique look for your company.
     </Quote> -->
-<!-- <PictureLink title={"MIR"} subTitle="Next up" /> -->

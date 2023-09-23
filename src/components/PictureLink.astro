@@ -1,17 +1,22 @@
 ---
 import ArrowIcon from "@components/Icons/ArrowIcon.astro";
+import { Image } from "astro:assets";
 
 interface Props {
     title: string;
     subTitle: string;
+    linkTo: string;
+    linkAccessibleName: string;
+    src: ImageMetadata;
+    alt: string;
 }
 
-const { title, subTitle } = Astro.props;
+const { title, subTitle, linkTo, linkAccessibleName, src, alt } = Astro.props;
 
 const textLayers = ["visible", "mask"];
 ---
 
-<div class="animation-group relative mx-auto w-min">
+<a href={linkTo} aria-label={linkAccessibleName} class="animation-group relative mx-auto block w-min">
     <div class="relative">
         {
             textLayers.map((layer) => {
@@ -19,11 +24,11 @@ const textLayers = ["visible", "mask"];
 
                 return (
                     <div
-                        aria-hidden={isMask ? "true" : "false"}
+                        aria-hidden={`${isMask}`}
+                        data-text-mask={`${isMask}`}
                         class="cursor-none"
                         class:list={{
-                            "text-mask-handler opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac":
-                                isMask
+                            "opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac": isMask
                         }}
                     >
                         <div class="font-metropolis text-xl uppercase">{subTitle}</div>
@@ -36,15 +41,18 @@ const textLayers = ["visible", "mask"];
             })
         }
     </div>
-    <img
-        class="opacity-animation-target js-circle-img pointer-events-none absolute left-0 top-0 h-[150px] w-[150px] rounded-full object-cover object-center"
-        src="https://assets.codepen.io/1159990/tokyo-tower.jpg"
-        alt="Tokyo Tower"
+    <Image
+        data-circle-img
+        src={src}
+        width={150}
+        height={150}
+        alt={alt}
+        class={"opacity-animation-target pointer-events-none absolute left-0 top-0 rounded-full object-cover object-center"}
     />
-</div>
+</a>
 
 <style>
-    .text-mask-handler {
+    [data-text-mask="true"] {
         clip-path: circle(75px at var(--x) var(--y));
     }
 
@@ -59,8 +67,8 @@ const textLayers = ["visible", "mask"];
 </style>
 
 <script>
-    const textMask = document.querySelector(".text-mask-handler") as HTMLElement;
-    const cricleImage = document.querySelector(".js-circle-img") as HTMLElement;
+    const textMask = document.querySelector('[data-text-mask="true"]') as HTMLElement;
+    const cricleImage = document.querySelector("[data-circle-img]") as HTMLElement;
     const textMaskRect = textMask.getBoundingClientRect();
 
     // variables for: disable position update when mouse far from target
