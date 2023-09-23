@@ -11,11 +11,11 @@ export interface LinkType {
     isMobileOnly?: boolean;
     isLinkToSection?: boolean;
 }
-
+// TODO maybe accessible name is not needed
 const links = [
     { pageName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
     { pageName: "About", linkTo: "/about", acessibleName: "about me page" },
-    { pageName: "Work", linkTo: "/my-work", acessibleName: "my work page" },
+    { pageName: "Work", linkTo: "/work", acessibleName: "my work page" },
     { pageName: "Playground", linkTo: "/playground", acessibleName: "playground page" },
     { pageName: "Contact", linkTo: "#contact", acessibleName: "contact form footer", isLinkToSection: true }
 ] as LinkType[];
