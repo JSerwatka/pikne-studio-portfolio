@@ -6,6 +6,13 @@ import psykologkompassen from "@assets/work/psykologkompassen.png";
 import boska from "@assets/work/boska.png";
 import { Image } from "astro:assets";
 
+interface ProjectConfigType {
+    title: string;
+    titleHTML?: string;
+    src: ImageMetadata;
+    linkTo: string;
+}
+
 const projects = [
     {
         title: "illustrations",
@@ -24,11 +31,13 @@ const projects = [
     },
     {
         title: "Psykologkompassen",
+        titleHTML: "Psykolog<wbr>kompassen",
         src: psykologkompassen,
         linkTo: "/projects/psykologkompassen"
     },
     {
         title: "BOSKA body cast",
+        titleHTML: "BOSKA body&nbsp;cast",
         src: boska,
         linkTo: "/projects/boska"
     },
@@ -37,7 +46,7 @@ const projects = [
         src: illustrations,
         linkTo: "/projects/tobias"
     }
-] as const;
+] as ProjectConfigType[];
 ---
 
 <Layout title="Welcome to Astro.">
@@ -51,18 +60,19 @@ const projects = [
         >
             {
                 projects.map((project) => (
-                    <div class="relative w-3/4 max-w-[900px] drop-shadow-2xl">
-                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`}>
+                    <div class="stack w-3/4 max-w-[900px] drop-shadow-2xl">
+                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="stack">
                             <Image
                                 src={project.src}
                                 width={900}
                                 height={600}
-                                class="w-full rounded-3xl object-cover"
+                                class=" w-full rounded-3xl object-cover"
                                 alt=""
                             />
-                            <div class="text-header__1  absolute left-1/2 top-1/2 w-fit -translate-x-1/2 -translate-y-1/2 text-light-pink">
-                                {project.title}
-                            </div>
+                            <div
+                                class="text-header__1 w-fit px-5 text-center text-light-pink"
+                                set:html={project.titleHTML ?? project.title}
+                            />
                         </a>
                     </div>
                 ))
@@ -70,6 +80,18 @@ const projects = [
         </div>
     </div>
 </Layout>
+
+<style>
+    .stack {
+        display: grid;
+        place-items: center;
+        grid-template-areas: "stack";
+    }
+
+    .stack > * {
+        grid-area: stack;
+    }
+</style>
 
 <script>
     import { scroll, animate } from "motion";
