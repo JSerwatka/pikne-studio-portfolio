@@ -32,8 +32,12 @@ const textLayers = ["visible", "mask"];
                         }}
                     >
                         <div class="font-metropolis text-xl uppercase">{subTitle}</div>
-                        <div class="text-header__1 flex items-center gap-4">
-                            <ArrowIcon class={`h-[50px] w-[50px] ${isMask ? "fill-lilac" : "fill-ruby-red"}`} />
+                        <div class="text-header__1 flex items-center gap-4 sm:gap-6 lg:gap-8">
+                            <ArrowIcon
+                                class={`h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] lg:h-[50px] lg:w-[50px] ${
+                                    isMask ? "fill-lilac" : "fill-ruby-red"
+                                }`}
+                            />
                             <div>{title}</div>
                         </div>
                     </div>
