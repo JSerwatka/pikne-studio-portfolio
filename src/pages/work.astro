@@ -1,0 +1,107 @@
+---
+import Layout from "@layouts/Layout.astro";
+import illustrations from "@assets/work/illustration_designed-for-love.png";
+import patchwork from "@assets/work/patchwork.png";
+import psykologkompassen from "@assets/work/psykologkompassen.png";
+import boska from "@assets/work/boska.png";
+import { Image } from "astro:assets";
+
+interface ProjectConfigType {
+    title: string;
+    titleHTML?: string;
+    src: ImageMetadata;
+    linkTo: string;
+}
+
+const projects = [
+    {
+        title: "illustrations",
+        src: illustrations,
+        linkTo: "/projects/illustrations"
+    },
+    {
+        title: "sensus",
+        src: illustrations,
+        linkTo: "/projects/sensus"
+    },
+    {
+        title: "Patchwork",
+        src: patchwork,
+        linkTo: "/projects/patchwork"
+    },
+    {
+        title: "Psykologkompassen",
+        titleHTML: "Psykolog<wbr>kompassen",
+        src: psykologkompassen,
+        linkTo: "/projects/psykologkompassen"
+    },
+    {
+        title: "BOSKA body cast",
+        titleHTML: "BOSKA body&nbsp;cast",
+        src: boska,
+        linkTo: "/projects/boska"
+    },
+    {
+        title: "Tobias D.A. Sköld",
+        src: illustrations,
+        linkTo: "/projects/tobias"
+    }
+] as ProjectConfigType[];
+---
+
+<Layout title="Welcome to Astro.">
+    <div class="mx-auto mb-[30vh]">
+        <div class="sticky top-[20vh] mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
+            My work
+        </div>
+        <div
+            data-projects
+            class:list={["col grid grid-cols-1 justify-items-center", "mt-[10vh] gap-y-40", "lg:mt-[30vh] lg:gap-y-64"]}
+        >
+            {
+                projects.map((project) => (
+                    <div class="stack w-3/4 max-w-[900px] drop-shadow-2xl">
+                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="stack">
+                            <Image
+                                src={project.src}
+                                width={900}
+                                height={600}
+                                class=" w-full rounded-3xl object-cover"
+                                alt=""
+                            />
+                            <div
+                                class="text-header__1 w-fit px-5 text-center text-light-pink"
+                                set:html={project.titleHTML ?? project.title}
+                            />
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .stack {
+        display: grid;
+        place-items: center;
+        grid-template-areas: "stack";
+    }
+
+    .stack > * {
+        grid-area: stack;
+    }
+</style>
+
+<script>
+    import { scroll, animate } from "motion";
+
+    const workItems = document.querySelectorAll("[data-projects] > *") as NodeListOf<HTMLElement>;
+
+    workItems.forEach((workItem) => {
+        scroll(animate(workItem, { scale: [1, 1.1, 1.1, 1] }), {
+            target: workItem,
+            offset: ["start end", "end end", "start start", "end start"]
+        });
+    });
+</script>
