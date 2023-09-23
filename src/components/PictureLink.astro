@@ -64,39 +64,54 @@ const textLayers = ["visible", "mask"];
     .animation-group:hover .opacity-animation-target {
         opacity: 1;
     }
+
+    /* Hide elements not needed for touch screens */
+    @media (hover: none) {
+        [data-circle-img],
+        [data-text-mask="true"] {
+            display: none;
+        }
+    }
 </style>
 
 <script>
-    const textMask = document.querySelector('[data-text-mask="true"]') as HTMLElement;
-    const cricleImage = document.querySelector("[data-circle-img]") as HTMLElement;
-    const textMaskRect = textMask.getBoundingClientRect();
+    import { isHoverSupported } from "@utils/isHoverSupported";
 
-    // variables for: disable position update when mouse far from target
-    const BOUNDRY_MARGIN = 150; // px
+    if (isHoverSupported()) {
+        const textMask = document.querySelector('[data-text-mask="true"]') as HTMLElement;
+        const cricleImage = document.querySelector("[data-circle-img]") as HTMLElement;
+        const textMaskRect = textMask.getBoundingClientRect();
 
-    const leftBoundry = -BOUNDRY_MARGIN;
-    const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
-    const topBoundry = -BOUNDRY_MARGIN;
-    const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
+        // variables for: disable position update when mouse far from target
+        const BOUNDRY_MARGIN = 150; // px
 
-    function showImgContent(e: MouseEvent) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        // position relative to container (not window)
-        const positionX = mouseX - textMaskRect.left;
-        const positionY = mouseY - textMaskRect.top;
+        const leftBoundry = -BOUNDRY_MARGIN;
+        const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
+        const topBoundry = -BOUNDRY_MARGIN;
+        const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
 
-        const isMouseInsideBoundries =
-            positionX > leftBoundry && positionX < rightBoundry && positionY > topBoundry && positionY < bottomBoundry;
+        function showImgContent(e: MouseEvent) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            // position relative to container (not window)
+            const positionX = mouseX - textMaskRect.left;
+            const positionY = mouseY - textMaskRect.top;
 
-        if (isMouseInsideBoundries) {
-            cricleImage.style.left = positionX - 75 + "px";
-            cricleImage.style.top = positionY - 75 + "px";
+            const isMouseInsideBoundries =
+                positionX > leftBoundry &&
+                positionX < rightBoundry &&
+                positionY > topBoundry &&
+                positionY < bottomBoundry;
 
-            textMask.style.setProperty("--x", positionX + "px");
-            textMask.style.setProperty("--y", positionY + "px");
+            if (isMouseInsideBoundries) {
+                cricleImage.style.left = positionX - 75 + "px";
+                cricleImage.style.top = positionY - 75 + "px";
+
+                textMask.style.setProperty("--x", positionX + "px");
+                textMask.style.setProperty("--y", positionY + "px");
+            }
         }
-    }
 
-    document.addEventListener("mousemove", showImgContent);
+        document.addEventListener("mousemove", showImgContent);
+    }
 </script>
