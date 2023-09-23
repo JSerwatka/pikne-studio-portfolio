@@ -1,17 +1,22 @@
 ---
 import ArrowIcon from "@components/Icons/ArrowIcon.astro";
+import { Image } from "astro:assets";
 
 interface Props {
     title: string;
     subTitle: string;
+    linkTo: string;
+    linkAccessibleName: string;
+    src: ImageMetadata;
+    alt: string;
 }
 
-const { title, subTitle } = Astro.props;
+const { title, subTitle, linkTo, linkAccessibleName, src, alt } = Astro.props;
 
 const textLayers = ["visible", "mask"];
 ---
 
-<div class="animation-group relative mx-auto w-min">
+<a href={linkTo} aria-label={linkAccessibleName} class="animation-group relative mx-auto block w-min">
     <div class="relative">
         {
             textLayers.map((layer) => {
@@ -19,16 +24,20 @@ const textLayers = ["visible", "mask"];
 
                 return (
                     <div
-                        aria-hidden={isMask ? "true" : "false"}
+                        aria-hidden={`${isMask}`}
+                        data-text-mask={`${isMask}`}
                         class="cursor-none"
                         class:list={{
-                            "text-mask-handler opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac":
-                                isMask
+                            "opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac": isMask
                         }}
                     >
                         <div class="font-metropolis text-xl uppercase">{subTitle}</div>
-                        <div class="text-header__1 flex items-center gap-4">
-                            <ArrowIcon class={`h-[50px] w-[50px] ${isMask ? "fill-lilac" : "fill-ruby-red"}`} />
+                        <div class="text-header__1 flex items-center gap-4 sm:gap-6 lg:gap-8">
+                            <ArrowIcon
+                                class={`h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] lg:h-[50px] lg:w-[50px] ${
+                                    isMask ? "fill-lilac" : "fill-ruby-red"
+                                }`}
+                            />
                             <div>{title}</div>
                         </div>
                     </div>
@@ -36,15 +45,18 @@ const textLayers = ["visible", "mask"];
             })
         }
     </div>
-    <img
-        class="opacity-animation-target js-circle-img pointer-events-none absolute left-0 top-0 h-[150px] w-[150px] rounded-full object-cover object-center"
-        src="https://assets.codepen.io/1159990/tokyo-tower.jpg"
-        alt="Tokyo Tower"
+    <Image
+        data-circle-img
+        src={src}
+        width={150}
+        height={150}
+        alt={alt}
+        class={"opacity-animation-target pointer-events-none absolute left-0 top-0 rounded-full object-cover object-center"}
     />
-</div>
+</a>
 
 <style>
-    .text-mask-handler {
+    [data-text-mask="true"] {
         clip-path: circle(75px at var(--x) var(--y));
     }
 
@@ -56,39 +68,54 @@ const textLayers = ["visible", "mask"];
     .animation-group:hover .opacity-animation-target {
         opacity: 1;
     }
+
+    /* Hide elements not needed for touch screens */
+    @media (hover: none) {
+        [data-circle-img],
+        [data-text-mask="true"] {
+            display: none;
+        }
+    }
 </style>
 
 <script>
-    const textMask = document.querySelector(".text-mask-handler") as HTMLElement;
-    const cricleImage = document.querySelector(".js-circle-img") as HTMLElement;
-    const textMaskRect = textMask.getBoundingClientRect();
+    import { isHoverSupported } from "@utils/isHoverSupported";
 
-    // variables for: disable position update when mouse far from target
-    const BOUNDRY_MARGIN = 150; // px
+    if (isHoverSupported()) {
+        const textMask = document.querySelector('[data-text-mask="true"]') as HTMLElement;
+        const cricleImage = document.querySelector("[data-circle-img]") as HTMLElement;
+        const textMaskRect = textMask.getBoundingClientRect();
 
-    const leftBoundry = -BOUNDRY_MARGIN;
-    const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
-    const topBoundry = -BOUNDRY_MARGIN;
-    const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
+        // variables for: disable position update when mouse far from target
+        const BOUNDRY_MARGIN = 150; // px
 
-    function showImgContent(e: MouseEvent) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        // position relative to container (not window)
-        const positionX = mouseX - textMaskRect.left;
-        const positionY = mouseY - textMaskRect.top;
+        const leftBoundry = -BOUNDRY_MARGIN;
+        const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
+        const topBoundry = -BOUNDRY_MARGIN;
+        const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
 
-        const isMouseInsideBoundries =
-            positionX > leftBoundry && positionX < rightBoundry && positionY > topBoundry && positionY < bottomBoundry;
+        function showImgContent(e: MouseEvent) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            // position relative to container (not window)
+            const positionX = mouseX - textMaskRect.left;
+            const positionY = mouseY - textMaskRect.top;
 
-        if (isMouseInsideBoundries) {
-            cricleImage.style.left = positionX - 75 + "px";
-            cricleImage.style.top = positionY - 75 + "px";
+            const isMouseInsideBoundries =
+                positionX > leftBoundry &&
+                positionX < rightBoundry &&
+                positionY > topBoundry &&
+                positionY < bottomBoundry;
 
-            textMask.style.setProperty("--x", positionX + "px");
-            textMask.style.setProperty("--y", positionY + "px");
+            if (isMouseInsideBoundries) {
+                cricleImage.style.left = positionX - 75 + "px";
+                cricleImage.style.top = positionY - 75 + "px";
+
+                textMask.style.setProperty("--x", positionX + "px");
+                textMask.style.setProperty("--y", positionY + "px");
+            }
         }
-    }
 
-    document.addEventListener("mousemove", showImgContent);
+        document.addEventListener("mousemove", showImgContent);
+    }
 </script>

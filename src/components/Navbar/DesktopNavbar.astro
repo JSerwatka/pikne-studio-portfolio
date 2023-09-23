@@ -17,7 +17,7 @@ const { class: className, links } = Astro.props;
             return (
                 <li>
                     <a
-                        href={link.pageUrl}
+                        href={link.linkTo}
                         aria-labelledby={link.acessibleName}
                         data-link-type={link.isLinkToSection ? "section" : "normal"}
                     >

@@ -38,12 +38,12 @@ const { class: className, links } = Astro.props;
         </a>
         <button data-close-button autofocus aria-labelledby="close navbar menu">&#10005;</button>
     </div>
-    <ul class:list={["children-not-last:mb-14 text-center", "mt-28", "sm:mt-11"]}>
+    <ul class:list={["text-center children-not-last:mb-14", "mt-28", "sm:mt-11"]}>
         {
             links.map((link) => (
                 <li>
                     <a
-                        href={link.pageUrl}
+                        href={link.linkTo}
                         aria-labelledby={link.acessibleName}
                         data-link-type={link.isLinkToSection ? "section" : "normal"}
                     >
