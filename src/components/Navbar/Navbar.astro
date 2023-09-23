@@ -6,18 +6,18 @@ import DesktopNavbar from "./DesktopNavbar.astro";
 
 export interface LinkType {
     pageName: string;
-    pageUrl: string;
+    linkTo: string;
     acessibleName: string;
     isMobileOnly?: boolean;
     isLinkToSection?: boolean;
 }
 
 const links = [
-    { pageName: "Home", pageUrl: "/", acessibleName: "home page", isMobileOnly: true },
-    { pageName: "About", pageUrl: "/about", acessibleName: "about me page" },
-    { pageName: "Work", pageUrl: "/my-work", acessibleName: "my work page" },
-    { pageName: "Playground", pageUrl: "/playground", acessibleName: "playground page" },
-    { pageName: "Contact", pageUrl: "#contact", acessibleName: "contact form footer", isLinkToSection: true }
+    { pageName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
+    { pageName: "About", linkTo: "/about", acessibleName: "about me page" },
+    { pageName: "Work", linkTo: "/my-work", acessibleName: "my work page" },
+    { pageName: "Playground", linkTo: "/playground", acessibleName: "playground page" },
+    { pageName: "Contact", linkTo: "#contact", acessibleName: "contact form footer", isLinkToSection: true }
 ] as LinkType[];
 ---
 
