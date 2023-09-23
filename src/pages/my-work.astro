@@ -1,46 +1,67 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import illustrations from "@assets/work/illustration_designed-for-love.png";
+import patchwork from "@assets/work/patchwork.png";
+import psykologkompassen from "@assets/work/psykologkompassen.png";
+import boska from "@assets/work/boska.png";
+import { Image } from "astro:assets";
 
-const workItems = [
+const projects = [
     {
-        title: "This",
-        imgUrl: "https://images.unsplash.com/flagged/photo-1567400358593-9e6382752ea2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        linkUrl: "/"
+        title: "illustrations",
+        src: illustrations,
+        linkTo: "/projects/illustrations"
     },
     {
-        title: "is",
-        imgUrl: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
-        linkUrl: "/"
+        title: "sensus",
+        src: illustrations,
+        linkTo: "/projects/sensus"
     },
     {
-        title: "art",
-        imgUrl: "https://images.unsplash.com/photo-1513346940221-6f673d962e97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        linkUrl: "/"
+        title: "Patchwork",
+        src: patchwork,
+        linkTo: "/projects/patchwork"
     },
     {
-        title: "xdddd",
-        imgUrl: "https://images.unsplash.com/photo-1552083974-186346191183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        linkUrl: "/"
+        title: "Psykologkompassen",
+        src: psykologkompassen,
+        linkTo: "/projects/psykologkompassen"
     },
     {
-        title: "loool",
-        imgUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        linkUrl: "/"
+        title: "BOSKA body cast",
+        src: boska,
+        linkTo: "/projects/boska"
+    },
+    {
+        title: "Tobias D.A. Sköld",
+        src: illustrations,
+        linkTo: "/projects/tobias"
     }
-];
+] as const;
 ---
 
 <Layout title="Welcome to Astro.">
-    <div class="container mx-auto mb-[30vh]">
-        <div class="text-hero__1 sticky top-[10vh] mt-[10vh] text-center">My work</div>
-        <div class="col js-work-items mt-[30vh] grid grid-cols-1 justify-items-center gap-64">
+    <div class="mx-auto mb-[30vh]">
+        <div class="sticky top-[20vh] mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
+            My work
+        </div>
+        <div
+            data-projects
+            class:list={["col grid grid-cols-1 justify-items-center", "mt-[10vh] gap-y-40", "lg:mt-[30vh] lg:gap-y-64"]}
+        >
             {
-                workItems.map((workItem) => (
-                    <div class="relative w-1/2 drop-shadow-2xl">
-                        <a href={workItem.linkUrl} aria-label={`Link to work name: ${workItem.title}`}>
-                            <img src={workItem.imgUrl} class="w-full rounded-3xl object-cover" />
-                            <div class="text-header__1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-light-pink">
-                                {workItem.title}
+                projects.map((project) => (
+                    <div class="relative w-3/4 max-w-[900px] drop-shadow-2xl">
+                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`}>
+                            <Image
+                                src={project.src}
+                                width={900}
+                                height={600}
+                                class="w-full rounded-3xl object-cover"
+                                alt=""
+                            />
+                            <div class="text-header__1  absolute left-1/2 top-1/2 w-fit -translate-x-1/2 -translate-y-1/2 text-light-pink">
+                                {project.title}
                             </div>
                         </a>
                     </div>
@@ -53,7 +74,7 @@ const workItems = [
 <script>
     import { scroll, animate } from "motion";
 
-    const workItems = document.querySelectorAll(".js-work-items > *") as NodeListOf<HTMLElement>;
+    const workItems = document.querySelectorAll("[data-projects] > *") as NodeListOf<HTMLElement>;
 
     workItems.forEach((workItem) => {
         scroll(animate(workItem, { scale: [1, 1.1, 1.1, 1] }), {
