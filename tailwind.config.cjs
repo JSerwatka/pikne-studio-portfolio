@@ -5,13 +5,17 @@ const ELEMENTS = ["p", "circle", "li"];
 
 module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+    safelist: [
+        {
+            pattern: /row-start-[1-7]/
+        }
+    ],
     theme: {
         fontFamily: {
             metropolis: ["Metropolis", "Arial", "sans-serif"],
             olympic: ["OlympicLight", "Palatino", "serif"],
             alexang: ["AlexangDisplay", "Palatino", "serif"]
         },
-
         extend: {
             backgroundImage: ({ theme }) => ({
                 "gradient-brand": `linear-gradient(to bottom, 

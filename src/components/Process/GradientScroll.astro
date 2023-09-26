@@ -2,16 +2,13 @@
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
 // Cirlce
-// <div
-//             class="z-10 col-span-1 col-start-1 row-span-1 row-start-2 h-10 w-10 justify-self-center rounded-full border border-ruby-red bg-light-pink"
-//         >
 ---
 
 <div data-gradient-scroll-wrapper class="relative h-full w-6 border border-ruby-red bg-gradient-brand">
     <div data-progress-mask class="progress-mask absolute bottom-0 left-0 w-full bg-light-pink"></div>
     <Image
         data-gradient-scroll-image
-        class="absolute max-w-none -translate-x-[25%]"
+        class="absolute z-20 max-w-none -translate-x-[25%]"
         src={heart}
         alt="heart symbol"
         width="50"

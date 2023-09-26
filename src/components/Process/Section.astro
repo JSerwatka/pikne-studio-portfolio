@@ -6,7 +6,7 @@ interface Props {
 const { step } = Astro.props;
 ---
 
-<div class="col-span-5 col-start-2 place-self-center border border-black">
+<div class="col-span-5 col-start-2 justify-stretch border border-black">
     <div class="text-header__2 mb-6 uppercase">
         <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
     </div>

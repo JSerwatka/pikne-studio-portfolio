@@ -15,6 +15,18 @@ import Layout from "@layouts/Layout.astro";
         <div class="col-span-1 col-start-1 row-span-full row-start-1 justify-self-center">
             <GradientScroll />
         </div>
+        {
+            Array(7)
+                .fill(0)
+                .map((_, index) => (
+                    <div
+                        class:list={[
+                            "z-10 col-span-1 col-start-1 row-span-1 h-10 w-10 justify-self-center rounded-full border border-ruby-red bg-light-pink",
+                            `row-start-${index + 1}`
+                        ]}
+                    />
+                ))
+        }
         <Section step={1}>
             <Fragment slot="title">SAY HELLO!</Fragment>
             <Fragment slot="description">
