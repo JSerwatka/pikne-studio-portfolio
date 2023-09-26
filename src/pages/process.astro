@@ -53,21 +53,19 @@ const processSteps = [
         </div>
         <div>(example of a branding process, for different type of projects the process may vary)</div>
     </div>
-    <div class="mb-40 grid grid-cols-4">
-        <div class="col-span-1 col-start-2 h-full">
+    <div class="grid-rows-7 mb-40 grid grid-cols-6">
+        <div class="col-span-1 col-start-1 row-span-full row-start-1 justify-self-center">
             <GradientScroll />
         </div>
-        <div class="row-auto grid columns-1 gap-48">
-            {
-                processSteps.map((step) => (
-                    <div>
-                        <div class="text-header__2">
-                            {step.title} <sup class="-top-8 text-[1.75rem] tracking-tighter">{step.stepIcon}</sup>
-                        </div>
-                        <div class="max-w-[500px]">{step.description}</div>
+        {
+            processSteps.map((step) => (
+                <div class="col-span-5 col-start-2 place-self-center border border-black">
+                    <div class="text-header__2">
+                        {step.title} <sup class="-top-8 text-[1.75rem] tracking-tighter">{step.stepIcon}</sup>
                     </div>
-                ))
-            }
-        </div>
+                    <div class="max-w-[500px]">{step.description}</div>
+                </div>
+            ))
+        }
     </div>
 </Layout>
