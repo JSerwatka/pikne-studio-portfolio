@@ -4,9 +4,10 @@ import heart from "@assets/heart.svg";
 ---
 
 <div class="flex h-full">
-    <div class="js-gradient-scroll__wrapper relative h-full w-6 bg-gradient-brand">
+    <div data-gradient-scroll-wrapper class="relative h-full w-6 bg-gradient-brand">
         <Image
-            class="js-gradient-scroll__image absolute max-w-none -translate-x-[25%]"
+            data-gradient-scroll-image
+            class="absolute max-w-none -translate-x-[25%]"
             src={heart}
             alt="heart symbol"
             width="50"
@@ -18,8 +19,8 @@ import heart from "@assets/heart.svg";
 <script>
     import { scroll, animate } from "motion";
 
-    const gradientScrollWrapper = document.querySelector(".js-gradient-scroll__wrapper") as HTMLElement;
-    const gradientScrollImage = document.querySelector(".js-gradient-scroll__image") as HTMLElement;
+    const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
+    const gradientScrollImage = document.querySelector("[data-gradient-scroll-image]") as HTMLElement;
 
     scroll(
         ({ y }) => {
