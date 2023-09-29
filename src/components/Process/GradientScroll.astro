@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
-// Cirlce
+// translate-y-1 h-[88%] styles that correctly position gradient scroll
 ---
 
 <div data-gradient-scroll-wrapper class="relative h-full w-6 border border-ruby-red bg-gradient-brand">
@@ -14,6 +14,21 @@ import heart from "@assets/heart.svg";
         width="50"
         height="50"
     />
+    <div class="grid h-full grid-rows-7 justify-center">
+        {
+            Array(7)
+                .fill(0)
+                .map((_, index) => (
+                    <div
+                        data-circle-stop
+                        class:list={[
+                            "z-10 col-span-1 col-start-1 row-span-1 h-10 w-10 justify-self-center rounded-full border border-ruby-red bg-light-pink",
+                            `row-start-${index + 1}`
+                        ]}
+                    />
+                ))
+        }
+    </div>
 </div>
 
 <style>
@@ -24,12 +39,27 @@ import heart from "@assets/heart.svg";
 </style>
 
 <script>
-    import { scroll, animate } from "motion";
+    import { scroll, animate, inView } from "motion";
 
     const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
     const gradientScrollImage = document.querySelector("[data-gradient-scroll-image]") as HTMLElement;
     const progressMask = document.querySelector("[data-progress-mask]") as HTMLElement;
 
+    const circleStops = document.querySelectorAll("[data-circle-stop]") as NodeListOf<HTMLElement>;
+
+    // inView(
+    //     circleStops[1],
+    //     (info) => {
+    //         // const controls = animate(info.target, { opacity: 1 });
+    //         console.log("enter");
+
+    //         // This will fire when the element leaves the viewport
+    //         return (leaveInfo) => {
+    //             console.log("leave");
+    //         };
+    //     },
+    //     { margin: "100px 0px 0px 0px" }
+    // );
     scroll(
         ({ y }) => {
             const middleOfHeartHeight = gradientScrollImage.clientHeight / 2;
