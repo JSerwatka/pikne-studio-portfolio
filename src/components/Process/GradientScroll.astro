@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
 // translate-y-1 h-[88%] styles that correctly position gradient scroll
+// TODO make sure that heart is position correctly on start (before scrolling)
 ---
 
 <div data-gradient-scroll-wrapper class="relative h-full w-6 border border-ruby-red bg-gradient-brand">
@@ -33,7 +34,7 @@ import heart from "@assets/heart.svg";
 
 <style>
     [data-progress-mask] {
-        height: var(--height);
+        height: var(--height, "100%");
         transition: height 0.7s ease-out;
     }
 
@@ -46,7 +47,7 @@ import heart from "@assets/heart.svg";
 
 <script>
     import { scroll, animate, inView } from "motion";
-    import { getElementAbsolutePosition } from "@utils/domHelpers";
+    import { getAbsoluteBoundingClientReact } from "@utils/domHelpers";
 
     const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
     const gradientScrollHeart = document.querySelector("[data-gradient-scroll-heart]") as HTMLElement;
@@ -54,20 +55,29 @@ import heart from "@assets/heart.svg";
     const circleStops = document.querySelectorAll("[data-circle-stop]") as NodeListOf<HTMLElement>;
     let currentStopIndex = 0;
 
-    const gradientScrollWrapperPosition = getElementAbsolutePosition(gradientScrollWrapper);
+    const gradientScrollWrapperRect = getAbsoluteBoundingClientReact(gradientScrollWrapper);
 
     function updateHeartPosition(currentStopIndex: number) {
-        const nextCircleStopPositionAbsolute = getElementAbsolutePosition(circleStops[currentStopIndex]);
-        const circleStopWidth = circleStops[currentStopIndex].getBoundingClientRect().width;
+        const nextCircleStopRect = getAbsoluteBoundingClientReact(circleStops[currentStopIndex]);
 
         const newHeartPosition = {
-            top: nextCircleStopPositionAbsolute.top - gradientScrollWrapperPosition.top,
-            left: nextCircleStopPositionAbsolute.left - gradientScrollWrapperPosition.left + circleStopWidth / 2
+            top: nextCircleStopRect.top - gradientScrollWrapperRect.top,
+            left: nextCircleStopRect.left - gradientScrollWrapperRect.left + nextCircleStopRect.width / 2
         };
 
         gradientScrollHeart.style.setProperty("--top", newHeartPosition.top.toString() + "px");
         gradientScrollHeart.style.setProperty("--left", newHeartPosition.left.toString() + "px");
     }
+
+    // function getProgress(currentStopIndex: number) {
+    //     const nextCircleStopRect = getAbsoluteBoundingClientReact(circleStops[currentStopIndex]);
+    //     return (nextCircleStopRect.top - gradientScrollWrapperRect.top) / gradientScrollWrapperRect.height;
+    // }
+
+    // function updateCircleStopStyles(currentStopIndex: number) {
+    //     const circleStopElement = circleStops[currentStopIndex];
+    //     circleStopElement.classList.toggle("bg-ruby-red", visited);
+    // }
 
     circleStops.forEach((circleStop) => {
         inView(
@@ -79,19 +89,24 @@ import heart from "@assets/heart.svg";
                 if (enterTargetIndex > currentStopIndex) {
                     currentStopIndex = enterTargetIndex;
                     updateHeartPosition(currentStopIndex);
+                    // console.log(getProgress(currentStopIndex));
+                    // updateCircleStopStyles(currentStopIndex);
                 }
 
                 return (leaveTargetInfo) => {
                     // TODO better handle undefined
                     const leaveTargetIndex = Number((leaveTargetInfo.target as HTMLElement).dataset.circleStop ?? "0");
-                    if (leaveTargetIndex === currentStopIndex) {
-                        if (currentStopIndex <= 0) {
-                            currentStopIndex = 0;
-                        } else {
-                            currentStopIndex -= 1;
-                        }
-                        updateHeartPosition(currentStopIndex);
+
+                    if (leaveTargetIndex !== currentStopIndex) return;
+
+                    if (currentStopIndex <= 0) {
+                        currentStopIndex = 0;
+                    } else {
+                        currentStopIndex -= 1;
                     }
+
+                    updateHeartPosition(currentStopIndex);
+                    // updateCircleStopStyles(currentStopIndex);
                 };
             },
             { margin: "0px 0px 0px 0px" }
