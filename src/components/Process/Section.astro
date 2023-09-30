@@ -6,11 +6,24 @@ interface Props {
 const { step } = Astro.props;
 ---
 
-<div class="col-span-5 col-start-2 justify-stretch border border-black">
-    <div class="text-header__2 mb-6 uppercase">
-        <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
-    </div>
-    <div class="text-paragraph__normal children-not-last:mb-8">
-        <slot name="description" />
-    </div>
+<div class="text-header__2 process-grid__title uppercase">
+    <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
 </div>
+<div class="text-paragraph__normal process-grid__description children-not-last:mb-8">
+    <slot name="description" />
+</div>
+
+<style>
+    .process-grid__title {
+        grid-column: 2 / 7;
+        grid-row: span 2;
+        background-color: lime;
+        align-self: center;
+    }
+
+    .process-grid__description {
+        grid-column: 2 / 7;
+        grid-row: span 2;
+        background-color: yellow;
+    }
+</style>
