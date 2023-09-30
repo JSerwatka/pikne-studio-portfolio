@@ -5,47 +5,62 @@ import heart from "@assets/heart.svg";
 // TODO make sure that heart is position correctly on start (before scrolling)
 ---
 
-<div data-gradient-scroll-wrapper class="relative h-full w-6 border border-ruby-red bg-gradient-brand">
+<div
+    data-gradient-scroll-wrapper
+    class:list={["process-grid__line", "relative h-full w-6 border border-ruby-red bg-gradient-brand"]}
+>
     <div data-progress-mask class="absolute bottom-0 left-0 w-full bg-light-pink"></div>
     <Image
         data-gradient-scroll-heart
-        class="absolute z-20 max-w-none -translate-x-[50%]"
+        class="absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2"
         src={heart}
         alt="heart symbol"
         width="50"
         height="50"
     />
-    <div class="grid h-full grid-rows-7 justify-center">
-        {
-            Array(7)
-                .fill(0)
-                .map((_, index) => (
-                    <div
-                        data-circle-stop={index}
-                        class:list={[
-                            "z-10 col-span-1 col-start-1 row-span-1 h-10 w-10 justify-self-center rounded-full border border-ruby-red bg-light-pink",
-                            `row-start-${index + 1}`
-                        ]}
-                    />
-                ))
-        }
-    </div>
 </div>
+{
+    Array(7)
+        .fill(0)
+        .map((_, index) => (
+            <div
+                data-circle-stop={index}
+                style={"--start-row: " + (index * 4 + 1)}
+                class:list={[
+                    "process-grid__circle",
+                    "z-10 h-10 w-10 rounded-full border border-ruby-red bg-light-pink"
+                ]}
+            />
+        ))
+}
 
 <style>
+    .process-grid__circle {
+        grid-column: 1 / 2;
+        grid-row: var(--start-row) / span 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .process-grid__line {
+        grid-column: 1 / 2;
+        grid-row: 2 / -4;
+        justify-self: center;
+    }
+
     [data-progress-mask] {
         height: var(--height, "100%");
         transition: height 0.7s ease-out;
     }
 
-    [data-gradient-scroll-heart] {
+    /* [data-gradient-scroll-heart] {
         top: var(--top, "0px");
         left: var(--left, "0px");
         transition: top 0.5s linear;
-    }
+    } */
 </style>
 
-<script>
+<!-- <script>
     import { scroll, animate, inView } from "motion";
     import { getAbsoluteBoundingClientReact } from "@utils/domHelpers";
 
@@ -115,22 +130,23 @@ import heart from "@assets/heart.svg";
 
     // window.addEventListener("scroll", () => console.log(getElementPosition(circleStops[3])));
 
-    // scroll(
-    //     ({ y }) => {
-    //         const middleOfHeartHeight = gradientScrollImage.clientHeight / 2;
-    //         const middleOfHeartWidth = gradientScrollImage.clientWidth / 2;
+    scroll(
+        ({ y }) => {
+            const middleOfHeartHeight = gradientScrollHeart.clientHeight / 2;
+            const middleOfHeartWidth = gradientScrollHeart.clientWidth / 2;
 
-    //         const progressToPxMapped = y.progress * (gradientScrollWrapper.clientHeight - middleOfHeartHeight);
+            const progressToPxMapped = y.progress * (gradientScrollWrapper.clientHeight - middleOfHeartHeight);
+            console.log(y.progress);
+            // height has to be inversely proportional to scroll progess - we are changing mask height
+            progressMask.style.setProperty("--height", `${(1 - y.progress) * 100}%`);
 
-    //         // height has to be inversely proportional to scroll progess - we are changing mask height
-    //         progressMask.style.setProperty("--height", `${(1 - y.progress) * 100}%`);
-
-    //         animate(
-    //             gradientScrollImage,
-    //             { transform: [`translate(-${middleOfHeartWidth}%, ${progressToPxMapped}px)`] },
-    //             { duration: 0.7, easing: "ease-out" }
-    //         );
-    //     },
-    //     { target: gradientScrollWrapper, offset: ["-150px start", "end center"] }
-    // );
-</script>
+            // animate(
+            //     gradientScrollImage,
+            //     { transform: [`translate(-${middleOfHeartWidth}%, ${progressToPxMapped}px)`] },
+            //     { duration: 0.7, easing: "ease-out" }
+            // );
+            // TODO instead of 150px use grid height
+        },
+        { target: gradientScrollWrapper, offset: ["-150px start", "end center"] }
+    );
+</script> -->
