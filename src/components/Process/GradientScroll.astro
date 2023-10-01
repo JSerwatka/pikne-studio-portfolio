@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
-// translate-y-1 h-[88%] styles that correctly position gradient scroll
-// TODO make sure that heart is position correctly on start (before scrolling)
+// TODO use better names for observer
+// TODO sometimes when you scroll fast - the heart is not positioned on the last circle stop - interesection nie zdążyło się wytriggerować
 ---
 
 <div
@@ -49,104 +49,52 @@ import heart from "@assets/heart.svg";
     }
 
     [data-progress-mask] {
-        height: var(--height, "100%");
+        height: var(--height, 100%);
         transition: height 0.7s ease-out;
     }
 
-    /* [data-gradient-scroll-heart] {
-        top: var(--top, "0px");
-        left: var(--left, "0px");
-        transition: top 0.5s linear;
-    } */
+    [data-gradient-scroll-heart] {
+        top: var(--top, 0px);
+        transition: top 0.7s ease-out;
+    }
 </style>
 
-<!-- <script>
-    import { scroll, animate, inView } from "motion";
-    import { getAbsoluteBoundingClientReact } from "@utils/domHelpers";
-
+<script>
     const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
     const gradientScrollHeart = document.querySelector("[data-gradient-scroll-heart]") as HTMLElement;
     const progressMask = document.querySelector("[data-progress-mask]") as HTMLElement;
     const circleStops = document.querySelectorAll("[data-circle-stop]") as NodeListOf<HTMLElement>;
     let currentStopIndex = 0;
 
-    const gradientScrollWrapperRect = getAbsoluteBoundingClientReact(gradientScrollWrapper);
-
     function updateHeartPosition(currentStopIndex: number) {
-        const nextCircleStopRect = getAbsoluteBoundingClientReact(circleStops[currentStopIndex]);
+        // relative to gradientScrollWrapper
+        const nextCircleStopPostion =
+            circleStops[currentStopIndex].offsetTop +
+            circleStops[currentStopIndex].offsetHeight / 2 -
+            gradientScrollWrapper.offsetTop;
 
-        const newHeartPosition = {
-            top: nextCircleStopRect.top - gradientScrollWrapperRect.top,
-            left: nextCircleStopRect.left - gradientScrollWrapperRect.left + nextCircleStopRect.width / 2
-        };
+        const progress = nextCircleStopPostion / gradientScrollWrapper.offsetHeight;
 
-        gradientScrollHeart.style.setProperty("--top", newHeartPosition.top.toString() + "px");
-        gradientScrollHeart.style.setProperty("--left", newHeartPosition.left.toString() + "px");
+        progressMask.style.setProperty("--height", `${(1 - progress) * 100}%`);
+        gradientScrollHeart.style.setProperty("--top", nextCircleStopPostion.toString() + "px");
     }
 
-    // function getProgress(currentStopIndex: number) {
-    //     const nextCircleStopRect = getAbsoluteBoundingClientReact(circleStops[currentStopIndex]);
-    //     return (nextCircleStopRect.top - gradientScrollWrapperRect.top) / gradientScrollWrapperRect.height;
-    // }
+    const options = {
+        rootMargin: "-50% 0px -50% 0px"
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                currentStopIndex = Number((entry.target as HTMLElement).dataset.circleStop ?? "0");
 
-    // function updateCircleStopStyles(currentStopIndex: number) {
-    //     const circleStopElement = circleStops[currentStopIndex];
-    //     circleStopElement.classList.toggle("bg-ruby-red", visited);
-    // }
+                updateHeartPosition(currentStopIndex);
+            }
+        });
+    }, options);
 
-    circleStops.forEach((circleStop) => {
-        inView(
-            circleStop,
-            (enterTargetInfo) => {
-                // TODO better handle undefined
-                const enterTargetIndex = Number((enterTargetInfo.target as HTMLElement).dataset.circleStop ?? "0");
+    circleStops.forEach((circleStop) => observer.observe(circleStop));
 
-                if (enterTargetIndex > currentStopIndex) {
-                    currentStopIndex = enterTargetIndex;
-                    updateHeartPosition(currentStopIndex);
-                    // console.log(getProgress(currentStopIndex));
-                    // updateCircleStopStyles(currentStopIndex);
-                }
-
-                return (leaveTargetInfo) => {
-                    // TODO better handle undefined
-                    const leaveTargetIndex = Number((leaveTargetInfo.target as HTMLElement).dataset.circleStop ?? "0");
-
-                    if (leaveTargetIndex !== currentStopIndex) return;
-
-                    if (currentStopIndex <= 0) {
-                        currentStopIndex = 0;
-                    } else {
-                        currentStopIndex -= 1;
-                    }
-
-                    updateHeartPosition(currentStopIndex);
-                    // updateCircleStopStyles(currentStopIndex);
-                };
-            },
-            { margin: "0px 0px 0px 0px" }
-        );
+    window.addEventListener("resize", () => {
+        updateHeartPosition(currentStopIndex);
     });
-
-    // window.addEventListener("scroll", () => console.log(getElementPosition(circleStops[3])));
-
-    scroll(
-        ({ y }) => {
-            const middleOfHeartHeight = gradientScrollHeart.clientHeight / 2;
-            const middleOfHeartWidth = gradientScrollHeart.clientWidth / 2;
-
-            const progressToPxMapped = y.progress * (gradientScrollWrapper.clientHeight - middleOfHeartHeight);
-            console.log(y.progress);
-            // height has to be inversely proportional to scroll progess - we are changing mask height
-            progressMask.style.setProperty("--height", `${(1 - y.progress) * 100}%`);
-
-            // animate(
-            //     gradientScrollImage,
-            //     { transform: [`translate(-${middleOfHeartWidth}%, ${progressToPxMapped}px)`] },
-            //     { duration: 0.7, easing: "ease-out" }
-            // );
-            // TODO instead of 150px use grid height
-        },
-        { target: gradientScrollWrapper, offset: ["-150px start", "end center"] }
-    );
-</script> -->
+</script>
