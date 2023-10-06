@@ -30,9 +30,6 @@ module.exports = {
                 "ice-blue": "#E0F4FF",
                 "tea-green": "#D1E9D4",
                 volt: "#EFF32C"
-            },
-            gridTemplateRows: {
-                7: "repeat(7, minmax(0, 1fr))"
             }
         }
     },
