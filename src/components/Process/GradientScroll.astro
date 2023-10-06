@@ -6,16 +6,20 @@ import heart from "@assets/heart.svg";
 
 <div
     data-gradient-scroll-wrapper
-    class:list={["process-grid__line", "relative h-full w-6 border border-ruby-red bg-gradient-brand"]}
+    class:list={["process-grid__line", "relative h-full border border-ruby-red bg-gradient-brand", "w-4", "lg:w-6"]}
 >
     <div data-progress-mask class="absolute bottom-0 left-0 w-full bg-light-pink"></div>
     <Image
         data-gradient-scroll-heart
-        class="absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2"
+        class:list={[
+            "absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2",
+            "h-[40px] w-[40px]",
+            "lg:h-[60px] lg:w-[60px]"
+        ]}
         src={heart}
         alt="heart symbol"
-        width="50"
-        height="50"
+        width="60"
+        height="60"
     />
 </div>
 {
@@ -27,7 +31,9 @@ import heart from "@assets/heart.svg";
                 style={"--start-row: " + (index * 4 + 1)}
                 class:list={[
                     "process-grid__circle",
-                    "z-10 h-10 w-10 rounded-full border border-ruby-red bg-light-pink"
+                    "z-10 rounded-full border border-ruby-red bg-light-pink",
+                    "h-7 w-7",
+                    "lg:h-10 lg:w-10"
                 ]}
             />
         ))
