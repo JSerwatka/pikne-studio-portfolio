@@ -1,39 +1,160 @@
 ---
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
+// TODO use better names for observer
 ---
 
-<div class="flex h-full">
-    <div class="js-gradient-scroll__wrapper relative h-full w-6 bg-gradient-brand">
-        <Image
-            class="js-gradient-scroll__image absolute max-w-none -translate-x-[25%]"
-            src={heart}
-            alt="heart symbol"
-            width="50"
-            height="50"
-        />
-    </div>
+<div
+    data-gradient-scroll-wrapper
+    class:list={["process-grid__line", "relative h-full border border-ruby-red bg-gradient-brand", "w-4", "lg:w-6"]}
+>
+    <div data-progress-mask class="absolute bottom-0 left-0 w-full bg-light-pink"></div>
+    <Image
+        data-gradient-scroll-heart
+        class:list={[
+            "absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2",
+            "h-[40px] w-[40px]",
+            "lg:h-[60px] lg:w-[60px]"
+        ]}
+        src={heart}
+        alt="heart symbol"
+        width="60"
+        height="60"
+    />
 </div>
+{
+    Array(7)
+        .fill(0)
+        .map((_, index) => (
+            <div
+                data-circle-stop={index}
+                style={"--start-row: " + (index * 4 + 1)}
+                class:list={[
+                    "process-grid__circle",
+                    "z-10 rounded-full border border-ruby-red bg-light-pink",
+                    "h-7 w-7",
+                    "lg:h-10 lg:w-10"
+                ]}
+            />
+        ))
+}
+
+<style>
+    .process-grid__circle {
+        grid-column: 1 / 2;
+        grid-row: var(--start-row) / span 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .process-grid__line {
+        grid-column: 1 / 2;
+        grid-row: 2 / -4;
+        justify-self: center;
+    }
+
+    [data-progress-mask] {
+        height: var(--height, 100%);
+        transition: height 0.7s ease-out;
+    }
+
+    [data-gradient-scroll-heart] {
+        top: var(--top, 0px);
+        transition: top 0.7s ease-out;
+    }
+</style>
 
 <script>
-    import { scroll, animate } from "motion";
+    import { animate, stagger } from "motion";
 
-    const gradientScrollWrapper = document.querySelector(".js-gradient-scroll__wrapper") as HTMLElement;
-    const gradientScrollImage = document.querySelector(".js-gradient-scroll__image") as HTMLElement;
+    const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
+    const gradientScrollHeart = document.querySelector("[data-gradient-scroll-heart]") as HTMLElement;
+    const progressMask = document.querySelector("[data-progress-mask]") as HTMLElement;
+    const circleStops = document.querySelectorAll("[data-circle-stop]") as NodeListOf<HTMLElement>;
+    const circleStopsArray = Array.from(circleStops);
+    let currentStopIndex = 0;
+    let previousStopIndex = 0;
+    let animationTimeout: number | null = null;
 
-    scroll(
-        ({ y }) => {
-            const middleOfHeartHeight = gradientScrollImage.clientHeight / 2;
-            const middleOfHeartWidth = gradientScrollImage.clientWidth / 2;
+    function updateHeartPosition(nextStopIndex: number) {
+        if (animationTimeout) {
+            clearTimeout(animationTimeout);
+        }
 
-            const progressToPxMapped = y.progress * (gradientScrollWrapper.clientHeight - middleOfHeartHeight);
+        animationTimeout = setTimeout(() => {
+            // relative to gradientScrollWrapper
+            const nextCircleStopPostion =
+                circleStops[nextStopIndex].offsetTop +
+                circleStops[nextStopIndex].offsetHeight / 2 -
+                gradientScrollWrapper.offsetTop;
 
-            animate(
-                gradientScrollImage,
-                { transform: [`translate(-${middleOfHeartWidth}%, ${progressToPxMapped}px)`] },
-                { duration: 0.7, easing: "ease-out" }
-            );
-        },
-        { target: gradientScrollWrapper, offset: ["-150px start", "end center"] }
-    );
+            const progress = nextCircleStopPostion / gradientScrollWrapper.offsetHeight;
+
+            progressMask.style.setProperty("--height", `${(1 - progress) * 100}%`);
+            gradientScrollHeart.style.setProperty("--top", nextCircleStopPostion.toString() + "px");
+
+            const countStops = Math.abs(nextStopIndex - previousStopIndex);
+            if (countStops === 0) return;
+            const animationDelay = 0.7 / countStops;
+
+            if (nextStopIndex > previousStopIndex) {
+                animate(
+                    circleStopsArray.slice(previousStopIndex, nextStopIndex + 1),
+                    { background: "#D31D1D" },
+                    { delay: stagger(animationDelay), easing: "ease-out", duration: 0 }
+                );
+            } else {
+                animate(
+                    circleStopsArray.slice(nextStopIndex, previousStopIndex + 1),
+                    { background: "#FFF3F2" },
+                    { delay: stagger(animationDelay, { from: "last" }), easing: "ease-out", duration: 0 }
+                );
+            }
+
+            previousStopIndex = nextStopIndex;
+        }, 100);
+    }
+
+    const options = {
+        rootMargin: "-45% 0px -45% 0px"
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                currentStopIndex = Number((entry.target as HTMLElement).dataset.circleStop ?? "0");
+
+                updateHeartPosition(currentStopIndex);
+            }
+        });
+    }, options);
+
+    circleStops.forEach((circleStop) => observer.observe(circleStop));
+
+    function findClosestStopPosition(elements: NodeListOf<HTMLElement>) {
+        const viewportMiddle = window.innerHeight / 2;
+        let closestElement = elements[0];
+        let closestDistance = Infinity;
+
+        elements.forEach((element) => {
+            const elementRect = element.getBoundingClientRect();
+
+            const distance = Math.abs(viewportMiddle - (elementRect.top + elementRect.height / 2));
+
+            if (distance < closestDistance) {
+                closestElement = element;
+                closestDistance = distance;
+            }
+        });
+
+        return Number(closestElement.dataset.circleStop ?? "0");
+    }
+
+    window.addEventListener("resize", () => {
+        updateHeartPosition(currentStopIndex);
+    });
+
+    window.addEventListener("load", () => {
+        currentStopIndex = findClosestStopPosition(circleStops);
+        updateHeartPosition(currentStopIndex);
+    });
 </script>

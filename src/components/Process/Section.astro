@@ -1,0 +1,34 @@
+---
+interface Props {
+    step: number;
+}
+
+const { step } = Astro.props;
+---
+
+<div class="text-header__2 process-grid__title mb-4 uppercase">
+    <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
+</div>
+<div
+    class:list={[
+        "text-paragraph__normal process-grid__description not-last:mb-40",
+        "max-w-sm",
+        "sm:max-w-md",
+        "lg:max-w-xl"
+    ]}
+>
+    <slot name="description" />
+</div>
+
+<style>
+    .process-grid__title {
+        grid-column: 2 / 7;
+        grid-row: span 2;
+        align-self: center;
+    }
+
+    .process-grid__description {
+        grid-column: 2 / 7;
+        grid-row: span 2;
+    }
+</style>
