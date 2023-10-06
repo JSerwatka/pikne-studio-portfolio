@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
 // TODO use better names for observer
 // TODO sometimes when you scroll fast - the heart is not positioned on the last circle stop - interesection nie zdążyło się wytriggerować
+// TODO: improve when circle turns red
 ---
 
 <div
@@ -10,14 +11,30 @@ import heart from "@assets/heart.svg";
     class:list={["process-grid__line", "relative h-full w-6 border border-ruby-red bg-gradient-brand"]}
 >
     <div data-progress-mask class="absolute bottom-0 left-0 w-full bg-light-pink"></div>
-    <Image
+    <svg
+        data-gradient-scroll-heart
+        class="absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2"
+        xmlns="http://www.w3.org/2000/svg"
+        width="60"
+        height="60"
+        viewBox="0 0 50 45"
+        fill="none"
+    >
+        <path
+            d="M25.603 44.3392L25.6 44.3409C25.4141 44.4459 25.2081 44.5 25 44.5C24.7919 44.5 24.5859 44.4459 24.4 44.3408L24.397 44.3392C23.9211 44.0746 17.9202 40.6388 12.0455 35.2355C6.14858 29.8118 0.500123 22.5161 0.5 14.5349C0.504071 10.8063 1.91644 7.23617 4.42011 4.60669C6.92298 1.97805 10.3111 0.504261 13.8396 0.5C18.2927 0.500087 22.1746 2.50814 24.5933 5.89133L25 6.46027L25.4067 5.89133C27.8254 2.50814 31.7073 0.500087 36.1604 0.5C39.6889 0.50426 43.077 1.97805 45.5799 4.60669C48.0836 7.23623 49.496 10.8064 49.5 14.5352C49.4997 22.5162 43.8513 29.8118 37.9545 35.2355C32.0798 40.6388 26.0789 44.0746 25.603 44.3392Z"
+            fill="#D31D1D"
+            stroke="#FFF3F2"
+        >
+        </path>
+    </svg>
+    <!-- <Image
         data-gradient-scroll-heart
         class="absolute left-1/2 z-20 max-w-none -translate-x-1/2 -translate-y-1/2"
         src={heart}
         alt="heart symbol"
         width="50"
         height="50"
-    />
+    /> -->
 </div>
 {
     Array(7)
@@ -77,6 +94,16 @@ import heart from "@assets/heart.svg";
 
         progressMask.style.setProperty("--height", `${(1 - progress) * 100}%`);
         gradientScrollHeart.style.setProperty("--top", nextCircleStopPostion.toString() + "px");
+
+        // for (const [index, circleStop] of circleStops.entries()) {
+        //     if (currentStopIndex < index) {
+        //         circleStop.classList.remove("bg-ruby-red");
+        //         circleStop.classList.add("bg-light-pink");
+        //     } else {
+        //         circleStop.classList.add("bg-ruby-red");
+        //         circleStop.classList.remove("bg-light-pink");
+        //     }
+        // }
     }
 
     const options = {
@@ -94,7 +121,31 @@ import heart from "@assets/heart.svg";
 
     circleStops.forEach((circleStop) => observer.observe(circleStop));
 
+    function findClosestStopPosition(elements: NodeListOf<HTMLElement>) {
+        const viewportMiddle = window.innerHeight / 2;
+        let closestElement = elements[0];
+        let closestDistance = Infinity;
+
+        elements.forEach((element) => {
+            const elementRect = element.getBoundingClientRect();
+
+            const distance = Math.abs(viewportMiddle - (elementRect.top + elementRect.height / 2));
+
+            if (distance < closestDistance) {
+                closestElement = element;
+                closestDistance = distance;
+            }
+        });
+
+        return Number(closestElement.dataset.circleStop ?? "0");
+    }
+
     window.addEventListener("resize", () => {
+        updateHeartPosition(currentStopIndex);
+    });
+
+    window.addEventListener("load", () => {
+        currentStopIndex = findClosestStopPosition(circleStops);
         updateHeartPosition(currentStopIndex);
     });
 </script>
