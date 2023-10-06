@@ -41,13 +41,32 @@
                     "lg:order-1 lg:flex-col lg:pr-0"
                 ]}
             >
-                <div class:list={["children-not-last:mb-6", "mb-10", "md:mb-0"]}>
-                    <div>based in Kraków, PL | 10:27PM | 13°C</div>
+                <div
+                    class:list={[
+                        "children-a:block children-a:underline children-a:decoration-1 children-a:underline-offset-4 children-a:decoration-light-pink-transparent children-not-last:mb-6",
+                        "mb-10",
+                        "md:mb-0"
+                    ]}
+                >
+                    <div>based in Kraków</div>
                     <div>available for freelance work worldwide</div>
-                    <div>hello@pekala.design</div>
-                    <div>book a free consultancy call</div>
+                    <a
+                        href="mailto:hello@pekala.design"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        aria-label="Aleksandra Pękala contact mail"
+                    >
+                        hello@pekala.design
+                    </a>
+                    <a
+                        href="https://calendly.com/aleksandrapekala/design-inquiry"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
+                        book a free consultancy call
+                    </a>
                 </div>
-                <ul class="children-not-last:mb-6 uppercase">
+                <ul class="uppercase children-not-last:mb-6">
                     <li>
                         <a
                             href="https://www.linkedin.com/in/alekspekala/"
