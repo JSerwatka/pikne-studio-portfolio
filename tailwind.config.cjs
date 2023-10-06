@@ -45,6 +45,7 @@ module.exports = {
         plugin(function ({ addVariant }) {
             addVariant("children", "&>*");
             addVariant("children-not-last", "&>*:not(:last-child)");
+            addVariant("not-last", "&:not(:last-child)");
             ELEMENTS.forEach((element) => {
                 addVariant(`children-${element}`, `&>${element}`);
                 addVariant(`children-${element}-not-last`, `&>${element}:not(:last-child)`);
