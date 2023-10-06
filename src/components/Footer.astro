@@ -2,19 +2,13 @@
     <div class:list={["-mb-[0.46em] text-center font-alexang text-[min(25vw,425px)]"]}>Contact me</div>
     <div
         class:list={[
-            "text-paragraph__normal min-h-screen bg-ruby-red text-light-pink",
-            "px-6 py-16",
+            "text-paragraph__normal  min-h-screen bg-ruby-red text-light-pink",
+            "px-6 py-16 text-base",
+            "sm:text-xl",
             "lg:px-16 lg:pt-24"
         ]}
     >
-        <div
-            class:list={[
-                "grid h-full children:max-w-[680px]",
-                "grid-cols-1 gap-16",
-                "md:gap-20 md:px-0",
-                "lg:grid-cols-2 "
-            ]}
-        >
+        <div class:list={["grid h-full children:max-w-[680px]", "grid-cols-1 gap-16", "sm:gap-20", "lg:grid-cols-2 "]}>
             <form
                 class:list={[
                     "mx-auto flex w-full flex-col gap-y-8",
@@ -34,20 +28,17 @@
                     class="min-h-[300px] outline-2 outline-light-pink focus:outline"
                     placeholder="Message"
                     required></textarea>
-                <button type="submit" class="font-alexang text-3xl sm:md:text-4xl md:text-5xl">
-                    Send the word 🕊️</button
-                >
+                <button type="submit" class:list={["font-alexang", "text-3xl", "sm:text-5xl"]}>Send the word 🕊️</button>
             </form>
             <div
                 class:list={[
                     "mx-auto flex w-full",
                     "order-2 flex-col text-base",
-                    "sm:text-md sm:flex-row sm:justify-between sm:pr-11",
-                    "md:text-xl",
+                    "sm:flex-row sm:justify-between sm:pr-11",
                     "lg:order-1 lg:flex-col lg:pr-0"
                 ]}
             >
-                <div class:list={["children-not-last:mb-6", "mb-10", "md:mb-0"]}>
+                <div class:list={["children-not-last:mb-6", "mb-12", "sm:mb-0"]}>
                     <div>based in Kraków</div>
                     <div>available for freelance work worldwide</div>
                     <a
@@ -133,8 +124,8 @@
                 href="/privacy-policy"
                 class="decoration-light-pink-transparent underline decoration-1 underline-offset-4"
             >
-                privacy policy
-            </a> here.
+                privacy policy here.
+            </a>
         </div>
     </div>
 </footer>
