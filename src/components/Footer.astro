@@ -1,17 +1,23 @@
 <footer id="contact" class="z-10">
     <div class:list={["-mb-[0.46em] text-center font-alexang text-[min(25vw,425px)]"]}>Contact me</div>
-    <div class="min-h-screen bg-ruby-red text-light-pink">
+    <div
+        class:list={[
+            "text-paragraph__normal min-h-screen bg-ruby-red text-light-pink",
+            "px-6 py-16",
+            "lg:px-16 lg:pt-24"
+        ]}
+    >
         <div
             class:list={[
-                "grid h-full",
-                "grid-cols-1 gap-16 px-6 py-16",
+                "grid h-full children:max-w-[680px]",
+                "grid-cols-1 gap-16",
                 "md:gap-20 md:px-0",
-                "lg:grid-cols-2 lg:px-16 lg:pt-24"
+                "lg:grid-cols-2 "
             ]}
         >
             <form
                 class:list={[
-                    "mx-auto flex w-full max-w-[680px] flex-col gap-y-8",
+                    "mx-auto flex w-full flex-col gap-y-8",
                     "children:rounded-3xl children:border children:border-light-pink children:bg-ruby-red children:p-10 children:text-light-pink children:placeholder-light-pink",
                     "order-1",
                     "lg:order-2"
@@ -34,20 +40,14 @@
             </form>
             <div
                 class:list={[
-                    "mx-auto flex w-full max-w-[680px] font-metropolis",
+                    "mx-auto flex w-full",
                     "order-2 flex-col text-base",
                     "sm:text-md sm:flex-row sm:justify-between sm:pr-11",
                     "md:text-xl",
                     "lg:order-1 lg:flex-col lg:pr-0"
                 ]}
             >
-                <div
-                    class:list={[
-                        "children-a:block children-a:underline children-a:decoration-1 children-a:underline-offset-4 children-a:decoration-light-pink-transparent children-not-last:mb-6",
-                        "mb-10",
-                        "md:mb-0"
-                    ]}
-                >
+                <div class:list={["children-not-last:mb-6", "mb-10", "md:mb-0"]}>
                     <div>based in Kraków</div>
                     <div>available for freelance work worldwide</div>
                     <a
@@ -55,6 +55,7 @@
                         rel="noopener noreferrer"
                         target="_blank"
                         aria-label="Aleksandra Pękala contact mail"
+                        class="decoration-light-pink-transparent block underline decoration-1 underline-offset-4"
                     >
                         hello@pekala.design
                     </a>
@@ -62,6 +63,7 @@
                         href="https://calendly.com/aleksandrapekala/design-inquiry"
                         rel="noopener noreferrer"
                         target="_blank"
+                        class="decoration-light-pink-transparent block underline decoration-1 underline-offset-4"
                     >
                         book a free consultancy call
                     </a>
@@ -109,6 +111,30 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div
+            class:list={[
+                "mx-auto mt-20 max-w-[680px]",
+                "text-sm leading-7",
+                "sm:text-base sm:leading-8",
+                "lg:mx-0 lg:max-w-max"
+            ]}
+        >
+            What you see came true thanks to one and only
+            <a
+                href="https://github.com/JSerwatka"
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="Kuba Serwatka github profile"
+                class="decoration-light-pink-transparent underline decoration-1 underline-offset-4"
+            >
+                Kuba Serwatka
+            </a> who developed this website. ♥ Design by Aleksandra Pekala, 2023. You can find <a
+                href="/privacy-policy"
+                class="decoration-light-pink-transparent underline decoration-1 underline-offset-4"
+            >
+                privacy policy
+            </a> here.
         </div>
     </div>
 </footer>
