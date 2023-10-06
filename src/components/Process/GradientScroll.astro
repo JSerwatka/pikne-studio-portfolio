@@ -77,33 +77,54 @@ import heart from "@assets/heart.svg";
 </style>
 
 <script>
+    import { animate, stagger } from "motion";
+
     const gradientScrollWrapper = document.querySelector("[data-gradient-scroll-wrapper]") as HTMLElement;
     const gradientScrollHeart = document.querySelector("[data-gradient-scroll-heart]") as HTMLElement;
     const progressMask = document.querySelector("[data-progress-mask]") as HTMLElement;
     const circleStops = document.querySelectorAll("[data-circle-stop]") as NodeListOf<HTMLElement>;
+    const circleStopsArray = Array.from(circleStops);
     let currentStopIndex = 0;
+    let previousStopIndex = 0;
+    let animationTimeout: number | null = null;
 
-    function updateHeartPosition(currentStopIndex: number) {
-        // relative to gradientScrollWrapper
-        const nextCircleStopPostion =
-            circleStops[currentStopIndex].offsetTop +
-            circleStops[currentStopIndex].offsetHeight / 2 -
-            gradientScrollWrapper.offsetTop;
+    function updateHeartPosition(nextStopIndex: number) {
+        if (animationTimeout) {
+            clearTimeout(animationTimeout);
+        }
 
-        const progress = nextCircleStopPostion / gradientScrollWrapper.offsetHeight;
+        animationTimeout = setTimeout(() => {
+            // relative to gradientScrollWrapper
+            const nextCircleStopPostion =
+                circleStops[nextStopIndex].offsetTop +
+                circleStops[nextStopIndex].offsetHeight / 2 -
+                gradientScrollWrapper.offsetTop;
 
-        progressMask.style.setProperty("--height", `${(1 - progress) * 100}%`);
-        gradientScrollHeart.style.setProperty("--top", nextCircleStopPostion.toString() + "px");
+            const progress = nextCircleStopPostion / gradientScrollWrapper.offsetHeight;
 
-        // for (const [index, circleStop] of circleStops.entries()) {
-        //     if (currentStopIndex < index) {
-        //         circleStop.classList.remove("bg-ruby-red");
-        //         circleStop.classList.add("bg-light-pink");
-        //     } else {
-        //         circleStop.classList.add("bg-ruby-red");
-        //         circleStop.classList.remove("bg-light-pink");
-        //     }
-        // }
+            progressMask.style.setProperty("--height", `${(1 - progress) * 100}%`);
+            gradientScrollHeart.style.setProperty("--top", nextCircleStopPostion.toString() + "px");
+
+            const countStops = Math.abs(nextStopIndex - previousStopIndex);
+            if (countStops === 0) return;
+            const animationDelay = 0.7 / countStops;
+
+            if (nextStopIndex > previousStopIndex) {
+                animate(
+                    circleStopsArray.slice(previousStopIndex, nextStopIndex + 1),
+                    { background: "#D31D1D" },
+                    { delay: stagger(animationDelay), easing: "ease-out", duration: 0 }
+                );
+            } else {
+                animate(
+                    circleStopsArray.slice(nextStopIndex, previousStopIndex + 1),
+                    { background: "#FFF3F2" },
+                    { delay: stagger(animationDelay, { from: "last" }), easing: "ease-out", duration: 0 }
+                );
+            }
+
+            previousStopIndex = nextStopIndex;
+        }, 100);
     }
 
     const options = {
