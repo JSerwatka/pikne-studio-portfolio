@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 
-const ELEMENTS = ["p", "circle", "li"];
+const ELEMENTS = ["p", "circle", "li", "a"];
 
 module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -26,6 +26,7 @@ module.exports = {
                 "ruby-red": "#D31D1D",
                 "dark-chocolate": "#3A2E2E",
                 "light-pink": "#FFF3F2",
+                "light-pink-transparent": "#fff3f280",
                 lilac: "#E4DDFF",
                 "ice-blue": "#E0F4FF",
                 "tea-green": "#D1E9D4",
