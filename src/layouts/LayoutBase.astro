@@ -1,0 +1,54 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+
+import "../main.css";
+import "@fontsource/metropolis/500.css";
+import "@fontsource/metropolis/400.css";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="flex flex-col bg-light-pink text-ruby-red">
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    html {
+        scroll-behavior: smooth;
+    }
+    @font-face {
+        font-family: "AlexangDisplay";
+        src:
+            local("Alexang Display Regular"),
+            local("Alexang Display"),
+            local("AlexangDisplay"),
+            url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
+            url("/fonts/AlexangDisplay-Regular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "OlympicLight";
+        src:
+            local("Olympic Light"),
+            local("Olympic"),
+            url("/fonts/OlympicLight.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+</style>
