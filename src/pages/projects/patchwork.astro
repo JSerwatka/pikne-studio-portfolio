@@ -2,15 +2,18 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
-
-// TODO picture link alt
+import { Image } from "astro:assets";
+import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 ---
 
 <LayoutProjects title="project | patchwork">
     <Fragment slot="hero-background">
-        <img
-            src="https://images.unsplash.com/photo-1611073615452-4889cb93422e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="unsplash"
+        <Image
+            src={background}
+            width={1920}
+            height={1080}
+            loading="eager"
+            alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
         />
     </Fragment>
     <Fragment slot="services-list">
