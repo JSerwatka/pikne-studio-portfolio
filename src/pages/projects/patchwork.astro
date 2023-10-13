@@ -1,0 +1,72 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+---
+
+<LayoutProjects title="project | patchwork">
+    <!-- <img
+        slot="hero-background"
+        src="https://images.unsplash.com/photo-1611073615452-4889cb93422e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="unsplash"
+    /> -->
+    <!-- <div slot="main" class="sticky top-0 min-h-[100vh] pt-48"> -->
+    <div slot="main" class="container mx-auto">
+        <div class="my-8 mb-[90vh] flex gap-7 text-dark-chocolate">
+            <div class="basis-1/3">
+                <div class="mb-4 font-metropolis text-2xl uppercase">SERVICES</div>
+                <ul class="text-paragraph__normal [&>li:not(:last-child)]:mb-4">
+                    <li>Brand identity</li>
+                    <li>Brand strategy</li>
+                    <li>Social media design</li>
+                    <li>Web design</li>
+                </ul>
+            </div>
+            <div class="basis-2/3">
+                <div class="text-header__2">MIR</div>
+                <div class="text-paragraph__normal">
+                    <p>
+                        A sense (Latin sensus) is the way of humans contact with the world. Thanks to the sense organs,
+                        it is possible to experience, perceive and receive stimuli both from the outside and inside of
+                        the body. Sensus also means awareness, and the ability to correctly understand and organize
+                        sensory stimuli allows us to expand it.
+                    </p>
+                    <p>
+                        I wanted to reflect the meaning of this word in the visual identity I created for Maria. Her
+                        goal was to create her own space focused on how a person functions as a whole. She shows how
+                        through external influence on the body we can help ourselves in many aspects of our lives.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mb-60 grid grid-cols-6 gap-3 [&>*]:rounded-3xl">
+            <img
+                class="col-span-2"
+                src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+            />
+            <img
+                class="col-span-2"
+                src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+            />
+            <img
+                class="col-span-2"
+                src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+            />
+            <img
+                class="col-span-3"
+                src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+            />
+            <img
+                class="col-span-3"
+                src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+            />
+        </div>
+        <div class="mb-60">
+            <Quote author="God">Strzeżcie się gniewu mego</Quote>
+        </div>
+        <div class="mb-60">
+            <!-- <PictureLink title="MIR" subTitle="Next up" /> -->
+        </div>
+    </div>
+    <!-- </div> -->
+</LayoutProjects>

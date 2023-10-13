@@ -11,19 +11,29 @@ const { title } = Astro.props;
 ---
 
 <LayoutBase title={title}>
-    <header class="relative h-screen">
-        <Navbar class="bg-white/30 backdrop-blur-sm" />
-        <div
-            class:list={[
-                "absolute top-0 -z-10 h-full w-full",
-                "children:h-full children:w-full children:rounded-b-3xl children:object-cover children:object-center"
-            ]}
-        >
-            <slot name="hero-background" />
+    <div class="after:block after:h-[calc(100vh+100px)] after:w-full after:content-['']">
+        <!-- <header class="absolute top-0 z-10 h-[calc(100vh+100px)] w-full"> -->
+        <!-- <Navbar class="bg-white/30 backdrop-blur-sm" /> -->
+        <div class="absolute top-0 z-10 h-[calc(100vh+100px)] w-full">
+            <!-- <Navbar/> -->
+            <img
+                class="h-full w-full rounded-b-3xl object-cover object-center"
+                src="https://images.unsplash.com/photo-1611073615452-4889cb93422e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="unsplash"
+            />
         </div>
-    </header>
-    <main class="grow">
-        <slot />
-    </main>
+        <!-- <div
+                class:list={[
+                    "-z-10",
+                    "children:h-full children:w-full children:rounded-b-3xl children:object-cover children:object-center"
+                ]}
+            >
+                <slot name="hero-background" />
+            </div> -->
+        <!-- </header> -->
+        <main class="sticky top-0 min-h-[100vh] pt-48">
+            <slot name="main" />
+        </main>
+    </div>
     <Footer />
 </LayoutBase>
