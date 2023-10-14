@@ -1,0 +1,83 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import { Image } from "astro:assets";
+import background from "@assets/projects/psykologkompassen/bg-psykologkompassen.jpg";
+// TODO: alt for background
+// TODO: images
+---
+
+<LayoutProjects title="project | patchwork">
+    <Fragment slot="hero-background">
+        <Image src={background} width={1920} height={1080} loading="eager" alt='"' />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Logotype design</li>
+        <li>Brand identity</li>
+    </Fragment>
+    <Fragment slot="project-title">Psykologkompassen</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            The name of the company derives from the psychological need for an inner compass. In order to feel satisfied
+            and fulfilled, humans need to have a purpose. It can guide and support them, especially when they need to
+            decide which road to take in their life journey.
+        </p>
+        <p>
+            Psykologkompassen's name itself resonates with the very essence of purpose – that magnetic pull that draws
+            us towards fulfillment. We intertwined this concept into every visual element, so clients could feel the
+            North Star of purpose in every interaction.
+        </p>
+        <p>
+            The visual communication is connected with the name behind meaning and corresponds with the beauty of North
+            Swedish nature. Each visual element tells a tale of discovery, mirroring the journey of those seeking
+            direction amidst life's vast landscape. I wanted to tell a story of a person seeking a right pathway for
+            themselves, finding a way in life and embracing the process.
+        </p>
+        <p>
+            Our branding was a catalyst, turning a mere company into a compass that points to purpose. Clients aren't
+            just customers; they're explorers, and Psykologkompassen is their trusted guide.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+    </Fragment>
+    <div slot="other">
+        <div>
+            <Quote author="Monika Söderlund, CEO">
+                It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened
+                again. She has created a logo that I am happy and proud of. A unique logo - a symbol that tells what my
+                company stands for. I can warmly recommend her.
+            </Quote>
+        </div>
+        <div>
+            <!-- <PictureLink
+                title="Tobias D.A. Sköld"
+                subTitle="Next up"
+                linkTo="/projects/tobias-skold"
+                linkAccessibleName='link to project: "Tobias D.A. Sköld"'
+                src=""
+                alt=""
+            /> -->
+        </div>
+    </div>
+</LayoutProjects>
