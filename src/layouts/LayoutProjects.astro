@@ -62,7 +62,7 @@ const { title } = Astro.props;
 <style>
     .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, calc(50% - 0.5rem)));
         gap: 1rem;
     }
 </style>
