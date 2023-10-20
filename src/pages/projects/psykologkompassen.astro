@@ -4,9 +4,17 @@ import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
 import background from "@assets/projects/psykologkompassen/bg-psykologkompassen.jpg";
-// TODO: alt for background
-// TODO: images
+import windowSticker from "@assets/projects/psykologkompassen/grid-1.jpg";
+import wrappingPaper from "@assets/projects/psykologkompassen/grid-2.png";
+import businessCard from "@assets/projects/psykologkompassen/grid-3.png";
+import catalog from "@assets/projects/psykologkompassen/grid-4.jpg";
+import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
+// TODO: alt for all images
 // TODO: add link
+// TODO: update layout - for small screens look awful - issues
+// TODO: update position of hero bg for small screens
+// TODO: use properly sized images
+// TODO: issues with images with small text
 ---
 
 <LayoutProjects title="project | psykologkompassen">
@@ -41,28 +49,40 @@ import background from "@assets/projects/psykologkompassen/bg-psykologkompassen.
         </p>
     </Fragment>
     <Fragment slot="images">
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2"]}
+            src={windowSticker}
+            alt=""
+            width={windowSticker.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2 lg:row-start-2"]}
+            src={wrappingPaper}
+            alt=""
+            width={wrappingPaper.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-4 lg:row-span-2"]}
+            src={businessCard}
+            alt=""
+            width={businessCard.width / 2}
+            quality="max"
         />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6 object-center", "lg:col-span-3"]}
+            src={catalog}
+            alt=""
+            width={catalog.width / 2}
         />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6 bg-white !object-contain", "lg:col-span-3"]}
+            src={logoExplanation}
+            alt=""
+            width={logoExplanation.width / 2}
+            quality="max"
         />
     </Fragment>
-    <div slot="other">
+    <div slot="other" class="flex min-h-screen items-center">
         <div>
             <Quote author="Monika Söderlund, CEO">
                 It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened
