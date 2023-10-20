@@ -1,6 +1,8 @@
 import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 import { scheduleIdle } from "@solid-primitives/scheduled";
 
+// TODO: add arialabel for button
+
 const hats = [
     {
         name: "babushka",
