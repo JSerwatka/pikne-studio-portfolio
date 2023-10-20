@@ -12,28 +12,36 @@ interface Props {
 const { class: className, enableContactLink = true } = Astro.props;
 
 export interface LinkType {
-    pageName: string;
+    linkTargetName: string;
     linkTo: string;
     acessibleName: string;
     isMobileOnly?: boolean;
     isLinkToSection?: boolean;
+    isOutsideLink?: boolean;
+    isButtonTypeLink?: boolean;
 }
 // TODO maybe accessible name is not needed
 const links = [
-    { pageName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
-    { pageName: "About", linkTo: "/about", acessibleName: "about me page" },
-    { pageName: "Work", linkTo: "/work", acessibleName: "my work page" },
-    { pageName: "Process", linkTo: "/process", acessibleName: "process page" },
+    { linkTargetName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
+    { linkTargetName: "About", linkTo: "/about", acessibleName: "about me page" },
+    { linkTargetName: "Work", linkTo: "/work", acessibleName: "my work page" },
+    { linkTargetName: "Process", linkTo: "/process", acessibleName: "process page" },
     ...(enableContactLink
         ? [
               {
-                  pageName: "Contact",
+                  linkTargetName: "Contact",
                   linkTo: "#contact",
                   acessibleName: "contact form footer",
                   isLinkToSection: true
               }
           ]
-        : [])
+        : []),
+    {
+        linkTargetName: "Book a call",
+        linkTo: "https://calendly.com/aleksandrapekala/design-inquiry",
+        isOutsideLink: true,
+        isButtonTypeLink: true
+    }
 ] as LinkType[];
 ---
 
