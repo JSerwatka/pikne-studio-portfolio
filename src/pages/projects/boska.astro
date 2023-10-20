@@ -4,12 +4,16 @@ import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
 import background from "@assets/projects/boska/bg-boska.jpg";
-// TODO: alt for background
-// TODO: images
+import logo_mockup_1 from "@assets/projects/boska/grid-1.jpg";
+import logo_mockup_2 from "@assets/projects/boska/grid-2.jpg";
+import box_paper from "@assets/projects/boska/grid-3.jpg";
+import insta_story from "@assets/projects/boska/grid-4.png";
+// TODO: alt for all images
 // TODO: add link
+// TODO: update layout - for small screens look awful - issues
 ---
 
-<LayoutProjects title="project | patchwork">
+<LayoutProjects title="project | boska">
     <Fragment slot="hero-background">
         <Image src={background} width={1920} height={1080} loading="eager" alt='"' />
     </Fragment>
@@ -35,28 +39,27 @@ import background from "@assets/projects/boska/bg-boska.jpg";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2"]}
+            src={logo_mockup_1}
+            alt=""
+            width={logo_mockup_1.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-4"]}
+            src={logo_mockup_2}
+            alt=""
+            width={logo_mockup_2.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
-        />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
-        />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image class:list={["col-span-6", "lg:col-span-4"]} src={box_paper} alt="" width={box_paper.width / 2} />
+        <Image
+            class:list={["col-span-6 object-left-bottom", "lg:col-span-2"]}
+            src={insta_story}
+            alt=""
+            width={insta_story.width / 2}
         />
     </Fragment>
-    <div slot="other">
+    <div slot="other" class="flex min-h-screen items-center">
         <div>
             <Quote author="OLIMPIA WAWRZAK, the owner">
                 From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
