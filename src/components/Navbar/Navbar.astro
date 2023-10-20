@@ -6,9 +6,10 @@ import DesktopNavbar from "./DesktopNavbar.astro";
 
 interface Props {
     class?: string;
+    enableContactLink?: boolean;
 }
 
-const { class: className } = Astro.props;
+const { class: className, enableContactLink = true } = Astro.props;
 
 export interface LinkType {
     pageName: string;
@@ -22,8 +23,17 @@ const links = [
     { pageName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
     { pageName: "About", linkTo: "/about", acessibleName: "about me page" },
     { pageName: "Work", linkTo: "/work", acessibleName: "my work page" },
-    { pageName: "Playground", linkTo: "/playground", acessibleName: "playground page" },
-    { pageName: "Contact", linkTo: "#contact", acessibleName: "contact form footer", isLinkToSection: true }
+    { pageName: "Process", linkTo: "/process", acessibleName: "process page" },
+    ...(enableContactLink
+        ? [
+              {
+                  pageName: "Contact",
+                  linkTo: "#contact",
+                  acessibleName: "contact form footer",
+                  isLinkToSection: true
+              }
+          ]
+        : [])
 ] as LinkType[];
 ---
 
