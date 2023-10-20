@@ -1,0 +1,80 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import { Image } from "astro:assets";
+import background from "@assets/projects/boska/bg-boska.jpg";
+// TODO: alt for background
+// TODO: images
+// TODO: add link
+---
+
+<LayoutProjects title="project | patchwork">
+    <Fragment slot="hero-background">
+        <Image src={background} width={1920} height={1080} loading="eager" alt='"' />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Art direction</li>
+        <li>Brand identity</li>
+        <li>Logo design</li>
+    </Fragment>
+    <Fragment slot="project-title">BOSKA body cast</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            BOSKA is a brand dedicated to the creation of exquisite body casts – a fusion of elegance and timelessness
+            that takes shape in sculpted beauty. The brand embraces the human form as a masterpiece, each of its own.
+        </p>
+        <p>
+            The brand works with customers in an intimate atmosphere, as creating the cast requires showing themselves
+            truly as they are. Showing it as highly artistic but also reliable was a challenge I had to uptake. I
+            decided to go for modern sans-serif logo and limited brand palette.
+        </p>
+        <p>
+            A premium brand requires high attention to detail on every single touchpoint. Business cards that whisper
+            luxury, boxes that carries the essence of sophistication.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+    </Fragment>
+    <div slot="other">
+        <div>
+            <Quote author="OLIMPIA WAWRZAK, the owner">
+                From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
+                expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the
+                idea behind my company. The other materials complement it, resulting in a cohesive look of the entire
+                project. I can highly recommend her services if you are looking for an exceptional, unique look for your
+                company.
+            </Quote>
+        </div>
+        <div>
+            <!-- <PictureLink
+                title="my illustrations"
+                subTitle="Next up"
+                linkTo="/illustrations"
+                linkAccessibleName='link to my illustrations'
+                src=""
+                alt=""
+            /> -->
+        </div>
+    </div>
+</LayoutProjects>

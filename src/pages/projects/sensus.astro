@@ -1,0 +1,79 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import { Image } from "astro:assets";
+import background from "@assets/projects/patchwork/bg-patchwork.jpg";
+
+// TODO: add photos, link
+// TODO: use correct background
+---
+
+<LayoutProjects title="project | patchwork">
+    <Fragment slot="hero-background">
+        <Image src={background} width={1920} height={1080} loading="eager" alt="" />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Art direction</li>
+        <li>Brand identity</li>
+        <li>Brand strategy</li>
+        <li>Logo design</li>
+    </Fragment>
+    <Fragment slot="project-title">sensus</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            A sense (Latin sensus) is the way of humans contact with the world. Thanks to the sense organs, it is
+            possible to experience, perceive and receive stimuli both from the outside and inside of the body. Sensus
+            also means awareness, and the ability to correctly understand and organize sensory stimuli allows us to
+            expand it
+        </p>
+        <p>
+            I wanted to reflect the meaning of this word in the visual identity I created for Maria. Her goal was to
+            create her own space focused on how a person functions as a whole. She shows how through external influence
+            on the body we can help ourselves in many aspects of our lives.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+    </Fragment>
+    <div slot="other">
+        <div>
+            <Quote author="Maria Obszyńska, the owner">
+                From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
+                expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the
+                idea behind my company. The other materials complement it, resulting in a cohesive look of the entire
+                project. I can highly recommend her services if you are looking for an exceptional, unique look for your
+                company.
+            </Quote>
+        </div>
+        <div>
+            <!-- <PictureLink
+                title="Patchwork"
+                subTitle="Next up"
+                linkTo="/projects/patchwork"
+                linkAccessibleName='link to project: "patchwork"'
+                src=""
+                alt=""
+            /> -->
+        </div>
+    </div>
+</LayoutProjects>

@@ -1,0 +1,77 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import { Image } from "astro:assets";
+import background from "@assets/projects/patchwork/bg-patchwork.jpg";
+
+// TODO: add photos, quote, link
+---
+
+<LayoutProjects title="project | patchwork">
+    <Fragment slot="hero-background">
+        <Image
+            src={background}
+            width={1920}
+            height={1080}
+            loading="eager"
+            alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
+        />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Brand identity</li>
+    </Fragment>
+    <Fragment slot="project-title">Patchwork</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            Patchwork, an association for immigrant families of people with disabilities, embodies unity in diversity.
+            Its name reflects the fusion of diverse experiences into something unique, capturing their serious,
+            heartfelt work without unnecessary pathos.
+        </p>
+        <p>
+            The color palette reflects their values - beige signifies equality and harmony, while warm reds and oranges
+            emanate fervor and support. Blues represent professionalism, reliability, and unwavering commitment.
+            Accessibility was paramount here; the chosen typography ensures maximum readability, available in both Latin
+            and Cyrillic characters for effective communication within their diverse community.
+        </p>
+        <p>
+            Patchwork's members spirit, despite facing dramatic challenges like fleeing the war in Ukraine, radiates
+            hope and resilience. Patchwork stitches unity and positivity into its vibrant tapestry, a beacon of
+            inspiration amidst life's trials.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-2"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+        <img
+            class="col-span-3"
+            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        />
+    </Fragment>
+    <div slot="other">
+        <div>
+            <!-- <PictureLink
+                title="Psykologkompassen"
+                subTitle="Next up"
+                linkTo="/projects/psykologkompassen"
+                linkAccessibleName='link to project: "psykologkompassen"'
+                src=""
+                alt=""
+            /> -->
+        </div>
+    </div>
+</LayoutProjects>
