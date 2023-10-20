@@ -24,6 +24,7 @@ module.exports = {
             }),
             colors: {
                 "ruby-red": "#D31D1D",
+                "ruby-red-transparent": "#D31D1D80",
                 "dark-chocolate": "#3A2E2E",
                 "light-pink": "#FFF3F2",
                 "light-pink-transparent": "#fff3f280",
