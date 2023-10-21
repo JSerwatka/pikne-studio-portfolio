@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 import pikachus from "@assets/illustrations/pikachus.png";
 import designedForLove from "@assets/illustrations/designed-for-love.png";
@@ -21,13 +22,31 @@ import mongolia from "@assets/illustrations/mongolia.png";
 
 <Layout title="Illustrations">
     <div class="mx-auto mb-[30vh]">
-        <div class="sticky top-[20vh] mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
+        <div class="sticky top-[20vh] z-10 mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
             Illustrations
         </div>
         <div
-            data-projects
-            class:list={["col grid grid-cols-1 justify-items-center", "mt-[10vh] gap-y-40", "lg:mt-[30vh] lg:gap-y-64"]}
+            class:list={[
+                "col relative z-20 grid grid-cols-1 justify-items-center",
+                "mt-[10vh] gap-y-40",
+                "lg:mt-[30vh] lg:gap-y-64"
+            ]}
         >
+            <div class="stack w-3/4 max-w-[900px]">
+                <Image src={pikachus} width={900} height={600} class="w-full rounded-3xl object-cover" alt="" />
+            </div>
         </div>
     </div>
 </Layout>
+
+<style>
+    .stack {
+        display: grid;
+        place-items: center;
+        grid-template-areas: "stack";
+    }
+
+    .stack > * {
+        grid-area: stack;
+    }
+</style>
