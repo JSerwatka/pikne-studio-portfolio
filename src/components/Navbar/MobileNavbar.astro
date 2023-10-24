@@ -21,7 +21,7 @@ const { class: className, links } = Astro.props;
 <div
     data-overlay
     class:list={[
-        "text-header__2 fixed inset-0 z-20 hidden h-screen w-screen bg-ruby-red text-light-pink",
+        "text-header__2 overlay-animation fixed inset-0 z-20 h-screen w-screen -translate-y-full bg-ruby-red text-light-pink",
         "px-6 py-3",
         "sm:px-10 sm:py-5"
     ]}
@@ -57,6 +57,18 @@ const { class: className, links } = Astro.props;
     </ul>
 </div>
 
+<style>
+    .overlay-animation {
+        transition: transform 0.5s ease-out;
+    }
+
+    @media (prefers-reduced-motion) {
+        .overlay-animation {
+            transition: transform 0s;
+        }
+    }
+</style>
+
 <script>
     const menuButton = document.querySelector("[data-menu-button]") as HTMLButtonElement;
     const overlay = document.querySelector("[data-overlay]") as HTMLElement;
@@ -88,7 +100,7 @@ const { class: className, links } = Astro.props;
 
     function openOverlay(isOpenOverlay: boolean) {
         menuButton.setAttribute("aria-expanded", isOpenOverlay.toString());
-        overlay.classList.toggle("hidden", !isOpenOverlay);
+        overlay.classList.toggle("-translate-y-full", !isOpenOverlay);
         document.body.classList.toggle("overflow-hidden", isOpenOverlay);
         trapFocus(isOpenOverlay);
     }
