@@ -1,0 +1,37 @@
+---
+import { imageMetadata } from "astro/assets/utils";
+import { Image } from "astro:assets";
+
+interface Props {
+    linkTo: string;
+    linkAccessibleName: string;
+    src: ImageMetadata;
+    alt: string;
+}
+
+const { src, alt, linkTo, linkAccessibleName } = Astro.props;
+---
+
+<div class:list={["flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate"]}>
+    <div>
+        <a href={linkTo} aria-label={linkAccessibleName}>
+            <div class:list={["relative"]}>
+                <Image
+                    src={src}
+                    width={1125}
+                    alt={alt}
+                    class:list={[
+                        " max-h-[522px] max-w-[1125px] rounded-2xl object-cover",
+                        "aspect-square w-[calc(100vw-24px)]",
+                        "sm:aspect-auto sm:w-[calc(100vw-81px)]"
+                    ]}
+                />
+                <div
+                    class="wrap absolute -bottom-[0.5em] left-1/2 -translate-x-1/2 font-olympic text-[min(12vw,151px)]"
+                >
+                    <slot name="project-name" />
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

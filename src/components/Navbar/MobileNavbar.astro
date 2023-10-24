@@ -12,7 +12,7 @@ const { class: className, links } = Astro.props;
 
 <button
     aria-expanded="false"
-    aria-labelledby="toggle navbar menu"
+    aria-label="toggle navbar menu"
     data-menu-button
     class:list={["w-full text-end uppercase", className]}
 >
@@ -36,7 +36,7 @@ const { class: className, links } = Astro.props;
                 class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
             />
         </a>
-        <button data-close-button autofocus aria-labelledby="close navbar menu">&#10005;</button>
+        <button data-close-button autofocus aria-label="close navbar menu">&#10005;</button>
     </div>
     <ul class:list={["text-center children-not-last:mb-14", "mt-28", "sm:mt-11"]}>
         {
@@ -44,7 +44,7 @@ const { class: className, links } = Astro.props;
                 <li>
                     <a
                         href={link.linkTo}
-                        aria-labelledby={link.acessibleName}
+                        aria-label={link.acessibleName}
                         rel={link.isOutsideLink ? "noopener noreferrer" : null}
                         target={link.isOutsideLink ? "_blank" : "_self"}
                         data-link-type={link.isLinkToSection ? "section" : "normal"}
