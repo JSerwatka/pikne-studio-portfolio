@@ -1,0 +1,80 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import pikachus from "@assets/illustrations/pikachus.png";
+import designedForLove from "@assets/illustrations/designed-for-love.png";
+import pinkAndFeminity from "@assets/illustrations/pink-and-feminity.png";
+import lilou1 from "@assets/illustrations/lilou-1.jpg";
+import lilou2 from "@assets/illustrations/lilou-2.png";
+import kazachstanIdentity from "@assets/illustrations/kazakhstan-identity.jpg";
+import baltic1 from "@assets/illustrations/baltic-in-the-middle-1.png";
+import baltic2 from "@assets/illustrations/baltic-in-the-middle-2.png";
+import baltic3 from "@assets/illustrations/baltic-in-the-middle-3.png";
+import breakfast from "@assets/illustrations/breakfast.png";
+import superbloomDeer from "@assets/illustrations/superbloom-deer.png";
+import bunnyWonderland from "@assets/illustrations/bunny-wonderland.jpg";
+import womanWithFlowers from "@assets/illustrations/woman-with-flowers.png";
+import olga from "@assets/illustrations/saint-olga-of-kiev.png";
+import ukraine from "@assets/illustrations/ukraine.jpg";
+import mongolia from "@assets/illustrations/mongolia.png";
+import PictureLink from "@components/PictureLink.astro";
+
+// TODO: add alt for all imgs
+// TODO: add video
+// TODO: check sizing of hero text (overflowing)
+// TODO: check margins and gap
+// TODO: proper size of images
+// TODO: add gap
+// TODO: add max-height: children:max-h-[calc(100vh-10vh)]
+// TODO: add picture link img and alt
+---
+
+<Layout title="Illustrations">
+    <div class="mx-auto mb-[30vh]">
+        <div class="sticky top-[20vh] z-10 mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
+            Illustrations
+        </div>
+        <div
+            class:list={[
+                " relative z-20 grid grid-cols-12 children:w-full children:rounded-3xl children:object-cover",
+                "mt-[10vh] gap-y-40",
+                "lg:mt-[30vh] lg:gap-y-64"
+            ]}
+        >
+            <Image src={pikachus} width={pikachus.width / 2} alt="" class="col-span-5 col-start-8" />
+            <Image src={designedForLove} width={designedForLove.width / 2} alt="" class="col-span-12" />
+            <Image src={pinkAndFeminity} width={pinkAndFeminity.width / 2} alt="" class="col-span-12" />
+            <Image src={lilou1} width={lilou1.width / 2} alt="" class="col-span-4 col-start-3" />
+            <Image src={lilou2} width={lilou2.width / 2} alt="" class="col-span-4 col-start-7" />
+            <Image
+                src={kazachstanIdentity}
+                width={kazachstanIdentity.width / 2}
+                alt=""
+                class="col-span-9 col-start-4"
+            />
+            <Image src={baltic1} width={baltic1.width / 2} alt="" class="col-span-4" />
+            <div class="col-span-8"></div>
+            <Image src={baltic2} width={baltic2.width / 2} alt="" class="col-span-4 col-start-5" />
+            <div class="col-span-4"></div>
+            <Image src={baltic3} width={baltic3.width / 2} alt="" class="col-span-4 col-start-9" />
+            <Image src={breakfast} width={breakfast.width / 2} alt="" class="col-span-6" />
+            <Image src={superbloomDeer} width={superbloomDeer.width / 2} alt="" class="col-span-12" />
+            <Image src={bunnyWonderland} width={bunnyWonderland.width / 2} alt="" class="col-span-12" />
+            <Image src={womanWithFlowers} width={womanWithFlowers.width / 2} alt="" class="col-span-7" />
+            <Image src={olga} width={olga.width / 2} alt="" class="col-span-6 col-start-4" />
+            <Image src={ukraine} width={ukraine.width / 2} alt="" class="col-span-7 col-start-6" />
+            <Image src={mongolia} width={mongolia.width / 2} alt="" class="col-span-7" />
+        </div>
+    </div>
+    <div class="min-h-screen">
+        <!-- <PictureLink
+            title="My work"
+            subTitle="Next up"
+            linkTo="/work"
+            linkAccessibleName="link to all work page"
+            src=""
+            alt=""
+        /> -->
+    </div>
+</Layout>
