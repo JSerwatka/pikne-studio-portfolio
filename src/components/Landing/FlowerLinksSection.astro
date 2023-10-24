@@ -1,0 +1,60 @@
+---
+import FlowerLink from "./FlowerLink.astro";
+---
+
+<div class:list={["flex min-h-screen flex-col justify-center gap-20 py-20"]}>
+    <div class="text-header__1 text-center">More secrets revealed</div>
+    <div class:list={["flex flex-wrap justify-center gap-28 font-metropolis uppercase"]}>
+        <FlowerLink
+            href="/about"
+            class="h-[300px] w-[300px] fill-ruby-red stroke-ruby-red text-[1.26rem] md:h-[400px] md:w-[400px]"
+            altTitle="About me"
+            altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
+        >
+            <Fragment slot="innerIcon">
+                <foreignObject x="75" y="90" class="h-[24px] w-[50px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 62.41 15.68">
+                        <g>
+                            <g>
+                                <path
+                                    class="fill-none stroke-1"
+                                    d="m1.51,6.49s11.73-12.04,21.56.91c0,0-8.41,8.91-21.56-.91Z"></path>
+                                <circle class="stroke-1" cx="12.68" cy="6.35" r="4.72"></circle>
+                                <g>
+                                    <path
+                                        class="fill-none stroke-1"
+                                        d="m39.74,8.23s9.33-13.98,21.37-3.05c0,0-6.64,10.3-21.37,3.05Z"></path>
+                                    <circle class="stroke-1" cx="50.35" cy="5.95" r="4.77"></circle>
+                                </g>
+                                <path
+                                    class="fill-none stroke-1"
+                                    d="m25.05,10.59s-.63,4.43,2.71,4.05,3.34-4.05,3.34-4.05c0,0-.07,4.55,2.93,4.05s3.26-4.05,3.26-4.05"
+                                ></path>
+                            </g>
+                        </g>
+                    </svg>
+                </foreignObject>
+            </Fragment>
+            <Fragment slot="text">About me ✹ About me ✹ About me ✹</Fragment>
+        </FlowerLink>
+        <FlowerLink
+            href="/process"
+            class="h-[300px] w-[300px] fill-ruby-red stroke-ruby-red text-[1.38rem] md:h-[400px] md:w-[400px]"
+            altTitle="See my process. It's very fun"
+            altDescription="A rotating link with text placed around a circle, with a cloud/flower shape around it, and a smiley face inside"
+        >
+            <Fragment slot="innerIcon">
+                <foreignObject x="75" y="90" class="h-[24px] w-[50px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 97 24" fill="none">
+                        <path
+                            d="M96.0607 13.0607C96.6464 12.4749 96.6464 11.5251 96.0607 10.9393L86.5147 1.3934C85.9289 0.807611 84.9792 0.807611 84.3934 1.3934C83.8076 1.97919 83.8076 2.92893 84.3934 3.51472L92.8787 12L84.3934 20.4853C83.8076 21.0711 83.8076 22.0208 84.3934 22.6066C84.9792 23.1924 85.9289 23.1924 86.5147 22.6066L96.0607 13.0607ZM0 13.5H95V10.5H0V13.5Z"
+                            class="fill-ruby-red"
+                        >
+                        </path>
+                    </svg>
+                </foreignObject>
+            </Fragment>
+            <Fragment slot="text">SEE MY PROCESS ✹ IT'S VERY FUN ✹</Fragment>
+        </FlowerLink>
+    </div>
+</div>
