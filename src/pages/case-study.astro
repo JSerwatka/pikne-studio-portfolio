@@ -26,6 +26,7 @@ import AnimatedImage, {
     type RotationPathType,
     type TranslationPathType
 } from "@components/CaseStudy/AnimatedImage.astro";
+import ScrollIndicator from "@components/ScrollIndicator.astro";
 
 interface AnimatedImagesConfigType {
     [key: string]: {
@@ -134,7 +135,9 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 
 <Layout title="test">
     <div class="overflow-hidden">
-        <div class="h-screen bg-slate-400"></div>
+        <div class="h-screen bg-slate-400">
+            <ScrollIndicator />
+        </div>
         <Section step={1}>
             <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
             <Fragment slot="description">

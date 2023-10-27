@@ -2,6 +2,7 @@
 import Navbar from "@components/Navbar/Navbar.astro";
 import LayoutBase from "./LayoutBase.astro";
 import Footer from "@components/Footer.astro";
+import ScrollIndicator from "@components/ScrollIndicator.astro";
 
 interface Props {
     title: string;
@@ -26,6 +27,7 @@ const { title } = Astro.props;
             >
                 <slot name="hero-background" />
             </div>
+            <ScrollIndicator />
         </header>
         <main class="sticky top-0 mx-auto max-w-[1000px]">
             <div class="flex min-h-screen items-center">
