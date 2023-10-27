@@ -1,0 +1,13 @@
+---
+import ArrowIconSmall from "./Icons/ArrowIconSmall.astro";
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+    <ArrowIconSmall class:list={["w-[35px] animate-bounce fill-ruby-red motion-reduce:animate-none", className]} />
+</div>
