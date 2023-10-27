@@ -5,6 +5,7 @@ import patchwork from "@assets/work/patchwork.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
 import boska from "@assets/work/boska.png";
 import { Image } from "astro:assets";
+import ScrollIndicator from "@components/ScrollIndicator.astro";
 
 interface ProjectConfigType {
     title: string;
@@ -53,6 +54,7 @@ const projects = [
     <div class="mx-auto mb-[30vh]">
         <div class="sticky top-[20vh] mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
             My work
+            <ScrollIndicator />
         </div>
         <div
             data-projects
