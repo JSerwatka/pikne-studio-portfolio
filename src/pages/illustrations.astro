@@ -1,6 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
+import PictureLink from "@components/PictureLink.astro";
+import ScrollIndicator from "@components/ScrollIndicator.astro";
 
 import pikachus from "@assets/illustrations/pikachus.png";
 import designedForLove from "@assets/illustrations/designed-for-love.png";
@@ -18,8 +20,7 @@ import womanWithFlowers from "@assets/illustrations/woman-with-flowers.png";
 import olga from "@assets/illustrations/saint-olga-of-kiev.png";
 import ukraine from "@assets/illustrations/ukraine.jpg";
 import mongolia from "@assets/illustrations/mongolia.png";
-import PictureLink from "@components/PictureLink.astro";
-import ScrollIndicator from "@components/ScrollIndicator.astro";
+import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 
 // TODO: add alt for all imgs
 // TODO: add video
@@ -70,13 +71,13 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         </div>
     </div>
     <div class="min-h-screen">
-        <!-- <PictureLink
-            title="My work"
-            subTitle="Next up"
-            linkTo="/work"
-            linkAccessibleName="link to all work page"
-            src=""
+        <PictureLink
+            title="My own branding"
+            subTitle="HOW DOES IT LOOK IN PRACTICE? TAKE A LOOK AT A CASE STUDY:"
+            linkTo="/case-study"
+            linkAccessibleName="link to my own branding"
+            src={brandingThumbnail}
             alt=""
-        /> -->
+        />
     </div>
 </Layout>
