@@ -21,7 +21,14 @@ import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
 
 <LayoutProjects title="project | psykologkompassen">
     <Fragment slot="hero-background">
-        <Image src={background} width={1920} height={1080} loading="eager" alt='"' />
+        <Image
+            src={background}
+            width={1920}
+            height={1080}
+            loading="eager"
+            alt='"'
+            class:list={["object-[30%_0%]", "lg:object-center"]}
+        />
     </Fragment>
     <Fragment slot="services-list">
         <li>Logotype design</li>
