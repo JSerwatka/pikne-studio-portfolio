@@ -3,16 +3,13 @@ import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
+
+import illustrationsThumbnail from "@assets/thumbnails/illustrations.webp";
+import logoDisplay from "@assets/projects/boska/logo-display.jpg";
+import voucher from "@assets/projects/boska/voucher.png";
+import boxPaper from "@assets/projects/boska/box-paper.jpg";
+import instaStory from "@assets/projects/boska/insta-story.png";
 import background from "@assets/projects/boska/bg-boska.jpg";
-import logo_mockup_1 from "@assets/projects/boska/grid-1.jpg";
-import logo_mockup_2 from "@assets/projects/boska/grid-2.jpg";
-import box_paper from "@assets/projects/boska/grid-3.jpg";
-import insta_story from "@assets/projects/boska/grid-4.png";
-// TODO: alt for all images
-// TODO: add link
-// TODO: update layout - for small screens look awful - issues
-// TODO: update position of hero bg
-// TODO: use properly sized images
 ---
 
 <LayoutProjects title="project | boska">
@@ -43,43 +40,38 @@ import insta_story from "@assets/projects/boska/grid-4.png";
     <Fragment slot="images">
         <Image
             class:list={["col-span-6", "lg:col-span-2"]}
-            src={logo_mockup_1}
-            alt=""
-            width={logo_mockup_1.width / 2}
+            src={logoDisplay}
+            alt="BOSKA logotype blind-embossed on a paper-like beige texture"
+            width={logoDisplay.width / 2}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-4"]}
-            src={logo_mockup_2}
-            alt=""
-            width={logo_mockup_2.width / 2}
+            src={voucher}
+            alt="a hand holding a voucher in minimalistic design printed on a white textured paper"
+            width={voucher.width / 2}
         />
-        <Image class:list={["col-span-6", "lg:col-span-4"]} src={box_paper} alt="" width={box_paper.width / 2} />
+        <Image class:list={["col-span-6", "lg:col-span-4"]} src={boxPaper} alt="" width={boxPaper.width / 2} />
         <Image
             class:list={["col-span-6 object-left-bottom", "lg:col-span-2"]}
-            src={insta_story}
+            src={instaStory}
             alt=""
-            width={insta_story.width / 2}
+            width={instaStory.width / 2}
         />
     </Fragment>
-    <div slot="other" class="flex min-h-screen items-center">
-        <div>
-            <Quote author="OLIMPIA WAWRZAK, the owner">
-                From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
-                expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the
-                idea behind my company. The other materials complement it, resulting in a cohesive look of the entire
-                project. I can highly recommend her services if you are looking for an exceptional, unique look for your
-                company.
-            </Quote>
-        </div>
-        <div>
-            <!-- <PictureLink
-                title="my illustrations"
-                subTitle="Next up"
-                linkTo="/illustrations"
-                linkAccessibleName='link to my illustrations'
-                src=""
-                alt=""
-            /> -->
-        </div>
+    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
+        <Quote author="OLIMPIA WAWRZAK, the owner">
+            From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
+            expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the idea
+            behind my company. The other materials complement it, resulting in a cohesive look of the entire project. I
+            can highly recommend her services if you are looking for an exceptional, unique look for your company.
+        </Quote>
+        <PictureLink
+            title="my illustrations"
+            subTitle="Next up"
+            linkTo="/illustrations"
+            linkAccessibleName="link to my illustrations"
+            src={illustrationsThumbnail}
+            alt=""
+        />
     </div>
 </LayoutProjects>
