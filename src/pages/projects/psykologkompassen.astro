@@ -3,6 +3,8 @@ import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
+import tobiasThumbnail from "@assets/thumbnails/tobias.jpg";
+
 import background from "@assets/projects/psykologkompassen/bg-psykologkompassen.jpg";
 import windowSticker from "@assets/projects/psykologkompassen/grid-1.jpg";
 import wrappingPaper from "@assets/projects/psykologkompassen/grid-2.png";
@@ -52,53 +54,49 @@ import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
         <Image
             class:list={["col-span-6", "lg:col-span-2"]}
             src={windowSticker}
-            alt=""
+            alt="Psykologkompassen logo presented as a sticker on a window glass"
             width={windowSticker.width / 2}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-2 lg:row-start-2"]}
             src={wrappingPaper}
-            alt=""
+            alt="a wrapping paper with the pattern made out of Psykologkompassen logo symbol"
             width={wrappingPaper.width / 2}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-4 lg:row-span-2"]}
             src={businessCard}
-            alt=""
+            alt="a close up of two hands passing each other business card with details of the owner of Psykologkompassen"
             width={businessCard.width / 2}
             quality="max"
         />
         <Image
             class:list={["col-span-6 object-center", "lg:col-span-3"]}
             src={catalog}
-            alt=""
+            alt="a stationery set presenting Psykologkompassen branding, including two sides of the business card, a black folder with the logo, a piece of branded paper and a white pen"
             width={catalog.width / 2}
         />
         <Image
             class:list={["col-span-6 bg-white !object-contain", "lg:col-span-3"]}
             src={logoExplanation}
-            alt=""
+            alt="an image explaining the symbolism behind the logo of Psykologkompassen - shows the elements that the symbol corresponds to, such as a human, crossed paths, a star and a circle"
             width={logoExplanation.width / 2}
             quality="max"
         />
     </Fragment>
-    <div slot="other" class="flex min-h-screen items-center">
-        <div>
-            <Quote author="Monika Söderlund, CEO">
-                It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened
-                again. She has created a logo that I am happy and proud of. A unique logo - a symbol that tells what my
-                company stands for. I can warmly recommend her.
-            </Quote>
-        </div>
-        <div>
-            <!-- <PictureLink
-                title="Tobias D.A. Sköld"
-                subTitle="Next up"
-                linkTo="/projects/tobias-skold"
-                linkAccessibleName='link to project: "Tobias D.A. Sköld"'
-                src=""
-                alt=""
-            /> -->
-        </div>
+    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
+        <Quote author="Monika Söderlund, CEO">
+            It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened
+            again. She has created a logo that I am happy and proud of. A unique logo - a symbol that tells what my
+            company stands for. I can warmly recommend her.
+        </Quote>
+        <PictureLink
+            title="Tobias D.A. Sköld"
+            subTitle="Next up"
+            linkTo="/projects/tobias-skold"
+            linkAccessibleName='link to project: "Tobias D.A. Sköld"'
+            src={tobiasThumbnail}
+            alt=""
+        />
     </div>
 </LayoutProjects>
