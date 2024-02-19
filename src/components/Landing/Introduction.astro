@@ -1,6 +1,5 @@
 ---
-import aleksandraThinking from "@assets/index/thinking.png";
-import aleksandraConfetti from "@assets/index/confetti.png";
+import thinking from "@assets/index/thinking.webp";
 import { Image } from "astro:assets";
 import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
 ---
@@ -10,12 +9,12 @@ import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
         "flex min-h-screen items-center overflow-x-hidden bg-blue-100",
         "py-20 ",
         "px-6",
-        "md:px-14",
+        "lg:px-14",
         "xl:overflow-visible"
     ]}
 >
-    <div class:list={["relative"]}>
-        <div class:list={["relative z-20", "xl:ml-auto xl:max-w-[50%]"]}>
+    <div class:list={["flex flex-col gap-6", "lg:flex-row-reverse"]}>
+        <div class:list={["xl:ml-auto xl:max-w-[50%]"]}>
             <div class="text-paragraph__normal">What do i do</div>
             <div class="text-header__2 my-10">
                 <div class="mb-10">
@@ -31,58 +30,17 @@ import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
                 <ArrowIconSmall class="ml-2 inline-block w-[16px] fill-ruby-red align-text-top" />
             </a>
         </div>
-        <div class:list={["mt-[65vw] children:transition-opacity md:mt-[550px] md:flex md:justify-end", "xl:mt-0"]}>
-            <Image
-                src={aleksandraThinking}
-                alt="me squatting and thinking, red doodles around me"
-                class:list={[
-                    "absolute bottom-0 z-10",
-                    "scale-x-[-1]",
-                    "md:max-w-[800px]",
-                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain"
-                ]}
-                loading="eager"
-                data-default-image
-            />
-
-            <Image
-                src={aleksandraConfetti}
-                alt="me exited with arms raised and a big smile, throwing confetti"
-                class:list={[
-                    "opacity-0",
-                    "absolute bottom-0 z-10",
-                    "scale-x-[-1]",
-                    "md:max-w-[800px]",
-                    "xl:left-0 xl:w-[60%] xl:max-w-[1000px] xl:scale-x-100 xl:object-contain"
-                ]}
-                loading="lazy"
-                data-hidden-image
-            />
-        </div>
+        <Image
+            src={thinking}
+            width={700}
+            height={700}
+            alt="a portrait of Aleksandra Pekala on a red background, with an animated star-shaped element moving behind her"
+            class:list={[
+                "max-w-[700px] scale-x-[-1] object-contain",
+                "mt-2 w-full self-center",
+                "mg:mt-0 lg:w-1/2 lg:self-end"
+            ]}
+            loading="eager"
+        />
     </div>
 </div>
-
-<script>
-    const defaultImage = document.querySelector("[data-default-image]") as HTMLImageElement;
-    const hiddenImage = document.querySelector("[data-hidden-image]") as HTMLImageElement;
-    const contactButton = document.querySelector("[data-contact-button]") as HTMLAnchorElement;
-
-    // show animation and then scroll to the href
-    contactButton.addEventListener("click", (e: MouseEvent) => {
-        e.preventDefault();
-
-        hiddenImage.classList.remove("opacity-0");
-        defaultImage.classList.add("opacity-0");
-
-        const href = contactButton.getAttribute("href") ?? "#contact";
-
-        setTimeout(function () {
-            window.location.href = href;
-        }, 500);
-
-        setTimeout(function () {
-            hiddenImage.classList.add("opacity-0");
-            defaultImage.classList.remove("opacity-0");
-        }, 700);
-    });
-</script>
