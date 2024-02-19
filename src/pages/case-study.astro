@@ -21,12 +21,15 @@ import heart2 from "@assets/case-study/4.3.heart.png";
 import megaphone from "@assets/case-study/5.1.megaphone.png";
 import stars from "@assets/case-study/5.2.stars.png";
 
+import consultationsThumbnail from "@assets/thumbnails/book-a-free-consultation.jpg";
+
 import Section from "@components/CaseStudy/Section.astro";
 import AnimatedImage, {
     type RotationPathType,
     type TranslationPathType
 } from "@components/CaseStudy/AnimatedImage.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
+import PictureLink from "@components/PictureLink.astro";
 
 interface AnimatedImagesConfigType {
     [key: string]: {
@@ -133,7 +136,7 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 };
 ---
 
-<Layout title="test">
+<Layout title="Case Study">
     <div class="overflow-hidden">
         <div class="h-screen bg-slate-400">
             <ScrollIndicator />
@@ -273,5 +276,15 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
                 }
             </Fragment>
         </Section>
+        <div class="min-h-screen">
+            <PictureLink
+                title="Book a free consultation"
+                subTitle="SOUNDS LIKE A PLAN FOR YOU?"
+                linkTo="/case-study"
+                linkAccessibleName="link to my calender - book a free consultation"
+                src={consultationsThumbnail}
+                alt="a digital illustration of Aleksandra Pekala answering a phone with a barn owl sitting on her arm. The owl holds a pink envelope in its beak"
+            />
+        </div>
     </div>
 </Layout>

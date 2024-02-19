@@ -2,18 +2,15 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
+import { Image } from "astro:assets";
+
+import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 import psykologkompassenThumbnail from "@assets/thumbnails/psykologkompassen.jpg";
 import bag from "@assets/projects/patchwork/bag.jpg";
 import bussinesCard from "@assets/projects/patchwork/business-card.jpg";
 import instagram from "@assets/projects/patchwork/instagram.jpg";
 import presentationLaptop from "@assets/projects/patchwork/presentation-laptop.jpg";
 import tshirt from "@assets/projects/patchwork/tshirt.jpg";
-import { Image } from "astro:assets";
-import background from "@assets/projects/patchwork/bg-patchwork.jpg";
-
-// TODO: update layout - for small screens look awful - issues
-// TODO: use properly sized images
-// TODO: lack of alt for picture link image
 ---
 
 <LayoutProjects title="project | patchwork">
