@@ -2,6 +2,7 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
+import psykologkompassenThumbnail from "@assets/thumbnails/psykologkompassen.jpg";
 import { Image } from "astro:assets";
 import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 
@@ -16,6 +17,7 @@ import background from "@assets/projects/patchwork/bg-patchwork.jpg";
             height={1080}
             loading="eager"
             alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
+            class:list={["object-[58%_0%]", "sm:object-center"]}
         />
     </Fragment>
     <Fragment slot="services-list">
@@ -62,22 +64,18 @@ import background from "@assets/projects/patchwork/bg-patchwork.jpg";
             src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
         />
     </Fragment>
-    <div slot="other">
-        <div>
-            <Quote author="Maria bukhanovskaia, the co-founder of the association">
-                Aleksandra was both creative, and very attentive to our needs. We are satisfied with the work Aleksandra
-                did for us - she is a talented designer, which we can highly recommend!
-            </Quote>
-        </div>
-        <div>
-            <!-- <PictureLink
-                title="Psykologkompassen"
-                subTitle="Next up"
-                linkTo="/projects/psykologkompassen"
-                linkAccessibleName='link to project: "psykologkompassen"'
-                src=""
-                alt=""
-            /> -->
-        </div>
+    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
+        <Quote author="Maria bukhanovskaia, the co-founder of the association">
+            Aleksandra was both creative, and very attentive to our needs. We are satisfied with the work Aleksandra did
+            for us - she is a talented designer, which we can highly recommend!
+        </Quote>
+        <PictureLink
+            title="Psykologkompassen"
+            subTitle="Next up"
+            linkTo="/projects/psykologkompassen"
+            linkAccessibleName='link to project: "Psykologkompassen"'
+            src={psykologkompassenThumbnail}
+            alt=""
+        />
     </div>
 </LayoutProjects>
