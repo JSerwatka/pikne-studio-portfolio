@@ -16,7 +16,7 @@ const { title, subTitle, linkTo, linkAccessibleName, src, alt } = Astro.props;
 const textLayers = ["visible", "mask"];
 ---
 
-<a href={linkTo} aria-label={linkAccessibleName} class="animation-group relative mx-auto block w-min">
+<a href={linkTo} aria-label={linkAccessibleName} class="animation-group relative mx-auto block w-full">
     <div class="relative">
         {
             textLayers.map((layer) => {
@@ -84,17 +84,18 @@ const textLayers = ["visible", "mask"];
     if (isHoverSupported()) {
         const textMask = document.querySelector('[data-text-mask="true"]') as HTMLElement;
         const cricleImage = document.querySelector("[data-circle-img]") as HTMLElement;
-        const textMaskRect = textMask.getBoundingClientRect();
 
         // variables for: disable position update when mouse far from target
         const BOUNDRY_MARGIN = 150; // px
 
-        const leftBoundry = -BOUNDRY_MARGIN;
-        const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
-        const topBoundry = -BOUNDRY_MARGIN;
-        const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
-
         function showImgContent(e: MouseEvent) {
+            const textMaskRect = textMask.getBoundingClientRect();
+
+            const leftBoundry = -BOUNDRY_MARGIN;
+            const rightBoundry = BOUNDRY_MARGIN + textMaskRect.width;
+            const topBoundry = -BOUNDRY_MARGIN;
+            const bottomBoundry = BOUNDRY_MARGIN + textMaskRect.height;
+
             const mouseX = e.clientX;
             const mouseY = e.clientY;
             // position relative to container (not window)
