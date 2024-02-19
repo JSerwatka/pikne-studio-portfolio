@@ -3,10 +3,17 @@ import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import psykologkompassenThumbnail from "@assets/thumbnails/psykologkompassen.jpg";
+import bag from "@assets/projects/patchwork/bag.jpg";
+import bussinesCard from "@assets/projects/patchwork/business-card.jpg";
+import instagram from "@assets/projects/patchwork/instagram.jpg";
+import presentationLaptop from "@assets/projects/patchwork/presentation-laptop.jpg";
+import tshirt from "@assets/projects/patchwork/tshirt.jpg";
 import { Image } from "astro:assets";
 import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 
-// TODO: add photos, quote, link
+// TODO: update layout - for small screens look awful - issues
+// TODO: use properly sized images
+// TODO: lack of alt for picture link image
 ---
 
 <LayoutProjects title="project | patchwork">
@@ -43,25 +50,37 @@ import background from "@assets/projects/patchwork/bg-patchwork.jpg";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2"]}
+            src={bag}
+            alt="A tote bag with bold orange and red patterns showcased on a background of a wall"
+            width={bag.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}
+            src={bussinesCard}
+            alt="a person browsing Instagram, seeing a post with colorful graphics and text boxes"
+            width={bussinesCard.width / 2}
         />
-        <img
-            class="col-span-2"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6", "lg:col-span-2 lg:col-start-5"]}
+            src={instagram}
+            alt="two colorful business cards for Patchwork organisation laid out on a blue fabric"
+            width={instagram.width / 2}
+            quality="max"
         />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6 bg-white ", "lg:col-span-3"]}
+            src={tshirt}
+            alt="A person wearing a vibrant t-shirt with a colorful line design and Patchwork organisation logo"
+            width={tshirt.width / 2}
+            quality="max"
         />
-        <img
-            class="col-span-3"
-            src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
+        <Image
+            class:list={["col-span-6 object-center", "lg:col-span-3"]}
+            src={presentationLaptop}
+            alt='"a side view of a woman using a laptop to browse an informative presentation, displayed text says: "6 out of 10 people experience feeling of loneliness"'
+            width={presentationLaptop.width / 2}
         />
     </Fragment>
     <div slot="other" class="flex min-h-screen flex-col justify-evenly">
