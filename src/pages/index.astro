@@ -1,17 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import PictureLink from "@components/PictureLink.astro";
-import Quote from "@components/Quote.astro";
 import Ribbon from "@components/Ribbon.astro";
 import ProjectSection from "@components/Landing/ProjectSection.astro";
-import FlowerLink from "@components/Landing/FlowerLink.astro";
 import Layout from "@layouts/Layout.astro";
-import pikachusSmall from "@assets/index/pikachus-small.png";
-import boskaSmall from "@assets/index/boska-small.png";
 import Introduction from "@components/Landing/Introduction.astro";
 import TitleSection from "@components/Landing/TitleSection.astro";
 import ProjectFullImageSection from "@components/Landing/ProjectFullImageSection.astro";
 import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
+
+import pikachusSmall from "@assets/index/pikachus-small.png";
+import boskaSmall from "@assets/index/boska-small.png";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -26,18 +24,27 @@ import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
         <div class="text-hero__1 text-center">work</div>
     </div>
     <ProjectSection
-        title="BOSKA"
-        year="2023"
+        title="sensus"
+        year="2020"
         class="bg-tea-green py-20 text-dark-chocolate"
-        linkTo="/projects/boska"
-        linkAccessibleName="link to bosk project"
+        linkTo="/projects/sensus"
+        linkAccessibleName="link to sensus project"
     >
-        <!-- // TODO add better alt -->
-        <Image slot="image" src={boskaSmall} alt="boska" class="rounded-3xl" loading="lazy" />
+        <video autoplay loop muted slot="image" class="rounded-3xl">
+            <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
+            <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
+            />
+             Your browser does not support the video tag.
+        </video>
         <Fragment slot="servies">branding</Fragment>
         <Fragment slot="description">
-            BOSKA make bodies become timeless art. I’ve crafted visual identity for a brand that celebrates each curve
-            as a masterpiece.
+            Each aspect of the design works together to create an experience similar to the soothing touch provided by
+            the business owner. The visuals are carefully chosen to reflect the comforting sensations of healing hands,
+            capturing the essence of a therapy session through a visual language that underscores a dedication to
+            relaxation.
         </Fragment>
     </ProjectSection>
     <!-- // TODO add better alt -->
@@ -56,8 +63,13 @@ import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
         linkTo="/illustrations"
         linkAccessibleName="Link to page with my illustrations"
     >
-        <!-- // TODO add better alt -->
-        <Image slot="image" src={pikachusSmall} alt="pikachus" class="rounded-3xl" loading="lazy" />
+        <Image
+            slot="image"
+            src={pikachusSmall}
+            alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+            class="rounded-3xl"
+            loading="lazy"
+        />
         <Fragment slot="description">
             My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and light.
             I like to reflect on emotions, relations, a sense of humanity and beauty.
