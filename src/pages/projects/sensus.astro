@@ -3,7 +3,10 @@ import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
+
 import background from "@assets/projects/patchwork/bg-patchwork.jpg";
+import patchworkThumbnail from "@assets/thumbnails/patchwork.jpg";
+// import test from "@assets/projects/sensus/test.jpg";
 
 // TODO: add photos, link
 // TODO: use correct background
@@ -55,25 +58,20 @@ import background from "@assets/projects/patchwork/bg-patchwork.jpg";
             src="https://images.unsplash.com/photo-1625921765718-40e14ee8641c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
         />
     </Fragment>
-    <div slot="other">
-        <div>
-            <Quote author="Maria Obszyńska, the owner">
-                From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
-                expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the
-                idea behind my company. The other materials complement it, resulting in a cohesive look of the entire
-                project. I can highly recommend her services if you are looking for an exceptional, unique look for your
-                company.
-            </Quote>
-        </div>
-        <div>
-            <!-- <PictureLink
-                title="Patchwork"
-                subTitle="Next up"
-                linkTo="/projects/patchwork"
-                linkAccessibleName='link to project: "patchwork"'
-                src=""
-                alt=""
-            /> -->
-        </div>
+    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
+        <Quote author="Maria Obszyńska, the owner">
+            From the beginning of our collaboration, Aleksandra perfectly understood what I care about and what I
+            expect, offering many valuable comments and ideas herself. The logo she crafted perfectly reflects the idea
+            behind my company. The other materials complement it, resulting in a cohesive look of the entire project. I
+            can highly recommend her services if you are looking for an exceptional, unique look for your company.
+        </Quote>
+        <PictureLink
+            title="Patchwork"
+            subTitle="Next up"
+            linkTo="/projects/patchwork"
+            linkAccessibleName='link to project: "Patchwork"'
+            src={patchworkThumbnail}
+            alt=""
+        />
     </div>
 </LayoutProjects>
