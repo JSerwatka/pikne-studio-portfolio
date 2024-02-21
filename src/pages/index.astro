@@ -9,7 +9,8 @@ import ProjectFullImageSection from "@components/Landing/ProjectFullImageSection
 import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
 
 import pikachusSmall from "@assets/index/pikachus-small.png";
-import boskaSmall from "@assets/index/boska-small.png";
+import psykologkompassenBg from "@assets/index/psykologkompassen-bg.png";
+import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -23,7 +24,7 @@ import boskaSmall from "@assets/index/boska-small.png";
     <!-- TODO: improve sizing of the container -->
     <!-- TODO: weird border for desktop vw on left and top -->
     <!-- TODO: add poster -->
-    <div class="min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[calc(110vh)]">
+    <div class="min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
         <div class="relative text-center font-alexang text-[clamp(46px,28vw,420px)]">
             <div class="relative z-10">My work</div>
             <video
@@ -74,15 +75,33 @@ import boskaSmall from "@assets/index/boska-small.png";
             relaxation.
         </Fragment>
     </ProjectSection>
-    <!-- // TODO add better alt -->
-    <ProjectFullImageSection
-        src={boskaSmall}
-        alt=""
-        linkTo="/projects/psykologkompassen"
-        linkAccessibleName="link to psykologkompassen project"
+    <div
+        class:list={[
+            "flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate",
+            "px-6",
+            "md:px-14"
+        ]}
     >
-        <Fragment slot="project-name">Psykologkompassen</Fragment>
-    </ProjectFullImageSection>
+        <a href="/projects/psykologkompassen" aria-label="link to psykologkompassen project" class="relative">
+            <Image
+                src={psykologkompassenBg}
+                width={psykologkompassenBg.width}
+                alt="a woman facing away from the camera looks at the landscape view in front of her - on this background a logo of Psykologkompassen brand is displayed"
+                class:list={[
+                    "relative max-h-[calc(100vh-160px)] w-full max-w-[1300px] rounded-2xl object-cover",
+                    "aspect-[1/2] ",
+                    "sm:aspect-square",
+                    "lg:aspect-auto"
+                ]}
+            />
+            <Image
+                src={psykologkompassenLogo}
+                width={psykologkompassenLogo.width}
+                alt="psykologkompassen logo"
+                class="absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2"
+            />
+        </a>
+    </div>
     <ProjectSection
         title="Illustrations"
         year="2021 - 2023"
