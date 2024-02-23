@@ -4,15 +4,11 @@ import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
 
-import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 import patchworkThumbnail from "@assets/thumbnails/patchwork.jpg";
 import voucher from "@assets/projects/sensus/voucher.png";
 import clientCard from "@assets/projects/sensus/client-card.png";
 import fbCover from "@assets/projects/sensus/fb-cover.png";
 import massage from "@assets/projects/sensus/massage.png";
-
-// TODO: add photos, link
-// TODO: use correct background
 ---
 
 <LayoutProjects title="project | sensus">
@@ -28,7 +24,6 @@ import massage from "@assets/projects/sensus/massage.png";
             />
              Your browser does not support the video tag.
         </video>
-        <!-- <Image src={background} width={1920} height={1080} loading="eager" alt="" /> -->
     </Fragment>
     <Fragment slot="services-list">
         <li>Art direction</li>
