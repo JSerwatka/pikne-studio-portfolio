@@ -17,7 +17,18 @@ import massage from "@assets/projects/sensus/massage.png";
 
 <LayoutProjects title="project | sensus">
     <Fragment slot="hero-background">
-        <Image src={background} width={1920} height={1080} loading="eager" alt="" />
+        <video autoplay loop muted>
+            <source src="/videos/sensus-short-screen-720p.webm" type="video/webm" media="(min-width: 1024px)" />
+            <source src="/videos/sensus-short-screen-720p.webm" type="video/mp4" media="(min-width: 1024px)" />
+            <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
+            <source src="/videos/sensus-short-square-720p.webm" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
+            />
+             Your browser does not support the video tag.
+        </video>
+        <!-- <Image src={background} width={1920} height={1080} loading="eager" alt="" /> -->
     </Fragment>
     <Fragment slot="services-list">
         <li>Art direction</li>
