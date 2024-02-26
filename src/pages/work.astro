@@ -1,8 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import illustrations from "@assets/work/illustration_designed-for-love.png";
+import illustrations from "@assets/illustrations/designed-for-love.png";
 import patchwork from "@assets/work/patchwork.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
+import sensus from "@assets/work/sensus.png";
 import boska from "@assets/work/boska.png";
 import { Image } from "astro:assets";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
@@ -12,40 +13,42 @@ interface ProjectConfigType {
     titleHTML?: string;
     src: ImageMetadata;
     linkTo: string;
+    alt: string;
 }
+// TODO update sensus image with better quality + Update alt
 
 const projects = [
     {
         title: "illustrations",
         src: illustrations,
-        linkTo: "/projects/illustrations"
+        linkTo: "/projects/illustrations",
+        alt: "a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
     },
     {
         title: "sensus",
-        src: illustrations,
-        linkTo: "/projects/sensus"
+        src: sensus,
+        linkTo: "/projects/sensus",
+        alt: "hands massaging the back, warm light"
     },
     {
         title: "Patchwork",
         src: patchwork,
-        linkTo: "/projects/patchwork"
+        linkTo: "/projects/patchwork",
+        alt: "a photograph of a parent holding a baby with Down's Syndrome"
     },
     {
         title: "Psykologkompassen",
         titleHTML: "Psykolog<wbr>kompassen",
         src: psykologkompassen,
-        linkTo: "/projects/psykologkompassen"
+        linkTo: "/projects/psykologkompassen",
+        alt: "a man facing away from the camera looks at the landscape view in front of him"
     },
     {
         title: "BOSKA body cast",
         titleHTML: "BOSKA body&nbsp;cast",
         src: boska,
-        linkTo: "/projects/boska"
-    },
-    {
-        title: "Tobias D.A. Sköld",
-        src: illustrations,
-        linkTo: "/projects/tobias"
+        linkTo: "/projects/boska",
+        alt: "a set of printed branding materials for BOSKA brand including off-white boxes and business card"
     }
 ] as ProjectConfigType[];
 ---
@@ -69,7 +72,8 @@ const projects = [
                                 width={900}
                                 height={600}
                                 class=" w-full rounded-3xl object-cover"
-                                alt=""
+                                alt={project.alt}
+                                quality="high"
                             />
                             <div
                                 class="text-header__1 w-fit px-5 text-center text-light-pink"
