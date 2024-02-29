@@ -1,11 +1,37 @@
 ---
+import Navbar from "@components/Navbar/Navbar.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
+
+// TODO playaround with size of the blob - maybe animate size changing (already in animation)
+// TODO: playaround with moveBlobInIdleState to make the movemoent more fluid
 ---
 
-<div class="relative mt-36 h-screen overflow-hidden text-center uppercase">
-    <div id="blob"></div>
-    <div id="blur"></div>
+<div class="relative h-screen overflow-hidden text-center uppercase">
+    <div data-blob>
+        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="a">
+                    <path
+                        fill="currentColor"
+                        d="M826 608q-69 108-161.5 203T421 902.5Q270 899 257 746t-85-272.5q-72-119.5 33-211T443 121q133-50 268.5 19T871 354.5Q895 500 826 608Z"
+                    ></path>
+                </clipPath>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:aquamarine;stop-opacity:1"></stop>
+                    <stop offset="100%" style="stop-color:mediumpurple;stop-opacity:1"></stop>
+                </linearGradient>
+            </defs>
+            <g clip-path="url(#a)">
+                <path
+                    fill="url(#gradient)"
+                    d="M826 608q-69 108-161.5 203T421 902.5Q270 899 257 746t-85-272.5q-72-119.5 33-211T443 121q133-50 268.5 19T871 354.5Q895 500 826 608Z"
+                ></path>
+            </g>
+        </svg>
+    </div>
+    <div data-blur></div>
     <div class="absolute z-10">
+        <Navbar />
         <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
         <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
             translating <span class="normal-case">feelings</span> to visuals
@@ -29,35 +55,33 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
             rotate: 360deg;
         }
     }
-    #blob {
-        background-color: white;
-        height: 34vmax;
+    [data-blob] {
+        height: 50vmax;
         aspect-ratio: 1;
         position: absolute;
         left: 50%;
         top: 50%;
         translate: -50% -50%;
-        border-radius: 50%;
-        background: linear-gradient(to right, aquamarine, mediumpurple);
-        animation: rotate 20s infinite;
+        animation: rotate 25s infinite;
         opacity: 0.8;
     }
-    #blur {
+
+    [data-blur] {
         height: 100%;
         width: 100%;
         position: absolute;
         z-index: 2;
-        backdrop-filter: blur(6vmax);
+        backdrop-filter: blur(2vmax);
     }
 </style>
 
 <script>
-    const blob = document.getElementById("blob") as HTMLElement;
+    const blob = document.querySelector("[data-blob]") as HTMLElement;
 
     const percentagesOfScreen = [0.2, 0.4, 0.6, 0.8];
     const idleAnimationFrequency = 8000;
     const idleAnimationResponse = 1000;
-    const mouseAnimationDuration = 15000;
+    const mouseAnimationDuration = 30000;
 
     let timerId: number | undefined;
     let intervalId: number | undefined;
