@@ -6,7 +6,7 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
 // TODO: playaround with moveBlobInIdleState to make the movemoent more fluid
 ---
 
-<div class="relative h-screen overflow-hidden text-center uppercase">
+<div class="relative h-screen overflow-hidden uppercase">
     <div data-blob>
         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -30,13 +30,15 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         </svg>
     </div>
     <div data-blur></div>
-    <div class="absolute z-10">
+    <div class="relative z-10 flex h-full flex-col">
         <Navbar />
-        <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
-        <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
-            translating <span class="normal-case">feelings</span> to visuals
+        <div class="flex flex-grow flex-col justify-center text-center">
+            <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
+            <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
+                translating <span class="normal-case">feelings</span> to visuals
+            </div>
+            <div class="text-paragraph__normal">FOR BRANDS & CAMPAIGNS</div>
         </div>
-        <div class="text-paragraph__normal">FOR BRANDS & CAMPAIGNS</div>
         <ScrollIndicator />
     </div>
 </div>
