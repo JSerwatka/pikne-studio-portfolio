@@ -22,7 +22,7 @@ import ukraine from "@assets/illustrations/ukraine.jpg";
 import mongolia from "@assets/illustrations/mongolia.png";
 import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 
-// TODO: add alt for all imgs
+// TODO: add alt for images left
 // TODO: add video
 // TODO: check sizing of hero text (overflowing)
 // TODO: check margins and gap
@@ -40,34 +40,77 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
         </div>
         <div
             class:list={[
-                " relative z-20 grid grid-cols-12 children:w-full children:rounded-3xl children:object-cover",
-                "mt-[10vh] gap-y-40",
+                "relative z-20 flex flex-col children:max-h-[90vh] children:w-auto  children:rounded-3xl children:object-cover",
+                "mt-[10vh] gap-y-40 ",
                 "lg:mt-[30vh] lg:gap-y-64"
             ]}
         >
-            <Image src={pikachus} width={pikachus.width / 2} alt="" class="col-span-5 col-start-8" />
-            <Image src={designedForLove} width={designedForLove.width / 2} alt="" class="col-span-12" />
-            <Image src={pinkAndFeminity} width={pinkAndFeminity.width / 2} alt="" class="col-span-12" />
-            <Image src={lilou1} width={lilou1.width / 2} alt="" class="col-span-4 col-start-3" />
-            <Image src={lilou2} width={lilou2.width / 2} alt="" class="col-span-4 col-start-7" />
+            <Image
+                src={pikachus}
+                width={pikachus.width / 2}
+                alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+                class="self-end"
+            />
+            <Image
+                src={designedForLove}
+                width={designedForLove.width / 2}
+                alt="a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
+                class="self-center"
+            />
+            <Image
+                src={pinkAndFeminity}
+                width={pinkAndFeminity.width / 2}
+                alt=" a digital illustration depicting three woman in pink attire: a girl wearing accessories in kawaii style covering her face with a phone while taking a selfie, Marylin Monroe in her iconic magenta-colored gown and diamond necklace and Nicki Minaj with pink wig and pink top"
+                class="self-center"
+            />
+            <!-- <div
+                class="flex gap-x-6 self-center children:max-h-[90vh] children:w-auto children:rounded-3xl children:object-cover"
+            >
+                <Image
+                    src={lilou1}
+                    width={lilou1.width / 2}
+                    alt="a digital, vividly-colored illustration depicting a woman leaning on the table, wearing a crocheted top and golden jewelry, with Icelandic poppies in the background"
+                    class="col-span-4 col-start-3"
+                />
+                <Image
+                    src={lilou2}
+                    width={lilou2.width / 2}
+                    alt="a digital, vividly-colored illustration depicting a gropu of woman hugging, each of them wearing multiple pieces of jewelry"
+                    class="col-span-4 col-start-7"
+                />
+            </div> -->
+
             <Image
                 src={kazachstanIdentity}
                 width={kazachstanIdentity.width / 2}
-                alt=""
-                class="col-span-9 col-start-4"
+                alt="a digital illustration depicting a girl taking a selfie in the mirror - the mirror reflection shows the girl wearing a traditional Kazakh costume"
+                class="self-end"
             />
-            <Image src={baltic1} width={baltic1.width / 2} alt="" class="col-span-4" />
-            <div class="col-span-8"></div>
-            <Image src={baltic2} width={baltic2.width / 2} alt="" class="col-span-4 col-start-5" />
-            <div class="col-span-4"></div>
-            <Image src={baltic3} width={baltic3.width / 2} alt="" class="col-span-4 col-start-9" />
-            <Image src={breakfast} width={breakfast.width / 2} alt="" class="col-span-6" />
-            <Image src={superbloomDeer} width={superbloomDeer.width / 2} alt="" class="col-span-12" />
-            <Image src={bunnyWonderland} width={bunnyWonderland.width / 2} alt="" class="col-span-12" />
-            <Image src={womanWithFlowers} width={womanWithFlowers.width / 2} alt="" class="col-span-7" />
-            <Image src={olga} width={olga.width / 2} alt="" class="col-span-6 col-start-4" />
-            <Image src={ukraine} width={ukraine.width / 2} alt="" class="col-span-7 col-start-6" />
-            <Image src={mongolia} width={mongolia.width / 2} alt="" class="col-span-7" />
+            <Image src={baltic1} width={baltic1.width / 2} alt="" class="w-1/3 self-start" />
+            <Image src={baltic2} width={baltic2.width / 2} alt="" class="w-1/3 self-center" />
+            <Image
+                src={baltic3}
+                width={baltic3.width / 2}
+                alt="a digital illustration depicting a face of a woman emerging from water in between two lands"
+                class="w-1/3 self-end"
+            />
+            <Image
+                src={breakfast}
+                width={breakfast.width / 2}
+                alt="a vividly colored digital illustration depicting four sandwiches laying on the table with different ingredients on top: one with salmon and guacamole, one with egg, bacon and salad, one with egg, asparagus and horseradish, one with strawberries, basil and cream cheese"
+                class="self-center"
+            />
+            <Image
+                src={superbloomDeer}
+                width={superbloomDeer.width / 2}
+                alt=" a digital illustration in painterly style depicting a deer laying down on a meadow full of blooming purple, yellow and pink flowers"
+                class="self-center"
+            />
+            <Image src={bunnyWonderland} width={bunnyWonderland.width / 2} alt="" class="self-center" />
+            <Image src={womanWithFlowers} width={womanWithFlowers.width / 2} alt="" class="self-start" />
+            <Image src={olga} width={olga.width / 2} alt="" class="self-center" />
+            <Image src={ukraine} width={ukraine.width / 2} alt="" class="self-center" />
+            <Image src={mongolia} width={mongolia.width / 2} alt="" class="self-start" />
         </div>
     </div>
     <div class="min-h-screen">
