@@ -2,10 +2,113 @@
 import ScrollIndicator from "@components/ScrollIndicator.astro";
 ---
 
-<div class="mt-36 h-screen text-center uppercase">
-    <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
-    <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
-        translating <span class="normal-case">feelings</span> to visuals
+<div class="relative mt-36 h-screen overflow-hidden text-center uppercase">
+    <div id="blob"></div>
+    <div id="blur"></div>
+    <div class="absolute z-10">
+        <div class="text-paragraph__normal">Aleksandra Pekala is good at</div>
+        <div class="mt-5 font-olympic text-[clamp(50px,11vw,425px)] leading-[1.1em]">
+            translating <span class="normal-case">feelings</span> to visuals
+        </div>
+        <div class="text-paragraph__normal">FOR BRANDS & CAMPAIGNS</div>
+        <ScrollIndicator />
     </div>
-    <ScrollIndicator />
 </div>
+
+<style>
+    @keyframes rotate {
+        from {
+            rotate: 0deg;
+        }
+
+        50% {
+            scale: 1 1.5;
+        }
+
+        to {
+            rotate: 360deg;
+        }
+    }
+    #blob {
+        background-color: white;
+        height: 34vmax;
+        aspect-ratio: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        border-radius: 50%;
+        background: linear-gradient(to right, aquamarine, mediumpurple);
+        animation: rotate 20s infinite;
+        opacity: 0.8;
+    }
+    #blur {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        backdrop-filter: blur(6vmax);
+    }
+</style>
+
+<script>
+    const blob = document.getElementById("blob") as HTMLElement;
+
+    const percentagesOfScreen = [0.2, 0.4, 0.6, 0.8];
+    const idleAnimationFrequency = 8000;
+    const idleAnimationResponse = 1000;
+    const mouseAnimationDuration = 15000;
+
+    let timerId: number | undefined;
+    let intervalId: number | undefined;
+    let lastTargetX: null | number = null;
+    let lastTargetY: null | number = null;
+
+    function moveBlobToMouse(event: PointerEvent) {
+        const { clientX, clientY } = event;
+        animateBlob(clientX, clientY, mouseAnimationDuration);
+    }
+
+    function moveBlobInIdleState() {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        let targetX, targetY;
+
+        do {
+            const randomXPercentage = percentagesOfScreen[Math.floor(Math.random() * percentagesOfScreen.length)];
+            const randomYPercentage = percentagesOfScreen[Math.floor(Math.random() * percentagesOfScreen.length)];
+            targetX = randomXPercentage * viewportWidth;
+            targetY = randomYPercentage * viewportHeight;
+        } while (targetX === lastTargetX && targetY === lastTargetY);
+
+        animateBlob(targetX, targetY, 1.1 * idleAnimationFrequency);
+        lastTargetX = targetX;
+        lastTargetY = targetY;
+    }
+
+    function animateBlob(positionX: number, positionY: number, animationDuration: number) {
+        blob.animate(
+            {
+                left: `${positionX}px`,
+                top: `${positionY}px`
+            },
+            { duration: animationDuration, fill: "forwards" }
+        );
+    }
+
+    function handleIdle(idleResponse = idleAnimationResponse) {
+        clearTimeout(timerId);
+        timerId = setTimeout(() => {
+            moveBlobInIdleState();
+            intervalId = setInterval(moveBlobInIdleState, idleAnimationFrequency);
+        }, idleResponse);
+    }
+
+    window.onpointermove = (event: PointerEvent) => {
+        clearInterval(intervalId);
+        moveBlobToMouse(event);
+        handleIdle();
+    };
+
+    handleIdle(0);
+</script>
