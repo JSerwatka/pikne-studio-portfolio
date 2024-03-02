@@ -1,12 +1,9 @@
 ---
 import Navbar from "@components/Navbar/Navbar.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
-
-// TODO playaround with size of the blob - maybe animate size changing (already in animation)
-// TODO: playaround with moveBlobInIdleState to make the movemoent more fluid
 ---
 
-<div class="relative h-screen overflow-hidden uppercase">
+<div data-title-container class="relative h-screen overflow-hidden uppercase">
     <div data-blob>
         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -48,24 +45,19 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         from {
             rotate: 0deg;
         }
-
-        50% {
-            scale: 1 1.5;
-        }
-
         to {
             rotate: 360deg;
         }
     }
     [data-blob] {
-        height: 50vmax;
+        height: 80vmax;
         aspect-ratio: 1;
         position: absolute;
         left: 50%;
         top: 50%;
         translate: -50% -50%;
         animation: rotate 25s infinite;
-        opacity: 0.8;
+        opacity: 0.7;
     }
 
     [data-blur] {
@@ -73,14 +65,16 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         width: 100%;
         position: absolute;
         z-index: 2;
-        backdrop-filter: blur(2vmax);
+        backdrop-filter: blur(4vmax);
     }
 </style>
 
 <script>
     const blob = document.querySelector("[data-blob]") as HTMLElement;
+    const container = document.querySelector("[data-title-container]") as HTMLElement;
 
-    const percentagesOfScreen = [0.2, 0.4, 0.6, 0.8];
+    const percentagesOfWiderScreen = [0.25, 0.5, 0.75];
+    const percentagesOfNarrowerScreen = [0.3, 0.6];
     const idleAnimationFrequency = 8000;
     const idleAnimationResponse = 1000;
     const mouseAnimationDuration = 30000;
@@ -100,41 +94,49 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         const viewportHeight = window.innerHeight;
         let targetX, targetY;
 
+        const isWideScreen = viewportWidth > viewportHeight;
+        const xPercantageTable = isWideScreen ? percentagesOfWiderScreen : percentagesOfNarrowerScreen;
+        const yPercantageTable = isWideScreen ? percentagesOfNarrowerScreen : percentagesOfWiderScreen;
+
         do {
-            const randomXPercentage = percentagesOfScreen[Math.floor(Math.random() * percentagesOfScreen.length)];
-            const randomYPercentage = percentagesOfScreen[Math.floor(Math.random() * percentagesOfScreen.length)];
+            const randomXPercentage = xPercantageTable[Math.floor(Math.random() * xPercantageTable.length)];
+            const randomYPercentage = yPercantageTable[Math.floor(Math.random() * yPercantageTable.length)];
             targetX = randomXPercentage * viewportWidth;
             targetY = randomYPercentage * viewportHeight;
         } while (targetX === lastTargetX && targetY === lastTargetY);
 
-        animateBlob(targetX, targetY, 1.1 * idleAnimationFrequency);
+        animateBlob(targetX, targetY, idleAnimationFrequency);
         lastTargetX = targetX;
         lastTargetY = targetY;
     }
-
+    let animateEl: Animation | null;
     function animateBlob(positionX: number, positionY: number, animationDuration: number) {
-        blob.animate(
+        animateEl = blob.animate(
             {
                 left: `${positionX}px`,
                 top: `${positionY}px`
             },
-            { duration: animationDuration, fill: "forwards" }
+            {
+                duration: animationDuration,
+                fill: "forwards",
+                easing: "ease-in-out"
+            }
         );
     }
 
     function handleIdle(idleResponse = idleAnimationResponse) {
         clearTimeout(timerId);
+        clearInterval(intervalId);
         timerId = setTimeout(() => {
             moveBlobInIdleState();
             intervalId = setInterval(moveBlobInIdleState, idleAnimationFrequency);
         }, idleResponse);
     }
 
-    window.onpointermove = (event: PointerEvent) => {
-        clearInterval(intervalId);
-        moveBlobToMouse(event);
+    container.addEventListener("pointermove", (event: PointerEvent) => {
         handleIdle();
-    };
+        moveBlobToMouse(event);
+    });
 
     handleIdle(0);
 </script>
