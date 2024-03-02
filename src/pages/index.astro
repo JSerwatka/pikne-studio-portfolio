@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Ribbon from "@components/Ribbon.astro";
 import ProjectSection from "@components/Landing/ProjectSection.astro";
-import Layout from "@layouts/Layout.astro";
+import LayoutBase from "@layouts/LayoutBase.astro";
 import Introduction from "@components/Landing/Introduction.astro";
 import TitleSection from "@components/Landing/TitleSection.astro";
 import ProjectFullImageSection from "@components/Landing/ProjectFullImageSection.astro";
@@ -11,124 +11,128 @@ import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
 import pikachusSmall from "@assets/index/pikachus-small.png";
 import psykologkompassenBg from "@assets/index/psykologkompassen-bg.png";
 import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
+import Footer from "@components/Footer.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<LayoutBase title="Welcome to Astro.">
     <TitleSection />
     <Ribbon
         text="✹ for the bold dreamweavers ✹ for the change-makers ✹ for the good-doers ✹ for the beauty-seekers ✹ for the explorers ✹ for the ones with a story to tell ✹ for the dreamers ✹ for the ones taking the initiative ✹ for the helpers ✹ for the visionaries ✹ for the creators ✹ for the empathetic innovators  ✹ for the creative catalysts ✹ for the thoughtful trailblazers ✹ for the fearless futurists ✹ for the purpose-driven imaginationists ✹ for the conscious crafters"
         class="text-header__1 bg-ruby-red py-2 text-light-pink"
         repeats={1}
     />
-    <Introduction />
-    <!-- TODO: improve sizing of the container -->
-    <!-- TODO: weird border for desktop vw on left and top -->
-    <!-- TODO: add poster -->
-    <div class="min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
-        <div class="relative text-center font-alexang text-[clamp(46px,20vw,280px)]">
-            <div class="relative z-10">My work</div>
-            <a href={"/work"} aria-label={"link to all projects"}>
-                <video
-                    autoplay
-                    loop
-                    muted
-                    class:list={[
-                        "border-5 absolute bottom-[40%] left-1/2 -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
-                        "aspect-square w-[calc(90vw-64px)] object-cover",
-                        "lg:object-initial lg:aspect-video lg:w-[clamp(100px,calc(80vw-126px),1374px)]"
-                    ]}
-                >
-                    <source src="/videos/slideshow-720p-movie.webm" type="video/webm" media="(min-width: 1024px)" />
-                    <source src="/videos/slideshow-720p-movie.mp4" type="video/mp4" media="(min-width: 1024px)" />
-                    <source src="/videos/slideshow-720p-square.webm" type="video/webm" />
-                    <source src="/videos/slideshow-720p-square.mp4" type="video/mp4" />
-                    <!-- TODO: description <meta
+    <main class="grow">
+        <Introduction />
+        <!-- TODO: improve sizing of the container -->
+        <!-- TODO: weird border for desktop vw on left and top -->
+        <!-- TODO: add poster -->
+        <div class="min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
+            <div class="relative text-center font-alexang text-[clamp(46px,20vw,280px)]">
+                <div class="relative z-10">My work</div>
+                <a href={"/work"} aria-label={"link to all projects"}>
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        class:list={[
+                            "border-5 absolute bottom-[40%] left-1/2 -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
+                            "aspect-square w-[calc(90vw-64px)] object-cover",
+                            "lg:object-initial lg:aspect-video lg:w-[clamp(100px,calc(80vw-126px),1374px)]"
+                        ]}
+                    >
+                        <source src="/videos/slideshow-720p-movie.webm" type="video/webm" media="(min-width: 1024px)" />
+                        <source src="/videos/slideshow-720p-movie.mp4" type="video/mp4" media="(min-width: 1024px)" />
+                        <source src="/videos/slideshow-720p-square.webm" type="video/webm" />
+                        <source src="/videos/slideshow-720p-square.mp4" type="video/mp4" />
+                        <!-- TODO: description <meta
                         itemprop="description"
                         content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
                     /> -->
 
-                     Your browser does not support the video tag.
-                </video>
+                         Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+        <ProjectSection
+            title="sensus"
+            year="2020"
+            class="bg-tea-green py-20 text-dark-chocolate"
+            linkTo="/projects/sensus"
+            linkAccessibleName="link to sensus project"
+        >
+            <!-- TODO: add poster to video -->
+            <video autoplay loop muted slot="image" class="rounded-3xl">
+                <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
+                <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
+                <meta
+                    itemprop="description"
+                    content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
+                />
+                 Your browser does not support the video tag.
+            </video>
+            <Fragment slot="servies">branding</Fragment>
+            <Fragment slot="description">
+                Each aspect of the design works together to create an experience similar to the soothing touch provided
+                by the business owner. The visuals are carefully chosen to reflect the comforting sensations of healing
+                hands, capturing the essence of a therapy session through a visual language that underscores a
+                dedication to relaxation.
+            </Fragment>
+        </ProjectSection>
+        <div
+            class:list={[
+                "flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate",
+                "px-6",
+                "md:px-14"
+            ]}
+        >
+            <a href="/projects/psykologkompassen" aria-label="link to psykologkompassen project" class="relative">
+                <Image
+                    src={psykologkompassenBg}
+                    width={psykologkompassenBg.width}
+                    alt="a woman facing away from the camera looks at the landscape view in front of her - on this background a logo of Psykologkompassen brand is displayed"
+                    class:list={[
+                        "relative max-h-[calc(100vh-160px)] w-full max-w-[1300px] rounded-2xl object-cover",
+                        "aspect-[1/2] ",
+                        "sm:aspect-square",
+                        "lg:aspect-auto"
+                    ]}
+                />
+                <Image
+                    src={psykologkompassenLogo}
+                    width={psykologkompassenLogo.width}
+                    alt="psykologkompassen logo"
+                    class="absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2"
+                />
             </a>
         </div>
-    </div>
-    <ProjectSection
-        title="sensus"
-        year="2020"
-        class="bg-tea-green py-20 text-dark-chocolate"
-        linkTo="/projects/sensus"
-        linkAccessibleName="link to sensus project"
-    >
-        <!-- TODO: add poster to video -->
-        <video autoplay loop muted slot="image" class="rounded-3xl">
-            <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
-            <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
-            <meta
-                itemprop="description"
-                content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
-            />
-             Your browser does not support the video tag.
-        </video>
-        <Fragment slot="servies">branding</Fragment>
-        <Fragment slot="description">
-            Each aspect of the design works together to create an experience similar to the soothing touch provided by
-            the business owner. The visuals are carefully chosen to reflect the comforting sensations of healing hands,
-            capturing the essence of a therapy session through a visual language that underscores a dedication to
-            relaxation.
-        </Fragment>
-    </ProjectSection>
-    <div
-        class:list={[
-            "flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate",
-            "px-6",
-            "md:px-14"
-        ]}
-    >
-        <a href="/projects/psykologkompassen" aria-label="link to psykologkompassen project" class="relative">
+        <ProjectSection
+            title="Illustrations"
+            year="2021 - 2023"
+            class="bg-volt py-20 text-dark-chocolate"
+            linkTo="/illustrations"
+            linkAccessibleName="Link to page with my illustrations"
+        >
             <Image
-                src={psykologkompassenBg}
-                width={psykologkompassenBg.width}
-                alt="a woman facing away from the camera looks at the landscape view in front of her - on this background a logo of Psykologkompassen brand is displayed"
-                class:list={[
-                    "relative max-h-[calc(100vh-160px)] w-full max-w-[1300px] rounded-2xl object-cover",
-                    "aspect-[1/2] ",
-                    "sm:aspect-square",
-                    "lg:aspect-auto"
-                ]}
+                slot="image"
+                src={pikachusSmall}
+                alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+                class="rounded-3xl"
+                loading="lazy"
             />
-            <Image
-                src={psykologkompassenLogo}
-                width={psykologkompassenLogo.width}
-                alt="psykologkompassen logo"
-                class="absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2"
+            <Fragment slot="description">
+                My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and
+                light. I like to reflect on emotions, relations, a sense of humanity and beauty.
+            </Fragment>
+        </ProjectSection>
+        <a href="/work" aria-label="click to see more work">
+            <Ribbon
+                text="✺ click to see more work "
+                class="text-header__3 bg-lilac py-14 text-dark-chocolate"
+                repeats={20}
             />
         </a>
-    </div>
-    <ProjectSection
-        title="Illustrations"
-        year="2021 - 2023"
-        class="bg-volt py-20 text-dark-chocolate"
-        linkTo="/illustrations"
-        linkAccessibleName="Link to page with my illustrations"
-    >
-        <Image
-            slot="image"
-            src={pikachusSmall}
-            alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
-            class="rounded-3xl"
-            loading="lazy"
-        />
-        <Fragment slot="description">
-            My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and light.
-            I like to reflect on emotions, relations, a sense of humanity and beauty.
-        </Fragment>
-    </ProjectSection>
-    <a href="/work" aria-label="click to see more work">
-        <Ribbon
-            text="✺ click to see more work "
-            class="text-header__3 bg-lilac py-14 text-dark-chocolate"
-            repeats={20}
-        />
-    </a>
-    <FlowerLinksSection />
-</Layout>
+        <FlowerLinksSection />
+    </main>
+    <Footer />
+</LayoutBase>
