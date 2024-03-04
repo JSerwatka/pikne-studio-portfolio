@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+    width: number;
+    classImage?: string;
+    classContainer?: string;
+}
+
+const { alt, width, src, classContainer, classImage } = Astro.props;
+---
+
+<div class:list={["flex h-[120vh] self-center", classContainer]}>
+    <Image src={src} width={width} alt={alt} class:list={["max-h-[90vh] w-auto self-center rounded-3xl"]} />
+</div>
