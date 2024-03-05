@@ -8,6 +8,6 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class="absolute bottom-10 left-1/2 z-30 -translate-x-1/2">
-    <ArrowIconSmall class:list={["w-[35px] animate-bounce fill-ruby-red motion-reduce:animate-none", className]} />
+<div class:list={["absolute bottom-20 left-1/2 z-30 -translate-x-1/2 translate-y-full", className]}>
+    <ArrowIconSmall class:list={["w-[25px] animate-bounce fill-ruby-red motion-reduce:animate-none", "lg:w-[35px]"]} />
 </div>

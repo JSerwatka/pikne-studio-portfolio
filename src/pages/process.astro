@@ -1,7 +1,10 @@
 ---
+import PictureLink from "@components/PictureLink.astro";
 import GradientScroll from "@components/Process/GradientScroll.astro";
 import Section from "@components/Process/Section.astro";
 import Layout from "@layouts/Layout.astro";
+
+import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 ---
 
 <Layout title="Project process">
@@ -61,6 +64,16 @@ import Layout from "@layouts/Layout.astro";
                 in case of doubts or problems.
             </Fragment>
         </Section>
+    </div>
+    <div class="min-h-screen">
+        <PictureLink
+            title="My own branding"
+            subTitle="HOW DOES IT LOOK IN PRACTICE? TAKE A LOOK AT A CASE STUDY:"
+            linkTo="/case-study"
+            linkAccessibleName="link to my own branding"
+            src={brandingThumbnail}
+            alt=""
+        />
     </div>
 </Layout>
 
