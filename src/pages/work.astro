@@ -1,12 +1,14 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "@layouts/Layout.astro";
 import illustrations from "@assets/illustrations/designed-for-love.png";
 import patchwork from "@assets/work/patchwork.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
 import sensus from "@assets/work/sensus.png";
 import boska from "@assets/work/boska.png";
-import { Image } from "astro:assets";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
+import ImageContainer from "@components/Illustrations/ImageContainer.astro";
 
 interface ProjectConfigType {
     title: string;
@@ -15,7 +17,6 @@ interface ProjectConfigType {
     linkTo: string;
     alt: string;
 }
-// TODO update sensus image with better quality + Update alt
 
 const projects = [
     {
@@ -54,61 +55,33 @@ const projects = [
 ---
 
 <Layout title="My Work">
-    <div class="mx-auto mb-[30vh]">
-        <div class="sticky top-[20vh] mt-[20vh] whitespace-nowrap text-center font-alexang text-[min(30vw,420px)]">
+    <div class="sticky top-[20vh] mt-[20vh] h-[80vh] whitespace-nowrap text-center font-alexang text-[min(25vw,325px)]">
+        <div class="relative leading-none">
             My work
-            <ScrollIndicator />
-        </div>
-        <div
-            data-projects
-            class:list={["col grid grid-cols-1 justify-items-center", "mt-[10vh] gap-y-40", "lg:mt-[30vh] lg:gap-y-64"]}
-        >
-            {
-                projects.map((project) => (
-                    <div class="stack w-3/4 max-w-[900px] drop-shadow-2xl">
-                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="stack">
-                            <Image
-                                src={project.src}
-                                width={900}
-                                height={600}
-                                class=" w-full rounded-3xl object-cover"
-                                alt={project.alt}
-                                quality="high"
-                            />
-                            <div
-                                class="text-header__1 w-fit px-5 text-center text-light-pink"
-                                set:html={project.titleHTML ?? project.title}
-                            />
-                        </a>
-                    </div>
-                ))
-            }
-            <div class="h-[70vh]"></div>
+            <ScrollIndicator class="!bottom-[-10px] sm:!bottom-0" />
         </div>
     </div>
+    <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>
+        {
+            projects.map((project) => (
+                <div class="flex flex-col">
+                    <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="self-center">
+                        <div class="relative">
+                            <Image
+                                src={project.src}
+                                width={1100}
+                                alt={project.alt}
+                                class:list={["w-auto rounded-3xl"]}
+                            />
+                            <div
+                                class="text-header__1 absolute top-1/2 w-full -translate-y-1/2 px-5 text-center text-light-pink"
+                                set:html={project.titleHTML ?? project.title}
+                            />
+                        </div>
+                    </a>
+                </div>
+            ))
+        }
+    </div>
+    <div class="h-[100vh]"></div>
 </Layout>
-
-<style>
-    .stack {
-        display: grid;
-        place-items: center;
-        grid-template-areas: "stack";
-    }
-
-    .stack > * {
-        grid-area: stack;
-    }
-</style>
-
-<script>
-    import { scroll, animate } from "motion";
-
-    const workItems = document.querySelectorAll("[data-projects] > *") as NodeListOf<HTMLElement>;
-
-    workItems.forEach((workItem) => {
-        scroll(animate(workItem, { scale: [1, 1.1, 1.1, 1] }), {
-            target: workItem,
-            offset: ["start end", "end end", "start start", "end start"]
-        });
-    });
-</script>
