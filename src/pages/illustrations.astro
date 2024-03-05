@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
 import PictureLink from "@components/PictureLink.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
 import ImageContainer from "@components/Illustrations/ImageContainer.astro";
@@ -25,10 +24,6 @@ import mongolia from "@assets/illustrations/mongolia.png";
 import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 
 // TODO: add video
-// TODO: check margins and gap
-// TODO: proper size of images
-// TODO: add gap
-// TODO: add picture link img and alt
 ---
 
 <Layout title="Illustrations">
@@ -128,6 +123,7 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
                 src={ukraine}
                 width={ukraine.width / 2}
                 alt="a digital portait of a young woman wearing a traditional Ukrainian flower crown and an embroidered shirt 'vyshyvanka'"
+                classContainer="lg:self-end"
             />
             <ImageContainer
                 src={mongolia}
@@ -137,12 +133,12 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
             />
         </div>
     </div>
-    <div class="min-h-screen">
+    <div class:list={["mx-auto  w-fit", "my-20", "lg:my-40"]}>
         <PictureLink
-            title="My own branding"
-            subTitle="HOW DOES IT LOOK IN PRACTICE? TAKE A LOOK AT A CASE STUDY:"
-            linkTo="/case-study"
-            linkAccessibleName="link to my own branding"
+            title="My work"
+            subTitle="Get back"
+            linkTo="/work"
+            linkAccessibleName="link to my all my work"
             src={brandingThumbnail}
             alt=""
         />
