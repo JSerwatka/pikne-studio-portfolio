@@ -1,5 +1,5 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import PictureLink from "@components/PictureLink.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
 import ImageContainer from "@components/Illustrations/ImageContainer.astro";
@@ -26,114 +26,105 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 // TODO: add video
 ---
 
-<Layout title="Illustrations">
-    <div class="">
-        <div
-            class="sticky top-[20vh] z-10 mt-[20vh] h-[80vh] whitespace-nowrap text-center font-alexang text-[min(25vw,325px)]"
-        >
-            <div class="relative leading-none">
-                Illustrations
-                <ScrollIndicator class="!bottom-[-10px] sm:!bottom-0" />
-            </div>
-        </div>
-        <div class:list={["relative z-20 flex flex-col"]}>
+<LayoutBigTitle title="Illustrations" withStickyHeader>
+    <Fragment slot="header">Illustrations</Fragment>
+    <div slot="scrollable-content" class:list={["relative z-20 flex flex-col"]}>
+        <ImageContainer
+            src={technicolorDream}
+            width={technicolorDream.width / 2}
+            alt="a vividly-colored digital illustration depicting a woman's face peeking from between a multitude of poppies; some of the flowers appear to glitch and distort"
+        />
+        <ImageContainer
+            src={pikachus}
+            width={pikachus.width / 2}
+            alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+            classContainer="lg:self-end"
+        />
+        <ImageContainer
+            src={designedForLove}
+            width={1100}
+            alt="a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
+        />
+        <ImageContainer
+            src={pinkAndFeminity}
+            width={1100}
+            alt=" a digital illustration depicting three woman in pink attire: a girl wearing accessories in kawaii style covering her face with a phone while taking a selfie, Marylin Monroe in her iconic magenta-colored gown and diamond necklace and Nicki Minaj with pink wig and pink top"
+        />
+        <div class="flex flex-wrap place-content-center gap-x-10">
             <ImageContainer
-                src={technicolorDream}
-                width={technicolorDream.width / 2}
-                alt="a vividly-colored digital illustration depicting a woman's face peeking from between a multitude of poppies; some of the flowers appear to glitch and distort"
+                src={lilou1}
+                width={lilou1.width / 2}
+                alt="a digital, vividly-colored illustration depicting a woman leaning on the table, wearing a crocheted top and golden jewelry, with Icelandic poppies in the background"
             />
             <ImageContainer
-                src={pikachus}
-                width={pikachus.width / 2}
-                alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
-                classContainer="lg:self-end"
-            />
-            <ImageContainer
-                src={designedForLove}
-                width={1100}
-                alt="a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
-            />
-            <ImageContainer
-                src={pinkAndFeminity}
-                width={1100}
-                alt=" a digital illustration depicting three woman in pink attire: a girl wearing accessories in kawaii style covering her face with a phone while taking a selfie, Marylin Monroe in her iconic magenta-colored gown and diamond necklace and Nicki Minaj with pink wig and pink top"
-            />
-            <div class="flex flex-wrap place-content-center gap-x-10">
-                <ImageContainer
-                    src={lilou1}
-                    width={lilou1.width / 2}
-                    alt="a digital, vividly-colored illustration depicting a woman leaning on the table, wearing a crocheted top and golden jewelry, with Icelandic poppies in the background"
-                />
-                <ImageContainer
-                    src={lilou2}
-                    width={lilou2.width / 2}
-                    alt="a digital, vividly-colored illustration depicting a gropu of woman hugging, each of them wearing multiple pieces of jewelry"
-                />
-            </div>
-            <ImageContainer
-                src={kazachstanIdentity}
-                width={1100}
-                alt="a digital illustration depicting a girl taking a selfie in the mirror - the mirror reflection shows the girl wearing a traditional Kazakh costume"
-                classContainer="lg:self-end"
-            />
-            <ImageContainer
-                src={baltic1}
-                width={baltic1.width / 2}
-                alt=" an illustration of woman swimming in water in between two lands, looking back at one of them"
-                classContainer="lg:self-start"
-            />
-            <ImageContainer
-                src={baltic2}
-                width={baltic2.width / 2}
-                alt="an illustration of woman swimming in water in between two lands, looking back at one of them"
-            />
-            <ImageContainer
-                src={baltic3}
-                width={baltic3.width / 2}
-                alt="a digital illustration depicting a face of a woman emerging from water in between two lands"
-                classContainer="lg:self-end"
-            />
-            <ImageContainer
-                src={breakfast}
-                width={breakfast.width / 2}
-                alt="a vividly colored digital illustration depicting four sandwiches laying on the table with different ingredients on top: one with salmon and guacamole, one with egg, bacon and salad, one with egg, asparagus and horseradish, one with strawberries, basil and cream cheese"
-            />
-            <ImageContainer
-                src={superbloomDeer}
-                width={1100}
-                alt=" a digital illustration in painterly style depicting a deer laying down on a meadow full of blooming purple, yellow and pink flowers"
-            />
-            <ImageContainer
-                src={bunnyWonderland}
-                width={1100}
-                alt="a digital illustration of a white bunny standing in the middle of enchanted wisteria forest, delicate sparkles of light flicker in the air"
-            />
-            <ImageContainer
-                src={womanWithFlowers}
-                width={womanWithFlowers.width / 2}
-                alt="a digital illustration of a woman wearing a white dress, sitting in a squatting pose and holding a bouquet of violet and white flowers"
-                classContainer="lg:self-start"
-            />
-            <ImageContainer
-                src={olga}
-                width={olga.width / 2}
-                alt="a digital illustration depicting Saint Olga of Kyiv, a Ukrainian queen from Middle Ages"
-            />
-            <ImageContainer
-                src={ukraine}
-                width={ukraine.width / 2}
-                alt="a digital portait of a young woman wearing a traditional Ukrainian flower crown and an embroidered shirt 'vyshyvanka'"
-                classContainer="lg:self-end"
-            />
-            <ImageContainer
-                src={mongolia}
-                width={mongolia.width / 2}
-                alt="a digital portrait of a smiling woman wearing a traditional Mongolian costume"
-                classContainer=" lg:self-start"
+                src={lilou2}
+                width={lilou2.width / 2}
+                alt="a digital, vividly-colored illustration depicting a gropu of woman hugging, each of them wearing multiple pieces of jewelry"
             />
         </div>
+        <ImageContainer
+            src={kazachstanIdentity}
+            width={1100}
+            alt="a digital illustration depicting a girl taking a selfie in the mirror - the mirror reflection shows the girl wearing a traditional Kazakh costume"
+            classContainer="lg:self-end"
+        />
+        <ImageContainer
+            src={baltic1}
+            width={baltic1.width / 2}
+            alt=" an illustration of woman swimming in water in between two lands, looking back at one of them"
+            classContainer="lg:self-start"
+        />
+        <ImageContainer
+            src={baltic2}
+            width={baltic2.width / 2}
+            alt="an illustration of woman swimming in water in between two lands, looking back at one of them"
+        />
+        <ImageContainer
+            src={baltic3}
+            width={baltic3.width / 2}
+            alt="a digital illustration depicting a face of a woman emerging from water in between two lands"
+            classContainer="lg:self-end"
+        />
+        <ImageContainer
+            src={breakfast}
+            width={breakfast.width / 2}
+            alt="a vividly colored digital illustration depicting four sandwiches laying on the table with different ingredients on top: one with salmon and guacamole, one with egg, bacon and salad, one with egg, asparagus and horseradish, one with strawberries, basil and cream cheese"
+        />
+        <ImageContainer
+            src={superbloomDeer}
+            width={1100}
+            alt=" a digital illustration in painterly style depicting a deer laying down on a meadow full of blooming purple, yellow and pink flowers"
+        />
+        <ImageContainer
+            src={bunnyWonderland}
+            width={1100}
+            alt="a digital illustration of a white bunny standing in the middle of enchanted wisteria forest, delicate sparkles of light flicker in the air"
+        />
+        <ImageContainer
+            src={womanWithFlowers}
+            width={womanWithFlowers.width / 2}
+            alt="a digital illustration of a woman wearing a white dress, sitting in a squatting pose and holding a bouquet of violet and white flowers"
+            classContainer="lg:self-start"
+        />
+        <ImageContainer
+            src={olga}
+            width={olga.width / 2}
+            alt="a digital illustration depicting Saint Olga of Kyiv, a Ukrainian queen from Middle Ages"
+        />
+        <ImageContainer
+            src={ukraine}
+            width={ukraine.width / 2}
+            alt="a digital portait of a young woman wearing a traditional Ukrainian flower crown and an embroidered shirt 'vyshyvanka'"
+            classContainer="lg:self-end"
+        />
+        <ImageContainer
+            src={mongolia}
+            width={mongolia.width / 2}
+            alt="a digital portrait of a smiling woman wearing a traditional Mongolian costume"
+            classContainer=" lg:self-start"
+        />
     </div>
-    <div class:list={["mx-auto  w-fit", "my-20", "lg:my-40"]}>
+    <div slot="link" class:list={["mx-auto  w-fit", "my-20", "lg:my-40"]}>
         <PictureLink
             title="My work"
             subTitle="Get back"
@@ -143,4 +134,4 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
             alt=""
         />
     </div>
-</Layout>
+</LayoutBigTitle>

@@ -10,22 +10,30 @@ interface Props {
 }
 
 const { title, withStickyHeader = false } = Astro.props;
-const stickyMargin = "20vh";
-const additionalClasses = withStickyHeader ? `sticky top-[${stickyMargin}] mt-[${stickyMargin}] ` : "";
+const marginTop = "20vh";
+const additionalClasses = withStickyHeader ? `sticky top-[${marginTop}] ` : "";
 ---
 
 <LayoutBase title={title}>
-    <!-- <div class="flex h-screen flex-col"> -->
     <Navbar />
-    <div
-        data-header-container
-        data-sticky-margin={stickyMargin}
-        class:list={[`text-center font-alexang text-[min(25vw,325px)]`, additionalClasses]}
-    >
-        <div class="leading-none">My work</div>
-        <ScrollIndicator />
+    <div class="grow">
+        <div>
+            <header
+                data-header-container
+                data-margin-top={marginTop}
+                class:list={[`mt-[${marginTop}] text-center font-alexang text-[min(25vw,325px)]`, additionalClasses]}
+            >
+                <div class="leading-none">
+                    <slot name="header" />
+                </div>
+                <ScrollIndicator />
+            </header>
+            <main>
+                <slot name="scrollable-content" />
+            </main>
+        </div>
+        <slot name="link" />
     </div>
-    <!-- </div> -->
     <Footer />
 </LayoutBase>
 
@@ -35,8 +43,8 @@ const additionalClasses = withStickyHeader ? `sticky top-[${stickyMargin}] mt-[$
 
     function updateContainerSize() {
         const { height } = navbar.getBoundingClientRect();
-        const stickyMargin = headerContainer.dataset.stickyMargin ?? "0px";
-        headerContainer.style.height = `calc(100vh - ${height}px - ${stickyMargin})`;
+        const marginTop = headerContainer.dataset.marginTop ?? "0px";
+        headerContainer.style.height = `calc(100vh - ${height}px - ${marginTop})`;
     }
 
     updateContainerSize();
