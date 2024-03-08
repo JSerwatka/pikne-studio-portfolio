@@ -1,0 +1,46 @@
+---
+import Navbar from "@components/Navbar/Navbar.astro";
+import LayoutBase from "./LayoutBase.astro";
+import Footer from "@components/Footer.astro";
+import ScrollIndicator from "../components/ScrollIndicator.astro";
+
+interface Props {
+    title: string;
+    withStickyHeader?: boolean;
+}
+
+const { title, withStickyHeader = false } = Astro.props;
+const stickyMargin = "20vh";
+const additionalClasses = withStickyHeader ? `sticky top-[${stickyMargin}] mt-[${stickyMargin}] ` : "";
+---
+
+<LayoutBase title={title}>
+    <!-- <div class="flex h-screen flex-col"> -->
+    <Navbar />
+    <div
+        data-header-container
+        data-sticky-margin={stickyMargin}
+        class:list={[`text-center font-alexang text-[min(25vw,325px)]`, additionalClasses]}
+    >
+        <div class="leading-none">My work</div>
+        <ScrollIndicator />
+    </div>
+    <!-- </div> -->
+    <Footer />
+</LayoutBase>
+
+<script>
+    const navbar = document.querySelector("nav") as HTMLElement;
+    const headerContainer = document.querySelector("[data-header-container]") as HTMLElement;
+
+    function updateContainerSize() {
+        const { height } = navbar.getBoundingClientRect();
+        const stickyMargin = headerContainer.dataset.stickyMargin ?? "0px";
+        headerContainer.style.height = `calc(100vh - ${height}px - ${stickyMargin})`;
+    }
+
+    updateContainerSize();
+    window.addEventListener("resize", () => {
+        updateContainerSize();
+    });
+</script>
