@@ -21,9 +21,9 @@ const additionalClasses = withStickyHeader ? `sticky top-[${marginTop}] ` : "";
             <header
                 data-header-container
                 data-margin-top={marginTop}
-                class:list={[`mt-[${marginTop}] text-center font-alexang text-[min(25vw,325px)]`, additionalClasses]}
+                class:list={[`mt-[${marginTop}] font-alexang text-[min(25vw,325px)] leading-none`, additionalClasses]}
             >
-                <div class="leading-none">
+                <div class="flex justify-center">
                     <slot name="header" />
                 </div>
                 <ScrollIndicator />
