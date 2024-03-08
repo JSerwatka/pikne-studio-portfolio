@@ -29,13 +29,21 @@ const additionalClasses = withStickyHeader ? `sticky top-[${marginTop}] ` : "";
                 <ScrollIndicator />
             </header>
             <main>
-                <slot name="scrollable-content" />
+                <slot name="content" />
             </main>
         </div>
-        <slot name="link" />
+        {
+            Astro.slots.has("link") && (
+                <div class="flex h-screen items-center justify-center">
+                    <div>
+                        <slot name="link" />
+                    </div>
+                </div>
+            )
+        }
     </div>
-    <Footer />
 </LayoutBase>
+<Footer />
 
 <script>
     const navbar = document.querySelector("nav") as HTMLElement;
