@@ -1,0 +1,74 @@
+---
+import Navbar from "@components/Navbar/Navbar.astro";
+import LayoutBase from "./LayoutBase.astro";
+import Footer from "@components/Footer.astro";
+import ScrollIndicator from "../components/ScrollIndicator.astro";
+
+interface Props {
+    title: string;
+    withStickyHeader?: boolean;
+    class?: string;
+}
+
+const { title, withStickyHeader = false, class: className } = Astro.props;
+const marginTop = "10vh";
+const top = withStickyHeader ? marginTop : "0px";
+---
+
+<LayoutBase title={title}>
+    <Navbar />
+    <div class="grow">
+        <div class="flex flex-col">
+            <header
+                data-header-container
+                data-margin-top={marginTop}
+                class:list={[
+                    `w-min self-center whitespace-nowrap font-alexang text-[min(25vw,300px)] leading-none`,
+                    { sticky: withStickyHeader },
+                    className
+                ]}
+            >
+                <div class="">
+                    <slot name="header" />
+                </div>
+                <ScrollIndicator />
+            </header>
+            <main>
+                <slot name="content" />
+            </main>
+        </div>
+        {
+            Astro.slots.has("link") && (
+                <div class="flex h-screen items-center justify-center">
+                    <div>
+                        <slot name="link" />
+                    </div>
+                </div>
+            )
+        }
+    </div>
+</LayoutBase>
+<Footer />
+
+<style define:vars={{ marginTop, top }}>
+    header[data-header-container] {
+        margin-top: var(--marginTop);
+        top: var(--top);
+    }
+</style>
+
+<script>
+    const navbar = document.querySelector("nav") as HTMLElement;
+    const headerContainer = document.querySelector("[data-header-container]") as HTMLElement;
+
+    function updateContainerSize() {
+        const { height } = navbar.getBoundingClientRect();
+        const marginTop = headerContainer.dataset.marginTop ?? "0px";
+        headerContainer.style.height = `calc(100vh - ${height}px - ${marginTop})`;
+    }
+
+    updateContainerSize();
+    window.addEventListener("resize", () => {
+        updateContainerSize();
+    });
+</script>

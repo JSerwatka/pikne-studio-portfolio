@@ -1,81 +1,84 @@
 ---
+import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
+
 import PictureLink from "@components/PictureLink.astro";
 import GradientScroll from "@components/Process/GradientScroll.astro";
 import Section from "@components/Process/Section.astro";
-import Layout from "@layouts/Layout.astro";
 
 import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 ---
 
-<Layout title="Project process">
-    <div class="mb-40 flex flex-col items-center">
-        <div class="text-hero__2 leading-[230px]">
-            <span class="block">Project</span><span class="block">process</span>
+<LayoutBigTitle title="Project process" class="flex">
+    <Fragment slot="header">
+        <span class="block">Project</span>
+        <span class="ml-[0.5em] mt-[-0.25em] block">process</span>
+        <div class:list={["text-paragraph__normal whitespace-normal text-right", "py-5", "xl:py-2"]}>
+            * example of a branding process, it may very for different projects
         </div>
-        <div>(example of a branding process, for different type of projects the process may vary)</div>
-    </div>
-    <div class="process-grid__main mb-40">
-        <GradientScroll />
-        <Section step={1}>
-            <Fragment slot="title">SAY HELLO!</Fragment>
-            <Fragment slot="description">
-                We’ll hold an exploratory call to understand your goals, values, and target audience.
-            </Fragment>
-        </Section>
-        <Section step={2}>
-            <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
-            <Fragment slot="description">
-                Conduct market research to analyze your competitors, industry trends, and consumer preferences.
-                Gathering insights into the brand's unique selling points and differentiators.
-            </Fragment>
-        </Section>
-        <Section step={3}>
-            <Fragment slot="title">STRATEGY & PLANNING</Fragment>
-            <Fragment slot="description">
-                Defining the brand's positioning, personality, and core message. Developing a comprehensive brand
-                strategy that aligns with the target audience and business objectives.
-            </Fragment>
-        </Section>
-        <Section step={4}>
-            <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
-            <Fragment slot="description">I prepare design references and we discuss them.</Fragment>
-        </Section>
-        <Section step={5}>
-            <Fragment slot="title">DESIGNING MATERIALS</Fragment>
-            <Fragment slot="description">
-                Conduct market research to analyze your competitors, industry trends, and consumer preferences.
-                Gathering insights into the brand's unique selling points and differentiators
-            </Fragment>
-        </Section>
-        <Section step={6}>
-            <Fragment slot="title">IMPLEMENTATION</Fragment>
-            <Fragment slot="description">
-                I work closely with the client to implement the new brand across all touchpoints, both online and
-                offline. I can oversee the production process for printed materials and ensure quality standards are
-                met. We’ll plan and execute a successful brand launch, including promotional activities and
-                communication strategies.
-            </Fragment>
-        </Section>
-        <Section step={7}>
-            <Fragment slot="title">SUPPORT & MAINTENANCE</Fragment>
-            <Fragment slot="description">
-                I'll provide guidance on how to use and update the materials I created, answer any questions you may
-                have, and equip you with the tools you need to manage your digital assets. I will be always here for you
-                in case of doubts or problems.
-            </Fragment>
-        </Section>
-    </div>
-    <div class="min-h-screen">
-        <PictureLink
-            title="My own branding"
-            subTitle="HOW DOES IT LOOK IN PRACTICE? TAKE A LOOK AT A CASE STUDY:"
-            linkTo="/case-study"
-            linkAccessibleName="link to my own branding"
-            src={brandingThumbnail}
-            alt=""
-        />
-    </div>
-</Layout>
+    </Fragment>
+    <Fragment slot="content">
+        <div class="process-grid__main">
+            <GradientScroll />
+            <Section step={1}>
+                <Fragment slot="title">SAY HELLO!</Fragment>
+                <Fragment slot="description">
+                    We’ll hold an exploratory call to understand your goals, values, and target audience.
+                </Fragment>
+            </Section>
+            <Section step={2}>
+                <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
+                <Fragment slot="description">
+                    Conduct market research to analyze your competitors, industry trends, and consumer preferences.
+                    Gathering insights into the brand's unique selling points and differentiators.
+                </Fragment>
+            </Section>
+            <Section step={3}>
+                <Fragment slot="title">STRATEGY & PLANNING</Fragment>
+                <Fragment slot="description">
+                    Defining the brand's positioning, personality, and core message. Developing a comprehensive brand
+                    strategy that aligns with the target audience and business objectives.
+                </Fragment>
+            </Section>
+            <Section step={4}>
+                <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
+                <Fragment slot="description">I prepare design references and we discuss them.</Fragment>
+            </Section>
+            <Section step={5}>
+                <Fragment slot="title">DESIGNING MATERIALS</Fragment>
+                <Fragment slot="description">
+                    Conduct market research to analyze your competitors, industry trends, and consumer preferences.
+                    Gathering insights into the brand's unique selling points and differentiators
+                </Fragment>
+            </Section>
+            <Section step={6}>
+                <Fragment slot="title">IMPLEMENTATION</Fragment>
+                <Fragment slot="description">
+                    I work closely with the client to implement the new brand across all touchpoints, both online and
+                    offline. I can oversee the production process for printed materials and ensure quality standards are
+                    met. We’ll plan and execute a successful brand launch, including promotional activities and
+                    communication strategies.
+                </Fragment>
+            </Section>
+            <Section step={7}>
+                <Fragment slot="title">SUPPORT & MAINTENANCE</Fragment>
+                <Fragment slot="description">
+                    I'll provide guidance on how to use and update the materials I created, answer any questions you may
+                    have, and equip you with the tools you need to manage your digital assets. I will be always here for
+                    you in case of doubts or problems.
+                </Fragment>
+            </Section>
+        </div>
+    </Fragment>
+    <PictureLink
+        slot="link"
+        title="My own branding"
+        subTitle="HOW DOES IT LOOK IN PRACTICE? TAKE A LOOK AT A CASE STUDY:"
+        linkTo="/case-study"
+        linkAccessibleName="link to my own branding"
+        src={brandingThumbnail}
+        alt=""
+    />
+</LayoutBigTitle>
 
 <style>
     .process-grid__main {

@@ -1,5 +1,5 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import PictureLink from "@components/PictureLink.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
 import ImageContainer from "@components/Illustrations/ImageContainer.astro";
@@ -26,16 +26,9 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 // TODO: add video
 ---
 
-<Layout title="Illustrations">
-    <div class="">
-        <div
-            class="sticky top-[20vh] z-10 mt-[20vh] h-[80vh] whitespace-nowrap text-center font-alexang text-[min(25vw,325px)]"
-        >
-            <div class="relative leading-none">
-                Illustrations
-                <ScrollIndicator class="!bottom-[-10px] sm:!bottom-0" />
-            </div>
-        </div>
+<LayoutBigTitle title="Illustrations" withStickyHeader>
+    <Fragment slot="header">Illustrations</Fragment>
+    <Fragment slot="content">
         <div class:list={["relative z-20 flex flex-col"]}>
             <ImageContainer
                 src={technicolorDream}
@@ -129,18 +122,17 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
                 src={mongolia}
                 width={mongolia.width / 2}
                 alt="a digital portrait of a smiling woman wearing a traditional Mongolian costume"
-                classContainer=" lg:self-start"
+                classContainer=" lg:self-start !h-[100vh]"
             />
         </div>
-    </div>
-    <div class:list={["mx-auto  w-fit", "my-20", "lg:my-40"]}>
-        <PictureLink
-            title="My work"
-            subTitle="Get back"
-            linkTo="/work"
-            linkAccessibleName="link to my all my work"
-            src={brandingThumbnail}
-            alt=""
-        />
-    </div>
-</Layout>
+    </Fragment>
+    <PictureLink
+        slot="link"
+        title="My work"
+        subTitle="Get back"
+        linkTo="/work"
+        linkAccessibleName="link to my all my work"
+        src={brandingThumbnail}
+        alt=""
+    />
+</LayoutBigTitle>

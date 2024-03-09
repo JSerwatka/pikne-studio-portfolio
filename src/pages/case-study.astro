@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import LayoutBigTitle from "../layouts/LayoutBigTitle.astro";
 
 import headTop from "@assets/case-study/1.1.head_top.png";
 import headEmpty from "@assets/case-study/1.2.head_empty.png";
@@ -136,155 +136,163 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 };
 ---
 
-<Layout title="Case Study">
-    <div class="overflow-hidden">
-        <div class="h-screen bg-slate-400">
-            <ScrollIndicator />
+<LayoutBigTitle title="Case Study">
+    <Fragment slot="header">
+        <div>
+            <span class="block">Case</span>
+            <span class="ml-[1.02em] mt-[-0.25em] block">study</span>
+            <div class:list={["text-paragraph__normal whitespace-normal  text-right", "py-2", "xl:py-5"]}>
+                creating my own brand
+            </div>
         </div>
-        <Section step={1}>
-            <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
-            <Fragment slot="description">
-                <p>
-                    In the initial stages of the project, I embarked on a journey of self-discovery. Through
-                    introspection and market research, I defined the brand by its core values, mission, tone of voice
-                    etc.
-                </p>
-                <p>
-                    The goal was to create a brand that authentically reflects my passion for psychology, art and design
-                    while resonating with a target audience who seeks inspiration and support in creating their
-                    identity.
-                </p>
-            </Fragment>
-            <Fragment slot="images">
-                {
-                    animatedImagesConfig["step-1"].map((animatedImage) => (
-                        <AnimatedImage
-                            src={animatedImage.src}
-                            alt={animatedImage.alt}
-                            width={IMG_SIZE}
-                            height={IMG_SIZE}
-                            data-translation-path={animatedImage.translationPath}
-                            data-rotation-path={animatedImage.rotationPath}
-                        />
-                    ))
-                }
-            </Fragment>
-        </Section>
-        <Section class="bg-lilac" step={2}>
-            <Fragment slot="title">STRATEGY & PLANNING</Fragment>
-            <Fragment slot="description">
-                <p>
-                    When I understood what I what to represent and whom I’d like to work with, I developed a
-                    comprehensive brand strategy.
-                </p>
-                <p>
-                    I often use Jung-inspired brand archetypes as guidance. The Lover archetype was chosen deliberately,
-                    as it perfectly aligned with the desire to evoke emotions, build connections, and create immersive
-                    experiences. Add a bit of The Creator archetype and voilà! That’s me!
-                </p>
-            </Fragment>
-            <Fragment slot="images">
-                {
-                    animatedImagesConfig["step-2"].map((animatedImage) => (
-                        <AnimatedImage
-                            src={animatedImage.src}
-                            alt={animatedImage.alt}
-                            width={IMG_SIZE}
-                            height={IMG_SIZE}
-                            data-translation-path={animatedImage.translationPath}
-                            data-rotation-path={animatedImage.rotationPath}
-                        />
-                    ))
-                }
-            </Fragment>
-        </Section>
-        <Section class="bg-ice-blue" step={3}>
-            <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
-            <Fragment slot="description">
-                <p>
-                    I crafted a unique, hand-drawn logo that featured a whimsical illustration. The cloud represents my
-                    dreamy nature, her eyes wide open allow for observing and recognize the omnipresent beauty.
-                </p>
-                <p>
-                    The color palette incorporated shades of warm pastels and vibrant accents, infusing the brand with a
-                    sense of positivity and approachability. As for typography, I aimed for a playful yet sophisticated
-                    feel.
-                </p>
-            </Fragment>
-            <Fragment slot="images">
-                {
-                    animatedImagesConfig["step-3"].map((animatedImage) => (
-                        <AnimatedImage
-                            src={animatedImage.src}
-                            alt={animatedImage.alt}
-                            width={IMG_SIZE}
-                            height={IMG_SIZE}
-                            data-translation-path={animatedImage.translationPath}
-                            data-rotation-path={animatedImage.rotationPath}
-                        />
-                    ))
-                }
-            </Fragment>
-        </Section>
-        <Section class="bg-tea-green" step={4}>
-            <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
-            <Fragment slot="description">
-                <p>
-                    I think about an online portfolio as an opportunity to showcase my style and creativity.
-                    Understanding the importance of a compelling online presence, I designed the website to let visitors
-                    explore my creative process. I wanted the audience to feel connected and invited to my inner world.
-                </p>
-                <p>
-                    As I wanted everyone to enjoy the experience, I paid attention to accessibility issues such as color
-                    contrast, readable typography, button size, alt image descriptions etc.
-                </p>
-            </Fragment>
-            <Fragment slot="images">
-                {
-                    animatedImagesConfig["step-4"].map((animatedImage) => (
-                        <AnimatedImage
-                            src={animatedImage.src}
-                            alt={animatedImage.alt}
-                            width={IMG_SIZE}
-                            height={IMG_SIZE}
-                            data-translation-path={animatedImage.translationPath}
-                            data-rotation-path={animatedImage.rotationPath}
-                        />
-                    ))
-                }
-            </Fragment>
-        </Section>
-        <Section class="bg-volt" step={5}>
-            <Fragment slot="title">Launch and Promotion</Fragment>
-            <Fragment slot="description">
-                Let’s show the world the beauty we’ve crafted together! I will provide you with clear instructions on
-                usage of all of the visual elements for consistency. I will be always here for you in case of doubts or
-                problems.
-            </Fragment>
-            <Fragment slot="images">
-                {
-                    animatedImagesConfig["step-5"].map((animatedImage) => (
-                        <AnimatedImage
-                            src={animatedImage.src}
-                            alt={animatedImage.alt}
-                            width={IMG_SIZE}
-                            height={IMG_SIZE}
-                            data-translation-path={animatedImage.translationPath}
-                            data-rotation-path={animatedImage.rotationPath}
-                        />
-                    ))
-                }
-            </Fragment>
-        </Section>
-        <div class="min-h-screen">
-            <PictureLink
-                title="Book a free consultation"
-                subTitle="SOUNDS LIKE A PLAN FOR YOU?"
-                linkTo="https://calendly.com/aleksandrapekala/design-inquiry"
-                linkAccessibleName="link to my calender - book a free consultation"
-                src={consultationsThumbnail}
-                alt="a digital illustration of Aleksandra Pekala answering a phone with a barn owl sitting on her arm. The owl holds a pink envelope in its beak"
-            />
+    </Fragment>
+    <Fragment slot="content">
+        <div class:list={["relative z-20 flex flex-col overflow-hidden"]}>
+            <Section step={1}>
+                <Fragment slot="title">DISCOVERY & RESEARCH</Fragment>
+                <Fragment slot="description">
+                    <p>
+                        In the initial stages of the project, I embarked on a journey of self-discovery. Through
+                        introspection and market research, I defined the brand by its core values, mission, tone of
+                        voice etc.
+                    </p>
+                    <p>
+                        The goal was to create a brand that authentically reflects my passion for psychology, art and
+                        design while resonating with a target audience who seeks inspiration and support in creating
+                        their identity.
+                    </p>
+                </Fragment>
+                <Fragment slot="images">
+                    {
+                        animatedImagesConfig["step-1"].map((animatedImage) => (
+                            <AnimatedImage
+                                src={animatedImage.src}
+                                alt={animatedImage.alt}
+                                width={IMG_SIZE}
+                                height={IMG_SIZE}
+                                data-translation-path={animatedImage.translationPath}
+                                data-rotation-path={animatedImage.rotationPath}
+                            />
+                        ))
+                    }
+                </Fragment>
+            </Section>
+            <Section class="bg-lilac" step={2}>
+                <Fragment slot="title">STRATEGY & PLANNING</Fragment>
+                <Fragment slot="description">
+                    <p>
+                        When I understood what I what to represent and whom I’d like to work with, I developed a
+                        comprehensive brand strategy.
+                    </p>
+                    <p>
+                        I often use Jung-inspired brand archetypes as guidance. The Lover archetype was chosen
+                        deliberately, as it perfectly aligned with the desire to evoke emotions, build connections, and
+                        create immersive experiences. Add a bit of The Creator archetype and voilà! That’s me!
+                    </p>
+                </Fragment>
+                <Fragment slot="images">
+                    {
+                        animatedImagesConfig["step-2"].map((animatedImage) => (
+                            <AnimatedImage
+                                src={animatedImage.src}
+                                alt={animatedImage.alt}
+                                width={IMG_SIZE}
+                                height={IMG_SIZE}
+                                data-translation-path={animatedImage.translationPath}
+                                data-rotation-path={animatedImage.rotationPath}
+                            />
+                        ))
+                    }
+                </Fragment>
+            </Section>
+            <Section class="bg-ice-blue" step={3}>
+                <Fragment slot="title">DESIGNING CONCEPTS</Fragment>
+                <Fragment slot="description">
+                    <p>
+                        I crafted a unique, hand-drawn logo that featured a whimsical illustration. The cloud represents
+                        my dreamy nature, her eyes wide open allow for observing and recognize the omnipresent beauty.
+                    </p>
+                    <p>
+                        The color palette incorporated shades of warm pastels and vibrant accents, infusing the brand
+                        with a sense of positivity and approachability. As for typography, I aimed for a playful yet
+                        sophisticated feel.
+                    </p>
+                </Fragment>
+                <Fragment slot="images">
+                    {
+                        animatedImagesConfig["step-3"].map((animatedImage) => (
+                            <AnimatedImage
+                                src={animatedImage.src}
+                                alt={animatedImage.alt}
+                                width={IMG_SIZE}
+                                height={IMG_SIZE}
+                                data-translation-path={animatedImage.translationPath}
+                                data-rotation-path={animatedImage.rotationPath}
+                            />
+                        ))
+                    }
+                </Fragment>
+            </Section>
+            <Section class="bg-tea-green" step={4}>
+                <Fragment slot="title">DESIGNING THE WEBSITE</Fragment>
+                <Fragment slot="description">
+                    <p>
+                        I think about an online portfolio as an opportunity to showcase my style and creativity.
+                        Understanding the importance of a compelling online presence, I designed the website to let
+                        visitors explore my creative process. I wanted the audience to feel connected and invited to my
+                        inner world.
+                    </p>
+                    <p>
+                        As I wanted everyone to enjoy the experience, I paid attention to accessibility issues such as
+                        color contrast, readable typography, button size, alt image descriptions etc.
+                    </p>
+                </Fragment>
+                <Fragment slot="images">
+                    {
+                        animatedImagesConfig["step-4"].map((animatedImage) => (
+                            <AnimatedImage
+                                src={animatedImage.src}
+                                alt={animatedImage.alt}
+                                width={IMG_SIZE}
+                                height={IMG_SIZE}
+                                data-translation-path={animatedImage.translationPath}
+                                data-rotation-path={animatedImage.rotationPath}
+                            />
+                        ))
+                    }
+                </Fragment>
+            </Section>
+            <Section class="bg-volt" step={5}>
+                <Fragment slot="title">Launch and Promotion</Fragment>
+                <Fragment slot="description">
+                    Let’s show the world the beauty we’ve crafted together! I will provide you with clear instructions
+                    on usage of all of the visual elements for consistency. I will be always here for you in case of
+                    doubts or problems.
+                </Fragment>
+                <Fragment slot="images">
+                    {
+                        animatedImagesConfig["step-5"].map((animatedImage) => (
+                            <AnimatedImage
+                                src={animatedImage.src}
+                                alt={animatedImage.alt}
+                                width={IMG_SIZE}
+                                height={IMG_SIZE}
+                                data-translation-path={animatedImage.translationPath}
+                                data-rotation-path={animatedImage.rotationPath}
+                            />
+                        ))
+                    }
+                </Fragment>
+            </Section>
         </div>
-    </div>
-</Layout>
+    </Fragment>
+    <PictureLink
+        slot="link"
+        title="Book a free consultation"
+        subTitle="SOUNDS LIKE A PLAN FOR YOU?"
+        linkTo="https://calendly.com/aleksandrapekala/design-inquiry"
+        linkAccessibleName="link to my calender - book a free consultation"
+        src={consultationsThumbnail}
+        alt="a digital illustration of Aleksandra Pekala answering a phone with a barn owl sitting on her arm. The owl holds a pink envelope in its beak"
+    />
+</LayoutBigTitle>

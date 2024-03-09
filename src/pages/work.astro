@@ -1,14 +1,12 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "@layouts/Layout.astro";
+import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import illustrations from "@assets/illustrations/designed-for-love.png";
 import patchwork from "@assets/work/patchwork.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
 import sensus from "@assets/work/sensus.png";
 import boska from "@assets/work/boska.png";
-import ScrollIndicator from "@components/ScrollIndicator.astro";
-import ImageContainer from "@components/Illustrations/ImageContainer.astro";
 
 interface ProjectConfigType {
     title: string;
@@ -54,34 +52,30 @@ const projects = [
 ] as ProjectConfigType[];
 ---
 
-<Layout title="My Work">
-    <div class="sticky top-[20vh] mt-[20vh] h-[80vh] whitespace-nowrap text-center font-alexang text-[min(25vw,325px)]">
-        <div class="relative leading-none">
-            My work
-            <ScrollIndicator class="!bottom-[-10px] sm:!bottom-0" />
+<LayoutBigTitle title="My Work" withStickyHeader>
+    <Fragment slot="header">My work</Fragment>
+    <Fragment slot="content">
+        <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>
+            {
+                projects.map((project) => (
+                    <div class="flex flex-col">
+                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="self-center">
+                            <div class="relative">
+                                <Image
+                                    src={project.src}
+                                    width={1100}
+                                    alt={project.alt}
+                                    class:list={["w-auto rounded-3xl"]}
+                                />
+                                <div
+                                    class="text-header__1 absolute top-1/2 w-full -translate-y-1/2 px-5 text-center text-light-pink"
+                                    set:html={project.titleHTML ?? project.title}
+                                />
+                            </div>
+                        </a>
+                    </div>
+                ))
+            }
         </div>
-    </div>
-    <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>
-        {
-            projects.map((project) => (
-                <div class="flex flex-col">
-                    <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="self-center">
-                        <div class="relative">
-                            <Image
-                                src={project.src}
-                                width={1100}
-                                alt={project.alt}
-                                class:list={["w-auto rounded-3xl"]}
-                            />
-                            <div
-                                class="text-header__1 absolute top-1/2 w-full -translate-y-1/2 px-5 text-center text-light-pink"
-                                set:html={project.titleHTML ?? project.title}
-                            />
-                        </div>
-                    </a>
-                </div>
-            ))
-        }
-    </div>
-    <div class="h-[100vh]"></div>
-</Layout>
+    </Fragment>
+</LayoutBigTitle>
