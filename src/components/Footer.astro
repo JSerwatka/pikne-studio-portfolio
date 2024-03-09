@@ -46,7 +46,12 @@
                 ]}
             >
                 <div class:list={["children-not-last:mb-6", "mb-12", "sm:mb-0"]}>
-                    <div>based in Kraków</div>
+                    <div>
+                        based in Kraków | <span data-krakow-time class="font-bold">{new Date()}</span> | <span
+                            data-krakow-weather-text></span><span
+                            data-krakow-weather-icon
+                            class="children: children:inline children:w-[35px] children:-translate-y-1"></span>
+                    </div>
                     <div>available for freelance work worldwide</div>
                     <a
                         href="mailto:hello@pekala.design"
@@ -138,6 +143,56 @@
 </footer>
 
 <script>
+    const krakowTime = document.querySelector("[data-krakow-time]") as HTMLElement;
+    const krakowWeatherText = document.querySelector("[data-krakow-weather-text]") as HTMLElement;
+    const krakowWeatherIcon = document.querySelector("[data-krakow-weather-icon]") as HTMLElement;
+    function updateTime() {
+        const date = new Date();
+        const timeString = new Intl.DateTimeFormat("en-US", {
+            timeZone: "Europe/Warsaw",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        }).format(date);
+
+        krakowTime.textContent = timeString;
+    }
+
+    updateTime();
+    setInterval(updateTime, 25000);
+
+    async function fetchWeather() {
+        try {
+            const apiKey = import.meta.env.PUBLIC_WEATHER_API_KEY;
+            const city = "Cracow";
+            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+            const requestOptions = {
+                headers: {
+                    "Cache-Control": "max-age=3600"
+                }
+            };
+
+            const response = await fetch(url, requestOptions);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            const { temp_c: temperature, condition } = data?.current;
+            const weatherIconUrl = condition?.icon;
+
+            if (temperature && weatherIconUrl) {
+                const weatherIcon = document.createElement("img");
+                weatherIcon.src = weatherIconUrl;
+                weatherIcon.alt = `${condition?.text ?? "weather"} icon`;
+                krakowWeatherText.innerText = `${temperature}°C`;
+                krakowWeatherIcon.appendChild(weatherIcon);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    fetchWeather();
+
     // function replaceValidationUI(form) {
     //     // Suppress the default bubbles
     //     form.addEventListener(
