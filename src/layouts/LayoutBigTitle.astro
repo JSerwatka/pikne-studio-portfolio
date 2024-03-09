@@ -7,23 +7,28 @@ import ScrollIndicator from "../components/ScrollIndicator.astro";
 interface Props {
     title: string;
     withStickyHeader?: boolean;
+    class?: string;
 }
 
-const { title, withStickyHeader = false } = Astro.props;
-const marginTop = "20vh";
-const additionalClasses = withStickyHeader ? `sticky top-[${marginTop}] ` : "";
+const { title, withStickyHeader = false, class: className } = Astro.props;
+const marginTop = "10vh";
+const top = withStickyHeader ? marginTop : "0px";
 ---
 
 <LayoutBase title={title}>
     <Navbar />
     <div class="grow">
-        <div>
+        <div class="flex flex-col">
             <header
                 data-header-container
                 data-margin-top={marginTop}
-                class:list={[`mt-[${marginTop}] font-alexang text-[min(25vw,325px)] leading-none`, additionalClasses]}
+                class:list={[
+                    `w-min self-center whitespace-nowrap font-alexang text-[min(25vw,300px)] leading-none`,
+                    { sticky: withStickyHeader },
+                    className
+                ]}
             >
-                <div class="flex justify-center">
+                <div class="">
                     <slot name="header" />
                 </div>
                 <ScrollIndicator />
@@ -44,6 +49,13 @@ const additionalClasses = withStickyHeader ? `sticky top-[${marginTop}] ` : "";
     </div>
 </LayoutBase>
 <Footer />
+
+<style define:vars={{ marginTop, top }}>
+    header[data-header-container] {
+        margin-top: var(--marginTop);
+        top: var(--top);
+    }
+</style>
 
 <script>
     const navbar = document.querySelector("nav") as HTMLElement;
