@@ -15,9 +15,11 @@ const { class: classList, title, year, linkTo, linkAccessibleName } = Astro.prop
 <div class:list={["flex min-h-screen items-center py-20", "px-6", "md:px-14", classList]}>
     <div class="w-full">
         <div class:list={["flex justify-between gap-8", "flex-col", "lg:flex-row-reverse"]}>
-            <div class:list={["aspect-square ", "self-center md:max-w-[682px]", "lg:basis-1/2"]}>
-                <slot name="image" />
-            </div>
+            <a href={linkTo} aria-label={linkAccessibleName}>
+                <div class:list={["aspect-square ", "self-center md:max-w-[682px]", "lg:basis-1/2"]}>
+                    <slot name="image" />
+                </div>
+            </a>
             <div class:list={["flex max-w-[682px] flex-col", "lg:basis-1/2"]}>
                 <div>
                     <div class="text-header__2">
