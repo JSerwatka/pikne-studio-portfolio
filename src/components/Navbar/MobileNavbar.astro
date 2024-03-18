@@ -18,43 +18,38 @@ const { class: className, links } = Astro.props;
 >
     Menu
 </button>
-<div
-    data-overlay
-    class:list={[
-        "text-header__2 fixed inset-0 z-20 hidden h-screen w-screen bg-ruby-red text-light-pink",
-        "px-6 py-3",
-        "sm:px-10 sm:py-5"
-    ]}
->
-    <div class="flex justify-between">
-        <a href="/" aria-label="go home link">
-            <Image
-                src={logo}
-                alt="pekala design logo"
-                width={156}
-                height={91}
-                class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
-            />
-        </a>
-        <button data-close-button autofocus aria-label="close navbar menu">&#10005;</button>
+<div data-overlay class:list={["text-header__2 fixed inset-0 z-50 hidden bg-ruby-red text-light-pink"]}>
+    <div class:list={["flex h-screen w-screen flex-col", "px-6 py-3", "sm:px-10 sm:py-5"]}>
+        <div class="flex justify-between">
+            <a href="/" aria-label="go home link">
+                <Image
+                    src={logo}
+                    alt="pekala design logo"
+                    width={156}
+                    height={91}
+                    class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+                />
+            </a>
+            <button data-close-button autofocus aria-label="close navbar menu">&#10005;</button>
+        </div>
+        <ul class:list={["flex flex-1 flex-col justify-around  text-center"]}>
+            {
+                links.map((link) => (
+                    <li>
+                        <a
+                            href={link.linkTo}
+                            aria-label={link.acessibleName}
+                            rel={link.isOutsideLink ? "noopener noreferrer" : null}
+                            target={link.isOutsideLink ? "_blank" : "_self"}
+                            data-link-type={link.isLinkToSection ? "section" : "normal"}
+                        >
+                            {link.linkTargetName}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </div>
-    <ul class:list={["text-center children-not-last:mb-14", "mt-28", "sm:mt-11"]}>
-        {
-            links.map((link) => (
-                <li>
-                    <a
-                        href={link.linkTo}
-                        aria-label={link.acessibleName}
-                        rel={link.isOutsideLink ? "noopener noreferrer" : null}
-                        target={link.isOutsideLink ? "_blank" : "_self"}
-                        data-link-type={link.isLinkToSection ? "section" : "normal"}
-                    >
-                        {link.linkTargetName}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
 </div>
 
 <script>
