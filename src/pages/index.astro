@@ -26,7 +26,7 @@ import Footer from "@components/Footer.astro";
         <!-- TODO: improve sizing of the container -->
         <!-- TODO: weird border for desktop vw on left and top -->
         <!-- TODO: add poster -->
-        <div class="min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
+        <div class="px-default min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
             <div class="relative text-center font-alexang text-[clamp(46px,20vw,280px)]">
                 <div class="relative z-10">My work</div>
                 <a href={"/work"} aria-label={"link to all projects"}>
@@ -37,7 +37,7 @@ import Footer from "@components/Footer.astro";
                         class:list={[
                             "border-5 absolute bottom-[40%] left-1/2 -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
                             "aspect-square w-[calc(90vw-64px)] object-cover",
-                            "lg:object-initial lg:aspect-video lg:w-[clamp(100px,calc(80vw-126px),1374px)]"
+                            "lg:object-initial lg:aspect-video lg:w-[clamp(100px,calc(70vw-126px),1374px)]"
                         ]}
                     >
                         <source src="/videos/slideshow-720p-movie.webm" type="video/webm" media="(min-width: 1024px)" />
