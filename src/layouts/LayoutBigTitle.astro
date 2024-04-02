@@ -17,7 +17,7 @@ const top = withStickyHeader ? marginTop : "0px";
 
 <LayoutBase title={title}>
     <Navbar />
-    <div class="grow">
+    <div class="px-default grow">
         <div class="flex flex-col">
             <header
                 data-header-container
@@ -38,12 +38,14 @@ const top = withStickyHeader ? marginTop : "0px";
             </main>
         </div>
         {
-            Astro.slots.has("link") && (
+            Astro.slots.has("link") ? (
                 <div class="flex h-screen items-center justify-center">
                     <div>
                         <slot name="link" />
                     </div>
                 </div>
+            ) : (
+                <div class="h-[30vh]" />
             )
         }
     </div>
