@@ -136,9 +136,9 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
 };
 ---
 
-<LayoutBigTitle title="Case Study">
+<LayoutBigTitle title="Case Study" class="px-0">
     <Fragment slot="header">
-        <div>
+        <div class="px-default">
             <span class="block">Case</span>
             <span class="ml-[1.02em] mt-[-0.25em] block">study</span>
             <div class:list={["text-paragraph__normal whitespace-normal  text-right", "py-2", "xl:py-5"]}>
@@ -286,13 +286,14 @@ const animatedImagesConfig: AnimatedImagesConfigType = {
             </Section>
         </div>
     </Fragment>
-    <PictureLink
-        slot="link"
-        title="Book a free consultation"
-        subTitle="SOUNDS LIKE A PLAN FOR YOU?"
-        linkTo="https://calendly.com/aleksandrapekala/design-inquiry"
-        linkAccessibleName="link to my calender - book a free consultation"
-        src={consultationsThumbnail}
-        alt="a digital illustration of Aleksandra Pekala answering a phone with a barn owl sitting on her arm. The owl holds a pink envelope in its beak"
-    />
+    <div slot="link" class="px-default">
+        <PictureLink
+            title="Book a free consultation"
+            subTitle="SOUNDS LIKE A PLAN FOR YOU?"
+            linkTo="https://calendly.com/aleksandrapekala/design-inquiry"
+            linkAccessibleName="link to my calender - book a free consultation"
+            src={consultationsThumbnail}
+            alt="a digital illustration of Aleksandra Pekala answering a phone with a barn owl sitting on her arm. The owl holds a pink envelope in its beak"
+        />
+    </div>
 </LayoutBigTitle>
