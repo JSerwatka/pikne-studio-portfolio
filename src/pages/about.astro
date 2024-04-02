@@ -4,20 +4,20 @@ import Section from "@components/Section.astro";
 import HatProfilePicture from "@components/About/HatProfilePicture";
 ---
 
-<Layout title="about page">
-    <div class:list={["grid grid-cols-1", "md:grid-cols-2"]}>
+<Layout title="about me">
+    <div class:list={["px-default mt-16 grid grid-cols-1", "md:grid-cols-2"]}>
         <div class:list={["order-2", "md:order-0 md:col-span-1 md:col-start-2"]}>
             <HatProfilePicture client:load />
         </div>
         <h1
             class:list={[
-                "text-header__3 order-1 mx-auto max-w-[560px] px-6",
+                "text-header__1 order-1 mx-auto max-w-[560px] ",
                 "md:col-span-1 md:col-start-1 md:justify-self-end"
             ]}
         >
             Need someone who can wear many hats?
         </h1>
-        <div class:list={["order-3 mx-auto max-w-[560px] px-6", "md:col-span-1 md:col-start-1 md:justify-self-end"]}>
+        <div class:list={["order-3 mx-auto max-w-[560px]", "md:col-span-1 md:col-start-1 md:justify-self-end"]}>
             <Section header="MY PHILOSOPHY ❤">
                 <p>Emotionally connect people and brands through visual language.</p>
             </Section>
@@ -73,7 +73,7 @@ import HatProfilePicture from "@components/About/HatProfilePicture";
                         href="https://calendly.com/aleksandrapekala/design-inquiry"
                         rel="noopener noreferrer"
                         target="_blank"
-                        class="decoration-ruby-red-transparent underline decoration-1 underline-offset-4"
+                        class="underline decoration-ruby-red-transparent decoration-1 underline-offset-4"
                     >
                         book a call
                     </a>

@@ -12,7 +12,7 @@ interface Props {
 const { class: classList, title, year, linkTo, linkAccessibleName } = Astro.props;
 ---
 
-<div class:list={["flex min-h-screen items-center py-20", "px-6", "md:px-14", classList]}>
+<div class:list={["px-default flex min-h-screen items-center", classList]}>
     <div class="w-full">
         <div class:list={["flex justify-between gap-8", "flex-col", "lg:flex-row-reverse"]}>
             <a href={linkTo} aria-label={linkAccessibleName}>

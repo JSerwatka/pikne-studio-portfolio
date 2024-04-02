@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
-import illustrations from "@assets/illustrations/designed-for-love.png";
+import illustrations from "@assets/work/illustrations.png";
 import patchwork from "@assets/work/patchwork.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
 import sensus from "@assets/work/sensus.png";
@@ -26,33 +26,33 @@ const projects = [
     {
         title: "sensus",
         src: sensus,
-        linkTo: "/projects/sensus",
+        linkTo: "/project/sensus",
         alt: "hands massaging the back, warm light"
     },
     {
         title: "Patchwork",
         src: patchwork,
-        linkTo: "/projects/patchwork",
+        linkTo: "/project/patchwork",
         alt: "a photograph of a parent holding a baby with Down's Syndrome"
     },
     {
         title: "Psykologkompassen",
         titleHTML: "Psykolog<wbr>kompassen",
         src: psykologkompassen,
-        linkTo: "/projects/psykologkompassen",
+        linkTo: "/project/psykologkompassen",
         alt: "a man facing away from the camera looks at the landscape view in front of him"
     },
     {
         title: "BOSKA body cast",
         titleHTML: "BOSKA body&nbsp;cast",
         src: boska,
-        linkTo: "/projects/boska",
+        linkTo: "/project/boska",
         alt: "a set of printed branding materials for BOSKA brand including off-white boxes and business card"
     }
 ] as ProjectConfigType[];
 ---
 
-<LayoutBigTitle title="My Work" withStickyHeader>
+<LayoutBigTitle title="work" withStickyHeader>
     <Fragment slot="header">My work</Fragment>
     <Fragment slot="content">
         <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>

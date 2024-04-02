@@ -6,17 +6,10 @@ interface Props {
 const { step } = Astro.props;
 ---
 
-<div class="text-header__2 process-grid__title mb-4 uppercase">
+<div class="text-header__2 process-grid__title uppercase">
     <slot name="title" /><sup class="text-paragraph__quote pl-3 align-text-top tracking-wide">({step})</sup>
 </div>
-<div
-    class:list={[
-        "text-paragraph__normal process-grid__description not-last:mb-40",
-        "max-w-sm",
-        "sm:max-w-md",
-        "lg:max-w-xl"
-    ]}
->
+<div class:list={["text-paragraph__normal process-grid__description mt-2 not-last:mb-40"]}>
     <slot name="description" />
 </div>
 

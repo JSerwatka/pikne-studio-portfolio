@@ -4,21 +4,21 @@ import { Image } from "astro:assets";
 import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
 ---
 
-<div
-    class:list={[
-        "flex min-h-screen items-center overflow-x-hidden",
-        "py-20 ",
-        "px-6",
-        "lg:px-14",
-        "xl:overflow-visible"
-    ]}
->
+<div class:list={["px-default flex min-h-screen items-center overflow-x-hidden", "py-20 ", "xl:overflow-visible"]}>
     <div class:list={["flex flex-col gap-6", "lg:flex-row-reverse"]}>
-        <div class:list={["xl:ml-auto xl:max-w-[50%]"]}>
-            <div class="text-paragraph__normal">What do i do</div>
-            <div class="text-header__2 my-10">
+        <div class:list={["lg:ml-auto lg:max-w-[50%]"]}>
+            <div class="text-paragraph__normal uppercase">What do i do?</div>
+            <div
+                class:list={[
+                    "my-10 font-olympic",
+                    "text-3xl leading-normal",
+                    "sm:text-4xl sm:leading-normal",
+                    "xl:text-5xl xl:leading-normal"
+                ]}
+            >
                 <div class="mb-10">
-                    I craft branding, art direction and illustration based on psychological knowledge.
+                    I founded Pikne studio to craft branding, art direction and illustration based on psychological
+                    knowledge.
                 </div>
                 <div>
                     Through visual storytelling and empathy-driven design, I help your mission reach those who care
@@ -36,9 +36,10 @@ import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
             height={700}
             alt="a portrait of Aleksandra Pekala on a red background, with an animated star-shaped element moving behind her"
             class:list={[
-                "max-w-[700px] scale-x-[-1] object-contain",
-                "mt-2 w-full self-center",
-                "mg:mt-0 lg:w-1/2 lg:self-end"
+                "scale-x-[-1] object-contain",
+                "mt-2 w-full max-w-[420px] self-center ",
+                "lg:mt-0 lg:self-end",
+                "xl:w-1/2 xl:max-w-[620px]"
             ]}
             loading="eager"
         />
