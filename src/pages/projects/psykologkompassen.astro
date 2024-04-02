@@ -85,19 +85,18 @@ import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
             quality="max"
         />
     </Fragment>
-    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
-        <Quote author="Monika Söderlund, CEO">
-            It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened
-            again. She has created a logo that I am happy and proud of. A unique logo - a symbol that tells what my
-            company stands for. I can warmly recommend her.
-        </Quote>
-        <PictureLink
-            title="BOSKA body cast"
-            subTitle="Next up"
-            linkTo="/projects/boska"
-            linkAccessibleName='link to project: "BOSKA body cast"'
-            src={boskaThumbnail}
-            alt=""
-        />
-    </div>
+    <Quote author="Monika Söderlund, CEO" slot="quote">
+        It has been a great pleasure and very inspiring to hire Aleksandra. She has listened, asked and listened again.
+        She has created a logo that I am happy and proud of. A unique logo - a symbol that tells what my company stands
+        for. I can warmly recommend her.
+    </Quote>
+    <PictureLink
+        slot="link"
+        title="BOSKA body cast"
+        subTitle="Next up"
+        linkTo="/projects/boska"
+        linkAccessibleName='link to project: "BOSKA body cast"'
+        src={boskaThumbnail}
+        alt=""
+    />
 </LayoutProjects>

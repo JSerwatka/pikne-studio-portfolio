@@ -80,18 +80,17 @@ import tshirt from "@assets/projects/patchwork/tshirt.jpg";
             width={Math.floor(presentationLaptop.width / 2)}
         />
     </Fragment>
-    <div slot="other" class="flex min-h-screen flex-col justify-evenly">
-        <Quote author="Maria bukhanovskaia, the co-founder of the association">
-            Aleksandra was both creative, and very attentive to our needs. We are satisfied with the work Aleksandra did
-            for us - she is a talented designer, which we can highly recommend!
-        </Quote>
-        <PictureLink
-            title="Psykologkompassen"
-            subTitle="Next up"
-            linkTo="/projects/psykologkompassen"
-            linkAccessibleName='link to project: "Psykologkompassen"'
-            src={psykologkompassenThumbnail}
-            alt=""
-        />
-    </div>
+    <Quote author="Maria bukhanovskaia, the co-founder of the association" slot="quote">
+        Aleksandra was both creative, and very attentive to our needs. We are satisfied with the work Aleksandra did for
+        us - she is a talented designer, which we can highly recommend!
+    </Quote>
+    <PictureLink
+        slot="link"
+        title="Psykologkompassen"
+        subTitle="Next up"
+        linkTo="/projects/psykologkompassen"
+        linkAccessibleName='link to project: "Psykologkompassen"'
+        src={psykologkompassenThumbnail}
+        alt=""
+    />
 </LayoutProjects>
