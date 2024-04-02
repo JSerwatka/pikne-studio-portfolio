@@ -51,7 +51,7 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
                 </Fragment>
             </Section>
             <Section step={6}>
-                <Fragment slot="title">IMPLEMENTATION</Fragment>
+                <Fragment slot="title"><span class="hyphens-manual">IMPLEMEN&shy;TATION</span></Fragment>
                 <Fragment slot="description">
                     I work closely with the client to implement the new brand across all touchpoints, both online and
                     offline. I can oversee the production process for printed materials and ensure quality standards are
@@ -85,5 +85,6 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         grid-template-rows: repeat(28, auto);
+        column-gap: 10px;
     }
 </style>
