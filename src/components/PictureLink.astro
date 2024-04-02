@@ -31,14 +31,14 @@ const textLayers = ["visible", "mask"];
                             "opacity-animation-target pointer-events-none absolute left-0 top-0 z-10 text-lilac": isMask
                         }}
                     >
-                        <div class="font-metropolis text-xl uppercase">{subTitle}</div>
+                        <div class="font-metropolis text-xl uppercase leading-normal">{subTitle}</div>
                         <div class="text-header__1 flex items-center gap-4 sm:gap-6 lg:gap-8">
                             <ArrowIcon
                                 class={`mt-2 h-[30px] w-[30px] shrink-0 self-start sm:h-[40px] sm:w-[40px] lg:mt-0 lg:h-[50px] lg:w-[50px] lg:self-center ${
                                     isMask ? "fill-lilac" : "fill-ruby-red"
                                 }`}
                             />
-                            <div>{title}</div>
+                            <div set:html={title} />
                         </div>
                     </div>
                 );
