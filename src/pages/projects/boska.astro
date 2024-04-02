@@ -42,25 +42,25 @@ import background from "@assets/projects/boska/bg-boska.jpg";
             class:list={["col-span-6", "lg:col-span-2"]}
             src={logoDisplay}
             alt="BOSKA logotype blind-embossed on a paper-like beige texture"
-            width={logoDisplay.width / 2}
+            width={Math.floor(logoDisplay.width / 2)}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-4"]}
             src={voucher}
             alt="a hand holding a voucher in minimalistic design printed on a white textured paper"
-            width={voucher.width / 2}
+            width={Math.floor(voucher.width / 2)}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-4"]}
             src={boxPaper}
             alt=" a box with BOSKA logo on top, inside there's paper with design made out of the brand's symbol, Greek letter theta"
-            width={boxPaper.width / 2}
+            width={Math.floor(boxPaper.width / 2)}
         />
         <Image
             class:list={["col-span-6 object-left-bottom", "lg:col-span-2"]}
             src={instaStory}
             alt="a hand holding a smartphone with an Instagram story on the screen, displaying a sculpture"
-            width={instaStory.width / 2}
+            width={Math.floor(instaStory.width / 2)}
         />
     </Fragment>
     <div slot="other" class="flex min-h-screen flex-col justify-evenly">

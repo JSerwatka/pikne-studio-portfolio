@@ -51,33 +51,33 @@ import tshirt from "@assets/projects/patchwork/tshirt.jpg";
             class:list={["col-span-6", "lg:col-span-2"]}
             src={bag}
             alt="A tote bag with bold orange and red patterns showcased on a background of a wall"
-            width={bag.width / 2}
+            width={Math.floor(bag.width / 2)}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}
             src={bussinesCard}
             alt="a person browsing Instagram, seeing a post with colorful graphics and text boxes"
-            width={bussinesCard.width / 2}
+            width={Math.floor(bussinesCard.width / 2)}
         />
         <Image
             class:list={["col-span-6", "lg:col-span-2 lg:col-start-5"]}
             src={instagram}
             alt="two colorful business cards for Patchwork organisation laid out on a blue fabric"
-            width={instagram.width / 2}
+            width={Math.floor(instagram.width / 2)}
             quality="max"
         />
         <Image
             class:list={["col-span-6 bg-white ", "lg:col-span-3"]}
             src={tshirt}
             alt="A person wearing a vibrant t-shirt with a colorful line design and Patchwork organisation logo"
-            width={tshirt.width / 2}
+            width={Math.floor(tshirt.width / 2)}
             quality="max"
         />
         <Image
             class:list={["col-span-6 object-center", "lg:col-span-3"]}
             src={presentationLaptop}
             alt='a side view of a woman using a laptop to browse an informative presentation, displayed text says: "6 out of 10 people experience feeling of loneliness"'
-            width={presentationLaptop.width / 2}
+            width={Math.floor(presentationLaptop.width / 2)}
         />
     </Fragment>
     <div slot="other" class="flex min-h-screen flex-col justify-evenly">
