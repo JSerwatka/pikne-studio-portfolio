@@ -14,9 +14,16 @@ import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
     ]}
 >
     <div class:list={["flex flex-col gap-6", "lg:flex-row-reverse"]}>
-        <div class:list={["xl:ml-auto xl:max-w-[50%]"]}>
+        <div class:list={["lg:ml-auto lg:max-w-[50%]"]}>
             <div class="text-paragraph__normal uppercase">What do i do?</div>
-            <div class="text-header__2 my-10">
+            <div
+                class:list={[
+                    "my-10 font-olympic",
+                    "text-3xl leading-normal",
+                    "sm:text-4xl sm:leading-normal",
+                    "xl:text-5xl xl:leading-normal"
+                ]}
+            >
                 <div class="mb-10">
                     I founded Pikne studio to craft branding, art direction and illustration based on psychological
                     knowledge.
@@ -37,9 +44,10 @@ import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
             height={700}
             alt="a portrait of Aleksandra Pekala on a red background, with an animated star-shaped element moving behind her"
             class:list={[
-                "max-w-[700px] scale-x-[-1] object-contain",
-                "mt-2 w-full self-center",
-                "mg:mt-0 lg:w-1/2 lg:self-end"
+                "max-w-[420px] scale-x-[-1] object-contain",
+                "mt-2 w-full self-center ",
+                "lg:mt-0 lg:self-end",
+                "xl:w-1/2 xl:max-w-[620px]"
             ]}
             loading="eager"
         />
