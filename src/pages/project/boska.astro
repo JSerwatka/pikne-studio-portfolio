@@ -5,20 +5,28 @@ import { Image } from "astro:assets";
 
 import illustrationsThumbnail from "@assets/thumbnails/illustrations.webp";
 import logoDisplay from "@assets/projects/boska/logo-display.jpg";
+import logoDisplayLoading from "@assets/projects/boska/logo-display-loading.jpg";
 import voucher from "@assets/projects/boska/voucher.png";
+import voucherLoading from "@assets/projects/boska/voucher-loading.png";
 import boxPaper from "@assets/projects/boska/box-paper.jpg";
+import boxPaperLoading from "@assets/projects/boska/box-paper-loading.jpg";
 import instaStory from "@assets/projects/boska/insta-story.png";
+import instaStoryLoading from "@assets/projects/boska/insta-story-loading.png";
 import background from "@assets/projects/boska/bg-boska.jpg";
+import backgroundLoading from "@assets/projects/boska/bg-boska-loading.jpg";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 ---
 
 <LayoutProjects title="project boska">
     <Fragment slot="hero-background">
-        <Image
+        <ImageWithLoading
             src={background}
+            srcLoading={backgroundLoading}
             width={1920}
             height={1080}
             loading="eager"
             alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", and "diversity unite”'
+            classImage="rounded-b-3xl"
         />
     </Fragment>
     <Fragment slot="services-list">
@@ -43,29 +51,34 @@ import background from "@assets/projects/boska/bg-boska.jpg";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <Image
-            class:list={["col-span-6", "lg:col-span-2"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
             src={logoDisplay}
+            srcLoading={logoDisplayLoading}
             alt="BOSKA logotype blind-embossed on a paper-like beige texture"
             width={Math.floor(logoDisplay.width / 2)}
         />
-        <Image
-            class:list={["col-span-6", "lg:col-span-4"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
             src={voucher}
+            srcLoading={voucherLoading}
             alt="a hand holding a voucher in minimalistic design printed on a white textured paper"
             width={Math.floor(voucher.width / 2)}
         />
-        <Image
-            class:list={["col-span-6", "lg:col-span-4"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
             src={boxPaper}
+            srcLoading={boxPaperLoading}
             alt="a box with BOSKA logo on top, inside there's paper with design made out of the brand's symbol, Greek letter theta"
             width={Math.floor(boxPaper.width / 2)}
         />
-        <Image
-            class:list={["col-span-6 object-left-bottom", "lg:col-span-2"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
             src={instaStory}
+            srcLoading={instaStoryLoading}
             alt="a hand holding a smartphone with an Instagram story on the screen, displaying a sculpture"
             width={Math.floor(instaStory.width / 2)}
+            height={Math.floor(instaStory.height / 2)}
         />
     </Fragment>
     <PictureLink
