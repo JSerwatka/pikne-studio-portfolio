@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { ImageQuality } from "node_modules/astro/dist/@types/astro";
 
 interface Props {
@@ -15,55 +15,57 @@ interface Props {
 }
 
 const { src, srcLoading, alt, width, height, quality, loading, class: className, classImage } = Astro.props;
+const loadingImage = await getImage({ src: srcLoading, format: "webp", quality: "low", width: srcLoading.width });
+const loadingImageUrl = `url(${loadingImage.src})`;
 ---
 
-<div class={className}>
-    <div class="absolute z-10 h-full w-full blur-2xl children:h-full children:w-full" aria-hidden="true">
-        <Image src={srcLoading} width={srcLoading.width} alt="" class={classImage} quality="low" />
-    </div>
-    <div
-        class:list={[
-            "absolute z-20 h-full w-full",
-            "children:h-full children:w-full children:rounded-b-3xl children:object-cover"
-        ]}
-        data-img-with-loading
-    >
-        <Image
-            src={src}
-            width={width}
-            height={height}
-            alt={alt}
-            class={classImage}
-            quality={quality}
-            loading={loading}
-        />
-    </div>
+<div class:list={["h-full w-full", "bg-cover bg-center bg-no-repeat", className]} data-img-with-loading-main>
+    <Image
+        src={src}
+        width={width}
+        height={height}
+        alt={alt}
+        class:list={["h-full w-full object-cover", classImage]}
+        quality={quality}
+        loading={loading}
+    />
 </div>
 
-<style>
-    [data-img-with-loading] {
+<style define:vars={{ loadingImageUrl }}>
+    [data-img-with-loading-main] img {
         opacity: 0;
         transition: opacity 250ms ease-in-out;
     }
 
-    [data-img-with-loading].loaded {
+    [data-img-with-loading-main].loaded img {
         opacity: 1;
+    }
+
+    [data-img-with-loading-main] {
+        background-image: var(--loadingImageUrl);
+        filter: blur(10px);
+    }
+
+    [data-img-with-loading-main].loaded {
+        background-image: none;
+        filter: none;
     }
 </style>
 
 <script>
-    const bgImageContainers = document.querySelectorAll("[data-img-with-loading]") as NodeListOf<HTMLElement>;
+    const containers = document.querySelectorAll("[data-img-with-loading-main]") as NodeListOf<HTMLElement>;
 
-    bgImageContainers.forEach((bgImageContainer) => {
-        const bgImage = bgImageContainer.querySelector("img") as HTMLImageElement;
+    containers.forEach((container) => {
+        const imageMain = container.querySelector("img") as HTMLImageElement;
+
         function imageLoaded() {
-            bgImageContainer.classList.add("loaded");
+            container.classList.add("loaded");
         }
 
-        if (bgImage.complete) {
+        if (imageMain.complete) {
             imageLoaded();
         } else {
-            bgImage.addEventListener("load", imageLoaded);
+            imageMain.addEventListener("load", imageLoaded);
         }
     });
 </script>
