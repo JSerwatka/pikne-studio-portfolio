@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import type { ImageQuality } from "node_modules/astro/dist/@types/astro";
+
+interface Props {
+    src: ImageMetadata;
+    srcLoading: ImageMetadata;
+    alt: string;
+    width: number;
+    height?: number;
+    quality?: ImageQuality;
+    loading?: "eager" | "lazy";
+    class?: string;
+    classImage?: string;
+}
+
+const { src, srcLoading, alt, width, height, quality, loading, class: className, classImage } = Astro.props;
+---
+
+<div class={className}>
+    <div class="absolute z-10 h-full w-full blur-2xl children:h-full children:w-full" aria-hidden="true">
+        <Image src={srcLoading} width={srcLoading.width} alt="" class={classImage} quality="low" />
+    </div>
+    <div
+        class:list={[
+            "absolute z-20 h-full w-full",
+            "children:h-full children:w-full children:rounded-b-3xl children:object-cover"
+        ]}
+        data-img-with-loading
+    >
+        <Image
+            src={src}
+            width={width}
+            height={height}
+            alt={alt}
+            class={classImage}
+            quality={quality}
+            loading={loading}
+        />
+    </div>
+</div>
+
+<style>
+    [data-img-with-loading] {
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+    }
+
+    [data-img-with-loading].loaded {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    const bgImageContainers = document.querySelectorAll("[data-img-with-loading]") as NodeListOf<HTMLElement>;
+
+    bgImageContainers.forEach((bgImageContainer) => {
+        const bgImage = bgImageContainer.querySelector("img") as HTMLImageElement;
+        function imageLoaded() {
+            bgImageContainer.classList.add("loaded");
+        }
+
+        if (bgImage.complete) {
+            imageLoaded();
+        } else {
+            bgImage.addEventListener("load", imageLoaded);
+        }
+    });
+</script>
