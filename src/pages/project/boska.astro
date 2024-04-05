@@ -1,6 +1,5 @@
 ---
 import PictureLink from "@components/PictureLink.astro";
-import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
 
@@ -14,7 +13,13 @@ import background from "@assets/projects/boska/bg-boska.jpg";
 
 <LayoutProjects title="project boska">
     <Fragment slot="hero-background">
-        <Image src={background} width={1920} height={1080} loading="eager" alt='"' />
+        <Image
+            src={background}
+            width={1920}
+            height={1080}
+            loading="eager"
+            alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", and "diversity unite”'
+        />
     </Fragment>
     <Fragment slot="services-list">
         <li>Art direction</li>
