@@ -5,6 +5,7 @@ import LayoutProjects from "@layouts/LayoutProjects.astro";
 import { Image } from "astro:assets";
 
 import background from "@assets/projects/patchwork/bg-patchwork.jpg";
+import backgroundLoading from "@assets/projects/patchwork/bg-patchwork-loading.jpg";
 import psykologkompassenThumbnail from "@assets/thumbnails/psykologkompassen.jpg";
 import bag from "@assets/projects/patchwork/bag.jpg";
 import bussinesCard from "@assets/projects/patchwork/business-card.jpg";
@@ -14,12 +15,14 @@ import tshirt from "@assets/projects/patchwork/tshirt.jpg";
 ---
 
 <LayoutProjects title="project patchwork">
+    <Fragment slot="hero-background-loading">
+        <Image src={backgroundLoading} width={backgroundLoading.width} alt="" quality="low" loading="eager" />
+    </Fragment>
     <Fragment slot="hero-background">
         <Image
             src={background}
             width={1920}
             height={1080}
-            loading="eager"
             alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
             class:list={["object-[58%_0%]", "sm:object-center"]}
         />
