@@ -27,18 +27,7 @@ const { title } = Astro.props;
     <div class="after:block after:h-[calc(100vh+20px)] after:w-full after:content-['']">
         <header class="absolute top-0 z-10 h-[calc(100vh+20px)] w-full">
             <Navbar class="absolute z-30 w-full bg-white/10 backdrop-blur-md" />
-            <div class="absolute z-10 h-full w-full blur-2xl children:h-full children:w-full" aria-hidden="true">
-                <slot name="hero-background-loading" />
-            </div>
-            <div
-                class:list={[
-                    "absolute z-20 h-full w-full",
-                    "children:h-full children:w-full children:rounded-b-3xl children:object-cover"
-                ]}
-                data-hero-background
-            >
-                <slot name="hero-background" />
-            </div>
+            <slot name="hero-background" />
             <ScrollIndicator />
         </header>
         <main class="px-default sticky top-0 mx-auto max-w-[1200px]">
@@ -65,9 +54,9 @@ const { title } = Astro.props;
             <div class="flex min-h-screen place-items-center py-16">
                 <div
                     class:list={[
-                        "mx-auto grid grid-cols-6 gap-12 children:w-full children:rounded-3xl children:object-cover",
-                        "auto-rows-fr children:aspect-square  children:max-w-[580px]",
-                        "lg:auto-rows-[350px] lg:gap-3 lg:children:aspect-auto lg:children:h-0 lg:children:min-h-full lg:children:max-w-none"
+                        "grid w-full grid-cols-6 gap-12 img-inside:rounded-3xl children:rounded-3xl",
+                        "auto-rows-fr img-inside:aspect-square children:max-w-[580px]",
+                        "lg:auto-rows-[350px] lg:gap-3 lg:img-inside:aspect-auto lg:children:h-0 lg:children:min-h-full lg:children:max-w-none"
                     ]}
                 >
                     <slot name="images" />
@@ -98,28 +87,4 @@ const { title } = Astro.props;
         grid-template-columns: repeat(auto-fit, minmax(200px, calc(50% - 0.5rem)));
         gap: 1rem;
     }
-
-    [data-hero-background] {
-        opacity: 0;
-        transition: opacity 250ms ease-in-out;
-    }
-
-    [data-hero-background].loaded {
-        opacity: 1;
-    }
 </style>
-
-<script>
-    const bgImageContainer = document.querySelector("[data-hero-background]") as HTMLElement;
-    const bgImage = bgImageContainer.querySelector("img") as HTMLImageElement;
-
-    function imageLoaded() {
-        bgImageContainer.classList.add("loaded");
-    }
-
-    if (bgImage.complete) {
-        imageLoaded();
-    } else {
-        bgImage.addEventListener("load", imageLoaded);
-    }
-</script>

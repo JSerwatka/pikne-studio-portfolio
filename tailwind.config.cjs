@@ -37,6 +37,7 @@ module.exports = {
     },
     plugins: [
         plugin(function ({ addVariant }) {
+            addVariant("img-inside", "& img");
             addVariant("children", "&>*");
             addVariant("children-not-last", "&>*:not(:last-child)");
             addVariant("not-last", "&:not(:last-child)");
