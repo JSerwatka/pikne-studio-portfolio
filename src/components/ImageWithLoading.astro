@@ -19,7 +19,7 @@ const loadingImage = await getImage({ src: srcLoading, format: "webp", quality: 
 const loadingImageUrl = `url(${loadingImage.src})`;
 ---
 
-<div class:list={["h-full w-full", "bg-cover bg-center bg-no-repeat", className]} data-img-with-loading-main>
+<div class:list={["h-full w-full", "bg-cover bg-center bg-no-repeat", className]} data-img-with-loading-container>
     <Image
         src={src}
         width={width}
@@ -32,28 +32,27 @@ const loadingImageUrl = `url(${loadingImage.src})`;
 </div>
 
 <style define:vars={{ loadingImageUrl }}>
-    [data-img-with-loading-main] img {
+    [data-img-with-loading-container] img {
         opacity: 0;
         transition: opacity 250ms ease-in-out;
     }
 
-    [data-img-with-loading-main].loaded img {
+    [data-img-with-loading-container].loaded img {
         opacity: 1;
     }
 
-    [data-img-with-loading-main] {
+    [data-img-with-loading-container] {
         background-image: var(--loadingImageUrl);
         filter: blur(10px);
     }
 
-    [data-img-with-loading-main].loaded {
-        background-image: none;
+    [data-img-with-loading-container].loaded {
         filter: none;
     }
 </style>
 
 <script>
-    const containers = document.querySelectorAll("[data-img-with-loading-main]") as NodeListOf<HTMLElement>;
+    const containers = document.querySelectorAll("[data-img-with-loading-container]") as NodeListOf<HTMLElement>;
 
     containers.forEach((container) => {
         const imageMain = container.querySelector("img") as HTMLImageElement;
