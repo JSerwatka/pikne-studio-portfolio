@@ -8,23 +8,28 @@ import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 import backgroundLoading from "@assets/projects/patchwork/bg-patchwork-loading.jpg";
 import psykologkompassenThumbnail from "@assets/thumbnails/psykologkompassen.jpg";
 import bag from "@assets/projects/patchwork/bag.jpg";
+import bagLoading from "@assets/projects/patchwork/bag-loading.jpg";
 import bussinesCard from "@assets/projects/patchwork/business-card.jpg";
+import bussinesCardLoading from "@assets/projects/patchwork/business-card-loading.jpg";
 import instagram from "@assets/projects/patchwork/instagram.jpg";
+import instagramLoading from "@assets/projects/patchwork/instagram-loading.jpg";
 import presentationLaptop from "@assets/projects/patchwork/presentation-laptop.jpg";
+import presentationLaptopLoading from "@assets/projects/patchwork/presentation-laptop-loading.jpg";
 import tshirt from "@assets/projects/patchwork/tshirt.jpg";
+import tshirtLoading from "@assets/projects/patchwork/tshirt-loading.jpg";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 ---
 
 <LayoutProjects title="project patchwork">
-    <Fragment slot="hero-background-loading">
-        <Image src={backgroundLoading} width={backgroundLoading.width} alt="" quality="low" loading="eager" />
-    </Fragment>
     <Fragment slot="hero-background">
-        <Image
+        <ImageWithLoading
             src={background}
+            srcLoading={backgroundLoading}
             width={1920}
             height={1080}
             alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
-            class:list={["object-[58%_0%]", "sm:object-center"]}
+            classImage="rounded-b-3xl object-[58%_0%] sm:object-center"
+            class="rounded-b-3xl bg-[58%_0%] blur-lg sm:bg-center"
         />
     </Fragment>
     <Fragment slot="services-list">
@@ -50,35 +55,40 @@ import tshirt from "@assets/projects/patchwork/tshirt.jpg";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <Image
+        <ImageWithLoading
             class:list={["col-span-6", "lg:col-span-2"]}
             src={bag}
+            srcLoading={bagLoading}
             alt="A tote bag with bold orange and red patterns showcased on a background of a wall"
             width={Math.floor(bag.width / 2)}
         />
-        <Image
+        <ImageWithLoading
             class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}
             src={bussinesCard}
+            srcLoading={bussinesCardLoading}
             alt="a person browsing Instagram, seeing a post with colorful graphics and text boxes"
             width={Math.floor(bussinesCard.width / 2)}
         />
-        <Image
+        <ImageWithLoading
             class:list={["col-span-6", "lg:col-span-2 lg:col-start-5"]}
             src={instagram}
+            srcLoading={instagramLoading}
             alt="two colorful business cards for Patchwork organisation laid out on a blue fabric"
             width={Math.floor(instagram.width / 2)}
             quality="max"
         />
-        <Image
+        <ImageWithLoading
             class:list={["col-span-6 bg-white ", "lg:col-span-3"]}
             src={tshirt}
+            srcLoading={tshirtLoading}
             alt="A person wearing a vibrant t-shirt with a colorful line design and Patchwork organisation logo"
             width={Math.floor(tshirt.width / 2)}
             quality="max"
         />
-        <Image
+        <ImageWithLoading
             class:list={["col-span-6 object-center", "lg:col-span-3"]}
             src={presentationLaptop}
+            srcLoading={presentationLaptopLoading}
             alt='a side view of a woman using a laptop to browse an informative presentation, displayed text says: "6 out of 10 people experience feeling of loneliness"'
             width={Math.floor(presentationLaptop.width / 2)}
         />
