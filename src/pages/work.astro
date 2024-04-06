@@ -1,17 +1,23 @@
 ---
-import { Image } from "astro:assets";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import illustrations from "@assets/work/illustrations.png";
+import illustrationsLoading from "@assets/work/illustrations-loading.png";
 import patchwork from "@assets/work/patchwork.png";
+import patchworkLoading from "@assets/work/patchwork-loading.png";
 import psykologkompassen from "@assets/work/psykologkompassen.png";
+import psykologkompassenLoading from "@assets/work/psykologkompassen-loading.png";
 import sensus from "@assets/work/sensus.png";
+import sensusLoading from "@assets/work/sensus-loading.png";
 import boska from "@assets/work/boska.png";
+import boskaLoading from "@assets/work/boska-loading.png";
 
 interface ProjectConfigType {
     title: string;
     titleHTML?: string;
     src: ImageMetadata;
+    srcLoading: ImageMetadata;
     linkTo: string;
     alt: string;
 }
@@ -20,18 +26,21 @@ const projects = [
     {
         title: "illustrations",
         src: illustrations,
+        srcLoading: illustrationsLoading,
         linkTo: "/illustrations",
         alt: "a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
     },
     {
         title: "sensus",
         src: sensus,
+        srcLoading: sensusLoading,
         linkTo: "/project/sensus",
         alt: "hands massaging the back, warm light"
     },
     {
         title: "Patchwork",
         src: patchwork,
+        srcLoading: patchworkLoading,
         linkTo: "/project/patchwork",
         alt: "a photograph of a parent holding a baby with Down's Syndrome"
     },
@@ -39,6 +48,7 @@ const projects = [
         title: "Psykologkompassen",
         titleHTML: "Psykolog<wbr>kompassen",
         src: psykologkompassen,
+        srcLoading: psykologkompassenLoading,
         linkTo: "/project/psykologkompassen",
         alt: "a man facing away from the camera looks at the landscape view in front of him"
     },
@@ -46,6 +56,7 @@ const projects = [
         title: "BOSKA body cast",
         titleHTML: "BOSKA body&nbsp;cast",
         src: boska,
+        srcLoading: boskaLoading,
         linkTo: "/project/boska",
         alt: "a set of printed branding materials for BOSKA brand including off-white boxes and business card"
     }
@@ -59,13 +70,15 @@ const projects = [
             {
                 projects.map((project) => (
                     <div class="flex flex-col">
-                        <a href={project.linkTo} aria-label={`Link to project "${project.title}""`} class="self-center">
-                            <div class="relative">
-                                <Image
+                        <a href={project.linkTo} aria-label={`Link to project "${project.title}"`} class="self-center">
+                            <div class="relative ">
+                                <ImageWithLoading
                                     src={project.src}
+                                    srcLoading={project.srcLoading}
                                     width={1100}
                                     alt={project.alt}
-                                    class:list={["w-auto rounded-3xl"]}
+                                    class="rounded-3xl"
+                                    classImage="rounded-3xl"
                                 />
                                 <div
                                     class="text-header__1 absolute top-1/2 w-full -translate-y-1/2 px-5 text-center text-light-pink"
