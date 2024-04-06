@@ -27,7 +27,11 @@ const { title } = Astro.props;
     <div class="after:block after:h-[calc(100vh+20px)] after:w-full after:content-['']">
         <header class="absolute top-0 z-10 h-[calc(100vh+20px)] w-full">
             <Navbar class="absolute z-30 w-full bg-white/10 backdrop-blur-md" />
-            <slot name="hero-background" />
+            <div
+                class="w-fu h-full img-inside:rounded-b-3xl children:rounded-b-3xl img-inside:sm:object-center children:sm:bg-center"
+            >
+                <slot name="hero-background" />
+            </div>
             <ScrollIndicator />
         </header>
         <main class="px-default sticky top-0 mx-auto max-w-[1200px]">

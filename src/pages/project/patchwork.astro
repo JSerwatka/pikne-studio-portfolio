@@ -2,7 +2,7 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
-import { Image } from "astro:assets";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import background from "@assets/projects/patchwork/bg-patchwork.jpg";
 import backgroundLoading from "@assets/projects/patchwork/bg-patchwork-loading.jpg";
@@ -17,7 +17,6 @@ import presentationLaptop from "@assets/projects/patchwork/presentation-laptop.j
 import presentationLaptopLoading from "@assets/projects/patchwork/presentation-laptop-loading.jpg";
 import tshirt from "@assets/projects/patchwork/tshirt.jpg";
 import tshirtLoading from "@assets/projects/patchwork/tshirt-loading.jpg";
-import ImageWithLoading from "@components/ImageWithLoading.astro";
 ---
 
 <LayoutProjects title="project patchwork">
@@ -28,8 +27,8 @@ import ImageWithLoading from "@components/ImageWithLoading.astro";
             width={1920}
             height={1080}
             alt='posters of patchwork organization in the urban landscape with slogans "in Poland I will build a new home", "different does not mean worse", "diversity unites"'
-            classImage="rounded-b-3xl object-[58%_0%] sm:object-center"
-            class="rounded-b-3xl bg-[58%_0%] blur-lg sm:bg-center"
+            classImage="object-[58%_0%]"
+            class="bg-[58%_0%] blur-lg"
         />
     </Fragment>
     <Fragment slot="services-list">
