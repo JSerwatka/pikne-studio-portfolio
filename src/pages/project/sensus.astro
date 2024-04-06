@@ -2,23 +2,33 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
-import { Image } from "astro:assets";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import patchworkThumbnail from "@assets/thumbnails/patchwork.jpg";
 import voucher from "@assets/projects/sensus/voucher.png";
+import voucherLoading from "@assets/projects/sensus/voucher-loading.png";
 import clientCard from "@assets/projects/sensus/client-card.png";
+import clientCardLoading from "@assets/projects/sensus/client-card-loading.png";
 import fbCover from "@assets/projects/sensus/fb-cover.png";
+import fbCoverLoading from "@assets/projects/sensus/fb-cover-loading.png";
 import massage from "@assets/projects/sensus/massage.png";
+import massageLoading from "@assets/projects/sensus/massage-loading.png";
 ---
 
 <LayoutProjects title="project sensus">
     <Fragment slot="hero-background">
         <!-- TODO: add poster to video -->
-        <video autoplay loop muted>
+        <video
+            autoplay
+            loop
+            muted
+            class="h-full w-full rounded-b-3xl object-cover"
+            poster="/videos/bg-image-poster.webp"
+        >
             <source src="/videos/sensus-short-screen-720p.webm" type="video/webm" media="(min-width: 1024px)" />
-            <source src="/videos/sensus-short-screen-720p.webm" type="video/mp4" media="(min-width: 1024px)" />
+            <source src="/videos/sensus-short-screen-720p.mp4" type="video/mp4" media="(min-width: 1024px)" />
             <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
-            <source src="/videos/sensus-short-square-720p.webm" type="video/mp4" />
+            <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
             <meta
                 itemprop="description"
                 content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
@@ -47,15 +57,21 @@ import massage from "@assets/projects/sensus/massage.png";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <Image
-            class:list={["col-span-6", "lg:col-span-2"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
             src={massage}
+            srcLoading={massageLoading}
             alt="a close-up photograph of masseur's hands massaging a foot in a calming, natural setting"
             width={massage.width}
             quality="max"
         />
-        <!-- TODO: add poster to video -->
-        <video autoplay loop muted class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}>
+        <video
+            autoplay
+            loop
+            muted
+            class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}
+            poster="/videos/sensus-short-square-poster.webp"
+        >
             <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
             <source src="/videos/sensus-short-square-720p.webm" type="video/mp4" />
             <meta
@@ -64,23 +80,28 @@ import massage from "@assets/projects/sensus/massage.png";
             />
              Your browser does not support the video tag.
         </video>
-        <Image
-            class:list={["col-span-6", "lg:col-span-2 lg:col-start-5"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2 lg:col-start-5"
             src={voucher}
+            srcLoading={voucherLoading}
             alt="a voucher with sensus logo and contact details printed on a sage colored paper and displayed on a natural background with a shadow of a leaf"
             width={voucher.width}
             quality="max"
         />
-        <Image
-            class:list={["col-span-6 object-center", "lg:col-span-3"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-3"
+            classImage="object-center"
             src={clientCard}
+            srcLoading={clientCardLoading}
             alt="a sage green business card doubling as a loyal customer card, two cards, one on top of another, with a shadow of a plant on them"
             width={clientCard.width}
             quality="max"
         />
-        <Image
-            class:list={["col-span-6 object-right", "lg:col-span-3"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-3"
+            classImage="object-right"
             src={fbCover}
+            srcLoading={fbCoverLoading}
             alt='a close up photo of a hand resting on an arm, the company tagline "the body is a wholeness" overlays on the image'
             width={fbCover.width}
             quality="max"
@@ -102,3 +123,9 @@ import massage from "@assets/projects/sensus/massage.png";
         alt=""
     />
 </LayoutProjects>
+
+<style>
+    video::poster {
+        filter: blur(100px);
+    }
+</style>
