@@ -2,26 +2,35 @@
 import PictureLink from "@components/PictureLink.astro";
 import Quote from "@components/Quote.astro";
 import LayoutProjects from "@layouts/LayoutProjects.astro";
-import { Image } from "astro:assets";
 import boskaThumbnail from "@assets/thumbnails/BOSKA.jpg";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import background from "@assets/projects/psykologkompassen/bg-psykologkompassen.jpg";
+import backgroundLoading from "@assets/projects/psykologkompassen/bg-psykologkompassen-loading.jpg";
 import windowSticker from "@assets/projects/psykologkompassen/grid-1.jpg";
+import windowStickerLoading from "@assets/projects/psykologkompassen/grid-1-loading.jpg";
 import wrappingPaper from "@assets/projects/psykologkompassen/grid-2.png";
+import wrappingPaperLoading from "@assets/projects/psykologkompassen/grid-2-loading.png";
 import businessCard from "@assets/projects/psykologkompassen/grid-3.png";
+import businessCardLoading from "@assets/projects/psykologkompassen/grid-3-loading.png";
 import catalog from "@assets/projects/psykologkompassen/grid-4.jpg";
+import catalogLoading from "@assets/projects/psykologkompassen/grid-4-loading.jpg";
 import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
+import logoExplanationLoading from "@assets/projects/psykologkompassen/grid-5-loading.png";
+// TODO alt for bg
 ---
 
 <LayoutProjects title="project psykologkompassen">
     <Fragment slot="hero-background">
-        <Image
+        <ImageWithLoading
             src={background}
+            srcLoading={backgroundLoading}
             width={1920}
             height={1080}
             loading="eager"
             alt='"'
-            class:list={["object-[30%_0%]", "sm:object-center"]}
+            classImage="object-[30%_0%]"
+            class="bg-[30%_0%]"
         />
     </Fragment>
     <Fragment slot="services-list">
@@ -52,34 +61,40 @@ import logoExplanation from "@assets/projects/psykologkompassen/grid-5.png";
         </p>
     </Fragment>
     <Fragment slot="images">
-        <Image
-            class:list={["col-span-6", "lg:col-span-2"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
             src={windowSticker}
+            srcLoading={windowStickerLoading}
             alt="Psykologkompassen logo presented as a sticker on a window glass"
             width={Math.floor(windowSticker.width / 2)}
         />
-        <Image
-            class:list={["col-span-6", "lg:col-span-2 lg:col-start-3"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2 lg:col-start-3"
             src={wrappingPaper}
+            srcLoading={wrappingPaperLoading}
             alt="a wrapping paper with the pattern made out of Psykologkompassen logo symbol"
             width={Math.floor(wrappingPaper.width / 2)}
         />
-        <Image
-            class:list={["col-span-6", "lg:col-span-2 lg:col-start-5"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2 lg:col-start-5"
             src={businessCard}
+            srcLoading={businessCardLoading}
             alt="a close up of two hands passing each other business card with details of the owner of Psykologkompassen"
             width={Math.floor(businessCard.width / 2)}
             quality="max"
         />
-        <Image
-            class:list={["col-span-6 object-center", "lg:col-span-3"]}
+        <ImageWithLoading
+            class="col-span-6 object-center lg:col-span-3"
             src={catalog}
+            srcLoading={catalogLoading}
             alt="a stationery set presenting Psykologkompassen branding, including two sides of the business card, a black folder with the logo, a piece of branded paper and a white pen"
             width={Math.floor(catalog.width / 2)}
         />
-        <Image
-            class:list={["col-span-6 bg-white !object-contain", "lg:col-span-3"]}
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-3"
+            classImage="bg-white !object-contain"
             src={logoExplanation}
+            srcLoading={logoExplanationLoading}
             alt="an image explaining the symbolism behind the logo of Psykologkompassen - shows the elements that the symbol corresponds to, such as a human, crossed paths, a star and a circle"
             width={Math.floor(logoExplanation.width / 2)}
             quality="max"
