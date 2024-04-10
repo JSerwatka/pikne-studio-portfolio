@@ -1,17 +1,19 @@
 ---
+import ImageWithLoading, { type ImageWithLoadingType } from "@components/ImageWithLoading.astro";
 import { Image } from "astro:assets";
 
-interface Props {
-    src: ImageMetadata;
-    alt: string;
-    width: number;
-    classImage?: string;
-    classContainer?: string;
-}
+type Props = Omit<ImageWithLoadingType, "classImage">;
 
-const { alt, width, src, classContainer } = Astro.props;
+const { src, srcLoading, alt, width, class: className } = Astro.props;
 ---
 
-<div class:list={["flex h-[120vh] self-center", classContainer]}>
-    <Image src={src} width={width} alt={alt} class:list={["max-h-[90vh] w-auto self-center rounded-3xl"]} />
+<div class:list={["flex h-[120vh] justify-center", className]}>
+    <ImageWithLoading
+        src={src}
+        srcLoading={srcLoading}
+        width={width}
+        alt={alt}
+        class="!h-fit !w-fit self-center rounded-3xl"
+        classImage="max-h-[90vh] !w-fit rounded-3xl !object-contain"
+    />
 </div>

@@ -2,7 +2,7 @@
 import { Image, getImage } from "astro:assets";
 import type { ImageQuality } from "node_modules/astro/dist/@types/astro";
 
-interface Props {
+export interface ImageWithLoadingType {
     src: ImageMetadata;
     srcLoading: ImageMetadata;
     alt: string;
@@ -13,6 +13,8 @@ interface Props {
     class?: string;
     classImage?: string;
 }
+
+type Props = ImageWithLoadingType;
 
 const { src, srcLoading, alt, width, height, quality, loading, class: className, classImage } = Astro.props;
 const loadingImage = await getImage({ src: srcLoading, format: "webp", quality: "low", width: srcLoading.width });
