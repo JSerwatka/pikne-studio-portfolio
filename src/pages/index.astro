@@ -22,9 +22,7 @@ import Footer from "@components/Footer.astro";
     />
     <main class="grow">
         <Introduction />
-        <!-- TODO: improve sizing of the container -->
         <!-- TODO: weird border for desktop vw on left and top -->
-        <!-- TODO: add poster -->
         <div class="px-default min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
             <div class="relative text-center font-alexang text-[clamp(46px,20vw,280px)]">
                 <div class="relative z-10">My work</div>
@@ -38,15 +36,16 @@ import Footer from "@components/Footer.astro";
                             "aspect-square object-cover",
                             "lg:object-initial lg:aspect-video"
                         ]}
+                        poster="/videos/slideshow-poster.avif"
                     >
                         <source src="/videos/slideshow-720p-movie.webm" type="video/webm" media="(min-width: 1024px)" />
                         <source src="/videos/slideshow-720p-movie.mp4" type="video/mp4" media="(min-width: 1024px)" />
                         <source src="/videos/slideshow-720p-square.webm" type="video/webm" />
                         <source src="/videos/slideshow-720p-square.mp4" type="video/mp4" />
-                        <!-- TODO: description <meta
-                        itemprop="description"
-                        content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
-                    /> -->
+                        <meta
+                            itemprop="description"
+                            content="a slideshow of mockups presenting the work of Aleksandra Pekala for Pikne studio, including examples of branding and illustrations"
+                        />
 
                          Your browser does not support the video tag.
                     </video>
