@@ -4,7 +4,13 @@ import { Image } from "astro:assets";
 import ArrowIconSmall from "@components/Icons/ArrowIconSmall.astro";
 ---
 
-<div class:list={["px-default flex min-h-screen items-center overflow-x-hidden", "py-20 ", "xl:overflow-visible"]}>
+<div
+    class:list={[
+        "px-default custom-container flex min-h-screen items-center overflow-x-hidden",
+        "py-20 ",
+        "xl:overflow-visible"
+    ]}
+>
     <div class:list={["flex flex-col gap-6", "lg:flex-row-reverse"]}>
         <div class:list={["lg:ml-auto lg:max-w-[50%]"]}>
             <div class="text-paragraph__normal uppercase">What do i do?</div>

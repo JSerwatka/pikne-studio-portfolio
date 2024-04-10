@@ -2,7 +2,6 @@
 import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import PictureLink from "@components/PictureLink.astro";
 import ImageContainer from "@components/Illustrations/ImageContainer.astro";
-import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import technicolorDream from "@assets/illustrations/technicolor-dream.png";
 import technicolorDreamLoading from "@assets/illustrations/technicolor-dream-loading.png";
@@ -39,14 +38,12 @@ import ukraineLoading from "@assets/illustrations/ukraine-loading.jpg";
 import mongolia from "@assets/illustrations/mongolia.png";
 import mongoliaLoading from "@assets/illustrations/mongolia-loading.png";
 import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
-
-// TODO: add video
 ---
 
 <LayoutBigTitle title="illustrations" withStickyHeader class="px-default">
     <Fragment slot="header">Illustrations</Fragment>
     <Fragment slot="content">
-        <div class:list={["relative z-20 flex flex-col"]}>
+        <div class:list={["custom-container relative z-20 flex flex-col"]}>
             <ImageContainer
                 src={technicolorDream}
                 srcLoading={technicolorDreamLoading}
