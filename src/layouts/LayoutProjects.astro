@@ -15,7 +15,6 @@ const { title } = Astro.props;
 // TODO: for small screens scroll space between hero section disapearing and gallery showing up is too small
 
 // FOR all projects
-// TODO: update layout - for small screens look awful - issues
 // TODO: use properly sized images
 // TODO: issues with images with small text
 // TODO: lack of alt for picture link image
@@ -26,12 +25,9 @@ const { title } = Astro.props;
 <LayoutBase title={title}>
     <div class="after:block after:h-[calc(100vh+20px)] after:w-full after:content-['']">
         <header class="absolute top-0 z-10 h-[calc(100vh+20px)] w-full">
-            <Navbar class="absolute z-20 w-full bg-white/10 backdrop-blur-md" />
+            <Navbar class="absolute z-30 w-full bg-white/10 backdrop-blur-md" />
             <div
-                class:list={[
-                    "absolute z-10 h-full w-full",
-                    "children:h-full children:w-full children:rounded-b-3xl children:object-cover"
-                ]}
+                class="h-full w-full bg-light-pink img-inside:rounded-b-3xl children:rounded-b-3xl img-inside:sm:object-center children:sm:bg-center"
             >
                 <slot name="hero-background" />
             </div>
@@ -61,9 +57,9 @@ const { title } = Astro.props;
             <div class="flex min-h-screen place-items-center py-16">
                 <div
                     class:list={[
-                        "mx-auto grid grid-cols-6 gap-12 children:w-full children:rounded-3xl children:object-cover",
-                        "auto-rows-fr children:aspect-square  children:max-w-[580px]",
-                        "lg:auto-rows-[350px] lg:gap-3 lg:children:aspect-auto lg:children:h-0 lg:children:min-h-full lg:children:max-w-none"
+                        "grid w-full grid-cols-6 gap-12 img-inside:rounded-3xl children:rounded-3xl",
+                        "auto-rows-fr img-inside:aspect-square children:max-w-[580px]",
+                        "lg:auto-rows-[350px] lg:gap-3 lg:img-inside:aspect-auto lg:children:h-0 lg:children:min-h-full lg:children:max-w-none"
                     ]}
                 >
                     <slot name="images" />

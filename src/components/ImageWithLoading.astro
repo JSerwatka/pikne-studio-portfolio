@@ -1,0 +1,74 @@
+---
+import { Image, getImage } from "astro:assets";
+import type { ImageQuality } from "node_modules/astro/dist/@types/astro";
+
+export interface ImageWithLoadingType {
+    src: ImageMetadata;
+    srcLoading: ImageMetadata;
+    alt: string;
+    width: number;
+    height?: number;
+    quality?: ImageQuality;
+    loading?: "eager" | "lazy";
+    class?: string;
+    classImage?: string;
+}
+
+type Props = ImageWithLoadingType;
+
+const { src, srcLoading, alt, width, height, quality, loading, class: className, classImage } = Astro.props;
+const loadingImage = await getImage({ src: srcLoading, format: "webp", quality: "low", width: srcLoading.width });
+const loadingImageUrl = `url(${loadingImage.src})`;
+---
+
+<div class:list={["h-full w-full", "bg-cover bg-center bg-no-repeat", className]} data-img-with-loading-container>
+    <Image
+        src={src}
+        width={width}
+        height={height}
+        alt={alt}
+        class:list={["h-full w-full object-cover", classImage]}
+        quality={quality}
+        loading={loading}
+    />
+</div>
+
+<style define:vars={{ loadingImageUrl }}>
+    [data-img-with-loading-container] img {
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+        /* display: none; */
+        /* visibility: hidden; */
+    }
+
+    [data-img-with-loading-container].loaded img {
+        opacity: 1;
+    }
+
+    [data-img-with-loading-container] {
+        background-image: var(--loadingImageUrl);
+        filter: blur(10px);
+    }
+
+    [data-img-with-loading-container].loaded {
+        filter: none;
+    }
+</style>
+
+<script>
+    const containers = document.querySelectorAll("[data-img-with-loading-container]") as NodeListOf<HTMLElement>;
+
+    containers.forEach((container) => {
+        const imageMain = container.querySelector("img") as HTMLImageElement;
+
+        function imageLoaded() {
+            container.classList.add("loaded");
+        }
+
+        if (imageMain.complete) {
+            imageLoaded();
+        } else {
+            imageMain.addEventListener("load", imageLoaded);
+        }
+    });
+</script>

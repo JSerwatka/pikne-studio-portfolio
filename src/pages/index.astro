@@ -6,9 +6,12 @@ import LayoutBase from "@layouts/LayoutBase.astro";
 import Introduction from "@components/Landing/Introduction.astro";
 import TitleSection from "@components/Landing/TitleSection.astro";
 import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import pikachusSmall from "@assets/index/pikachus-small.png";
+import pikachusSmallLoading from "@assets/index/pikachus-small-loading.png";
 import psykologkompassenBg from "@assets/index/psykologkompassen-bg.png";
+import psykologkompassenBgLoading from "@assets/index/psykologkompassen-bg-loading.png";
 import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
 import Footer from "@components/Footer.astro";
 ---
@@ -22,9 +25,7 @@ import Footer from "@components/Footer.astro";
     />
     <main class="grow">
         <Introduction />
-        <!-- TODO: improve sizing of the container -->
         <!-- TODO: weird border for desktop vw on left and top -->
-        <!-- TODO: add poster -->
         <div class="px-default min-h-[140vw] lg:min-h-[87vw] 2xl:min-h-[135vh]">
             <div class="relative text-center font-alexang text-[clamp(46px,20vw,280px)]">
                 <div class="relative z-10">My work</div>
@@ -38,15 +39,16 @@ import Footer from "@components/Footer.astro";
                             "aspect-square object-cover",
                             "lg:object-initial lg:aspect-video"
                         ]}
+                        poster="/videos/slideshow-poster.avif"
                     >
                         <source src="/videos/slideshow-720p-movie.webm" type="video/webm" media="(min-width: 1024px)" />
                         <source src="/videos/slideshow-720p-movie.mp4" type="video/mp4" media="(min-width: 1024px)" />
                         <source src="/videos/slideshow-720p-square.webm" type="video/webm" />
                         <source src="/videos/slideshow-720p-square.mp4" type="video/mp4" />
-                        <!-- TODO: description <meta
-                        itemprop="description"
-                        content="a video presenting a sequence of massage and displaying the logo of the sensus brand"
-                    /> -->
+                        <meta
+                            itemprop="description"
+                            content="a slideshow of mockups presenting the work of Aleksandra Pekala for Pikne studio, including examples of branding and illustrations"
+                        />
 
                          Your browser does not support the video tag.
                     </video>
@@ -60,8 +62,7 @@ import Footer from "@components/Footer.astro";
             linkTo="/project/sensus"
             linkAccessibleName="link to sensus project"
         >
-            <!-- TODO: add poster to video -->
-            <video autoplay loop muted slot="image" class="rounded-3xl">
+            <video autoplay loop muted slot="image" class="rounded-3xl" poster="/videos/senus-square-poster.avif">
                 <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
                 <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
                 <meta
@@ -82,16 +83,13 @@ import Footer from "@components/Footer.astro";
             class:list={["px-default flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate"]}
         >
             <a href="/project/psykologkompassen" aria-label="link to psykologkompassen project" class="relative">
-                <Image
+                <ImageWithLoading
                     src={psykologkompassenBg}
+                    srcLoading={psykologkompassenBgLoading}
                     width={psykologkompassenBg.width}
                     alt="a woman facing away from the camera looks at the landscape view in front of her - on this background a logo of Psykologkompassen brand is displayed"
-                    class:list={[
-                        "relative max-h-[calc(100vh-160px)] w-full max-w-[1300px] rounded-2xl object-cover",
-                        "aspect-[1/2] ",
-                        "sm:aspect-square",
-                        "lg:aspect-auto"
-                    ]}
+                    class="relative aspect-[1/2] max-h-[calc(100vh-160px)] w-full max-w-[1300px] rounded-2xl sm:aspect-square lg:aspect-auto"
+                    classImage="rounded-2xl"
                 />
                 <Image
                     src={psykologkompassenLogo}
@@ -108,13 +106,17 @@ import Footer from "@components/Footer.astro";
             linkTo="/illustrations"
             linkAccessibleName="Link to page with my illustrations"
         >
-            <Image
-                slot="image"
-                src={pikachusSmall}
-                alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
-                class="rounded-3xl"
-                loading="lazy"
-            />
+            <Fragment slot="image">
+                <ImageWithLoading
+                    src={pikachusSmall}
+                    srcLoading={pikachusSmallLoading}
+                    width={pikachusSmall.width}
+                    alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+                    class="rounded-3xl"
+                    classImage="rounded-3xl"
+                />
+            </Fragment>
+
             <Fragment slot="description">
                 My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and
                 light. I like to reflect on emotions, relations, a sense of humanity and beauty.

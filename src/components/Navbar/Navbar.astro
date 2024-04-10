@@ -20,7 +20,7 @@ export interface LinkType {
     isOutsideLink?: boolean;
     isButtonTypeLink?: boolean;
 }
-// TODO maybe accessible name is not needed
+
 const links = [
     { linkTargetName: "Home", linkTo: "/", acessibleName: "home page", isMobileOnly: true },
     { linkTargetName: "About", linkTo: "/about", acessibleName: "about me page" },
@@ -54,6 +54,7 @@ const links = [
                 width={156}
                 height={91}
                 class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+                loading="eager"
             />
         </a>
     </div>

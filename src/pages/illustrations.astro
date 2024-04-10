@@ -1,26 +1,43 @@
 ---
 import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import PictureLink from "@components/PictureLink.astro";
-import ScrollIndicator from "@components/ScrollIndicator.astro";
 import ImageContainer from "@components/Illustrations/ImageContainer.astro";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import technicolorDream from "@assets/illustrations/technicolor-dream.png";
+import technicolorDreamLoading from "@assets/illustrations/technicolor-dream-loading.png";
 import pikachus from "@assets/illustrations/pikachus.png";
+import pikachusLoading from "@assets/illustrations/pikachus-loading.png";
 import designedForLove from "@assets/illustrations/designed-for-love.png";
+import designedForLoveLoading from "@assets/illustrations/designed-for-love-loading.png";
 import pinkAndFeminity from "@assets/illustrations/pink-and-feminity.png";
+import pinkAndFeminityLoading from "@assets/illustrations/pink-and-feminity-loading.png";
 import lilou1 from "@assets/illustrations/lilou-1.jpg";
+import lilou1Loading from "@assets/illustrations/lilou-1-loading.jpg";
 import lilou2 from "@assets/illustrations/lilou-2.png";
+import lilou2Loading from "@assets/illustrations/lilou-2-loading.png";
 import kazachstanIdentity from "@assets/illustrations/kazakhstan-identity.jpg";
+import kazachstanIdentityLoading from "@assets/illustrations/kazakhstan-identity-loading.jpg";
 import baltic1 from "@assets/illustrations/baltic-in-the-middle-1.png";
+import baltic1Loading from "@assets/illustrations/baltic-in-the-middle-1-loading.png";
 import baltic2 from "@assets/illustrations/baltic-in-the-middle-2.png";
+import baltic2Loading from "@assets/illustrations/baltic-in-the-middle-2-loading.png";
 import baltic3 from "@assets/illustrations/baltic-in-the-middle-3.png";
+import baltic3Loading from "@assets/illustrations/baltic-in-the-middle-3-loading.png";
 import breakfast from "@assets/illustrations/breakfast.png";
+import breakfastLoading from "@assets/illustrations/breakfast-loading.png";
 import superbloomDeer from "@assets/illustrations/superbloom-deer.png";
+import superbloomDeerLoading from "@assets/illustrations/superbloom-deer-loading.png";
 import bunnyWonderland from "@assets/illustrations/bunny-wonderland.jpg";
+import bunnyWonderlandLoading from "@assets/illustrations/bunny-wonderland-loading.jpg";
 import womanWithFlowers from "@assets/illustrations/woman-with-flowers.png";
+import womanWithFlowersLoading from "@assets/illustrations/woman-with-flowers-loading.png";
 import olga from "@assets/illustrations/saint-olga-of-kiev.png";
+import olgaLoading from "@assets/illustrations/saint-olga-of-kiev-loading.png";
 import ukraine from "@assets/illustrations/ukraine.jpg";
+import ukraineLoading from "@assets/illustrations/ukraine-loading.jpg";
 import mongolia from "@assets/illustrations/mongolia.png";
+import mongoliaLoading from "@assets/illustrations/mongolia-loading.png";
 import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
 
 // TODO: add video
@@ -32,97 +49,114 @@ import brandingThumbnail from "@assets/thumbnails/my-own-branding.webp";
         <div class:list={["relative z-20 flex flex-col"]}>
             <ImageContainer
                 src={technicolorDream}
+                srcLoading={technicolorDreamLoading}
                 width={Math.floor(technicolorDream.width / 2)}
                 alt="a vividly-colored digital illustration depicting a woman's face peeking from between a multitude of poppies; some of the flowers appear to glitch and distort"
             />
             <ImageContainer
                 src={pikachus}
+                srcLoading={pikachusLoading}
                 width={Math.floor(pikachus.width / 2)}
                 alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
-                classContainer="lg:self-end"
+                class="lg:self-end"
             />
             <ImageContainer
                 src={designedForLove}
+                srcLoading={designedForLoveLoading}
                 width={1100}
                 alt="a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
             />
             <ImageContainer
                 src={pinkAndFeminity}
+                srcLoading={pinkAndFeminityLoading}
                 width={1100}
                 alt=" a digital illustration depicting three woman in pink attire: a girl wearing accessories in kawaii style covering her face with a phone while taking a selfie, Marylin Monroe in her iconic magenta-colored gown and diamond necklace and Nicki Minaj with pink wig and pink top"
             />
             <div class="flex flex-wrap place-content-center gap-x-10">
                 <ImageContainer
                     src={lilou1}
+                    srcLoading={lilou1Loading}
                     width={Math.floor(lilou1.width / 2)}
                     alt="a digital, vividly-colored illustration depicting a woman leaning on the table, wearing a crocheted top and golden jewelry, with Icelandic poppies in the background"
                 />
                 <ImageContainer
                     src={lilou2}
+                    srcLoading={lilou2Loading}
                     width={Math.floor(lilou2.width / 2)}
                     alt="a digital, vividly-colored illustration depicting a gropu of woman hugging, each of them wearing multiple pieces of jewelry"
                 />
             </div>
             <ImageContainer
                 src={kazachstanIdentity}
+                srcLoading={kazachstanIdentityLoading}
                 width={1100}
                 alt="a digital illustration depicting a girl taking a selfie in the mirror - the mirror reflection shows the girl wearing a traditional Kazakh costume"
-                classContainer="lg:self-end"
+                class="lg:self-end"
             />
             <ImageContainer
                 src={baltic1}
+                srcLoading={baltic1Loading}
                 width={Math.floor(baltic1.width / 2)}
                 alt=" an illustration of woman swimming in water in between two lands, looking back at one of them"
-                classContainer="lg:self-start"
+                class="lg:self-start"
             />
             <ImageContainer
                 src={baltic2}
+                srcLoading={baltic2Loading}
                 width={Math.floor(baltic2.width / 2)}
                 alt="an illustration of woman swimming in water in between two lands, looking back at one of them"
             />
             <ImageContainer
                 src={baltic3}
+                srcLoading={baltic3Loading}
                 width={Math.floor(baltic3.width / 2)}
                 alt="a digital illustration depicting a face of a woman emerging from water in between two lands"
-                classContainer="lg:self-end"
+                class="lg:self-end"
             />
             <ImageContainer
                 src={breakfast}
+                srcLoading={breakfastLoading}
                 width={Math.floor(breakfast.width / 2)}
                 alt="a vividly colored digital illustration depicting four sandwiches laying on the table with different ingredients on top: one with salmon and guacamole, one with egg, bacon and salad, one with egg, asparagus and horseradish, one with strawberries, basil and cream cheese"
             />
             <ImageContainer
                 src={superbloomDeer}
+                srcLoading={superbloomDeerLoading}
                 width={1100}
                 alt=" a digital illustration in painterly style depicting a deer laying down on a meadow full of blooming purple, yellow and pink flowers"
             />
             <ImageContainer
                 src={bunnyWonderland}
+                srcLoading={bunnyWonderlandLoading}
                 width={1100}
                 alt="a digital illustration of a white bunny standing in the middle of enchanted wisteria forest, delicate sparkles of light flicker in the air"
             />
             <ImageContainer
                 src={womanWithFlowers}
+                srcLoading={womanWithFlowersLoading}
                 width={Math.floor(womanWithFlowers.width / 2)}
                 alt="a digital illustration of a woman wearing a white dress, sitting in a squatting pose and holding a bouquet of violet and white flowers"
-                classContainer="lg:self-start"
+                class="lg:self-start"
             />
             <ImageContainer
                 src={olga}
+                srcLoading={olgaLoading}
                 width={Math.floor(olga.width / 2)}
                 alt="a digital illustration depicting Saint Olga of Kyiv, a Ukrainian queen from Middle Ages"
             />
             <ImageContainer
                 src={ukraine}
+                srcLoading={ukraineLoading}
                 width={Math.floor(ukraine.width / 2)}
                 alt="a digital portait of a young woman wearing a traditional Ukrainian flower crown and an embroidered shirt 'vyshyvanka'"
-                classContainer="lg:self-end"
+                class="lg:self-end"
             />
             <ImageContainer
                 src={mongolia}
+                srcLoading={mongoliaLoading}
                 width={Math.floor(mongolia.width / 2)}
                 alt="a digital portrait of a smiling woman wearing a traditional Mongolian costume"
-                classContainer=" lg:self-start !h-[100vh]"
+                class="!h-[100vh] lg:self-start"
             />
         </div>
     </Fragment>
