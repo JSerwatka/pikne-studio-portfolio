@@ -11,9 +11,10 @@ interface Props {
     height: number;
     "data-translation-path"?: TranslationPathType;
     "data-rotation-path"?: RotationPathType;
+    loading?: "eager" | "lazy";
 }
 
-const { src, alt, width, height, ...animationProps } = {
+const { src, alt, width, height, loading, ...animationProps } = {
     ...Astro.props,
     "data-translation-path": JSON.stringify(Astro.props["data-translation-path"]),
     "data-rotation-path": JSON.stringify(Astro.props["data-rotation-path"])
@@ -21,5 +22,5 @@ const { src, alt, width, height, ...animationProps } = {
 ---
 
 <div {...animationProps}>
-    <Image src={src} alt={alt} width={width} height={height} />
+    <Image src={src} alt={alt} width={width} height={height} loading={loading ?? "lazy"} />
 </div>
