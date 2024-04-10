@@ -53,6 +53,6 @@
     }
 
     .custom-container {
-        @apply mx-auto max-w-[2000px];
+        @apply mx-auto max-w-[1800px];
     }
 }
