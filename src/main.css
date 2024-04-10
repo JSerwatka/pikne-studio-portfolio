@@ -51,4 +51,8 @@
     .px-default {
         @apply px-6 sm:px-10 lg:px-16;
     }
+
+    .custom-container {
+        @apply mx-auto max-w-[2000px];
+    }
 }

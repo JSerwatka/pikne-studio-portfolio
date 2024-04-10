@@ -13,7 +13,7 @@ const { class: classList, title, year, linkTo, linkAccessibleName } = Astro.prop
 ---
 
 <div class:list={["px-default flex min-h-screen items-center", classList]}>
-    <div class="w-full">
+    <div class="custom-container w-full">
         <div class:list={["flex justify-between gap-8", "flex-col", "lg:flex-row-reverse"]}>
             <a
                 href={linkTo}
