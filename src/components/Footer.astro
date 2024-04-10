@@ -2,142 +2,151 @@
     <div class:list={["-mb-[0.46em] text-center font-alexang text-[min(25vw,425px)]"]}>Contact me</div>
     <div
         class:list={[
-            "text-paragraph__normal  min-h-screen bg-ruby-red text-light-pink",
+            "text-paragraph__normal min-h-screen bg-ruby-red text-light-pink",
             "px-6 py-16 text-base",
             "sm:text-xl",
             "lg:px-16 lg:pt-24"
         ]}
     >
-        <div
-            class:list={[
-                "grid h-full",
-                "grid-cols-1 gap-16 children:max-w-[680px]",
-                "sm:gap-20",
-                "lg:grid-cols-2 lg:children:max-w-none"
-            ]}
-        >
-            <form
-                class:list={[
-                    "mx-auto flex w-full flex-col gap-y-8",
-                    "children:rounded-3xl children:border children:border-light-pink children:bg-ruby-red children:p-10 children:text-light-pink children:placeholder-light-pink",
-                    "order-1",
-                    "lg:order-2"
-                ]}
-            >
-                <input
-                    type="text"
-                    class="outline-2 outline-light-pink focus:outline"
-                    placeholder="Name (+ optionally surname)"
-                    required
-                />
-                <input type="email" class="outline-2 outline-light-pink focus:outline" placeholder="Email" required />
-                <textarea
-                    class="min-h-[300px] outline-2 outline-light-pink focus:outline"
-                    placeholder="Message"
-                    required></textarea>
-                <button type="submit" class:list={["font-alexang", "text-3xl", "sm:text-5xl"]}>Send the word 🕊️</button>
-            </form>
+        <div class="custom-container">
             <div
                 class:list={[
-                    "mx-auto flex w-full",
-                    "order-2 flex-col text-base",
-                    "sm:flex-row sm:justify-between sm:pr-11",
-                    "lg:order-1 lg:flex-col lg:pr-0"
+                    "grid h-full",
+                    "grid-cols-1 gap-16 children:max-w-[680px]",
+                    "sm:gap-20",
+                    "lg:grid-cols-2 lg:children:max-w-none"
                 ]}
             >
-                <div class:list={["children-not-last:mb-6", "mb-12", "sm:mb-0"]}>
-                    <div>
-                        based in Kraków | <span data-krakow-time class="font-bold">{new Date()}</span> | <span
-                            data-krakow-weather-text></span><span
-                            data-krakow-weather-icon
-                            class="children: children:inline children:w-[35px] children:-translate-y-1"></span>
+                <form
+                    class:list={[
+                        "mx-auto flex w-full flex-col gap-y-8",
+                        "children:rounded-3xl children:border children:border-light-pink children:bg-ruby-red children:p-10 children:text-light-pink children:placeholder-light-pink",
+                        "order-1",
+                        "lg:order-2"
+                    ]}
+                >
+                    <input
+                        type="text"
+                        class="outline-2 outline-light-pink focus:outline"
+                        placeholder="Name (+ optionally surname)"
+                        required
+                    />
+                    <input
+                        type="email"
+                        class="outline-2 outline-light-pink focus:outline"
+                        placeholder="Email"
+                        required
+                    />
+                    <textarea
+                        class="min-h-[300px] outline-2 outline-light-pink focus:outline"
+                        placeholder="Message"
+                        required></textarea>
+                    <button type="submit" class:list={["font-alexang", "text-3xl", "sm:text-5xl"]}
+                        >Send the word 🕊️</button
+                    >
+                </form>
+                <div
+                    class:list={[
+                        "mx-auto flex w-full",
+                        "order-2 flex-col text-base",
+                        "sm:flex-row sm:justify-between sm:pr-11",
+                        "lg:order-1 lg:flex-col lg:pr-0"
+                    ]}
+                >
+                    <div class:list={["children-not-last:mb-6", "mb-12", "sm:mb-0"]}>
+                        <div>
+                            based in Kraków | <span data-krakow-time class="font-bold">{new Date()}</span> | <span
+                                data-krakow-weather-text></span><span
+                                data-krakow-weather-icon
+                                class="children: children:inline children:w-[35px] children:-translate-y-1"></span>
+                        </div>
+                        <div>available for freelance work worldwide</div>
+                        <a
+                            href="mailto:hello@pekala.design"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            aria-label="Aleksandra Pękala contact mail"
+                            class="block underline decoration-light-pink-transparent decoration-1 underline-offset-4"
+                        >
+                            hello@pekala.design
+                        </a>
+                        <a
+                            href="https://calendly.com/aleksandrapekala/design-inquiry"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            class="block underline decoration-light-pink-transparent decoration-1 underline-offset-4"
+                        >
+                            book a free consultancy call
+                        </a>
                     </div>
-                    <div>available for freelance work worldwide</div>
-                    <a
-                        href="mailto:hello@pekala.design"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        aria-label="Aleksandra Pękala contact mail"
-                        class="block underline decoration-light-pink-transparent decoration-1 underline-offset-4"
-                    >
-                        hello@pekala.design
-                    </a>
-                    <a
-                        href="https://calendly.com/aleksandrapekala/design-inquiry"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        class="block underline decoration-light-pink-transparent decoration-1 underline-offset-4"
-                    >
-                        book a free consultancy call
-                    </a>
+                    <ul class="uppercase children-not-last:mb-6">
+                        <li>
+                            <a
+                                href="https://www.linkedin.com/in/alekspekala/"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="Aleksandra Pękala Linkedin profile"
+                            >
+                                Linkedin
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://medium.com/@aleksandrapekala"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="Aleksandra Pękala Medium profile"
+                            >
+                                Medium
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.instagram.com/pekalaart/"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="Aleksandra Pękala Illustrations Instagram profile"
+                            >
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://read.cv/aleksandrapekala"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="Aleksandra Pękala Read.CV profile"
+                            >
+                                Read.CV
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="uppercase children-not-last:mb-6">
-                    <li>
-                        <a
-                            href="https://www.linkedin.com/in/alekspekala/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            aria-label="Aleksandra Pękala Linkedin profile"
-                        >
-                            Linkedin
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://medium.com/@aleksandrapekala"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            aria-label="Aleksandra Pękala Medium profile"
-                        >
-                            Medium
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.instagram.com/pekalaart/"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            aria-label="Aleksandra Pękala Illustrations Instagram profile"
-                        >
-                            Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://read.cv/aleksandrapekala"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            aria-label="Aleksandra Pękala Read.CV profile"
-                        >
-                            Read.CV
-                        </a>
-                    </li>
-                </ul>
             </div>
-        </div>
-        <div
-            class:list={[
-                "mx-auto mt-20 max-w-[680px]",
-                "text-sm leading-7",
-                "sm:text-base sm:leading-8",
-                "lg:mx-0 lg:max-w-max"
-            ]}
-        >
-            What you see came true thanks to one and only
-            <a
-                href="https://github.com/JSerwatka"
-                rel="noopener noreferrer"
-                target="_blank"
-                aria-label="Kuba Serwatka github profile"
-                class="underline decoration-light-pink-transparent decoration-1 underline-offset-4"
+            <div
+                class:list={[
+                    "mt-20 max-w-[680px] ",
+                    "text-sm leading-7",
+                    "sm:text-base sm:leading-8",
+                    "lg:mx-0 lg:max-w-max"
+                ]}
             >
-                Kuba Serwatka
-            </a> who developed this website. ♥ Design by Aleksandra Pekala, 2023. You can find <a
-                href="/privacy-policy"
-                class="underline decoration-light-pink-transparent decoration-1 underline-offset-4"
-            >
-                privacy policy here.
-            </a>
+                What you see came true thanks to one and only
+                <a
+                    href="https://github.com/JSerwatka"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    aria-label="Kuba Serwatka github profile"
+                    class="underline decoration-light-pink-transparent decoration-1 underline-offset-4"
+                >
+                    Kuba Serwatka
+                </a> who developed this website. ♥ Design by Aleksandra Pekala, 2023. You can find <a
+                    href="/privacy-policy"
+                    class="underline decoration-light-pink-transparent decoration-1 underline-offset-4"
+                >
+                    privacy policy here.
+                </a>
+            </div>
         </div>
     </div>
 </footer>
