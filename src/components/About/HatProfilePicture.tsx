@@ -108,7 +108,13 @@ const HatProfilePicture = () => {
             <div class="relative max-w-fit">
                 <picture>
                     <source srcset="/about-me-profile.avif" type="image/avif" />
-                    <img src={"/about-me-profile.webp"} alt="photo of me" width="660" height="700" loading="eager" />
+                    <img
+                        src={"/about-me-profile.webp"}
+                        alt="a portrait of Aleksandra Pekala wearing a hat, looking to the direction of the text on her left"
+                        width="660"
+                        height="700"
+                        loading="eager"
+                    />
                 </picture>
                 <button
                     type="button"
