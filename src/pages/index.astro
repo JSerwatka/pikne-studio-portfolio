@@ -9,6 +9,7 @@ import FlowerLinksSection from "@components/Landing/FlowerLinksSection.astro";
 import ImageWithLoading from "@components/ImageWithLoading.astro";
 
 import pikachusSmall from "@assets/index/pikachus-small.png";
+import pikachusSmallLoading from "@assets/index/pikachus-small-loading.png";
 import psykologkompassenBg from "@assets/index/psykologkompassen-bg.png";
 import psykologkompassenBgLoading from "@assets/index/psykologkompassen-bg-loading.png";
 import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
@@ -105,13 +106,17 @@ import Footer from "@components/Footer.astro";
             linkTo="/illustrations"
             linkAccessibleName="Link to page with my illustrations"
         >
-            <Image
-                slot="image"
-                src={pikachusSmall}
-                alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
-                class="rounded-3xl"
-                loading="lazy"
-            />
+            <Fragment slot="image">
+                <ImageWithLoading
+                    src={pikachusSmall}
+                    srcLoading={pikachusSmallLoading}
+                    width={pikachusSmall.width}
+                    alt="a digital illustration of a young, blonde girl with indifferent face surrounded by multitude of Pikachu pokemon plushies"
+                    class="rounded-3xl"
+                    classImage="rounded-3xl"
+                />
+            </Fragment>
+
             <Fragment slot="description">
                 My illustrations are a reflection of my fascination with the storytelling power of color, shapes, and
                 light. I like to reflect on emotions, relations, a sense of humanity and beauty.
