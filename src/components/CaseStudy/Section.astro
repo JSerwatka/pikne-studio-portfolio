@@ -64,6 +64,8 @@ const { class: className, step } = Astro.props;
     import type { TranslationPathType, RotationPathType } from "@components/CaseStudy/AnimatedImage.astro";
     import { zip } from "@utils/zip";
 
+    const isMobile = window.innerWidth < 1024;
+
     const animationContainers = document.querySelectorAll(
         "[data-scroll-animation-container]"
     ) as NodeListOf<HTMLElement>;
@@ -103,6 +105,11 @@ const { class: className, step } = Astro.props;
             defaultOptions: { ease: "linear" }
         };
 
-        scroll(timeline(sequence, options), { target: animationContainer, offset: ["60% end", "end end"] });
+        const startAnimationFrom = isMobile ? "35%" : "60%";
+
+        scroll(timeline(sequence, options), {
+            target: animationContainer,
+            offset: [`${startAnimationFrom} end`, "end end"]
+        });
     });
 </script>
