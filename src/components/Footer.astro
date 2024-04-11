@@ -174,7 +174,7 @@
         try {
             const apiKey = import.meta.env.PUBLIC_WEATHER_API_KEY;
             const city = "Cracow";
-            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+            const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
             const requestOptions = {
                 headers: {
                     "Cache-Control": "max-age=3600"
