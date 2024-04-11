@@ -24,23 +24,29 @@
                         "order-1",
                         "lg:order-2"
                     ]}
+                    data-netlify="true"
                 >
                     <input
+                        name="name"
                         type="text"
                         class="outline-2 outline-light-pink focus:outline"
                         placeholder="Name (+ optionally surname)"
                         required
                     />
                     <input
+                        name="email"
                         type="email"
                         class="outline-2 outline-light-pink focus:outline"
                         placeholder="Email"
                         required
                     />
                     <textarea
+                        name="message"
                         class="min-h-[300px] outline-2 outline-light-pink focus:outline"
                         placeholder="Message"
-                        required></textarea>
+                        required
+                    >
+                    </textarea>
                     <button type="submit" class:list={["font-alexang", "text-3xl", "sm:text-5xl"]}
                         >Send the word 🕊️</button
                     >
