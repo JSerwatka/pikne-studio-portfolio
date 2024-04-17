@@ -14,7 +14,7 @@ const { class: classList, title, year, linkTo, linkAccessibleName } = Astro.prop
 
 <div class:list={["px-default flex min-h-screen items-center", classList]}>
     <div class="custom-container w-full">
-        <div class:list={["flex justify-between gap-8", "flex-col", "lg:flex-row-reverse"]}>
+        <div class:list={["flex justify-between gap-8", "flex-col", "xl:flex-row-reverse"]}>
             <a
                 href={linkTo}
                 aria-label={linkAccessibleName}
@@ -26,7 +26,7 @@ const { class: classList, title, year, linkTo, linkAccessibleName } = Astro.prop
                 <div>
                     <div class="text-header__2">
                         <span>{title}</span>
-                        <sup class="text-paragraph__normal align-top">({year})</sup>
+                        <sup class="text-paragraph__normal align-super">({year})</sup>
                     </div>
                     <div class="text-paragraph__normal">
                         <slot name="services" />
