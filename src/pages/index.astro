@@ -35,7 +35,7 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
                         loop
                         muted
                         class:list={[
-                            "border-5 absolute bottom-[40%] left-1/2 w-full max-w-[1300px] -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
+                            "border-5 absolute bottom-[32%] left-1/2 w-full max-w-[1300px] -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
                             "aspect-square object-cover",
                             "lg:object-initial lg:aspect-video"
                         ]}
@@ -62,7 +62,7 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
             linkTo="/project/sensus"
             linkAccessibleName="link to sensus project"
         >
-            <video autoplay loop muted slot="image" class="rounded-3xl" poster="/videos/senus-square-poster.avif">
+            <video autoplay loop muted slot="image" class="rounded-3xl" poster="/videos/sensus-square-poster.avif">
                 <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
                 <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
                 <meta
@@ -80,15 +80,19 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
             </Fragment>
         </ProjectSection>
         <div
-            class:list={["px-default flex h-screen items-center justify-center bg-ice-blue py-20 text-dark-chocolate"]}
+            class:list={["px-default flex h-screen items-center justify-center  bg-ice-blue py-20 text-dark-chocolate"]}
         >
-            <a href="/project/psykologkompassen" aria-label="link to psykologkompassen project" class="relative">
+            <a
+                href="/project/psykologkompassen"
+                aria-label="link to psykologkompassen project"
+                class="relative flex h-full w-full justify-center sm:max-w-[682px] xl:max-w-[1300px]"
+            >
                 <ImageWithLoading
                     src={psykologkompassenBg}
                     srcLoading={psykologkompassenBgLoading}
                     width={psykologkompassenBg.width}
                     alt="a woman facing away from the camera looks at the landscape view in front of her - on this background a logo of Psykologkompassen brand is displayed"
-                    class="relative aspect-[2/3] w-full max-w-[682px] rounded-2xl object-contain sm:aspect-square lg:aspect-auto lg:max-w-[1300px]"
+                    class="h-full w-full rounded-2xl object-contain sm:aspect-square xl:aspect-auto"
                     classImage="rounded-2xl object-contain"
                 />
                 <Image
