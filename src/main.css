@@ -45,7 +45,7 @@
     }
 
     .btn-primary {
-        @apply rounded-3xl border-2 border-ruby-red  px-6 py-3 font-metropolis text-xl uppercase;
+        @apply text-header__4 rounded-3xl border-2  border-ruby-red px-6 py-3;
     }
 
     .px-default {
