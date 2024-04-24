@@ -23,7 +23,7 @@ const top = withStickyHeader ? marginTop : "0px";
             data-header-container
             data-margin-top={marginTop}
             class:list={[
-                "-z-10 whitespace-nowrap text-center font-alexang text-[min(25vw,300px)] leading-none",
+                "-z-10 whitespace-nowrap text-center font-alexang text-[min(23vw,300px)] leading-none",
                 { sticky: withStickyHeader },
                 titleClass
             ]}
@@ -39,13 +39,13 @@ const top = withStickyHeader ? marginTop : "0px";
     </div>
     {
         Astro.slots.has("link") ? (
-            <div class="flex h-screen items-center justify-center">
+            <div class="flex h-svh items-center justify-center">
                 <div>
                     <slot name="link" />
                 </div>
             </div>
         ) : (
-            <div class="h-[30vh]" />
+            <div class="h-[30svh]" />
         )
     }
     <Footer />
@@ -70,19 +70,3 @@ const top = withStickyHeader ? marginTop : "0px";
         }
     }
 </style>
-
-<!-- <script>
-    const navbar = document.querySelector("nav") as HTMLElement;
-    const headerContainer = document.querySelector("[data-header-container]") as HTMLElement;
-
-    function updateContainerSize() {
-        const { height } = navbar.getBoundingClientRect();
-        const marginTop = headerContainer.dataset.marginTop ?? "0px";
-        headerContainer.style.height = `calc(100vh - ${height}px - ${marginTop})`;
-    }
-
-    updateContainerSize();
-    window.addEventListener("resize", () => {
-        updateContainerSize();
-    });
-</script> -->
