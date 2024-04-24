@@ -45,8 +45,16 @@ const links = [
 ] as LinkType[];
 ---
 
-<nav class:list={["px-default flex flex-row justify-between", "py-3", "sm:py-5", "lg:py-8", className]}>
-    <div class="basis-1/2">
+<nav
+    class:list={[
+        "px-default flex flex-row justify-between",
+        "h-[var(--navbar-height-xs)]",
+        "sm:h-[var(--navbar-height-sm)]",
+        "lg:h-[var(--navbar-height-lg)]",
+        className
+    ]}
+>
+    <div class="flex basis-1/2 items-center">
         <a href="/" aria-label="go home link">
             <Image
                 src={logo}
