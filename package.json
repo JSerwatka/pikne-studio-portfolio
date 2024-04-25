@@ -17,7 +17,6 @@
         "@fontsource/metropolis": "^5.0.7",
         "@solid-primitives/scheduled": "^1.4.3",
         "astro": "^4.5.18",
-        "astro-seo-meta": "^4.1.0",
         "astro-seo-schema": "^4.0.0",
         "motion": "^10.17.0",
         "schema-dts": "^1.1.2",
