@@ -6,7 +6,7 @@ type Props = Omit<ImageWithLoadingType, "classImage">;
 const { src, srcLoading, alt, width, class: className } = Astro.props;
 ---
 
-<div class:list={["flex h-[120vh] justify-center", className]}>
+<div class:list={["flex justify-center", className]}>
     <ImageWithLoading
         src={src}
         srcLoading={srcLoading}
