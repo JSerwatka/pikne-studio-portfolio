@@ -75,7 +75,7 @@ import heart from "@assets/heart.svg";
     const circleStopsArray = Array.from(circleStops);
     let currentStopIndex = 0;
     let previousStopIndex = 0;
-    let animationTimeout: number | null = null;
+    let animationTimeout: NodeJS.Timeout | null = null;
 
     function updateHeartPosition(nextStopIndex: number) {
         if (animationTimeout) {
