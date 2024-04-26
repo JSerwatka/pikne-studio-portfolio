@@ -57,7 +57,7 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
         left: 50%;
         top: 50%;
         translate: -50% -50%;
-        animation: rotate 25s infinite;
+        animation: rotate 20s infinite;
         opacity: 0.7;
     }
 
@@ -72,72 +72,41 @@ import ScrollIndicator from "@components/ScrollIndicator.astro";
 
 <script>
     const blob = document.querySelector("[data-blob]") as HTMLElement;
-    const container = document.querySelector("[data-title-container]") as HTMLElement;
 
-    const percentagesOfWiderScreen = [0.25, 0.5, 0.75];
-    const percentagesOfNarrowerScreen = [0.3, 0.6];
-    const idleAnimationFrequency = 8000;
-    const idleAnimationResponse = 1000;
-    const mouseAnimationDuration = 30000;
+    const position_start = "50%";
+    const position_1 = "25%";
+    const position_2 = "75%";
 
-    let timerId: number | undefined;
-    let intervalId: number | undefined;
-    let lastTargetX: null | number = null;
-    let lastTargetY: null | number = null;
+    const blobPathPercentagesWideScreen = [
+        [position_start, position_start],
+        [position_1, position_1],
+        [position_2, position_2],
+        [position_1, position_2],
+        [position_2, position_1],
+        [position_start, position_start]
+    ];
 
-    function moveBlobToMouse(event: PointerEvent) {
-        const { clientX, clientY } = event;
-        animateBlob(clientX, clientY, mouseAnimationDuration);
-    }
+    const blobPathPercentagesNarrowScreen = [
+        [position_start, position_start],
+        [position_1, position_1],
+        [position_2, position_2],
+        [position_2, position_1],
+        [position_1, position_2],
+        [position_start, position_start]
+    ];
 
-    function moveBlobInIdleState() {
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        let targetX, targetY;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const isWideScreen = viewportWidth > viewportHeight;
+    const blobPath = isWideScreen ? blobPathPercentagesWideScreen : blobPathPercentagesNarrowScreen;
+    const keyframes = blobPath.map((keyframe) => ({
+        left: keyframe[0],
+        top: keyframe[1],
+        easing: "linear"
+    }));
 
-        const isWideScreen = viewportWidth > viewportHeight;
-        const xPercantageTable = isWideScreen ? percentagesOfWiderScreen : percentagesOfNarrowerScreen;
-        const yPercantageTable = isWideScreen ? percentagesOfNarrowerScreen : percentagesOfWiderScreen;
-
-        do {
-            const randomXPercentage = xPercantageTable[Math.floor(Math.random() * xPercantageTable.length)];
-            const randomYPercentage = yPercantageTable[Math.floor(Math.random() * yPercantageTable.length)];
-            targetX = randomXPercentage * viewportWidth;
-            targetY = randomYPercentage * viewportHeight;
-        } while (targetX === lastTargetX && targetY === lastTargetY);
-
-        animateBlob(targetX, targetY, idleAnimationFrequency);
-        lastTargetX = targetX;
-        lastTargetY = targetY;
-    }
-    let animateEl: Animation | null;
-    function animateBlob(positionX: number, positionY: number, animationDuration: number) {
-        animateEl = blob.animate(
-            {
-                left: `${positionX}px`,
-                top: `${positionY}px`
-            },
-            {
-                duration: animationDuration,
-                fill: "forwards",
-                easing: "ease-in-out"
-            }
-        );
-    }
-
-    function handleIdle(idleResponse = idleAnimationResponse) {
-        clearTimeout(timerId);
-        clearInterval(intervalId);
-        timerId = setTimeout(() => {
-            moveBlobInIdleState();
-            intervalId = setInterval(moveBlobInIdleState, idleAnimationFrequency);
-        }, idleResponse);
-    }
-
-    container.addEventListener("pointermove", (event: PointerEvent) => {
-        handleIdle();
-        moveBlobToMouse(event);
+    blob.animate(keyframes, {
+        duration: 30000,
+        iterations: Infinity
     });
-
-    handleIdle(0);
 </script>
