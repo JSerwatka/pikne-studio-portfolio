@@ -64,9 +64,25 @@ const toastMaxYPosition = "-20px";
 <script>
     import { isToastOpen, toastType, toastMessage } from "@store/toastStore";
 
+    const TOAST_TIMEOUT_DURATION = 3000;
+
     const toast = document.querySelector("[data-toast]") as HTMLElement;
     const closeButton = toast.querySelector("[data-close-toast]") as HTMLButtonElement;
     const toastMessageContainer = toast.querySelector("[data-toast-message]") as HTMLElement;
+    let toastTimeout: NodeJS.Timeout | undefined;
+
+    function createToastTimeout() {
+        if (!toastTimeout) {
+            toastTimeout = setTimeout(closeToast, TOAST_TIMEOUT_DURATION);
+        }
+    }
+
+    function clearToastTimeout() {
+        if (toastTimeout) {
+            clearTimeout(toastTimeout);
+            toastTimeout = undefined;
+        }
+    }
 
     function openToast() {
         toast.style.display = "flex";
@@ -86,6 +102,8 @@ const toastMaxYPosition = "-20px";
         // }
 
         toastMessageContainer.textContent = toastMessage.get();
+
+        createToastTimeout();
     }
 
     function closeToast() {
@@ -101,10 +119,21 @@ const toastMaxYPosition = "-20px";
         toast?.addEventListener("animationend", handleCloseToastAnimationEnd);
     }
 
+    // Handle closing and timeout
     closeButton?.addEventListener("click", () => {
+        clearToastTimeout();
         closeToast();
     });
 
+    toast.addEventListener("mouseenter", () => {
+        clearToastTimeout();
+    });
+
+    toast.addEventListener("mouseleave", () => {
+        createToastTimeout();
+    });
+
+    // Handle opening
     isToastOpen.subscribe((toastOpen) => {
         if (toastOpen) {
             openToast();
