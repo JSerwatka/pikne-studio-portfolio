@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import heart from "@assets/heart.svg";
-// TODO use better names for observer
 ---
 
 <div
@@ -119,7 +118,7 @@ import heart from "@assets/heart.svg";
     const options = {
         rootMargin: "-45% 0px -45% 0px"
     };
-    const observer = new IntersectionObserver((entries, observer) => {
+    const circleStopsObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 currentStopIndex = Number((entry.target as HTMLElement).dataset.circleStop ?? "0");
@@ -129,7 +128,7 @@ import heart from "@assets/heart.svg";
         });
     }, options);
 
-    circleStops.forEach((circleStop) => observer.observe(circleStop));
+    circleStops.forEach((circleStop) => circleStopsObserver.observe(circleStop));
 
     function findClosestStopPosition(elements: NodeListOf<HTMLElement>) {
         const viewportMiddle = window.innerHeight / 2;
