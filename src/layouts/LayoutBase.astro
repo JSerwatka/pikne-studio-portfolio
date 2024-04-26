@@ -8,6 +8,7 @@ const { title } = Astro.props;
 import "../main.css";
 import "@fontsource/metropolis/500.css";
 import "@fontsource/metropolis/400.css";
+import { Schema } from "astro-seo-schema";
 ---
 
 <!doctype html>
@@ -18,39 +19,110 @@ import "@fontsource/metropolis/400.css";
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>Pikne | {title}</title>
+        <title>Pikne studio | {title}</title>
+        <meta name="title" content="Pikne studio | design & illustration" />
+        <!-- <meta
+            name="description"
+            content="Aleksandra Pekala is a graphic/visual designer, multidisciplinary artist and illustrator. Educated in psychology and design, oriented toward branding for social issues and health."
+        /> -->
+        <meta property="og:title" content="Pikne studio | design & illustration" />
+        <!-- <meta
+            property="og:description"
+            content="Aleksandra Pekala is a graphic/visual designer, multidisciplinary artist and illustrator. Educated in psychology and design, oriented toward branding for social issues and health."
+        /> -->
+        <meta
+            property="og:image"
+            content="https://res.cloudinary.com/dms9kwdfz/image/upload/v1714061917/pikne_studio_card.png"
+        />
+        <meta property="og:image:width" content="2873" />
+        <meta property="og:image:height" content="1627" />
+        <meta property="og:url" content="https://pikne.studio" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pikne studio | design & illustration" />
+        <!-- <meta
+            name="twitter:description"
+            content="Aleksandra Pekala is a graphic/visual designer, multidisciplinary artist and illustrator. Educated in psychology and design, oriented toward branding for social issues and health."
+        /> -->
+        <meta
+            name="twitter:image"
+            content="https://res.cloudinary.com/dms9kwdfz/image/upload/v1714061917/pikne_studio_card.png"
+        />
+        <meta name="color-scheme" content="light" />
+        <meta name="theme-color" content="#FFF3F2" />
+        <slot name="head" />
+        <Schema
+            item={{
+                //TODO: !!!!  MOVE We recommend placing this information on your home page, or a single page that describes your organization, for instance the about us page.
+                // https://developers.google.com/search/docs/appearance/structured-data/organization
+                // https://developers.google.com/search/docs/appearance/structured-data/organization#guidelines
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Pikne Studio",
+                alternateName: "Pękala Design",
+                logo: "https://res.cloudinary.com/dms9kwdfz/image/upload/c_crop,g_auto,h_800,w_800/pikne-logo.jpg",
+                description:
+                    "At Pikne studio we craft branding, art direction and illustration based on psychological knowledge. Through visual storytelling and empathy-driven design, we help your mission reach those who care about it. The studio, founded by Aleksandra Pekala, specializes in digital artistry that showcases emotions and relationships.",
+                url: "https://pekala.design/",
+                email: "hello@pikne.studio",
+                contactPoint: {
+                    "@type": "ContactPoint",
+                    email: "hello@pikne.studio"
+                },
+                sameAs: [
+                    "https://www.instagram.com/pikne.studio/",
+                    "https://www.instagram.com/pekalaart/",
+                    "https://www.behance.net/alekspekala"
+                ],
+                founder: {
+                    "@context": "https://schema.org",
+                    "@type": "Person",
+                    name: "Aleksandra Pękala",
+                    // TODO: image: [], For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
+                    sameAs: [
+                        "https://www.instagram.com/pekalaart/",
+                        "https://www.instagram.com/olenka.pekala/",
+                        "https://www.linkedin.com/in/alekspekala/",
+                        "https://www.behance.net/alekspekala",
+                        "https://bento.me/olenkapekala",
+                        "https://medium.com/@aleksandrapekala",
+                        "https://read.cv/aleksandrapekala"
+                    ],
+                    jobTitle: "brand designer, art director, creative strategist"
+                }
+            }}
+        />
     </head>
     <body class="flex flex-col bg-light-pink text-ruby-red">
         <slot />
+        <style is:global>
+            html {
+                scroll-behavior: smooth;
+            }
+            @font-face {
+                font-family: "AlexangDisplay";
+                src:
+                    local("Alexang Display Regular"),
+                    local("Alexang Display"),
+                    local("AlexangDisplay"),
+                    url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
+                    url("/fonts/AlexangDisplay-Regular.woff") format("woff");
+                descent-override: 20%;
+                ascent-override: 100%;
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "OlympicLight";
+                src:
+                    local("Olympic Light"),
+                    local("Olympic"),
+                    url("/fonts/OlympicLight.woff") format("woff");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+        </style>
     </body>
 </html>
-
-<style is:global>
-    html {
-        scroll-behavior: smooth;
-    }
-    @font-face {
-        font-family: "AlexangDisplay";
-        src:
-            local("Alexang Display Regular"),
-            local("Alexang Display"),
-            local("AlexangDisplay"),
-            url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
-            url("/fonts/AlexangDisplay-Regular.woff") format("woff");
-        descent-override: 20%;
-        ascent-override: 100%;
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: "OlympicLight";
-        src:
-            local("Olympic Light"),
-            local("Olympic"),
-            url("/fonts/OlympicLight.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-</style>
