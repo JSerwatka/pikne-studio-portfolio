@@ -1,10 +1,4 @@
 ---
-interface Props {
-    message: string;
-}
-
-const { message } = Astro.props;
-
 const toastMaxYPosition = "-20px";
 ---
 
@@ -30,7 +24,7 @@ const toastMaxYPosition = "-20px";
             d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"></path>
     </svg>
 
-    <div class="flex-1 px-3 text-sm font-normal" class="">{message}</div>
+    <div data-toast-message class="flex-1 px-3 text-sm font-normal"></div>
     <button data-close-toast aria-label="close alert menu" class="">&#10005;</button>
 </div>
 
@@ -68,27 +62,52 @@ const toastMaxYPosition = "-20px";
 </style>
 
 <script>
+    import { isToastOpen, toastType, toastMessage } from "@store/toastStore";
+
     const toast = document.querySelector("[data-toast]") as HTMLElement;
-    const closeButton = document.querySelector("[data-close-toast]") as HTMLButtonElement;
+    const closeButton = toast.querySelector("[data-close-toast]") as HTMLButtonElement;
+    const toastMessageContainer = toast.querySelector("[data-toast-message]") as HTMLElement;
 
     function openToast() {
         toast.style.display = "flex";
         toast?.classList.remove("hide-toast");
         toast?.classList.add("show-toast");
+
+        // TODO: change toast icon based on type
+        // switch (toastType.get()) {
+        //     case "error":
+
+        //         break;
+        //     case "info":
+        //     default:
+
+        //         break;
+
+        // }
+
+        toastMessageContainer.textContent = toastMessage.get();
     }
 
     function closeToast() {
         toast?.classList.remove("show-toast");
         toast?.classList.add("hide-toast");
 
-        toast?.addEventListener("animationend", () => {
+        const handleCloseToastAnimationEnd = () => {
             toast.style.display = "none";
-        });
+            isToastOpen.set(false);
+            toast.removeEventListener("animationend", handleCloseToastAnimationEnd);
+        };
+
+        toast?.addEventListener("animationend", handleCloseToastAnimationEnd);
     }
 
     closeButton?.addEventListener("click", () => {
         closeToast();
     });
 
-    setTimeout(openToast, 500);
+    isToastOpen.subscribe((toastOpen) => {
+        if (toastOpen) {
+            openToast();
+        }
+    });
 </script>
