@@ -1,0 +1,94 @@
+---
+interface Props {
+    message: string;
+}
+
+const { message } = Astro.props;
+
+const toastMaxYPosition = "-20px";
+---
+
+<div
+    data-toast
+    class:list={[
+        "absolute bottom-0 right-5 hidden w-full max-w-xs items-center  divide-gray-200 rounded-lg bg-white p-4 text-gray-500 shadow dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-400"
+    ]}
+    role="alert"
+>
+    <svg
+        class="h-5 w-5 rotate-45 text-blue-600"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 18 20"
+    >
+        <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"></path>
+    </svg>
+
+    <div class="flex-1 px-3 text-sm font-normal" class="">{message}</div>
+    <button data-close-toast aria-label="close alert menu" class="">&#10005;</button>
+</div>
+
+<style define:vars={{ toastMaxYPosition }}>
+    [data-toast].show-toast {
+        display: flex;
+        animation: show 500ms forwards;
+    }
+
+    [data-toast].hide-toast {
+        display: flex;
+        animation: hide 200ms forwards;
+    }
+
+    @keyframes show {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(var(--toastMaxYPosition));
+        }
+    }
+
+    @keyframes hide {
+        from {
+            opacity: 1;
+            transform: translateY(var(--toastMaxYPosition));
+        }
+        to {
+            opacity: 0;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    const toast = document.querySelector("[data-toast]") as HTMLElement;
+    const closeButton = document.querySelector("[data-close-toast]") as HTMLButtonElement;
+
+    function openToast() {
+        toast.style.display = "flex";
+        toast?.classList.remove("hide-toast");
+        toast?.classList.add("show-toast");
+    }
+
+    function closeToast() {
+        toast?.classList.remove("show-toast");
+        toast?.classList.add("hide-toast");
+
+        toast?.addEventListener("animationend", () => {
+            toast.style.display = "none";
+        });
+    }
+
+    closeButton?.addEventListener("click", () => {
+        closeToast();
+    });
+
+    setTimeout(openToast, 500);
+</script>
