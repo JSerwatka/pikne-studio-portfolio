@@ -1,10 +1,55 @@
 ---
+import { Schema } from "astro-seo-schema";
+
 import Layout from "../layouts/Layout.astro";
 import Section from "@components/Section.astro";
 import HatProfilePicture from "@components/About/HatProfilePicture";
 ---
 
 <Layout title="About me">
+    <Schema
+        slot="head"
+        item={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Pikne Studio",
+            alternateName: "Pękala Design",
+            logo: "https://res.cloudinary.com/dms9kwdfz/image/upload/c_crop,g_auto,h_800,w_800/pikne-logo.jpg",
+            description:
+                "At Pikne studio we craft branding, art direction and illustration based on psychological knowledge. Through visual storytelling and empathy-driven design, we help your mission reach those who care about it. The studio, founded by Aleksandra Pekala, specializes in digital artistry that showcases emotions and relationships.",
+            url: "https://pekala.design/",
+            email: "hello@pikne.studio",
+            contactPoint: {
+                "@type": "ContactPoint",
+                email: "hello@pikne.studio"
+            },
+            sameAs: [
+                "https://www.instagram.com/pikne.studio/",
+                "https://www.instagram.com/pekalaart/",
+                "https://www.behance.net/alekspekala"
+            ],
+            founder: {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Aleksandra Pękala",
+                image: [
+                    "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204523/schema-1x1.png",
+                    "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204524/schema-4x3.png",
+                    "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204524/schema-16x9.png"
+                ],
+                sameAs: [
+                    "https://www.instagram.com/pekalaart/",
+                    "https://www.instagram.com/olenka.pekala/",
+                    "https://www.linkedin.com/in/alekspekala/",
+                    "https://www.behance.net/alekspekala",
+                    "https://bento.me/olenkapekala",
+                    "https://medium.com/@aleksandrapekala",
+                    "https://read.cv/aleksandrapekala"
+                ],
+                jobTitle: "brand designer, art director, creative strategist"
+            }
+        }}
+    />
     <div class:list={["px-default mt-16 grid grid-cols-1", "md:grid-cols-2"]}>
         <div class:list={["order-2", "md:order-0 md:col-span-1 md:col-start-2"]}>
             <HatProfilePicture client:load />
