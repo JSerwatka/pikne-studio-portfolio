@@ -78,7 +78,11 @@ import { Schema } from "astro-seo-schema";
                     "@context": "https://schema.org",
                     "@type": "Person",
                     name: "Aleksandra Pękala",
-                    // TODO: image: [], For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
+                    image: [
+                        "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204523/schema-1x1.png",
+                        "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204524/schema-4x3.png",
+                        "https://res.cloudinary.com/dms9kwdfz/image/upload/v1714204524/schema-16x9.png"
+                    ],
                     sameAs: [
                         "https://www.instagram.com/pekalaart/",
                         "https://www.instagram.com/olenka.pekala/",
@@ -95,34 +99,35 @@ import { Schema } from "astro-seo-schema";
     </head>
     <body class="flex flex-col bg-light-pink text-ruby-red">
         <slot />
-        <style is:global>
-            html {
-                scroll-behavior: smooth;
-            }
-            @font-face {
-                font-family: "AlexangDisplay";
-                src:
-                    local("Alexang Display Regular"),
-                    local("Alexang Display"),
-                    local("AlexangDisplay"),
-                    url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
-                    url("/fonts/AlexangDisplay-Regular.woff") format("woff");
-                descent-override: 20%;
-                ascent-override: 100%;
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: "OlympicLight";
-                src:
-                    local("Olympic Light"),
-                    local("Olympic"),
-                    url("/fonts/OlympicLight.woff") format("woff");
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap;
-            }
-        </style>
     </body>
 </html>
+
+<style is:global>
+    html {
+        scroll-behavior: smooth;
+    }
+    @font-face {
+        font-family: "AlexangDisplay";
+        src:
+            local("Alexang Display Regular"),
+            local("Alexang Display"),
+            local("AlexangDisplay"),
+            url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
+            url("/fonts/AlexangDisplay-Regular.woff") format("woff");
+        descent-override: 20%;
+        ascent-override: 100%;
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "OlympicLight";
+        src:
+            local("Olympic Light"),
+            local("Olympic"),
+            url("/fonts/OlympicLight.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+</style>
