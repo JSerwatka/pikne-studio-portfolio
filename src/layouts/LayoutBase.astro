@@ -1,13 +1,13 @@
 ---
+import "../main.css";
+import "@fontsource/metropolis/500.css";
+import "@fontsource/metropolis/400.css";
+
 interface Props {
     title: string;
 }
 
 const { title } = Astro.props;
-
-import "../main.css";
-import "@fontsource/metropolis/500.css";
-import "@fontsource/metropolis/400.css";
 ---
 
 <!doctype html>
@@ -18,7 +18,38 @@ import "@fontsource/metropolis/400.css";
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>Pikne | {title}</title>
+        <title>Pikne studio | {title}</title>
+        <meta name="title" content="Pikne studio | design & illustration" />
+        <meta
+            name="description"
+            content="Emotions-driven Branding & Design - Pikne Studio uses psychology & empathy to craft visual stories that touch hearts & make your mission shine."
+        />
+        <meta property="og:title" content="Pikne studio | design & illustration" />
+        <meta
+            property="og:description"
+            content="Emotions-driven Branding & Design - Pikne Studio uses psychology & empathy to craft visual stories that touch hearts & make your mission shine."
+        />
+        <meta
+            property="og:image"
+            content="https://res.cloudinary.com/dms9kwdfz/image/upload/v1714061917/pikne_studio_card.png"
+        />
+        <meta property="og:image:width" content="2873" />
+        <meta property="og:image:height" content="1627" />
+        <meta property="og:url" content="https://pikne.studio" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pikne studio | design & illustration" />
+        <meta
+            name="twitter:description"
+            content="Emotions-driven Branding & Design - Pikne Studio uses psychology & empathy to craft visual stories that touch hearts & make your mission shine."
+        />
+        <meta
+            name="twitter:image"
+            content="https://res.cloudinary.com/dms9kwdfz/image/upload/v1714061917/pikne_studio_card.png"
+        />
+        <meta name="color-scheme" content="light" />
+        <meta name="theme-color" content="#FFF3F2" />
+        <slot name="head" />
     </head>
     <body class="flex flex-col bg-light-pink text-ruby-red">
         <slot />
