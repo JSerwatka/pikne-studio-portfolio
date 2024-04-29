@@ -1,3 +1,7 @@
+---
+import Toast from "./Toast.astro";
+---
+
 <footer id="contact" class="z-10">
     <div class:list={["-mb-[0.12em] text-center font-alexang text-[min(25vw,425px)] leading-none"]}>Contact me</div>
     <div
@@ -25,6 +29,9 @@
                         "lg:order-2"
                     ]}
                     data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    method="POST"
+                    name="contact"
                 >
                     <input
                         name="name"
@@ -163,12 +170,18 @@
             </div>
         </div>
     </div>
+    <Toast />
 </footer>
 
 <script>
+    import { isToastOpen, toastType } from "@store/toastStore";
+
     const krakowTime = document.querySelector("[data-krakow-time]") as HTMLElement;
     const krakowWeatherText = document.querySelector("[data-krakow-weather-text]") as HTMLElement;
     const krakowWeatherIcon = document.querySelector("[data-krakow-weather-icon]") as HTMLElement;
+    const form = document.querySelector("form") as HTMLFormElement;
+
+    // Time and Date handling
     function updateTime() {
         const date = new Date();
         const timeString = new Intl.DateTimeFormat("en-US", {
@@ -184,6 +197,35 @@
     updateTime();
     setInterval(updateTime, 25000);
 
+    // Form handling
+    const handleSubmit = (event: SubmitEvent) => {
+        event.preventDefault();
+        const myForm = event.target as HTMLFormElement;
+        const formData = new FormData(myForm);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData as any).toString()
+        })
+            .then((response) => {
+                if (response.ok) {
+                    toastType.set("info");
+                    isToastOpen.set(true);
+                    form.reset();
+                } else {
+                    throw Error("Something want wrong with form submission");
+                }
+            })
+            .catch(() => {
+                toastType.set("error");
+                isToastOpen.set(true);
+            });
+    };
+
+    form.addEventListener("submit", handleSubmit);
+
+    // Weather handling
     async function fetchWeather() {
         try {
             const apiKey = import.meta.env.PUBLIC_WEATHER_API_KEY;
@@ -214,6 +256,7 @@
             console.error(error);
         }
     }
+
     fetchWeather();
 
     // function replaceValidationUI(form) {
