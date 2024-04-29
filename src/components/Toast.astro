@@ -5,27 +5,16 @@ const toastMaxYPosition = "-20px";
 <div
     data-toast
     class:list={[
-        "absolute bottom-0 right-5 hidden w-full max-w-xs items-center  divide-gray-200 rounded-lg bg-white p-4 text-gray-500 shadow dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-400"
+        "absolute bottom-0 right-0 ml-5 mr-5 hidden w-[calc(100%-2.5rem)] items-center rounded-lg p-4 font-metropolis text-dark-chocolate md:max-w-[350px] "
     ]}
     role="alert"
 >
-    <svg
-        class="h-5 w-5 rotate-45 text-blue-600"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 18 20"
-    >
-        <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"></path>
-    </svg>
-
-    <div data-toast-message class="flex-1 px-3 text-sm font-normal"></div>
-    <button data-close-toast aria-label="close alert menu" class="">&#10005;</button>
+    <div data-toast-icon-container class="self-start children:h-5 children:w-5"></div>
+    <div class="flex-1 px-3">
+        <div data-toast-title class="mb-2 font-bold"></div>
+        <div data-toast-message class="text-sm"></div>
+    </div>
+    <button data-close-toast aria-label="close alert menu" class="self-start font-bold">&#10005;</button>
 </div>
 
 <style define:vars={{ toastMaxYPosition }}>
@@ -62,14 +51,17 @@ const toastMaxYPosition = "-20px";
 </style>
 
 <script>
-    import { isToastOpen, toastType, toastMessage } from "@store/toastStore";
+    import { isToastOpen, toastType } from "@store/toastStore";
 
-    const TOAST_TIMEOUT_DURATION = 3000;
+    const TOAST_TIMEOUT_DURATION = 5000;
 
     const toast = document.querySelector("[data-toast]") as HTMLElement;
     const closeButton = toast.querySelector("[data-close-toast]") as HTMLButtonElement;
-    const toastMessageContainer = toast.querySelector("[data-toast-message]") as HTMLElement;
-    let toastTimeout: NodeJS.Timeout | undefined;
+    const toastTitle = toast.querySelector("[data-toast-title]") as HTMLElement;
+    const toastMessage = toast.querySelector("[data-toast-message]") as HTMLElement;
+    const toastIconContainer = toast.querySelector("[data-toast-icon-container]") as HTMLElement;
+
+    let toastTimeout: number | undefined;
 
     function createToastTimeout() {
         if (!toastTimeout) {
@@ -89,19 +81,48 @@ const toastMaxYPosition = "-20px";
         toast?.classList.remove("hide-toast");
         toast?.classList.add("show-toast");
 
-        // TODO: change toast icon based on type
-        // switch (toastType.get()) {
-        //     case "error":
-
-        //         break;
-        //     case "info":
-        //     default:
-
-        //         break;
-
-        // }
-
-        toastMessageContainer.textContent = toastMessage.get();
+        switch (toastType.get()) {
+            case "error":
+                toast.style.backgroundColor = "#FFF3F2";
+                toastIconContainer.innerHTML = `
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="fill-[#D31D1D]" aria-hidden="true">
+                        <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        ></path>
+                        <path
+                            d="M464 688a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"
+                        ></path>
+                    </svg>`;
+                toastTitle.textContent = "Error!";
+                toastMessage.innerHTML =
+                    "<div>Your message could not be sent. <span class='text-nowrap'>( • ᴖ • )</span></div><div>Please try contacting me through social media or email.</div>";
+                break;
+            case "info":
+                toast.style.backgroundColor = "#D1E9DD";
+                toastIconContainer.innerHTML = `
+                    <svg
+                        class="h-5 w-5 rotate-45 text-[#7BBBA5]"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 18 20"
+                    >
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9">
+                        </path>
+                    </svg>`;
+                toastTitle.textContent = "Message sent!";
+                toastMessage.innerHTML =
+                    "<div>Thank you for contacting me!<span class='text-nowrap'>◝(ᵔᵕᵔ)◜</span></div><div>I’ll answer as soon as possible. ✿</div>";
+                break;
+            default:
+                closeToast();
+                break;
+        }
 
         createToastTimeout();
     }
