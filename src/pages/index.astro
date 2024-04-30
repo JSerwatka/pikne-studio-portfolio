@@ -33,6 +33,7 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
                         autoplay
                         loop
                         muted
+                        playsinline
                         class:list={[
                             "border-5 absolute bottom-[32%] left-1/2 w-full max-w-[1300px] -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
                             "aspect-square object-cover",
@@ -61,7 +62,15 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
             linkTo="/project/sensus"
             linkAccessibleName="link to sensus project"
         >
-            <video autoplay loop muted slot="image" class="rounded-3xl" poster="/videos/sensus-square-poster.avif">
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                slot="image"
+                class="rounded-3xl"
+                poster="/videos/sensus-square-poster.avif"
+            >
                 <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
                 <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
                 <meta
