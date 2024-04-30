@@ -18,21 +18,31 @@ const { class: className, links } = Astro.props;
 >
     Menu
 </button>
-<div data-overlay class:list={["text-header__2 fixed inset-0 z-50 hidden bg-ruby-red text-light-pink"]}>
-    <div class:list={["flex h-svh w-screen flex-col bg-ruby-red", "px-6 py-3", "sm:px-10 sm:py-5"]}>
-        <div class="flex justify-between">
-            <a href="/" aria-label="go home link">
+<div
+    data-overlay
+    class:list={["text-header__2 fixed inset-0 z-50 hidden bg-ruby-red text-light-pink landscape:!overflow-auto"]}
+>
+    <div class:list={["flex h-svh w-screen flex-col bg-ruby-red", "px-default", "landscape:h-[800px]"]}>
+        <div class:list={["flex justify-between", "h-[var(--navbar-height-xs)]", "sm:h-[var(--navbar-height-sm)]"]}>
+            <a href="/" aria-label="go home link" class="self-center">
                 <Image
                     src={logo}
                     alt="pekala design logo"
                     width={156}
                     height={91}
-                    class:list={["h-[50px] w-[86px]", "sm:h-[91px] sm:w-[156px]"]}
+                    class:list={[
+                        "h-[50px] w-[86px] ",
+                        "sm:h-[91px] sm:w-[156px]",
+                        "landscape:h-[50px] landscape:w-[86px]",
+                        "lg:landscape:h-[91px] lg:landscape:w-[156px]"
+                    ]}
                 />
             </a>
-            <button data-close-button autofocus aria-label="close navbar menu">&#10005;</button>
+            <button data-close-button autofocus aria-label="close navbar menu" class="landscape:text-5xl"
+                >&#10005;</button
+            >
         </div>
-        <ul class:list={["flex flex-1 flex-col justify-around  text-center"]}>
+        <ul class:list={["flex flex-1 flex-col justify-around text-center"]}>
             {
                 links.map((link) => (
                     <li>
