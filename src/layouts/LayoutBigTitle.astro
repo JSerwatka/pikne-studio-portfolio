@@ -19,59 +19,54 @@ const top = withStickyHeader ? marginTop : "0px";
 <LayoutBase title={title}>
     <Navbar />
     <div class="grow" class:list={["px-default", className]}>
-        <div class="flex flex-col">
-            <header
-                data-header-container
-                data-margin-top={marginTop}
-                class:list={[
-                    `w-min self-center whitespace-nowrap font-alexang text-[min(25vw,300px)] leading-none`,
-                    { sticky: withStickyHeader },
-                    titleClass
-                ]}
-            >
-                <div class="">
-                    <slot name="header" />
-                </div>
-                <ScrollIndicator />
-            </header>
-            <main>
-                <slot name="content" />
-            </main>
-        </div>
-        {
-            Astro.slots.has("link") ? (
-                <div class="flex h-screen items-center justify-center">
-                    <div>
-                        <slot name="link" />
-                    </div>
-                </div>
-            ) : (
-                <div class="h-[30vh]" />
-            )
-        }
+        <header
+            data-header-container
+            data-margin-top={marginTop}
+            class:list={[
+                "-z-10 whitespace-nowrap text-center font-alexang text-[min(23vw,250px)] leading-none",
+                { sticky: withStickyHeader },
+                titleClass
+            ]}
+        >
+            <div>
+                <slot name="header" />
+            </div>
+            <ScrollIndicator />
+        </header>
+        <main>
+            <slot name="content" />
+        </main>
     </div>
+    {
+        Astro.slots.has("link") ? (
+            <div class="flex h-svh items-center justify-center">
+                <div>
+                    <slot name="link" />
+                </div>
+            </div>
+        ) : (
+            <div class="h-[30svh]" />
+        )
+    }
+    <Footer />
 </LayoutBase>
-<Footer />
 
 <style define:vars={{ marginTop, top }}>
     header[data-header-container] {
         margin-top: var(--marginTop);
         top: var(--top);
+        height: calc(100svh - var(--navbar-height-xs) - var(--marginTop));
+    }
+
+    @media (min-width: 640px) {
+        header[data-header-container] {
+            height: calc(100svh - var(--navbar-height-sm) - var(--marginTop));
+        }
+    }
+
+    @media (min-width: 1024px) {
+        header[data-header-container] {
+            height: calc(100svh - var(--navbar-height-lg) - var(--marginTop));
+        }
     }
 </style>
-
-<script>
-    const navbar = document.querySelector("nav") as HTMLElement;
-    const headerContainer = document.querySelector("[data-header-container]") as HTMLElement;
-
-    function updateContainerSize() {
-        const { height } = navbar.getBoundingClientRect();
-        const marginTop = headerContainer.dataset.marginTop ?? "0px";
-        headerContainer.style.height = `calc(100vh - ${height}px - ${marginTop})`;
-    }
-
-    updateContainerSize();
-    window.addEventListener("resize", () => {
-        updateContainerSize();
-    });
-</script>

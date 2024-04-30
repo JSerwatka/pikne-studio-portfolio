@@ -33,6 +33,7 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
                         autoplay
                         loop
                         muted
+                        playsinline
                         class:list={[
                             "border-5 absolute bottom-[32%] left-1/2 w-full max-w-[1300px] -translate-x-1/2 translate-y-full rounded-2xl border-light-pink",
                             "aspect-square object-cover",
@@ -57,11 +58,19 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
         <ProjectSection
             title="sensus"
             year="2020"
-            class="bg-tea-green py-20 text-dark-chocolate"
+            class="bg-tea-green py-10 text-dark-chocolate sm:py-20"
             linkTo="/project/sensus"
             linkAccessibleName="link to sensus project"
         >
-            <video autoplay loop muted slot="image" class="rounded-3xl" poster="/videos/sensus-square-poster.avif">
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                slot="image"
+                class="rounded-3xl"
+                poster="/videos/sensus-square-poster.avif"
+            >
                 <source src="/videos/sensus-short-square-720p.webm" type="video/webm" />
                 <source src="/videos/sensus-short-square-720p.mp4" type="video/mp4" />
                 <meta
@@ -79,7 +88,9 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
             </Fragment>
         </ProjectSection>
         <div
-            class:list={["px-default flex h-screen items-center justify-center  bg-ice-blue py-20 text-dark-chocolate"]}
+            class:list={[
+                "px-default flex h-screen items-center justify-center  bg-ice-blue py-10 text-dark-chocolate sm:py-20"
+            ]}
         >
             <a
                 href="/project/psykologkompassen"
@@ -105,7 +116,7 @@ import psykologkompassenLogo from "@assets/index/psykologkompassen-logo.png";
         <ProjectSection
             title="Illustrations"
             year="2021 - 2023"
-            class="bg-volt py-20 text-dark-chocolate"
+            class="bg-volt py-10 text-dark-chocolate sm:py-20"
             linkTo="/illustrations"
             linkAccessibleName="Link to page with my illustrations"
         >
