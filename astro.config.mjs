@@ -6,7 +6,12 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), solidJs(), sitemap()]
+    site: "https://pikne.studio",
+    integrations: [
+        tailwind({
+            applyBaseStyles: false
+        }),
+        solidJs(),
+        sitemap()
+    ]
 });
