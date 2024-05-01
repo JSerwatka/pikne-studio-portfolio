@@ -1,4 +1,5 @@
 # Pikne Studio Portfolio
+<img src="https://github.com/JSerwatka/pikne-studio-portfolio/assets/33938646/6ca5509c-51da-4903-bb65-dd415fd3069f" width="200" height="200">
 
 ## Description
 
