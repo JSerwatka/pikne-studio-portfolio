@@ -1,54 +1,24 @@
-# Astro Starter Kit: Basics
+# Pikne Studio Portfolio
 
-```
-npm create astro@latest -- --template basics
-```
+## Description
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+This repository contains the code for Pikne Studio's (a brand design agency) website. It is here to serve as inspiration and a resource for solving your own coding issues.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Feel free to explore, learn, and adapt it to your own projects!
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### Build with
 
-## 🚀 Project Structure
+-   **Astro**
+-   **SolidJS**
+-   **Tailwind CSS**
 
-Inside of your Astro project, you'll see the following folders and files:
+## Contribution Guidelines:
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+While the code is open for use, if you incorporate significant portions of it into your project, I kindly ask that you provide attribution by linking to this repository.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Components / websites I was inspired by / used
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+-   Flower links: https://codepen.io/natszafraniec/pen/eYMPEaM
+-   Photo links: https://codepen.io/kathykato/pen/pogaOKG
+-   Gallery scrolling: https://www.goodway.fr/nos-projets
+-   Projects page: https://www.ohmy.studio/work/project/current
