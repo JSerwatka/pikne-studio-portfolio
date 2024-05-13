@@ -104,7 +104,7 @@ const HatProfilePicture = () => {
     onCleanup(() => triggerNextImgPreload.clear());
 
     return (
-        <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:w-1/2 md:max-w-[660px] -z-10">
+        <div class="relative w-full md:fixed md:bottom-0 md:right-0 md:w-1/2 md:max-w-[660px]">
             <div class="relative max-w-fit">
                 <picture>
                     <source srcset="/about-me-profile.avif" type="image/avif" />
