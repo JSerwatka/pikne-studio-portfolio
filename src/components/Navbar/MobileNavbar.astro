@@ -20,7 +20,9 @@ const { class: className, links } = Astro.props;
 </button>
 <div
     data-overlay
-    class:list={["text-header__2 fixed inset-0 z-50 hidden bg-ruby-red text-light-pink landscape:!overflow-auto"]}
+    class:list={[
+        "text-header__2 fixed inset-0 z-50 hidden h-screen bg-ruby-red text-light-pink landscape:!overflow-auto"
+    ]}
 >
     <div class:list={["flex h-svh w-screen flex-col bg-ruby-red", "px-default", "landscape:h-[800px]"]}>
         <div class:list={["flex justify-between", "h-[var(--navbar-height-xs)]", "sm:h-[var(--navbar-height-sm)]"]}>
