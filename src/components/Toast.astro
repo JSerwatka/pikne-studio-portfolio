@@ -53,7 +53,7 @@ const toastMaxYPosition = "-20px";
 <script>
     import { isToastOpen, toastType } from "@store/toastStore";
 
-    const TOAST_TIMEOUT_DURATION = 5000;
+    const TOAST_TIMEOUT_DURATION = 8000;
 
     const toast = document.querySelector("[data-toast]") as HTMLElement;
     const closeButton = toast.querySelector("[data-close-toast]") as HTMLButtonElement;
@@ -61,7 +61,7 @@ const toastMaxYPosition = "-20px";
     const toastMessage = toast.querySelector("[data-toast-message]") as HTMLElement;
     const toastIconContainer = toast.querySelector("[data-toast-icon-container]") as HTMLElement;
 
-    let toastTimeout: number | undefined;
+    let toastTimeout: NodeJS.Timeout | undefined;
 
     function createToastTimeout() {
         if (!toastTimeout) {
