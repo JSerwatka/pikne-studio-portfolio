@@ -1,0 +1,138 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
+
+import sensuThmbnail from "@assets/thumbnails/sensus.jpg";
+
+import background from "@assets/projects/olivia/background.jpg";
+import backgroundLoading from "@assets/projects/olivia/background-loading.jpg";
+import cards from "@assets/projects/olivia/cards.jpg";
+import cardsLoading from "@assets/projects/olivia/cards-loading.jpg";
+import voucher from "@assets/projects/olivia/voucher.jpg";
+import voucherLoading from "@assets/projects/olivia/voucher-loading.jpg";
+import laptop from "@assets/projects/olivia/laptop.jpg";
+import laptopLoading from "@assets/projects/olivia/laptop-loading.jpg";
+import eyes from "@assets/projects/olivia/eyes.gif";
+import eyesLoading from "@assets/projects/olivia/eyes-loading.png";
+import dog from "@assets/projects/olivia/dog.gif";
+import dogLoading from "@assets/projects/olivia/dog-loading.png";
+---
+
+<LayoutProjects title="Olivia Nowicka">
+    <Fragment slot="hero-background">
+        <ImageWithLoading
+            src={background}
+            srcLoading={backgroundLoading}
+            width={1920}
+            height={1080}
+            alt="Makeup artist’s poster on a car hood, featuring a woman with glam makeup and text promoting her services with a website link."
+            classImage="object-[58%_0%]"
+            class="bg-[58%_0%] blur-lg"
+            quality={"high"}
+            loading="eager"
+        />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Web design</li>
+        <li>Print</li>
+        <li>Marketing</li>
+    </Fragment>
+    <Fragment slot="project-title">Olivia Nowicka - make up artist</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            Olivia’s journey through countless photoshoots, campaigns, and production sets has shaped her into the
+            artist she is today—bold, precise, and unafraid to push creative boundaries.
+        </p>
+        <p>
+            Beyond perfecting her craft, she wanted to share it. Teaching felt like the natural next step, a way to pass
+            on her knowledge and build a community of like-minded creatives. To make that happen, she needed a platform
+            that would not only showcase her expertise but also invite others to learn and grow. Her brand needed a
+            presence as powerful as her work. A website that embodies her dynamic vision, promoting both her services
+            and expertise. Printed materials that extend her bold aesthetic beyond the screen. Every detail designed to
+            make an impact—unapologetically.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
+            src={eyes}
+            srcLoading={eyesLoading}
+            alt="animated pair of eyes looking around, with the make-up changing each frame"
+            width={eyes.width}
+            quality="high"
+            classImage="bg-light-pink"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4 lg:col-start-3"
+            src={cards}
+            srcLoading={cardsLoading}
+            alt="Loyalty card with 'Cool Girls Club' in gradient blue and white, placed on a bold blue background."
+            width={cards.width}
+            quality="high"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
+            classImage="object-center"
+            src={voucher}
+            srcLoading={voucherLoading}
+            alt="an elegant gift voucher laying on a cobalt blue envelope"
+            width={voucher.width}
+            quality="high"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2 lg:col-start-5"
+            src={dog}
+            srcLoading={dogLoading}
+            alt="a russian toy terrier surrounded with animated sparkles"
+            width={dog.width}
+            quality="high"
+            classImage="bg-light-pink"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
+            classImage="object-right"
+            src={laptop}
+            srcLoading={laptopLoading}
+            alt=" Open laptop on a sleek table, displaying a makeup artist’s website with bold text and an event photo."
+            width={laptop.width}
+            quality="max"
+        />
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class:list={["col-span-6 w-full object-cover ", "lg:col-span-4 lg:col-start-3"]}
+            poster="/videos/olivia-website.jpg"
+        >
+            <source src="/videos/olivia-website.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="a video presenting the landing page, including a video shots of Olivia and services section."
+            />
+            Your browser does not support the video tag.
+        </video>
+    </Fragment>
+    <Quote author="Olivia Nowicka,  the artist" slot="quote">
+        Working with Ola was a pleasure, no one before has been able to define me in such a beautiful way and present my
+        work through the website. The whole collaboration is done in a very pleasant atmosphere, Ola always comes up
+        with a million ideas and surprises with delights. I would highly recommend!”
+    </Quote>
+    <PictureLink
+        slot="link"
+        title="Sensus"
+        subTitle="Next up"
+        linkTo="/project/sensus"
+        linkAccessibleName='link to project: "Sensus"'
+        src={sensuThmbnail}
+        alt=""
+    />
+</LayoutProjects>
+
+<style>
+    video::poster {
+        filter: blur(100px);
+    }
+</style>
