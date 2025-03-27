@@ -1,0 +1,136 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
+
+import sensuThmbnail from "@assets/thumbnails/sensus.jpg";
+
+import background from "@assets/projects/heiduk/background.jpg";
+import backgroundLoading from "@assets/projects/heiduk/background-loading.jpg";
+
+import cards from "@assets/projects/heiduk/cards.jpg";
+import cardsLoading from "@assets/projects/heiduk/cards-loading.jpg";
+import tablet from "@assets/projects/heiduk/tablet.jpg";
+import tabletLoading from "@assets/projects/heiduk/tablet-loading.jpg";
+import tablet2 from "@assets/projects/heiduk/tablet2.jpg";
+import tablet2Loading from "@assets/projects/heiduk/tablet2-loading.jpg";
+import laptop from "@assets/projects/heiduk/laptop.jpg";
+import laptopLoading from "@assets/projects/heiduk/laptop-loading.jpg";
+import logo from "@assets/projects/heiduk/logo.gif";
+import logoLoading from "@assets/projects/heiduk/logo-loading.png";
+---
+
+<LayoutProjects title="Heiduk studio">
+    <Fragment slot="hero-background">
+        <ImageWithLoading
+            src={background}
+            srcLoading={backgroundLoading}
+            width={1920}
+            height={1080}
+            alt="an artistic collage of furniture and characters, with Heiduk studio logo overlay"
+            classImage="object-[58%_0%]"
+            class="bg-[58%_0%] blur-lg"
+            quality={"high"}
+            loading="eager"
+        />
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Brand design</li>
+        <li>Brand strategy</li>
+        <li>
+            <span class="block">Web design</span>
+            <span class="block">+ development</span>
+        </li>
+    </Fragment>
+    <Fragment slot="project-title">Heiduk studio</Fragment>
+    <Fragment slot="project-description">
+        <p>Great people deserve great spaces, and great spaces deserve a great story.</p>
+        <p>
+            Heiduk Studio brings interiors to life by blending heritage, artistry, and contemporary design—creating
+            homes and spaces with character and depth. Their approach is thoughtful, their craftsmanship impeccable, and
+            their respect for history evident in every detail.
+        </p>
+        <p>
+            To match this vision, we developed a comprehensive creative strategy, brand identity, and website that feel
+            as refined and intentional as the spaces they design.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
+            src={tablet}
+            srcLoading={tabletLoading}
+            alt="a tablet laid on a wooden table top, presenting a landing page of Heiduk studio"
+            width={tablet.width}
+            quality="high"
+            classImage="bg-light-pink"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2 lg:col-start-5"
+            src={tablet2}
+            srcLoading={tablet2Loading}
+            alt="a tablet on a wooden stand, displaying a website with red background, white typography and a photo"
+            width={tablet2.width}
+            quality="high"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
+            classImage="object-center"
+            src={laptop}
+            srcLoading={laptopLoading}
+            alt=" Open laptop standing on steps, displaying a interior design studio's website"
+            width={laptop.width}
+            quality="high"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4 lg:col-start-3"
+            src={cards}
+            srcLoading={cardsLoading}
+            alt="Three business cards for Heiduk Studio, two pink with a red logo and one mustard yellow, placed on textured fabric."
+            width={cards.width}
+            quality="high"
+        />
+        <!-- TODO: udpdate video -->
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class:list={["col-span-6 w-full self-start  object-cover ", "lg:col-span-4  lg:self-center"]}
+            poster="/videos/olivia-website.jpg"
+        >
+            <source src="/videos/olivia-website.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="a video presenting the landing page, including a video shots of Olivia and services section."
+            />
+            Your browser does not support the video tag.
+        </video>
+        <ImageWithLoading
+            class="col-span-6 self-start lg:col-span-2 lg:col-start-5 lg:self-center"
+            classImage="object-right"
+            src={logo}
+            srcLoading={logoLoading}
+            alt="animated logotype for Heiduk studio, changing typography of the word 'hei' on each frame"
+            width={laptop.width}
+            quality="max"
+            classImage="bg-light-pink"
+        />
+    </Fragment>
+    <PictureLink
+        slot="link"
+        title="Sensus"
+        subTitle="Next up"
+        linkTo="/project/sensus"
+        linkAccessibleName='link to project: "Sensus"'
+        src={sensuThmbnail}
+        alt=""
+    />
+</LayoutProjects>
+
+<style>
+    video::poster {
+        filter: blur(100px);
+    }
+</style>
