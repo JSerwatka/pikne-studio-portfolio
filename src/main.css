@@ -4,30 +4,30 @@
 
 @layer components {
     .text-hero__1 {
-        @apply font-alexang text-[7.5rem] font-normal -tracking-[0.3rem] 
+        @apply font-instrument text-[7.5rem] font-normal -tracking-[0.3rem] 
         sm:text-[8rem] sm:-tracking-[0.6rem] 
         lg:text-[26.25rem] lg:-tracking-[1.05rem];
     }
 
     .text-hero__2 {
-        @apply font-alexang text-[7.5rem] font-normal leading-[6.25rem]
+        @apply font-instrument text-[7.5rem] font-normal leading-[6.25rem]
         sm:text-[15rem] sm:leading-[11.25rem]
         lg:text-[18.75rem] lg:leading-[14.375rem];
     }
 
     .text-header__1 {
-        @apply font-alexang text-[3.125rem] font-medium leading-[4rem] 
+        @apply font-instrument text-[3.125rem] font-medium leading-[4rem] 
         sm:text-[4.375rem] sm:leading-[5.625rem] 
         lg:text-[6.25rem] lg:leading-[6.628rem];
     }
 
     .text-header__2 {
-        @apply font-olympic text-[2rem] font-light leading-[3rem] -tracking-[0.04rem]  
+        @apply font-instrument text-[2rem] font-light leading-[3rem] -tracking-[0.04rem]  
         sm:text-6xl sm:leading-[5rem] sm:-tracking-[0.075rem];
     }
 
     .text-header__3 {
-        @apply font-alexang text-[3.375rem] font-normal leading-[4.375rem]  
+        @apply font-instrument text-[3.375rem] font-normal leading-[4.375rem]  
         sm:text-[4.375rem] sm:leading-[5.625rem];
     }
 
@@ -40,7 +40,7 @@
         sm:text-xl sm:leading-8;
     }
     .text-paragraph__quote {
-        @apply font-olympic text-[1.75rem] leading-10;
+        @apply font-instrument text-[1.75rem] leading-10 italic ;
     }
 
     .btn-primary {

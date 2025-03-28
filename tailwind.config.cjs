@@ -8,8 +8,7 @@ module.exports = {
     theme: {
         fontFamily: {
             metropolis: ["Metropolis", "Arial", "sans-serif"],
-            olympic: ["OlympicLight", "Palatino", "serif"],
-            alexang: ["AlexangDisplay", "Palatino", "serif"]
+            instrument: ["Instrument Serif", "Palatino", "serif"],
         },
         extend: {
             backgroundImage: ({ theme }) => ({

@@ -2,6 +2,7 @@
 import "../main.css";
 import "@fontsource/metropolis/500.css";
 import "@fontsource/metropolis/400.css";
+import "@fontsource/instrument-serif";
 
 interface Props {
     title: string;
@@ -56,7 +57,8 @@ const { title } = Astro.props;
         />
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#FFF3F2" />
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="befe6239-1a65-4d92-931b-0f901c2c5a9f"></script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="befe6239-1a65-4d92-931b-0f901c2c5a9f"
+        ></script>
         <slot name="head" />
     </head>
     <body class="flex flex-col bg-light-pink text-ruby-red">
@@ -73,29 +75,5 @@ const { title } = Astro.props;
 
     html {
         scroll-behavior: smooth;
-    }
-    @font-face {
-        font-family: "AlexangDisplay";
-        src:
-            local("Alexang Display Regular"),
-            local("Alexang Display"),
-            local("AlexangDisplay"),
-            url("/fonts/AlexangDisplay-Regular.woff2") format("woff2"),
-            url("/fonts/AlexangDisplay-Regular.woff") format("woff");
-        descent-override: 20%;
-        ascent-override: 100%;
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: "OlympicLight";
-        src:
-            local("Olympic Light"),
-            local("Olympic"),
-            url("/fonts/OlympicLight.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
     }
 </style>
