@@ -88,14 +88,18 @@ const projects = [
             {
                 projects.map((project) => (
                     <div class="flex flex-col">
-                        <a href={project.linkTo} aria-label={`Link to project "${project.title}"`} class="self-center">
+                        <a
+                            href={project.linkTo}
+                            aria-label={`Link to project "${project.title}"`}
+                            class="h-full w-full self-center"
+                        >
                             <div class="relative ">
                                 <ImageWithLoading
                                     src={project.src}
                                     srcLoading={project.srcLoading}
                                     width={1100}
                                     alt={project.alt}
-                                    class="max-w-[1100px] rounded-3xl"
+                                    class="mx-auto max-w-[1100px] rounded-3xl"
                                     classImage="rounded-3xl"
                                 />
                                 <div
