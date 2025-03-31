@@ -6,7 +6,7 @@ import illustrations from "@assets/work/illustrations.png";
 import illustrationsLoading from "@assets/work/illustrations-loading.png";
 import olivia from "@assets/work/olivia.jpg";
 import oliviaLoading from "@assets/work/olivia-loading.jpg";
-import heiduk from "@assets/work/heiduk.jpg";
+import heiduk from "@assets/work/heiduk.png";
 import heidukLoading from "@assets/work/heiduk-loading.png";
 import patchwork from "@assets/work/patchwork.png";
 import patchworkLoading from "@assets/work/patchwork-loading.png";
@@ -88,14 +88,18 @@ const projects = [
             {
                 projects.map((project) => (
                     <div class="flex flex-col">
-                        <a href={project.linkTo} aria-label={`Link to project "${project.title}"`} class="self-center">
+                        <a
+                            href={project.linkTo}
+                            aria-label={`Link to project "${project.title}"`}
+                            class="h-full w-full self-center"
+                        >
                             <div class="relative ">
                                 <ImageWithLoading
                                     src={project.src}
                                     srcLoading={project.srcLoading}
                                     width={1100}
                                     alt={project.alt}
-                                    class="max-w-[1100px] rounded-3xl"
+                                    class="mx-auto max-w-[1100px] rounded-3xl"
                                     classImage="rounded-3xl"
                                 />
                                 <div
