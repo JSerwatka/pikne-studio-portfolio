@@ -13,5 +13,10 @@ export default defineConfig({
         }),
         solidJs(),
         sitemap()
-    ]
+    ],
+    image: {
+        service: {
+            entrypoint: "astro/assets/services/noop"
+        }
+    }
 });
