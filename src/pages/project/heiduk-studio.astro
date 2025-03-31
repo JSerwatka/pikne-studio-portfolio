@@ -91,24 +91,8 @@ import logoLoading from "@assets/projects/heiduk/logo-loading.png";
             width={cards.width}
             quality="high"
         />
-        <!-- TODO: udpdate video -->
-        <video
-            autoplay
-            loop
-            muted
-            playsinline
-            class:list={["col-span-6 w-full self-start  object-cover ", "lg:col-span-4  lg:self-center"]}
-            poster="/videos/olivia-website.jpg"
-        >
-            <source src="/videos/olivia-website.mp4" type="video/mp4" />
-            <meta
-                itemprop="description"
-                content="a video presenting the landing page, including a video shots of Olivia and services section."
-            />
-            Your browser does not support the video tag.
-        </video>
         <ImageWithLoading
-            class="col-span-6 self-start lg:col-span-2 lg:col-start-5 lg:self-center"
+            class="col-span-6 self-start lg:col-span-3 lg:self-center"
             classImage="object-right"
             src={logo}
             srcLoading={logoLoading}
@@ -117,10 +101,29 @@ import logoLoading from "@assets/projects/heiduk/logo-loading.png";
             quality="max"
             classImage="bg-light-pink"
         />
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class:list={[
+                "col-span-6 w-full self-start  object-cover ",
+                "object-fill lg:col-span-3 lg:col-start-4 lg:self-center"
+            ]}
+            poster="/videos/heiduk-poster.png"
+        >
+            <source src="/videos/heiduk.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content=" a video presenting the landing page of interior design studio, presenting a collage of designer furniture and typography"
+            />
+            Your browser does not support the video tag.
+        </video>
     </Fragment>
+
     <PictureLink
         slot="link"
-        title="Sensus"
+        title="sensus"
         subTitle="Next up"
         linkTo="/project/sensus"
         linkAccessibleName='link to project: "Sensus"'
