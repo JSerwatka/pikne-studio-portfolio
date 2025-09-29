@@ -1,0 +1,156 @@
+---
+import PictureLink from "@components/PictureLink.astro";
+import Quote from "@components/Quote.astro";
+import LayoutProjects from "@layouts/LayoutProjects.astro";
+import ImageWithLoading from "@components/ImageWithLoading.astro";
+
+// import thumbnail from "@assets/thumbnails/";
+
+import logo1 from "@assets/projects/biolyz/logo1.jpg";
+import logo1Loading from "@assets/projects/biolyz/logo1-loading.jpg";
+import mockup from "@assets/projects/biolyz/mockup.jpg";
+import mockupLoading from "@assets/projects/biolyz/mockup-loading.jpg";
+import logo2 from "@assets/projects/biolyz/logo2.jpg";
+import logo2Loading from "@assets/projects/biolyz/logo2-loading.jpg";
+import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
+
+// TODO::BIOLYZ - add thumbnail photo link, add alts, fix cursele quality and update posters + fix hader
+---
+
+<LayoutProjects title="Biolyz">
+    <Fragment slot="hero-background">
+        <video autoplay loop muted playsinline class="h-full w-full" poster="/videos/biolys/intro-poster.jpg">
+            <source src="/videos/biolyz/output.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="#TODO::BIOLYZ  a video presenting the landing page, including a video shots of Olivia and services section."
+            />
+            Your browser does not support the video tag.
+        </video>
+    </Fragment>
+    <Fragment slot="services-list">
+        <li>Brand identity</li>
+        <li>Brand strategy</li>
+        <li>Logo design</li>
+        <li>Web design</li>
+    </Fragment>
+    <Fragment slot="project-title">Biolyz</Fragment>
+    <Fragment slot="project-description">
+        <p>
+            An Austrian-German start up developed a cutting-edge diagnostic solution. A painless saliva swab replaces
+            blood draws and finger-pricks. Athletes can now collect a sample in the changing room in under a minute,
+            ensuring clinical-grade precision while slashing reagent costs.
+        </p>
+        <p>
+            Biolyz stands for performance optimization, injury prevention, faster recovery, objective training load
+            management, all this combining humane approach with competitive edge. Biolyz speaks to real people - not
+            data points. While precise and science-based, they never forget that all they do should help improving
+            someone’s health and career.
+        </p>
+        <p>
+            After carefully examining the values and business goals of the company, we developed a communication
+            strategy, a new visual identity and a website reflecting what Biolyz stands for.
+        </p>
+    </Fragment>
+    <Fragment slot="images">
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="col-span-6 lg:col-span-2"
+            poster="/videos/biolyz/biolyz-1-poster.jpg"
+        >
+            <source src="/videos/biolyz/biolyz-1.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="an animated presentation of Biolyz-branded photos and mockups of merch"
+            />
+            Your browser does not support the video tag.
+        </video>
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
+            src={logo1}
+            srcLoading={logo1Loading}
+            alt="Biolyz logo as an overlay over a bird-eye-view photo of soccer team on a match field"
+            width={logo1.width}
+            quality="mid"
+            classImage="bg-light-pink"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-4"
+            src={mockup}
+            srcLoading={mockupLoading}
+            alt="a set of three boxes containing saliva collection kits branded by Biolyz"
+            width={mockup.width}
+            quality="mid"
+        />
+        <ImageWithLoading
+            class="col-span-6 lg:col-span-2"
+            classImage="object-center"
+            src={logo2}
+            srcLoading={logo2Loading}
+            alt="the signet of Biolyz, a white icon resembling B letter on a ultramarine blue background"
+            width={logo2.width}
+            quality="mid"
+        />
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="col-span-6 lg:col-span-2"
+            poster="/videos/biolyz/biolyz-2-poster.jpg"
+        >
+            <source src="/videos/biolyz/biolyz-2.mp4" type="video/mp4" />
+            <meta
+                itemprop="description"
+                content="an animated presentation of letters in fonts used in Biolyz branding - Nohemi and DM Sans"
+            />
+            Your browser does not support the video tag.
+        </video>
+        <div class="col-span-6 lg:col-span-4">
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                poster="/videos/biolyz/biolyz-3-poster.jpg"
+                class="h-full object-none"
+            >
+                <source src="/videos/biolyz/biolyz-3.mp4" type="video/mp4" />
+                <meta
+                    itemprop="description"
+                    content="scrolling photos of athletes with minimal charts overlaying, displaying values of their biomarkers, such as cortisol or creatinine"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col-span-6 lg:col-span-6">
+            <video autoplay loop muted playsinline poster="/videos/biolyz/biolyz-4-poster.jpg">
+                <source src="/videos/biolyz/biolyz-4.mp4" type="video/mp4" />
+                <meta
+                    itemprop="description"
+                    content='a homepage of Biolyz, displaying a headline "Chew. Check. Win." and a description of their core idea'
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </Fragment>
+    <Quote author="JAN BERSSENBRUEGGE, CCO" slot="quote"> #TODO::BIOLYZ </Quote>
+    <PictureLink
+        slot="link"
+        title="Olivia Nowicka"
+        subTitle="Next up"
+        linkTo="/project/olivia-nowicka"
+        linkAccessibleName='link to project: "Olivia Nowicka"'
+        src={nowickaThumbnail}
+        alt="a photograph of Olivia Nowicka, a makeup artist"
+    />
+</LayoutProjects>
+
+<style>
+    video::poster {
+        filter: blur(100px);
+    }
+</style>
