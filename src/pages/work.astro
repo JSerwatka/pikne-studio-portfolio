@@ -4,6 +4,8 @@ import ImageWithLoading from "@components/ImageWithLoading.astro";
 import LayoutBigTitle from "@layouts/LayoutBigTitle.astro";
 import illustrations from "@assets/work/illustrations.png";
 import illustrationsLoading from "@assets/work/illustrations-loading.png";
+import biolyz from "@assets/work/biolyz.jpg";
+import biolyzLoading from "@assets/work/biolyz-loading.jpg";
 import olivia from "@assets/work/olivia.jpg";
 import oliviaLoading from "@assets/work/olivia-loading.jpg";
 import heiduk from "@assets/work/heiduk.png";
@@ -33,6 +35,13 @@ const projects = [
         srcLoading: illustrationsLoading,
         linkTo: "/illustrations",
         alt: "a digital editorial illustration showing an assortment of individuals with distinct faces as the users of a dating app, there are virtual connections between them suggesting if they are a match or not"
+    },
+    {
+        title: "BIOLYZ",
+        src: biolyz,
+        srcLoading: biolyzLoading,
+        linkTo: "/project/biolyz",
+        alt: "A soccer player with short pink hair, wearing a blue sports uniform, balances a white ball on their knee on a green grass field."
     },
     {
         title: "Oliwia Nowicka",
@@ -84,7 +93,7 @@ const projects = [
 <LayoutBigTitle title="Work" withStickyHeader>
     <Fragment slot="header">Work</Fragment>
     <Fragment slot="content">
-        <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>
+        <div class:list={["relative z-20 flex flex-col", "gap-y-32", "md:gap-y-40", "lg:gap-y-64"]}>
             {
                 projects.map((project) => (
                     <div class="flex flex-col">
@@ -99,7 +108,7 @@ const projects = [
                                     srcLoading={project.srcLoading}
                                     width={1100}
                                     alt={project.alt}
-                                    class="mx-auto max-w-[1100px] rounded-3xl"
+                                    class="mx-auto aspect-square max-w-[1100px] rounded-3xl md:aspect-auto"
                                     classImage="rounded-3xl"
                                 />
                                 <div
