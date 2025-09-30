@@ -23,10 +23,10 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             <div
                 class="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 text-center font-normal text-dark-chocolate"
             >
-                <div class="font-instrument text-[56px] leading-[64px]">
+                <div class="font-instrument text-[36px] leading-[64px] lg:text-[56px]">
                     Rebranding <br /> the future <br /> of diagnostics
                 </div>
-                <div class="mt-4 font-metropolis text-lg uppercase leading-8">new brand identity for Biolyz</div>
+                <div class="mt-4 font-metropolis uppercase leading-8 lg:text-lg">new brand identity for Biolyz</div>
             </div>
 
             <video
@@ -37,7 +37,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
                 class="h-full w-full object-cover"
                 poster="/videos/biolys/intro-poster.jpg"
             >
-                <source src="/videos/biolyz/output.mp4" type="video/mp4" />
+                <source src="/videos/biolyz/intro.mp4" type="video/mp4" />
                 <meta itemprop="description" content="biolyz branding video presentation" />
                 Your browser does not support the video tag.
             </video>
@@ -124,9 +124,17 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             />
             Your browser does not support the video tag.
         </video>
-        <div class="col-span-6 w-full lg:col-span-4">
-            <video autoplay loop muted playsinline poster="/videos/biolyz/biolyz-3-poster.jpg" class="rounded-3xl">
-                <source src="/videos/biolyz/biolyz-3.mp4" type="video/mp4" />
+        <div class="col-span-6 h-full w-full lg:col-span-4">
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                poster="/videos/biolyz/biolyz-3-poster.jpg"
+                class="h-full rounded-3xl object-cover"
+            >
+                <source src="/videos/biolyz/biolyz-3.mp4" type="video/mp4" media="(min-width: 1024px)" />
+                <source src="/videos/biolyz/biolyz-3-square.mp4" type="video/mp4" media="(max-width: 1023px)" />
                 <meta
                     itemprop="description"
                     content="scrolling photos of athletes with minimal charts overlaying, displaying values of their biomarkers, such as cortisol or creatinine"
@@ -134,14 +142,14 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
                 Your browser does not support the video tag.
             </video>
         </div>
-        <div class="col-span-6 lg:col-span-6">
+        <div class="hidden lg:col-span-6 lg:block">
             <video
                 autoplay
                 loop
                 muted
                 playsinline
                 poster="/videos/biolyz/biolyz-4-poster.jpg"
-                class="w-full rounded-3xl"
+                class="w-full rounded-3xl object-none"
             >
                 <source src="/videos/biolyz/biolyz-4.mp4" type="video/mp4" />
                 <meta
@@ -152,7 +160,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             </video>
         </div>
     </Fragment>
-    <div slot="link" class="mt-64">
+    <div slot="link" class="lg:mt-64">
         <PictureLink
             title="Olivia Nowicka"
             subTitle="Next up"
