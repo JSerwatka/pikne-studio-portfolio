@@ -19,14 +19,29 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
 
 <LayoutProjects title="Biolyz">
     <Fragment slot="hero-background">
-        <video autoplay loop muted playsinline class="h-full w-full" poster="/videos/biolys/intro-poster.jpg">
-            <source src="/videos/biolyz/output.mp4" type="video/mp4" />
-            <meta
-                itemprop="description"
-                content="#TODO::BIOLYZ  a video presenting the landing page, including a video shots of Olivia and services section."
-            />
-            Your browser does not support the video tag.
-        </video>
+        <div class="relative h-full w-full">
+            <div
+                class="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 text-center font-normal text-dark-chocolate"
+            >
+                <div class="font-instrument text-[56px] leading-[64px]">
+                    Rebranding <br /> the future <br /> of diagnostics
+                </div>
+                <div class="mt-4 font-metropolis text-lg uppercase leading-8">new brand identity for Biolyz</div>
+            </div>
+
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="h-full w-full object-cover"
+                poster="/videos/biolys/intro-poster.jpg"
+            >
+                <source src="/videos/biolyz/output.mp4" type="video/mp4" />
+                <meta itemprop="description" content="biolyz branding video presentation" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </Fragment>
     <Fragment slot="services-list">
         <li>Brand identity</li>
@@ -58,7 +73,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             loop
             muted
             playsinline
-            class="col-span-6 lg:col-span-2"
+            class="col-span-6 w-full lg:col-span-2"
             poster="/videos/biolyz/biolyz-1-poster.jpg"
         >
             <source src="/videos/biolyz/biolyz-1.mp4" type="video/mp4" />
@@ -99,7 +114,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             loop
             muted
             playsinline
-            class="col-span-6 lg:col-span-2"
+            class="col-span-6 w-full lg:col-span-2"
             poster="/videos/biolyz/biolyz-2-poster.jpg"
         >
             <source src="/videos/biolyz/biolyz-2.mp4" type="video/mp4" />
@@ -109,15 +124,8 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             />
             Your browser does not support the video tag.
         </video>
-        <div class="col-span-6 lg:col-span-4">
-            <video
-                autoplay
-                loop
-                muted
-                playsinline
-                poster="/videos/biolyz/biolyz-3-poster.jpg"
-                class="h-full rounded-3xl object-none"
-            >
+        <div class="col-span-6 w-full lg:col-span-4">
+            <video autoplay loop muted playsinline poster="/videos/biolyz/biolyz-3-poster.jpg" class="rounded-3xl">
                 <source src="/videos/biolyz/biolyz-3.mp4" type="video/mp4" />
                 <meta
                     itemprop="description"
@@ -133,7 +141,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
                 muted
                 playsinline
                 poster="/videos/biolyz/biolyz-4-poster.jpg"
-                class="w-full rounded-3xl object-none"
+                class="w-full rounded-3xl"
             >
                 <source src="/videos/biolyz/biolyz-4.mp4" type="video/mp4" />
                 <meta
@@ -144,7 +152,7 @@ import nowickaThumbnail from "@assets/thumbnails/nowicka.webp";
             </video>
         </div>
     </Fragment>
-    <div slot="link" class="mt-24">
+    <div slot="link" class="mt-64">
         <PictureLink
             title="Olivia Nowicka"
             subTitle="Next up"
