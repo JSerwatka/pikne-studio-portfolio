@@ -93,7 +93,7 @@ const projects = [
 <LayoutBigTitle title="Work" withStickyHeader>
     <Fragment slot="header">Work</Fragment>
     <Fragment slot="content">
-        <div class:list={["relative z-20 flex flex-col", "gap-y-40", "lg:gap-y-64"]}>
+        <div class:list={["relative z-20 flex flex-col", "gap-y-32", "md:gap-y-40", "lg:gap-y-64"]}>
             {
                 projects.map((project) => (
                     <div class="flex flex-col">
@@ -108,7 +108,7 @@ const projects = [
                                     srcLoading={project.srcLoading}
                                     width={1100}
                                     alt={project.alt}
-                                    class="mx-auto max-w-[1100px] rounded-3xl"
+                                    class="mx-auto aspect-square max-w-[1100px] rounded-3xl md:aspect-auto"
                                     classImage="rounded-3xl"
                                 />
                                 <div
