@@ -16,7 +16,7 @@
         "@astrojs/tailwind": "^5.1.0",
         "@fontsource/instrument-serif": "^5.2.5",
         "@fontsource/metropolis": "^5.0.7",
-        "@solid-primitives/scheduled": "^1.4.3",
+        "@solid-primitives/scheduled": "^1.5.2",
         "astro": "^4.5.18",
         "astro-seo-schema": "^4.0.0",
         "motion": "^10.17.0",
